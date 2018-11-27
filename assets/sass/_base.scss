@@ -497,10 +497,42 @@ label{
 			display: block;
 			width: 36px;
 			height: 36px;
-			border: 1px solid #b8b8b8;
-
+			svg  { 
+  				fill: #FFF;
+				stroke: none !important;
+			}
+			.fb {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#4668ae;
+				}
+			}
+			.insta {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#fe2c75;
+				}
+			}
+			.snap {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#fffc00;
+				}
+			}
+			.twitter {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#00acee;
+				}
+			}
+			.youtube {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#ff0000;
+				}
+			}
 			&:hover{
-				background: rgba(255,255,255,0.2);
+				//background: rgba(255,255,255,0.2);
 			}
 		}
 	}
@@ -515,18 +547,18 @@ label{
 		background-size: 100% auto;
 		position: absolute;
 		top: 50%;
-		left: 20px;
+		left: 25px;
 		transform: translateY(-50%);
 	}
 	input{
 		width: 100%;
 		display: block;
-		font-size: 16px;
+		font-size: 15px;
 		line-height: 44px;
-		color: #ffffff;
+		color: #e0e0e0;
 		border: none;
 		border-radius: 999px;
-		padding-left: 60px;
+		padding-left: 65px;
 		padding-right: 150px;
 		background: #262626;
 

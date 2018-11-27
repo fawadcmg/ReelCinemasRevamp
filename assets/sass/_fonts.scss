@@ -26,6 +26,16 @@
     font-weight: bold;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Effra-bold';
+    src: url('../fonts/Effra-Bold.eot');
+    src: url('../fonts/Effra-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Effra-Bold.woff2') format('woff2'),
+        url('../fonts/Effra-Bold.woff') format('woff'),
+        url('../fonts/Effra-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 
 @font-face {
     font-family: 'Effra';
