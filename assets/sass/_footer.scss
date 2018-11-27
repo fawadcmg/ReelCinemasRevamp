@@ -4,8 +4,19 @@
 
 	img{
 		display: block;
+		
+		/*fawad*/
 	}
-
+	li {
+		font-size: 14px; 
+		color: #FFF;
+		font-weight: 300;
+		line-height: 25px;
+		font-family: 'effralight', arial, sans-serif;
+		a {
+			color: #FFF;
+		}
+	}
 	.c-subs-box{
 		max-width: 500px;
 		margin: 0 auto;
@@ -42,7 +53,10 @@
 		width: 35%;
 		padding-left: 65px;
 	}
-
+	.half{
+		float: left; 
+		width: 50%;
+	}
 	.col-1, .col-2, .col-3{
 		padding-top: 36px;
 		padding-bottom: 36px;
@@ -114,11 +128,11 @@
 	}
 
 	h4{
-		font-size: 16px;
+		font-size: 14px;
 		line-height: 1em;
 		color: #fff;
 		text-transform: uppercase;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 	.links-1{
 		li{
