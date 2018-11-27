@@ -10,12 +10,12 @@
 	.main-carousel{
 		.item{
 			position: relative;
-			min-height: 600px;
-			height: calc(100vh - 120px);
+			min-height: 760px;
+			//height: calc(100vh - 120px);
 		}
 		.img{
 			position: absolute;
-			top: 0;
+			top: 0; 
 			left: 0;
 			width: 100%;
 			height: 100%;
@@ -27,9 +27,20 @@
 				top: 0;
 				left: 0;
 				width: 100%;
-				height: 100%;
-				background: url('../img/movie-posters/poster-overlap--full.png') no-repeat center center / cover;
+				height: 100%; 
+				background: url('../img/movie-posters/poster-overlap-full.png') repeat-y center bottom;
 				z-index: 1;
+			}
+			&:after{
+				content:'';
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: url('../img/movie-posters/bottom-overlay.png') repeat-x center bottom;
+				z-index: 2;
 			}
 
 			img{
@@ -41,32 +52,40 @@
 		}
 		.txt{
 			position: absolute;
-			bottom: 23%;
+			bottom: 35%;
 			left: 0;
 			width: 100%;
 			z-index: 2;
-			color: #fff;
-			@media (max-width: 1527px){
-				bottom: 8vw;
+			color: #222222;
+			@media (max-width: 1527px){ 
+				/*bottom: 8vw;*/
 				margin-bottom: 2vh;
 			}
 
 			h1{
 				font-weight: bold;
-				font-size: 55px;
+				font-size: 65px;
 				line-height: 1em;
-				margin-bottom: 20px;
+				margin-bottom:15px;
 				@media (max-width: 1600px){
 					font-size: 50px;
 				}
 			}
-			
 			p,
 			.details{
 				max-width: 600px;
-				font-size: 16px;
+				font-size: 12px;
 				line-height: 1.4em;
 				margin-bottom: 25px;
+				text-transform: uppercase;
+				@media (max-width: 1600px){
+					margin-bottom: 20px;
+				}
+			}
+			p {
+				font-weight: 600;
+				max-width: 400px;
+				text-transform:none;
 				@media (max-width: 1600px){
 					margin-bottom: 20px;
 				}
@@ -95,6 +114,19 @@
 			}
 			.det-2{
 				font-weight: bold;
+			.icon-duration {
+				display:inline-block;
+				width: 20px;
+				height:20px;
+				background: url("/assets/img/icons/duration.png") no-repeat left top;
+				position: relative;
+				top: 5px;
+			}
+				span {
+					font-weight: normal;
+					display: inline-block;
+					margin-left:15px;
+				}
 			}
 		}
 		.action{
@@ -109,11 +141,11 @@
 
 		.c-btn-white,
 		.c-btn-glow{
-			min-width: 200px;
+			min-width: 165px;
 		}
-	}
+	} 
 	.main-carousel-thumb{
-		margin: -5.15vw 0 0;
+		margin: -13vw 0 0;
 		height: 160px;
 		overflow: hidden;
 		@media (max-width: 1527px){

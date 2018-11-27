@@ -1,7 +1,7 @@
 .c-movie-filters{
 	margin: 60px auto 40px;
 	@media (max-width: 1600px){
-		margin: 50px auto 30px;
+		margin: 0 auto 30px;
 	}
 	.close-btn-m{
 		display: none;
@@ -11,7 +11,7 @@
 		padding-bottom: 45px;
 		display: flex;
 		border-top: 1px solid #e5e5e5;
-		border-bottom: 1px solid #e5e5e5;
+		border-bottom: 1px solid #e5e5e5; 
 
 		> *{
 			margin-right: 20px;

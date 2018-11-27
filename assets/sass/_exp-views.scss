@@ -8,7 +8,7 @@
 			padding: 0;
 		}
 	}
-	.sec-heading{
+	.sec-heading{ 
 		display: flex;
 		font-size: 25px;
 		line-height: 1em;
@@ -194,16 +194,16 @@
 			&:before{
 			    content: "";
 			    display: block;
-			    width: 30%;
+			    width: 35%;
 			    height: 100%;
 			    position: absolute;
 			    top: 0;
 			    left: 42%;
 				background: linear-gradient(90deg,#fff 0,#fff 5%,hsla(0,0%,100%,0));
 				z-index: 1;
-				@media (max-width: 1600px){
+				@media (max-width: 1600px){ 
 					left: 48%;
-				}
+				} 
 				@media (max-width: 1023px){
 					left: 55%;
 				}
