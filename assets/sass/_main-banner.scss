@@ -4,13 +4,14 @@
 	}
 }
 .c-main-banner{
+	min-height: 880px;
 	@media (max-width: 767px){
 		display: none;
 	}
 	.main-carousel{
 		.item{
 			position: relative;
-			min-height: 760px;
+			min-height: 880px;
 			//height: calc(100vh - 120px);
 		}
 		.img{
@@ -52,7 +53,7 @@
 		}
 		.txt{
 			position: absolute;
-			bottom: 35%;
+			bottom: 40%;
 			left: 0;
 			width: 100%;
 			z-index: 2;
@@ -141,7 +142,7 @@
 
 		.c-btn-white,
 		.c-btn-glow{
-			min-width: 165px;
+			min-width:200px;
 		}
 	} 
 	.main-carousel-thumb{
