@@ -28,7 +28,6 @@
 	    			<li>
 	    				<a href="#">Experiences</a>
 	    				<ul>
-	    				
 	    					<li><a href="#">Standard</a></li>
 	    					<li><a href="#">Dolby Cinema</a></li>
 	    					<li><a href="#">Reel Dine-In Cinema</a></li>
@@ -52,13 +51,13 @@
 	    			</li>
 	    		</ul>
 	    	</nav>
-	    	<a href="#" class="c-menu-btn js-open-side-nav">
+	    	<a href="#" class="c-menu-btn js-pen-side-nav">
 	    		<span class="icon-wrap"><i></i><i></i><i></i><span class="txt">Menu</span></span>
 	    	</a>
 	    </header>
 
 	    <aside class="c-side-nav">
-	    	<a href="#" class="logo js-close-side-nav"><img src="assets/img/brand/logo.svg" alt="Reel Cinemas"></a>
+	    	<a href="#" class="logo js-close-side-nav"><img src="assets/img/brand/logo-colored.png" alt="Reel Cinemas"></a>
 	    	<div class="nav-wrap">
 		    	<nav class="nav">
 		    		<ul>
@@ -247,6 +246,8 @@ release his alter-ego Venom to save his life.</p>
 		    	</div>
 	    	</div>
 	    	<div id="whats-on" class="is-tab is--active" data-tab-name="movie-list">
+				
+				<div class="fader"></div>
 				<section class="c-movie-filters">
 	    	<a href="#" class="close-btn-m js-close-filter-m"><span class="txt">close</span></a>
 	    	<div class="o-container">
@@ -256,7 +257,7 @@ release his alter-ego Venom to save his life.</p>
 			    			<div class="field">
 			    				<i class="icon icon--movie"></i>
 			    				<div class="field-title">What's on</div>
-			    				<input type="text" placeholder="What to watch" class="js-field">
+			    				<input type="text" placeholder="What to watch" class="js-field ">
 			    			</div>
 			    			<div class="field-dropdown">
 			    			<div class="field">
@@ -285,6 +286,11 @@ release his alter-ego Venom to save his life.</p>
 			    				<input type="text" placeholder="Location" class="js-field medium">
 			    			</div>
 			    			<div class="field-dropdown">
+			    			<div class="field">
+			    				<i class="icon icon--location"></i>
+			    				<div class="field-title">Location</div>
+			    				<input type="text" placeholder="Location" class="js-field">
+			    			</div>
 			    				<div class="scroll">
 				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-locations"><label for="select-all-locations"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
 									<div class="item"><input type="checkbox" id="the-dubai-mall"><label for="the-dubai-mall">The Dubai Mall</label></div>
@@ -303,6 +309,11 @@ release his alter-ego Venom to save his life.</p>
 			    				<input type="text" placeholder="Experience" class="js-field medium">
 			    			</div>
 			    			<div class="field-dropdown">
+			    			<div class="field">
+			    				<i class="icon icon--exp"></i>
+			    				<div class="field-title">Experience</div>
+			    				<input type="text" placeholder="Experience" class="js-field">
+			    			</div>
 			    				<div class="scroll">
 				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp"><label for="select-all-exp"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
 									<div class="item"><input type="checkbox" id="standard"><label for="standard">Standard</label></div>
@@ -325,8 +336,13 @@ release his alter-ego Venom to save his life.</p>
 			    				<input type="text" placeholder="GENRE" class="js-field small">
 			    			</div>
 			    			<div class="field-dropdown">
+			    			<div class="field">
+			    				<i class="icon icon--genere"></i>
+			    				<div class="field-title">GENRE</div>
+			    				<input type="text" placeholder="GENRE" class="js-field">
+			    			</div>
 			    				<div class="scroll">
-				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp"><label for="select-all-genere"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
+				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-genere"><label for="select-all-genere"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
 									<div class="item"><input type="checkbox" id="action"><label for="action">Action</label></div>
 									<div class="item"><input type="checkbox" id="comedy"><label for="comedy">Comedy</label></div>
 									<div class="item"><input type="checkbox" id="horror"><label for="horror">Horror</label></div>
@@ -430,28 +446,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -463,11 +474,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -475,7 +487,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -497,28 +509,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -530,11 +537,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -542,7 +550,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -564,28 +572,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -597,11 +600,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -609,7 +613,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -631,28 +635,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -664,11 +663,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -676,7 +676,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -698,28 +698,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -731,11 +726,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -743,7 +739,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -765,28 +761,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -798,11 +789,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -810,7 +802,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -832,28 +824,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -865,11 +852,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -877,7 +865,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -899,28 +887,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -932,11 +915,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -944,7 +928,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -966,28 +950,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -999,11 +978,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -1011,7 +991,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -1033,28 +1013,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -1066,11 +1041,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">
@@ -1078,7 +1054,7 @@ release his alter-ego Venom to save his life.
 							</div>
 		    			</section>
 		    		</div>
-		    		<div class="movie-item">
+					<div class="movie-item">
 		    			<div class="item-wrap">
 			    			<div class="img">
 			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
@@ -1100,28 +1076,23 @@ release his alter-ego Venom to save his life.
 				    				<h1 class="title">Mission Impossible Fallout</h1>
 				    				<div class="stamp">PG <br> 13</div>
 			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
+								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
+								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
 								<div class="info has-lsit">
 									<strong>Experiences:</strong>
 									<ul class="exp-list">
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
 											</picture>
 										</li>
 										<li>
 											<picture>
 												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
+												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
 											</picture>
 										</li>
 										<li>
@@ -1133,11 +1104,12 @@ release his alter-ego Venom to save his life.
 									</ul>
 								</div>
 								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
+									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
+release his alter-ego Venom to save his life. 
 								</div>
 								<div class="action">
 									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
+									<a href="#" class="play-trailor"></a>
 								</div>
 							</div>
 							<div class="img">

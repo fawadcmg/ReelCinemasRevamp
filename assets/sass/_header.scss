@@ -43,6 +43,11 @@
 			font-weight: 100;
 			text-transform: uppercase;
 			color: #222222;
+			transition: all .20s ease-in-out;
+			&:hover {
+				//color: #6e3996;
+				//border-bottom: 3px solid #6e3996;
+			}
 
 			@media (max-width: 1800px){
 				font-size: 18px;
@@ -57,11 +62,25 @@
 				padding: 0;
 				position: relative;
 				a{
-					padding: 50px 30px;
+					padding: 50px 30px 47px;
+					border-bottom: 3px solid  rgba(255,255,255,0);
 				}
 
 				&:hover{
-					background: url('../img/pattern/black-noise.png');
+					a {
+					color: #6e3996;
+					border-bottom: 3px solid #6e3996;
+						
+					}
+					li a {
+						border:none;
+						color: #222;
+						&:hover {
+							color: #6e3996;
+							
+						}
+					}
+					//background: url('../img/pattern/black-noise.png');
 					ul{
 						display: block;
 					}
@@ -78,7 +97,7 @@
 				position: absolute;
 				top: 100%;
 				left: 0;
-				background: url('../img/pattern/black-noise.png');
+				background:#FFF url('../img/misc/noise-white.jpg') repeat left top;
 				width: 320px;
 				box-shadow: 3px 3px 10px 3px rgba(0,0,0,.3);
 
@@ -87,11 +106,12 @@
 					text-transform: none;
 					padding: 20px 40px;
 					border-left: 1px solid transparent;
-					color: #dddddd;
+					color: #222;
 					transition: none;
+					border-bottom: none;
 					&:hover{
-						background: rgba(0,0,0,0.3);
-						color: #fff;
+						background:#fafafa;
+						//color: #fff;
 					}
 				}
 
@@ -214,12 +234,13 @@
 }
 
 .c-side-nav{
-	text-align: center;
+	display: none;
+	text-align: left;
     position: fixed;
     top: 0;
     right: 0;
-    width: 400px;
-    background: #0d0d0d;
+    width: 100%;
+    background: rgba(255,255,255,0.9);
     // box-shadow: -5px 0px 5px 0px rgba(0,0,0,.4);
     z-index: 1010;
     height: 100%;
@@ -259,11 +280,12 @@
 	}
 
     .logo{
-		border-bottom: 1px solid #1c1c1c;
+		//border-bottom: 1px solid #FFF;
 		display: block;
 		margin: 0 -45px;
 		padding: 0 45px 35px;
 		position: relative;
+		text-align: left;
 		@media (max-width: 767px){
 			margin: 0 -25px;
 			padding: 0 25px 20px;

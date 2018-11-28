@@ -151,6 +151,7 @@
 	}
 
 	h4{
+		font-family: 'Effra-bold';
 		font-size: 14px;
 		line-height: 1em;
 		color: #fff;
@@ -219,7 +220,7 @@
 		}
 	}
 	@media (max-width: 767px){
-		background: #fff;
+	background: #191919 url("../img/misc/grain-dark.jpg") repeat left top;
 		color: #000000;
 		.col{
 			width: 100%;
