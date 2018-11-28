@@ -6,6 +6,9 @@
     position: relative;
     min-height: 679px;
 	margin-top: 100px;
+	@media (max-width: 767px){
+		margin-top: -13px;
+	}
 	
 	.img {
     position: absolute;
@@ -46,18 +49,42 @@
     width: 100%;
     z-index: 2;
     color: #222;
+		@media (max-width: 767px){
+			top:50px;
+			bottom: 0px;
+			
+		}
 		
 	.movie-poster{
 	float: left;
 	margin: 0 50px 0 0;
+		
+		@media (max-width: 767px){
+			width: 250px;
+			float: none;
+			margin: 0 auto;
+			
+		}
+		
 	}	
 		
 		.movie-poster-detail{
 			float: left;
 			padding: 100px 0 0 0;
+			
+				@media (max-width: 767px){
+			padding: 0px 0 0 0;
+			margin-top: 0px;
+		}
 		
 		
 	.title {
+		@media (max-width: 767px){
+			font-size: 35px;
+			color: #000;
+			text-align: center;
+			margin: 20px 0;
+		}
     font-size: 55px;
     line-height: 1em;
     color: #fff;
@@ -66,9 +93,14 @@
 	span{
 		display: block;
 		}	
+		
+			
 }
 		
 	.info{
+		@media (max-width: 767px){
+			color: #000;
+		}
     font-size: 14px;
     color: #fff;
     line-height: 1.2em;
@@ -91,9 +123,7 @@
 		display: none;
     
 }				
-			
-	
-			.duration, .language{
+.duration, .language{
 				 display: inline-block;
 			}		
 	.duration .icon, .language .icon {
@@ -103,9 +133,16 @@
     position: relative;
     top: 6px;
     margin-right: 15px;
+		@media (max-width: 767px){
+						margin-right: 5px;
+						}
 }	
 			.duration .margin-right, .language .margin-right{		
-	margin-right: 25px;		
+	margin-right: 25px;	
+				
+				@media (max-width: 767px){
+						margin-right: 12px;
+						}
 			}
 			
 	.medium {
@@ -119,16 +156,39 @@
 				
 				.replaced-svg{
 					fill: #fff;
+					
+					@media (max-width: 767px){
+						fill: #000;
+						}
 				}
 				
 			}
+		
+		@media (max-width: 767px){
+						.st0 {
+    fill: none;
+    stroke: #000;
+    stroke-miterlimit: 10;
+}
+	.st2 {
+    fill: #000;
+}
+						}	
 		
 	.movie-desc{
 			font-size: 14px;
     color: #fff;
     line-height: 1.2em;
     margin: 15px 0;
-	max-width: 600px;	
+	max-width: 600px;
+		
+		span{
+			font-weight: 600;
+		}
+	
+		@media (max-width: 767px){
+		color: #000;
+	}
 	}		
 	
 			.play-grey {
