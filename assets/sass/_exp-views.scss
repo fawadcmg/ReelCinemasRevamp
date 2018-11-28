@@ -9,9 +9,11 @@
 		}
 	}
 	.sec-heading{ 
+		font-family: 'arquitecta_mediummedium', arial, sans-serif;
 		display: flex;
 		font-size: 25px;
 		line-height: 1em;
+		letter-spacing: 1px;
 		width: 100%;
 		text-transform: uppercase;
 		align-items: center;
@@ -257,7 +259,7 @@
 			h2{
 				font-size: 55px;
 				line-height: 1em;
-				color: #000000;
+				color: #222;
 				font-weight: bold;
 				margin: 0 0 22px 0;
 		
@@ -286,6 +288,11 @@
 					line-height: 1.4em;
 					margin-bottom: 20px;
 				}
+			}
+			.c-btn-glow {
+				padding-right: 35px;
+				padding-left: 35px;
+				
 			}
 		}
 	}

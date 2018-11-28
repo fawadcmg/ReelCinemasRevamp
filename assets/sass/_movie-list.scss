@@ -88,7 +88,7 @@
 		}
 	}
 	.list-tabs{
-		margin: 0 0 40px;
+		margin: 0 0 20px;
 		
 		@media (max-width: 1400px){
 			margin: 30px 0;
@@ -99,10 +99,12 @@
 		}
 
 		a{
+			font-family: 'arquitecta_mediummedium', arial, sans-serif;
 			font-size: 25px;
 			line-height: 1em;
+			letter-spacing: 1px;
 			text-transform: uppercase;
-			color: #6f6f6f;
+			color: #222;
 			padding-right: 40px;
 			margin-right: 40px;
 			border-right: 1px solid #dadada;
@@ -168,7 +170,39 @@
 			}
 		}
 	}
+	
+	.booknow-tag {
+		width: 85px;
+		height: 70px;
+		background: url(/assets/img/misc/booknow-tag.png) no-repeat left top;
+		position: absolute;
+		left: -2px;
+		top: -2px;
+		span {
+			position: absolute;
+			font-size: 10px;
+			color: #FFF;
+			display: block;
+			text-shadow: 0 1px 5px rgba(93,11,21,0.45);
+			top:20px;
+			letter-spacing: 0.3px;
+		/* Safari */
+		-webkit-transform: rotate(-40deg);
+
+		/* Firefox */
+		-moz-transform: rotate(-40deg);
+
+		/* IE */
+		-ms-transform: rotate(-40deg);
+
+		/* Opera */
+		-o-transform: rotate(-40deg);
+
+		/* Internet Explorer */
+		}
+	}
 	.stamp{
+		transition: all .20s ease-in-out;
 		display: block;
 		width: 40px;
 		height: 40px;
@@ -257,8 +291,9 @@
 		.item-wrap{
 			position: relative;
 			border-radius: 5px;
-			overflow: hidden;
+			//overflow: hidden;
 			cursor: pointer;
+			margin: 3px;
 			@media (max-width: 767px){
 				text-align: center;
 			}
@@ -274,6 +309,13 @@
 				}
 	    		@media (max-width: 767px){
 	    			display: block;
+					.c-btn-white {
+						display: none;
+					}
+					.c-btn-glow.btn--sm {
+						width: 200px;
+						padding:15px 25px;
+					}
 	    		}
 	    		.c-btn-glow{
 	    			box-shadow: none;
@@ -309,7 +351,7 @@
 		.img{
 			position: relative;
 			border-radius: 7px;
-			overflow: hidden;
+			//overflow: hidden;
 
 			@media (max-width: 767px){
 				margin: 0 auto;
@@ -327,6 +369,7 @@
 				height: 100%;
 				opacity: 0;
 				transition: opacity .35s;
+				border-radius: 7px;
 
 			    @media (max-width: 767px){
 			    	display: none;
@@ -335,8 +378,18 @@
 
 			img{
 				display: block;
+				border-radius: 7px;
 			}
 		}
+		@media (min-width: 767px){
+		.img:hover + .stamp {
+			animation-name: bounceIn;			
+			  animation-duration: 300ms;
+			  animation-timing-function: linear;
+			  animation-fill-mode: forwards;
+			}
+		}
+
 		.stamp{
 			position: absolute;
 			top: 10px;
@@ -354,9 +407,9 @@
 			display: flex; 
 			text-align: center; 
 		    justify-content: center;
-		    align-items: center;
+		    align-items: center; 
 		    min-height: 68px;
-		    padding: 20px;
+		    padding: 17px 20px;
 		    position: absolute;
 		    bottom: 0;
 		    left: 0;
@@ -364,7 +417,9 @@
 		    width: 100%;
 		    transition: all .35s;
 		    border-radius: 0 0 5px 5px;
-
+			.duration-language {
+				display: none;
+			}
 		    @media (max-width: 1600px){
 		    	padding-right: 15px;
 		    	padding-left: 15px;
@@ -375,18 +430,44 @@
 		    @media (max-width: 767px){
 		    	background: transparent;
 		    	position: relative;
+				.duration-language {
+					text-align: center;
+					display: inline-block;
+					div{
+						display: inline-block;
+						font-size: 12px;
+						color: #222222;
+						text-transform: uppercase;
+						margin: 10px 20px 0 0;
+						svg  { 
+							width: 22px;
+							height: auto;
+							fill: #222222;
+							margin: 0 10px 0 0;
+							position: relative;
+							top: 5px;
+
+						}
+					}
+				}
+				.detail-inner-wrap {
+					display: none;
+				}
 		    } 
 
 			.name{
-				font-size: 16px;
+				font-size: 14px;
 				line-height: 1.2em;
 				color: #FFF;
 				display: block;
 		    	transition: all .35s;
+				text-transform: uppercase;
 
 		    	@media (max-width: 767px){
-		    		font-size: 23px;
+					color: #222;
+		    		font-size: 22px;
 		    		font-weight: bold;
+					text-transform: none;
 		    	}
 			}
 			.detail{
@@ -635,3 +716,17 @@
 		}
 	}
 }
+		@keyframes bounceIn{
+				  50%{
+					//opacity: 0.9;
+					transform: scale(0.89);
+				  }
+				  80%{
+					//opacity: 1;
+					transform: scale(1.1);
+				  }
+				  100%{
+					//opacity: 1;
+					transform: scale(1) translate3d(0,0,0);
+				  }
+				}
