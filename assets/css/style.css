@@ -2207,7 +2207,7 @@ label {
 
 .is-tab {
   height: 0;
-  overflow: visible; }
+  overflow: hidden; }
   .is-tab.is--active {
     height: auto; }
   @media (max-width: 767px) {
@@ -2709,7 +2709,8 @@ label {
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("../img/movie-posters/poster-overlap-full.png") repeat-y center bottom;
+      background: url("../img/movie-posters/poster-overlap-full.png") repeat-x center bottom;
+      background-size: cover;
       z-index: 1; }
     .c-main-banner .main-carousel .img:after {
       content: '';
@@ -5879,7 +5880,8 @@ label {
 
 .stime-bg {
   background: url(../img/pattern/showtime-bg.jpg) no-repeat;
-  background-size: 100%; }
+  background-size: 100%;
+  margin: 100px 0 0 0; }
 
 .popular-heading {
   width: 435px;
@@ -6872,7 +6874,7 @@ label {
       font-size: 18px;
       line-height: 40px;
       border-radius: 20px;
-      padding: 5px 30px 5px 80px;
+      padding: 10px 30px 10px 80px;
       display: block;
       -webkit-box-shadow: none;
               box-shadow: none;
@@ -6913,6 +6915,7 @@ label {
       top: 0;
       left: 0;
       width: 80px;
+      background: url("../img/icons/icon-show-location.svg") no-repeat center center/36px auto;
       height: 100%; }
       @media (max-width: 1600px) {
         .stime-select-box .field .icon {

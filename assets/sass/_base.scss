@@ -474,9 +474,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 }
 .is-tab{
 	height: 0;
-	overflow:visible;
+	//overflow:visible;
 	//position: relative;
-	//overflow: hidden;
+	overflow: hidden;
 	
 	&.is--active{
 		height: auto;
