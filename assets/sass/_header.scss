@@ -187,7 +187,6 @@
 
 .c-menu-btn{
 	display: block;
-
 	 .icon-wrap{
 		display: block;
 		width: 32px;
@@ -244,17 +243,30 @@
     // box-shadow: -5px 0px 5px 0px rgba(0,0,0,.4);
     z-index: 1010;
     height: 100%;
-    padding: 35px 45px 45px 45px;
+    padding: 28px 45px 45px 45px;
     overflow-y: auto;
-    transform: translateX(100%);
+    transform: translatey(-100%);
 	transition: transform .35s;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	overflow-x: hidden;
-
+	.logo {
+    	transition-delay: 0.2.5s;
+    	transform: scaleY(0);
+	}
+	
+	.container-nav {
+		margin: 0 auto;
+		width: 100%;
+		max-width: 1510px;
+		padding-left: 15px;
+		padding-right: 15px;
+		vertical-align: top;
+		overflow: hidden;
+	}
 	@media (max-width: 767px){
-		width: 300px;
+		width: 100%;
 		padding: 20px;
 		.c-social li a{
 			width: 30px;
@@ -266,7 +278,7 @@
 		margin: auto;
 		@media (max-width: 767px){
 			.c-subs-box input{
-				font-size: 14px;
+				font-size: 30px;
 				line-height: 36px;
 				padding-right: 90px;
 				padding-left: 50px;
@@ -294,56 +306,201 @@
 		&:before{
 			content: '';
 			display: block;
-			width: 27px;
-			height: 16px;
+			width:20px;
+			height:20px;
 			position: absolute;
 			top: 18px;
-			left: 45px;
-			background: url('../img/icons/arrow-white-right.svg') no-repeat center right;
+			right: 45px;
+			background: url('../img/icons/icon-cross.svg') no-repeat center right;
 			background-size: auto 100%;
 			@media (max-width: 767px){
 				top: 10px;
-				left: 25px;
+				right: 25px;
 			}
 		}
 
     	img{
-    		height: 48px;
-    		margin: 0 auto;
+    		width: 180px;
+			text-align: left;
 			@media (max-width: 767px){
-				height: 35px;
+				width: auto;
+				height: 40px;
 			}
     	}
     }
 
 
     .nav{
+		text-align: left;
     	margin-bottom: 50px;
+		margin-top: 70px;
+		
     	@media (max-width: 767px){
     		margin-bottom: 30px;
+			padding-left: 0;
     	}
-    	a{
-    		font-size: 16px;
+		ul	{
+			display: inline-block;
+			width: 355px;
+			text-align: left;
+			a{
+				font-family: 'Effra-bold';
+				font-size: 36px;
+				font-weight: bold;
     		line-height: 1em;
-    		color: #fff;
+    		color: #373737;
     		text-transform: uppercase;
     		font-weight: 100;
-    		padding: 30px 0;
+    		padding:20px 0 20px 70px;
     		display: block;
-
+			position: relative;
+				&:after {
+					content: " ";
+					width: 0;
+					height: 3px;
+					background: #6e3996;
+					position: absolute;
+					left: 0;
+					top: 50%;
+					margin-top: -3px;
+					opacity: 0;
+					
+				}
+				&:hover {
+					color: #6e3996;
+				&:after {
+					width: 36px;
+					display: block;
+					opacity: 1;
+					transition: all .20s ease-in-out;
+					}
+				}
 			@media (max-width: 767px){
-				font-size: 14px;
-				padding: 15px 0;
+				font-size: 24px;
+				padding: 15px 0 15px 50px;
 			}
     	}
-    	li{
-    		border-bottom: 1px dashed #3f3f3f;
-    	}
+		}
+		ul+ul { 
+			vertical-align:top;
+			li:first-child{
+				a {
+					padding-top:30px;
+				}
+			}
+			a {	
+ 				font-family: 'Effra';
+				font-size: 16px;
+				font-weight: normal;
+    			padding:15px 0 15px 100px;
+				&:hover {
+					&:after{
+						display: none;
+					}
+				}
+				@media (max-width: 767px){
+					padding-left:50px;
+				}
+			}
+		}
     }
+	.nav-offer {
+		float:right;
+		width: 560px;
+		display: inline-block;
+		margin: 30px 0 0;
+		position: relative;
+		img {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+		h4 {
+			font-size: 16px;
+			color: #170a3f;
+			text-transform: uppercase;
+			line-height: 22px;
+			margin: 0 0 10px;
+			strong {
+				font-size: 18px;
+				font-weight: bold;
+				color: #373737;
+				
+			}
+		}
+		p {
+			width: 300px;
+			display: inline-block;
+			font-size: 15px;
+			color: #373737;
+			line-height: 22px;
+			padding: 0 0 20px;
+			strong {
+				font-weight: bold;
+			}
+			a {
+				font-size: 16px;
+				font-weight: normal;
+				width: 150px;
+				display: inline-block;
+				margin-top: 25px;
+				padding: 15px 0;
+			}
+		}
+		@media (max-width: 767px){
+				display: none;
+			}
+	}
     .c-social{
-    	margin-bottom: 40px;
+    	margin-bottom: 100px;
+		border-top: 1px solid #CCC;
+		padding: 60px 0 0 30px;
+		li {
+			padding-left:30px;
+			.svg {
+				fill:#373737;
+			}
+			.fb {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#4668ae;
+				}
+			}
+			.insta {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#fe2c75;
+				}
+			}
+			.snap {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#dd971d;
+				}
+			}
+			.twitter {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#00acee;
+				}
+			}
+			.youtube {
+			transition: all .20s ease-in-out;
+				&:hover {
+					fill:#ff0000;
+				}
+			}
+		}
     	@media (max-width: 767px){
     		margin-bottom: 30px;
+			padding-left: 0;
+			display: table;
+			width: 100%;
+			li {
+				display: table-cell;
+				text-align: center;
+				padding-left: 0;
+			}
     	}
     }
     .c-subs-box{
@@ -371,7 +528,10 @@
 .side-nav-is-open{
 	overflow: hidden;
 	.c-side-nav{
-		transform: translateX(0%);
+		transform: translatey(0%);
+		.logo {
+    	transform: scaleY(1);
+		}
 	}
 	.c-overlay{
 		z-index: 1005;

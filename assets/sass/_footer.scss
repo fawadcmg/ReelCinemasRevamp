@@ -107,7 +107,7 @@
 			}
 			img{
 				@media (max-width: 767px){
-					mix-blend-mode: multiply;
+					//mix-blend-mode: multiply;
 				}
 			}
 			a{
@@ -220,14 +220,16 @@
 		}
 	}
 	@media (max-width: 767px){
+		padding-top: 25px;
 	background: #191919 url("../img/misc/grain-dark.jpg") repeat left top;
 		color: #000000;
 		.col{
 			width: 100%;
 		}
 		h4{
-			color: #000000;
+			color: #FFF;
 		    font-size: 20px;
+			font-weight: normal;
 		    margin-bottom: 15px;
 		}
 		.c-subs-box{
@@ -239,16 +241,43 @@
 			    height: 20px;
 			}
 			input{
+				float: left;
+				width: 60%;
 				background: #e5e5e5;
 				padding-right: 25px;
 				color: #000;
 				font-size: 14px;
 				line-height: 38px;
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+			a {
+				width: 40%;
+				margin-top: 0 !important;
+				float: left;
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				padding: 13px 25px;
 			}
 			.c-btn-glow{
 				position: relative;
 				margin: 15px auto 0;
 			}
+		}
+			.hidemobile-footer {
+				display: none !important;
+			}
+		.c-social {
+			width: 70%;
+			text-align: center;
+			margin: 0 auto;
+			display: table;
+			li {
+				display: table-cell;
+				text-align: center;
+				
+			}
+			
 		}
 		.col{
 			padding: 15px 0;
@@ -262,7 +291,7 @@
 		}
 		.col-4,
 		.col-6{
-			background: #e4e4e4 url('../img/pattern/white-noise.jpg') repeat center center;
+			//background: #e4e4e4 url('../img/pattern/white-noise.jpg') repeat center center;
 			margin: 0 -15px;
 			display: block;
 			width: calc(100% + 30px);
@@ -275,13 +304,18 @@
 			margin-bottom: 15px;
 		}
 		.copyright{
+			text-align: center;
 			margin-bottom: 15px;
 			font-size: 13px;
 			line-height: 1.2em;
-			color: #000;
+			color: #FFF;
+			span {
+				text-align: center;
+			}
 			img{
 				display: none;
 			}
 		}
+		
 	}
 }

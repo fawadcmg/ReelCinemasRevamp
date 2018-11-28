@@ -239,9 +239,9 @@ label{
 
 .c-btn-white,
 .c-btn-glow{
-	min-width:200px;
+	//min-width:200px;
 	display: inline-block;
-	padding: 16px 0;
+	padding: 16px 25px;
 	border-radius: 999px;
 	text-align: center;
 	color: #fff;
@@ -445,7 +445,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 	display: inline-block;
 	background: rgba(255,255,255,0.6); 
 	box-shadow: 2.457px 1.721px 5px 0px rgba(0, 0, 0, 0.1);
-	padding: 13px; 
+	padding: 15px; 
 	border-radius: 999px;
 	text-align: center;
 	color: #fff; 
