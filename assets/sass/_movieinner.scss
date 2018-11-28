@@ -7,9 +7,9 @@
     min-height: 679px;
 	margin-top: 100px;
 	@media (max-width: 767px){
-		margin-top: -13px;
+		margin-top: -13px; 
 	}
-	
+	 
 	.img {
     position: absolute;
     top: 0;
@@ -21,7 +21,7 @@
 	.img:before {
     content: "";
     display: block;
-    position: absolute;
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100%;
@@ -1221,7 +1221,7 @@ border-bottom-right-radius: 10px;
 					}
 					.icon{
 						background-image: url('../img/icons/icon-movies.svg');
-						&.icon--location{ background-image: url('../img/icons/icon-location.svg'); }
+						&.icon--location{ background: url('../img/icons/icon-location.svg') no-repeat center center / 17px auto; }
 						&.icon--exp		{ background-image: url('../img/icons/icon-experience.svg'); }
 					}
 					input{
@@ -1308,7 +1308,7 @@ border-bottom-right-radius: 10px;
 					background-image: url('../img/icons/icon-movies--black.svg');
 					background-size: auto 26px;
 					margin-bottom: 5px;
-					&.icon--location{ background-image: url('../img/icons/icon-location--black.svg'); }
+					&.icon--location{ background: url('../img/icons/icon-location.svg') no-repeat center center / 17px auto; }
 					&.icon--exp		{ background-image: url('../img/icons/icon-experience--black.svg'); }
 				}
 				.field-title{
@@ -1401,7 +1401,7 @@ border-bottom-right-radius: 10px;
 			top: 0;
 			left: 0;
 			width: 80px;
-			background: url('../img/icons/icon-show-location.svg') no-repeat center center / 36px auto;
+			background: url('../img/icons/icon-location.svg') no-repeat center center / 17px auto; }
 			height: 100%;
 
 			@media (max-width: 1600px){
