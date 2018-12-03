@@ -247,7 +247,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99eaecee', e
 }
 @media (max-width: 767px){
 	.c-movie-filters .wrap>:last-child{
-	display: none;	
+	// display: none;	
 	
 }
 	.showtime-filter{
@@ -1221,7 +1221,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', e
 }
 .filter-space{
 	@media (max-width: 767px){
-		height: 70px;
+		height: 66px;
+		@media (max-height: 650px){
+			height: 58px;
+		}
 	}
 }
 

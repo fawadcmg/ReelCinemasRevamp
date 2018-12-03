@@ -11,7 +11,8 @@
 .c-movie-filters{
 	margin: 30px auto 40px;
 	position: relative;
-	z-index: 2;
+	z-index: 99;
+	
 	@media (max-width: 1600px){
 		margin: 0 auto 30px;
 	}
@@ -104,7 +105,7 @@
 		top: 100vh;
 		bottom: auto;
 		transition: all .35s;
-		transform: translateY(-68px);
+		transform: translateY(-66px);
 		height: 50vh;
 
 		.close-btn-m{
@@ -124,19 +125,22 @@
 			height: auto;
 			width: 100%;
 		}
+
 		.o-container{
 			padding: 0;
-			border-top: 1px solid #bfbfbf;
-			border-bottom: 1px solid #bfbfbf;
+			// border-top: 1px solid #bfbfbf;
+			// border-bottom: 1px solid #bfbfbf;
 		}
 
 		.wrap{
-			background: #d9d9d9;
+			background: #e8edee;
 			flex-wrap: nowrap;
 			padding: 0;
 			border: 0;
+			border-radius: 0;
+
 			> *{
-				border-right: 1px solid #bfbfbf;
+				// border-right: 1px solid #bfbfbf;
 				white-space: nowrap;
 				width: 25% !important;
 				padding: 0;
@@ -148,6 +152,7 @@
 				}
 			}
 		}
+
 		.c-btn-glow{
 			border-radius: 0;
 			width: auto;
@@ -171,6 +176,7 @@
 				display: none;
 			}
 		}
+
 		.c-select-box{
 
 			&.is--active-m,
@@ -285,6 +291,13 @@
 				}
 			}
 		}
+		
+		@media (max-height: 650px){
+			transform: translateY(-58px);
+			.c-select-box .field{
+				padding: 8px;
+			}
+		}
 
 	}
 }
@@ -305,6 +318,7 @@
 
 .c-select-box{
 	position: relative;
+	cursor: pointer;
 
 	.field-title{
 		display: none;
@@ -339,6 +353,8 @@
 			border: 0;
 			width: 240px;
 			outline: none;
+			cursor: pointer;
+
 			@media (max-width: 1600px){
 				width: 240px;
 				font-size: 14px;
@@ -406,6 +422,18 @@
 			input {
 				width: 100%;
 				background: url("../img/misc/search-bg.png") no-repeat right top;
+				&::-webkit-input-placeholder {
+				  color: #909090;
+				}
+				&::-moz-placeholder {
+				  color: #909090;
+				}
+				&:-ms-input-placeholder {
+				  color: #909090;
+				}
+				&:-moz-placeholder {
+				  color: #909090;
+				}
 			}
 		}
 		.scroll{

@@ -1,7 +1,10 @@
 *, *:after, *:before{
 	box-sizing: border-box;
 }
-
+body::after{
+    position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+    content:url(/assets/img/movie-posters/movies-list-overlay.png) url(/assets/img/movie-posters/movie-cover-overlay.png);
+}
 html,
 body{
 	font-family: $fontenglish;
@@ -56,6 +59,7 @@ ul{
 input{
 	max-width: 100%;
 	outline: 0;
+    -webkit-appearance: none;
 }
 label{
 	cursor: pointer;
@@ -259,6 +263,9 @@ label{
 	    font-size: 16px;
     	padding: 14px 24px;
 	}
+	@media (max-width: 767px){ 
+		font-size: 14px;
+	}
 
 	&.btn--sm{
 		font-size: 16px;
@@ -267,35 +274,41 @@ label{
 			font-size: 14px;
 			padding: 12px 25px;
 		}
+		@media (max-width: 360px){
+			font-size: 13px;
+			line-height: 14px;
+		}
 	}
 }
 
 .c-btn-outline{ 
 	display: inline-block;
 	padding: 17px 30px;
-	border-radius: 999px; 
+	border-radius: 17px; 
 	text-align: center; 
 	color: #9e9e9e;
 	text-transform: uppercase;
 	font-size: 17px; 
 	line-height: 1em; 
 	position: relative; 
-	border: 1px solid #9e9e9e;
+	border: 1px solid #909090;
 	position: relative;
+
 	&:after{
 		content: " ";
 		width: 100%;
 		height: 100%;
 		position: absolute;
-	border-radius: 999px; 
+		border-radius: 22px; 
 		left: 0;
 		top: 0;
 		z-index: -1;
 		transition: all 0.5s ease;
+		display: none;
 		
 		}
 	&:hover{
-	color: #9e9e9e;
+	color: #909090;
 	&:after{ 
 	transition: all 0.5s ease;
 		width: 110%;
@@ -303,7 +316,7 @@ label{
 		left: -5%;
 		top: -15%;
 		opacity: 0;
-		border: 3px solid #9e9e9e;
+		border: 3px solid #909090;
 		}
 		
 	}
@@ -317,10 +330,10 @@ label{
 	}
 
 	&.btn--sm{
-		font-size: 16px;
-		padding: 15px 30px;
+		font-size: 14px;
+		padding: 15px 30px 14px;
 		@media (max-width: 767px){
-			font-size: 14px;
+			font-size: 13px;
 			padding: 12px 25px;
 		}
 	}
@@ -388,6 +401,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 	background: rgba(255,255,255,0.15);
 	box-shadow: 2.457px 1.721px 5px 0px rgba(0, 0, 0, 0.1);
 
+	&:hover{
+		background: rgba(255,255,255,0.3);
+	}
+
+	&:active{
+		background: rgba(255,255,255,0.1);
+		transition: none;
+		&:hover{
+			transition: none;
+		}
+	}
+
 	&.btn--txt-black{
 		color: #222222;
 		background: rgba(255,255,255,0.3);
@@ -397,6 +422,50 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 		&.btn--play{
 			&:before{
 				background-image: url(../img/icons/play-black.svg);
+			}
+		}
+	}
+	
+	&.btn--play-1{
+		background: rgba(248,249,249,0.60);
+		color: #222222;
+		box-shadow: none;
+		width: auto;
+		min-width: 0;
+		padding: 16px 25px 13px;
+		transition: all .35s;
+		width: 50px;
+
+		.icon{
+			display: inline-block;
+			width: 19px;
+			height: 22px;
+			background: url(../img/icons/play.png) no-repeat center center;  
+			padding-left: 0;
+			transition: all .35s;
+			margin: -1px -13px -1px -10px;
+		}
+
+		span{
+			overflow: hidden;
+			width: 0;
+			transition: width .35s;
+			display: inline-block;
+			white-space: nowrap;
+		}
+
+		&:hover{
+			background: rgba(248,249,249,0.86);
+
+			@media (min-width: 1025px){
+				span{
+					width: 125px;
+				}
+				.icon{
+					// margin: -1px -13px -1px -10px;
+					opacity: 0;
+					transform: translateX(160px);
+				}
 			}
 		}
 	}
@@ -424,18 +493,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 					margin-right: 8px;
 				}
 			}
-		}
-	}
-
-	&:hover{
-		background: rgba(255,255,255,0.3);
-	}
-
-	&:active{
-		background: rgba(255,255,255,0.1);
-		transition: none;
-		&:hover{
-			transition: none;
 		}
 	}
 }
@@ -503,6 +560,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 			svg  { 
   				fill: #FFF;
 				stroke: none !important;
+				&:hover{
+					fill: #6e3996 !important;
+				}
 			}
 			.fb {
 			transition: all .20s ease-in-out;
@@ -534,14 +594,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 					fill:#ff0000;
 				}
 			}
-			&:hover{
-				//background: rgba(255,255,255,0.2);
-			}
 		}
 	}
 }
 .c-subs-box{
 	position: relative;
+	.c-btn-glow, .c-btn-white{
+		border-radius: 0 999px 999px 0;
+	}
 	.icon{
 		display: block;
 		width: 28px;
@@ -574,4 +634,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 		top: 0;
 		right: 0;
 	}
+}
+
+.c-loader{
+	background: #fff;
+	opacity: 1;
+	position: fixed;
+	z-index: 9999;
+	display: block;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
 }

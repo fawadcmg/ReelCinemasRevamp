@@ -1,18 +1,35 @@
 .header-space{
 	@media (max-width: 767px){
 		height: 67px;
+		@media (max-height: 650px){
+			height: 57px;
+		}
 	}
 }
 .c-main-banner{
-	min-height: 880px;
+	// min-height: 880px;
 	@media (max-width: 767px){
 		display: none;
 	}
 	.main-carousel{
 		.item{
 			position: relative;
-			min-height: 880px;
+			// min-height: 880px;
 			//height: calc(100vh - 120px);
+
+			.item-inner{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				position: relative;
+				align-items: center;
+				padding: 180px 0 125px;
+				min-height: 85vh;
+				min-height: calc(100vh - 110px);
+				@media (max-height: 750px){
+					padding: 140px 0 125px;
+				}
+			}
 		}
 		.img{
 			position: absolute;
@@ -53,15 +70,12 @@
 			}
 		}
 		.txt{
-			position: absolute;
-			bottom: 40%;
-			left: 0;
-			width: 100%;
-			z-index: 2;
-			color: #222222;
+		    width: 100%;
+		    z-index: 2;
+		    color: #222;
 			@media (max-width: 1527px){ 
 				/*bottom: 8vw;*/
-				margin-bottom: 2vh;
+				// margin-bottom: 2vh;
 			}
 
 			h1{
@@ -69,6 +83,9 @@
 				font-size: 65px;
 				line-height: 1em;
 				margin-bottom:15px;
+				@media (max-height: 750px){
+					font-size: 55px;
+				}
 				@media (max-width: 1600px){
 					font-size: 50px;
 				}
@@ -144,12 +161,22 @@
 		.c-btn-white,
 		.c-btn-glow{
 			min-width:200px;
+
+			&.btn--play-1{
+				min-width: 0;
+			}
+		}
+		@media (min-width: 1024px){
+			.c-btn-white.btn--play-1:hover{
+				width: 200px;
+			}
 		}
 	} 
 	.main-carousel-thumb{
-		margin: -13vw 0 0;
+		margin: -79px 0 70px;
 		height: 160px;
 		overflow: hidden;
+
 		@media (max-width: 1527px){
 			height: calc(10.4vw);
 		}
