@@ -3100,6 +3100,7 @@ var isRTL = $('html').attr('dir') == "rtl" ? true : false,
     footerHeight = $('.c-main-footer').outerHeight(),
     bodyHeight;
 
+loadPlayMovies();
 ChangeToSvg();
 setOnTopClass();
 initSlick();
@@ -3117,6 +3118,7 @@ $('.c-loader').fadeOut('slow', function () {
 $(function () {
 	winDimensions();
 	ChangeToSvg();
+	footerLogosCarousel();
 	/*loadPath();
  actionsOnClick();*/
 	headerAdjust();
@@ -3494,7 +3496,9 @@ function customSelectBox() {
 		$('.js-custom-select:not(.is--active-now)').removeClass('is--active');
 		$('.js-custom-select.is--active-now').removeClass('is--active-now');
 
-		$(this).closest('.js-custom-select').find('.field-dropdown .js-field').val('').focus();
+		if (winWidth > 1024) {
+			$(this).closest('.js-custom-select').find('.field-dropdown .js-field').val('').focus();
+		}
 		$('html').addClass('filter-open');
 	});
 
@@ -3625,3 +3629,50 @@ $('.time-itemss').slick({
 		}
 	}]
 });
+
+function footerLogosCarousel() {
+	if ($('.js-footer-logos-carousel').hasClass('slick-initialized')) {
+		$('.js-footer-logos-carousel').slick('unslick');
+	}
+	if (winWidth < 768) {
+		$('.js-footer-logos-carousel').slick({
+			arrows: false,
+			dots: false,
+			items: 1,
+			infinite: false
+		});
+	}
+}
+
+function detectIE() {
+	var ua = window.navigator.userAgent;
+
+	var msie = ua.indexOf('MSIE ');
+	if (msie > 0) {
+		// IE 10 or older => return version number
+		return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+	}
+
+	var trident = ua.indexOf('Trident/');
+	if (trident > 0) {
+		// IE 11 => return version number
+		var rv = ua.indexOf('rv:');
+		return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+	}
+
+	var edge = ua.indexOf('Edge/');
+	if (edge > 0) {
+		// Edge (IE 12+) => return version number
+		return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+	}
+
+	// other browser
+	return false;
+}
+var isIE = detectIE();
+if (isIE) {
+	$('html').addClass('is--ie');
+	$('html').addClass('is--ie-' + isIE);
+
+	$('[src*=reel-logo]').attr('src', 'assets/img/brand/logo.png');
+}

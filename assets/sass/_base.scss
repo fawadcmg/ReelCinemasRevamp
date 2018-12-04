@@ -607,7 +607,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 		width: 28px;
 		height: 20px;
 		background: url('../img/icons/email.svg') no-repeat center center;
-		background-size: 100% auto;
+		background-size: 100% 100%;
 		position: absolute;
 		top: 50%;
 		left: 25px;
@@ -648,4 +648,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 	bottom: 0;
 	width: 100%;
 	height: 100%;
+}
+
+
+
+.is--ie{
+	.c-main-banner .main-carousel .txt{
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.c-main-banner .main-carousel .item .item-inner{
+		/* min-height: 530px; */
+	}
+	.c-movie-filters .c-select-box .field{
+		/* height: 42px; */
+	}
+	.c-subs-box input{
+		line-height: 1em;
+		height: 46px;
+	}
+	.c-movie-filters .c-select-box .field input{
+		line-height: 1em;
+		height: 52px;
+	}
+	.c-movies-list .movie-item{
+		width: 16.66666666666667%;
+		@media (max-width: 1023px){
+			width: 25%;
+		}
+		@media (max-width: 767px){
+			width: 100%;
+		}
+	}
 }

@@ -254,7 +254,7 @@
 				background: linear-gradient(180deg,hsla(0,0%,85%,.5) 75%,#dadada);
 				/* background: transparent url(../img/movie-posters/movies-list-overlay.png); */
 				background-origin: left top;
-				background-size: auto 416px;
+				/* background-size: auto 416px; */
 				height: 100%;
 				width: calc(100% - 20px);
 				z-index: 5;
@@ -460,6 +460,9 @@
 		    width: 100%;
 		    transition: all .35s;
 		    border-radius: 0 0 5px 5px;
+		    > * {
+		    	max-width: 100%;
+		    }
 			.duration-language {
 				display: none;
 			}
@@ -586,6 +589,8 @@
 			position: relative;
 			border-radius: 7px;
 			overflow: hidden;
+			margin-top: -1px;
+
 			&.is--last-item{ 	border-radius: 7px 0px 7px 7px; }
 			&.is--first-item{ 	border-radius: 0 7px 7px 7px; }
 		}

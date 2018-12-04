@@ -24,8 +24,10 @@
 				position: relative;
 				align-items: center;
 				padding: 180px 0 125px;
-				min-height: 85vh;
-				min-height: calc(100vh - 110px);
+				min-height: 550px;
+				height: 85vh;
+				height: calc(100vh - 110px);
+
 				@media (max-height: 750px){
 					padding: 140px 0 125px;
 				}
@@ -73,6 +75,7 @@
 		    width: 100%;
 		    z-index: 2;
 		    color: #222;
+
 			@media (max-width: 1527px){ 
 				/*bottom: 8vw;*/
 				// margin-bottom: 2vh;
