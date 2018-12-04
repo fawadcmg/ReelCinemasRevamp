@@ -123,7 +123,7 @@ body::after {
   height: 0;
   overflow: hidden;
   z-index: -1;
-  content: url(/assets/img/movie-posters/movies-list-overlay.png) url(/assets/img/movie-posters/movie-cover-overlay.png); }
+  content: url(../img/movie-posters/movies-list-overlay.png) url(../img/movie-posters/movie-cover-overlay.png); }
 
 html,
 body {
@@ -3869,13 +3869,6 @@ label {
     vertical-align: top;
     overflow-x: hidden;
     overflow-y: auto; }
-  @media (max-width: 767px) {
-    .c-side-nav {
-      width: 100%;
-      padding: 20px; }
-      .c-side-nav .c-social li a {
-        width: 30px;
-        height: 30px; } }
   .c-side-nav .nav-wrap {
     margin: auto; }
     @media (max-width: 767px) {
@@ -4130,7 +4123,48 @@ label {
     margin-bottom: 10px; }
     .c-side-nav .c-subs-box input {
       padding-right: 110px; }
+  @media (max-width: 767px) {
+    .c-side-nav {
+      width: 100%;
+      padding: 20px 20px 0px 20px;
+      overflow: hidden; }
+      .c-side-nav .container-nav {
+        padding: 0;
+        overflow: visible; }
+      .c-side-nav .nav {
+        overflow-y: auto;
+        height: -webkit-calc(88vh - 80px);
+        height: calc(88vh - 80px);
+        margin: 0; }
+        .c-side-nav .nav > *:first-child {
+          margin-top: 3vh; }
+        .c-side-nav .nav > *:last-child {
+          margin-bottom: 6vh; }
+      .c-side-nav .nav ul {
+        width: 100%; }
+      .c-side-nav .nav ul a {
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px; }
+      .c-side-nav .c-social {
+        border-top-color: #e6e6e6;
+        padding-top: 3vh;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin: 0 -20px  3vh;
+        -webkit-box-sizing: content-box;
+                box-sizing: content-box; }
+      .c-side-nav .c-social li a {
+        width: 30px;
+        height: 30px; }
+      .c-side-nav .nav ul + ul a {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 14px; }
+      .c-side-nav .nav ul + ul li:first-child a {
+        padding-top: 25px; } }
 
+.c-overlay-white,
 .c-overlay {
   position: fixed;
   top: 0;
@@ -4142,7 +4176,13 @@ label {
   -o-transition: none;
   transition: none;
   opacity: 0;
-  z-index: -1; }
+  z-index: -1;
+  -webkit-transition: opacity .35s;
+  -o-transition: opacity .35s;
+  transition: opacity .35s; }
+
+.c-overlay-white {
+  background: rgba(255, 255, 255, 0.8); }
 
 .side-nav-is-open {
   overflow: hidden; }
@@ -4285,7 +4325,7 @@ label {
       display: inline-block;
       width: 20px;
       height: 20px;
-      background: url("/assets/img/icons/duration.png") no-repeat left top;
+      background: url("../img/icons/duration.png") no-repeat left top;
       position: relative;
       top: 5px; }
     .c-main-banner .main-carousel .txt .det-2 span {
@@ -4497,7 +4537,9 @@ label {
               width: 100%; } }
   .c-movie-filters .c-select-box {
     margin-right: 40px;
-    width: 100%; }
+    width: 100%;
+    position: relative;
+    cursor: pointer; }
     @media (max-width: 1600px) {
       .c-movie-filters .c-select-box {
         margin-right: 30px; } }
@@ -4507,6 +4549,186 @@ label {
     @media (max-width: 1023px) {
       .c-movie-filters .c-select-box {
         margin-right: 12px; } }
+    .c-movie-filters .c-select-box .field-title {
+      display: none; }
+    .c-movie-filters .c-select-box.is--active .field input {
+      border-radius: 20px 20px 0 0; }
+    .c-movie-filters .c-select-box.is--active .field-dropdown {
+      display: block;
+      -webkit-box-shadow: 0 0 32px 0 rgba(77, 91, 105, 0.24);
+              box-shadow: 0 0 32px 0 rgba(77, 91, 105, 0.24); }
+    .c-movie-filters .c-select-box .field {
+      position: relative; }
+      .c-movie-filters .c-select-box .field input {
+        font-family: 'Effra-bold';
+        font-size: 15px;
+        color: #000;
+        text-transform: uppercase;
+        line-height: 40px;
+        background: url("../img/misc/dropdown.png") no-repeat right center;
+        border-radius: 20px;
+        padding: 6px 30px 6px 70px;
+        display: inline-block;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        border: 0;
+        width: 240px;
+        outline: none;
+        cursor: pointer; }
+        @media (max-width: 1600px) {
+          .c-movie-filters .c-select-box .field input {
+            width: 240px;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #000;
+            line-height: 30px; } }
+        @media (max-width: 1400px) {
+          .c-movie-filters .c-select-box .field input {
+            padding-left: 60px; } }
+        @media (max-width: 767px) {
+          .c-movie-filters .c-select-box .field input {
+            background: none; } }
+      .c-movie-filters .c-select-box .field input.medium {
+        width: 200px; }
+      .c-movie-filters .c-select-box .field input.small {
+        width: 160px; }
+      .c-movie-filters .c-select-box .field ::-webkit-input-placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #222222;
+        opacity: 1;
+        /* Firefox */ }
+      .c-movie-filters .c-select-box .field :-ms-input-placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #222222;
+        opacity: 1;
+        /* Firefox */ }
+      .c-movie-filters .c-select-box .field ::-ms-input-placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #222222;
+        opacity: 1;
+        /* Firefox */ }
+      .c-movie-filters .c-select-box .field ::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #222222;
+        opacity: 1;
+        /* Firefox */ }
+      .c-movie-filters .c-select-box .field :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: #222222; }
+      .c-movie-filters .c-select-box .field ::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: #222222; }
+      .c-movie-filters .c-select-box .field .icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80px;
+        background: url("../img/icons/icon-movies.svg") no-repeat center center/24px auto;
+        height: 100%; }
+        @media (max-width: 1600px) {
+          .c-movie-filters .c-select-box .field .icon {
+            background-size: 27px auto; } }
+        @media (max-width: 1400px) {
+          .c-movie-filters .c-select-box .field .icon {
+            width: 60px; } }
+        .c-movie-filters .c-select-box .field .icon.icon--location {
+          background: url("../img/icons/icon-location.svg") no-repeat center center/17px auto; }
+        .c-movie-filters .c-select-box .field .icon.icon--exp {
+          background: url("../img/icons/icon-experience.svg") no-repeat center center/18px auto; }
+        .c-movie-filters .c-select-box .field .icon.icon--genere {
+          background: url("../img/icons/icon-genere.svg") no-repeat center center/26px auto; }
+    .c-movie-filters .c-select-box .field-dropdown {
+      display: none;
+      position: absolute;
+      top: 0;
+      height: auto;
+      width: 100%;
+      background: #FFF;
+      border-radius: 8px;
+      overflow: hidden;
+      padding-bottom: 24px;
+      z-index: 99; }
+      .c-movie-filters .c-select-box .field-dropdown .field input {
+        width: 100%;
+        background: url("../img/misc/search-bg.png") no-repeat right top; }
+        .c-movie-filters .c-select-box .field-dropdown .field input::-webkit-input-placeholder {
+          color: #909090; }
+        .c-movie-filters .c-select-box .field-dropdown .field input::-moz-placeholder {
+          color: #909090; }
+        .c-movie-filters .c-select-box .field-dropdown .field input:-ms-input-placeholder {
+          color: #909090; }
+        .c-movie-filters .c-select-box .field-dropdown .field input:-moz-placeholder {
+          color: #909090; }
+      .c-movie-filters .c-select-box .field-dropdown .scroll {
+        overflow-y: auto;
+        max-height: 420px; }
+      .c-movie-filters .c-select-box .field-dropdown .item {
+        position: relative;
+        padding-bottom: 2px; }
+        .c-movie-filters .c-select-box .field-dropdown .item:last-child {
+          padding-bottom: 0; }
+        .c-movie-filters .c-select-box .field-dropdown .item.custom-action label {
+          background: #fafbfc;
+          color: #626262; }
+          .c-movie-filters .c-select-box .field-dropdown .item.custom-action label .selected {
+            display: none; }
+          .c-movie-filters .c-select-box .field-dropdown .item.custom-action label .not-selected {
+            display: block; }
+          .c-movie-filters .c-select-box .field-dropdown .item.custom-action label:before {
+            opacity: 1;
+            background-image: url("../img/icons/icon-check--grey.svg"); }
+          .c-movie-filters .c-select-box .field-dropdown .item.custom-action label:hover {
+            background: #b5b5b5; }
+        .c-movie-filters .c-select-box .field-dropdown .item.custom-action input:checked + label {
+          background: #FFF;
+          color: #626262; }
+          .c-movie-filters .c-select-box .field-dropdown .item.custom-action input:checked + label .selected {
+            display: block; }
+          .c-movie-filters .c-select-box .field-dropdown .item.custom-action input:checked + label .not-selected {
+            display: none; }
+          .c-movie-filters .c-select-box .field-dropdown .item.custom-action input:checked + label:before {
+            background-image: url("../img/icons/icon-cross.svg");
+            background-size: 12px auto; }
+        .c-movie-filters .c-select-box .field-dropdown .item input {
+          opacity: 0;
+          margin: 0;
+          position: absolute; }
+        .c-movie-filters .c-select-box .field-dropdown .item label {
+          display: block;
+          width: 100%;
+          font-size: 16px;
+          line-height: 0.9em;
+          color: #000;
+          padding: 15px 20px 15px 43px;
+          -webkit-transition: all .35s;
+          -o-transition: all .35s;
+          transition: all .35s;
+          background: #FFF; }
+          @media (max-width: 1600px) {
+            .c-movie-filters .c-select-box .field-dropdown .item label {
+              font-size: 15px;
+              padding-top: 12px;
+              padding-bottom: 12px; } }
+          .c-movie-filters .c-select-box .field-dropdown .item label:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 43px;
+            background: url(../img/icons/icon-check.svg) no-repeat 16px/17px auto;
+            opacity: 0;
+            -webkit-transition: all .35s;
+            -o-transition: all .35s;
+            transition: all .35s; }
+          .c-movie-filters .c-select-box .field-dropdown .item label:hover {
+            background: #cfb4d7; }
+        .c-movie-filters .c-select-box .field-dropdown .item input:checked + label {
+          background: #6e3996;
+          color: #fff; }
+          .c-movie-filters .c-select-box .field-dropdown .item input:checked + label:before {
+            opacity: 1; }
   .c-movie-filters .c-btn-glow {
     white-space: nowrap;
     display: block;
@@ -4538,7 +4760,7 @@ label {
       -webkit-transform: translateY(-66px);
           -ms-transform: translateY(-66px);
               transform: translateY(-66px);
-      height: 50vh; }
+      height: 65vh; }
       .c-movie-filters .close-btn-m {
         display: block;
         background: #6e3996;
@@ -4556,7 +4778,12 @@ label {
             -ms-transform: translateY(0%);
                 transform: translateY(0%);
         height: auto;
-        width: 100%; }
+        width: 100%; } }
+    @media (max-width: 767px) and (max-height: 650px) {
+      .c-movie-filters .close-btn-m {
+        padding-top: 12px;
+        padding-bottom: 12px; } }
+  @media (max-width: 767px) {
       .c-movie-filters .o-container {
         padding: 0; }
       .c-movie-filters .wrap {
@@ -4595,24 +4822,42 @@ label {
           line-height: 103px; }
         .c-movie-filters .c-btn-glow span {
           display: none; }
-      .c-movie-filters .c-select-box.is--active-m .fader, .c-movie-filters .c-select-box.is--active .fader {
-        display: block; }
-      .c-movie-filters .c-select-box.is--active-m .field-dropdown, .c-movie-filters .c-select-box.is--active .field-dropdown {
-        display: block;
-        -webkit-box-shadow: none;
-                box-shadow: none; }
-      .c-movie-filters .c-select-box.is--active-m .field .field-title, .c-movie-filters .c-select-box.is--active .field .field-title {
-        color: #6e3996; }
-      .c-movie-filters .c-select-box.is--active-m .field .icon, .c-movie-filters .c-select-box.is--active .field .icon {
-        background-image: url("../img/icons/icon-movies.svg"); }
-        .c-movie-filters .c-select-box.is--active-m .field .icon.icon--location, .c-movie-filters .c-select-box.is--active .field .icon.icon--location {
-          background-image: url("../img/icons/icon-location.svg"); }
-        .c-movie-filters .c-select-box.is--active-m .field .icon.icon--exp, .c-movie-filters .c-select-box.is--active .field .icon.icon--exp {
-          background-image: url("../img/icons/icon-experience.svg"); }
-        .c-movie-filters .c-select-box.is--active-m .field .icon.icon-genere, .c-movie-filters .c-select-box.is--active .field .icon.icon-genere {
-          background-image: url("../img/icons/icon-genere.svg"); }
-      .c-movie-filters .c-select-box.is--active-m .field input, .c-movie-filters .c-select-box.is--active .field input {
-        display: block; }
+      .c-movie-filters .c-select-box > .field {
+        padding: 12px;
+        cursor: pointer; }
+        .c-movie-filters .c-select-box > .field input {
+          display: none;
+          /* position: fixed;
+					top: 76px;
+					left: 10px;
+					border-radius: 999px !important;
+					box-shadow: none !important;
+					width: calc(100% - 20px);
+					z-index: 979;
+					font-size: 12px;
+					line-height: 1em;
+					padding: 8px 20px;
+					background: none; */ }
+        .c-movie-filters .c-select-box > .field .field-title {
+          font-size: 11px;
+          line-height: 1em;
+          text-transform: uppercase; }
+        .c-movie-filters .c-select-box > .field .icon {
+          position: static;
+          display: block;
+          width: 100%;
+          height: 26px;
+          background-image: url("../img/icons/icon-movies--black.svg");
+          background-size: auto 19px;
+          margin-bottom: 5px; }
+          .c-movie-filters .c-select-box > .field .icon.icon--location {
+            background-image: url("../img/icons/icon-location--black.svg"); }
+          .c-movie-filters .c-select-box > .field .icon.icon--exp {
+            background-image: url("../img/icons/icon-experience--black.svg"); }
+          .c-movie-filters .c-select-box > .field .icon.icon--genere {
+            background-image: url("../img/icons/icon-genere--black.svg"); }
+        .c-movie-filters .c-select-box > .field .field-title {
+          display: block; }
       .c-movie-filters .c-select-box .field-dropdown {
         -webkit-box-shadow: none;
                 box-shadow: none;
@@ -4626,16 +4871,17 @@ label {
         border-radius: 0;
         background: #fff;
         padding-bottom: 0; }
+        .c-movie-filters .c-select-box .field-dropdown .field input {
+          padding: 10px 10px 10px 43px;
+          background: none; }
         .c-movie-filters .c-select-box .field-dropdown .scroll {
           max-height: 100%; }
         .c-movie-filters .c-select-box .field-dropdown .item.custom-action label {
-          background: #fff;
-          color: #626262;
-          border-bottom: 1px solid #bfbfbf;
-          border-top: 1px solid #bfbfbf;
-          margin-top: 50px; }
+          margin-top: 0;
+          background: #e8edee;
+          color: #9fa3a3; }
           .c-movie-filters .c-select-box .field-dropdown .item.custom-action label:hover {
-            background: #fff; }
+            background: #e8edee; }
         .c-movie-filters .c-select-box .field-dropdown .item.custom-action input:checked + label:hover, .c-movie-filters .c-select-box .field-dropdown .item.custom-action input:checked + label {
           background: #bfbfbf; }
         .c-movie-filters .c-select-box .field-dropdown .item label {
@@ -4644,241 +4890,75 @@ label {
           padding-bottom: 15px; }
         .c-movie-filters .c-select-box .field-dropdown .item label {
           background: #fff; }
-      .c-movie-filters .c-select-box .field {
-        padding: 12px;
-        cursor: pointer; }
-        .c-movie-filters .c-select-box .field input {
-          display: none;
-          position: fixed;
-          top: 76px;
-          left: 10px;
-          border-radius: 999px !important;
-          -webkit-box-shadow: none !important;
-                  box-shadow: none !important;
-          width: -webkit-calc(100% - 20px);
-          width: calc(100% - 20px);
-          z-index: 979;
-          font-size: 12px;
-          line-height: 1em;
-          padding: 10px 20px; }
-        .c-movie-filters .c-select-box .field .field-title {
-          font-size: 11px;
-          line-height: 1em;
-          text-transform: uppercase; }
-        .c-movie-filters .c-select-box .field .icon {
+      .c-movie-filters .c-select-box.is--active-m .fader, .c-movie-filters .c-select-box.is--active .fader {
+        display: block; }
+      .c-movie-filters .c-select-box.is--active-m .field-dropdown, .c-movie-filters .c-select-box.is--active .field-dropdown {
+        display: block;
+        -webkit-box-shadow: none;
+                box-shadow: none; }
+      .c-movie-filters .c-select-box.is--active-m > .field, .c-movie-filters .c-select-box.is--active > .field {
+        background: #fff; }
+        .c-movie-filters .c-select-box.is--active-m > .field input, .c-movie-filters .c-select-box.is--active > .field input {
+          display: none; }
+        .c-movie-filters .c-select-box.is--active-m > .field .field-title, .c-movie-filters .c-select-box.is--active > .field .field-title {
+          color: #6e3996; }
+        .c-movie-filters .c-select-box.is--active-m > .field .icon.icon--movie, .c-movie-filters .c-select-box.is--active > .field .icon.icon--movie {
+          background-image: url("../img/icons/icon-movies.svg"); }
+        .c-movie-filters .c-select-box.is--active-m > .field .icon.icon--location, .c-movie-filters .c-select-box.is--active > .field .icon.icon--location {
+          background-image: url("../img/icons/icon-location.svg"); }
+        .c-movie-filters .c-select-box.is--active-m > .field .icon.icon--exp, .c-movie-filters .c-select-box.is--active > .field .icon.icon--exp {
+          background-image: url("../img/icons/icon-experience.svg"); }
+        .c-movie-filters .c-select-box.is--active-m > .field .icon.icon--genere, .c-movie-filters .c-select-box.is--active > .field .icon.icon--genere {
+          background-image: url("../img/icons/icon-genere.svg"); }
+      .c-movie-filters .c-select-box.is--active-m .field-dropdown, .c-movie-filters .c-select-box.is--active .field-dropdown {
+        top: 66px;
+        height: -webkit-calc(65vh - 119px);
+        height: calc(65vh - 119px); } }
+    @media (max-width: 767px) and (max-height: 650px) {
+      .c-movie-filters .c-select-box.is--active-m .field-dropdown, .c-movie-filters .c-select-box.is--active .field-dropdown {
+        top: 58px;
+        height: -webkit-calc(65vh - 97px);
+        height: calc(65vh - 97px); } }
+  @media (max-width: 767px) {
+        .c-movie-filters .c-select-box.is--active-m .field-dropdown .field .field-title,
+        .c-movie-filters .c-select-box.is--active-m .field-dropdown .field .icon, .c-movie-filters .c-select-box.is--active .field-dropdown .field .field-title,
+        .c-movie-filters .c-select-box.is--active .field-dropdown .field .icon {
+          display: none; }
+        .c-movie-filters .c-select-box.is--active-m .field-dropdown .field input, .c-movie-filters .c-select-box.is--active .field-dropdown .field input {
           position: static;
-          display: block;
-          width: 100%;
-          height: 26px;
-          background-image: url("../img/icons/icon-movies--black.svg");
-          background-size: auto 26px;
-          margin-bottom: 5px; }
-          .c-movie-filters .c-select-box .field .icon.icon--location {
-            background-image: url("../img/icons/icon-location--black.svg"); }
-          .c-movie-filters .c-select-box .field .icon.icon--exp {
-            background-image: url("../img/icons/icon-experience--black.svg"); }
-          .c-movie-filters .c-select-box .field .icon.icon--genere-black {
-            background-image: url("../img/icons/icon-genere-black.svg"); }
-        .c-movie-filters .c-select-box .field .field-title {
           display: block; } }
   @media (max-width: 767px) and (max-height: 650px) {
     .c-movie-filters {
       -webkit-transform: translateY(-58px);
           -ms-transform: translateY(-58px);
               transform: translateY(-58px); }
-      .c-movie-filters .c-select-box .field {
+      .c-movie-filters .c-select-box > .field {
         padding: 8px; } }
+
+.is-tab .c-movie-filters {
+  display: none; }
+
+.is-tab.is--active .c-movie-filters {
+  display: block; }
 
 @media (max-width: 767px) {
   .filter-open {
     overflow: hidden; }
+    .filter-open .c-overlay-white {
+      z-index: 1001;
+      opacity: 1; }
     .filter-open .c-movie-filters {
-      top: 50% !important;
+      top: 35%;
       -webkit-transform: translateY(0%);
           -ms-transform: translateY(0%);
               transform: translateY(0%); } }
 
 @media (max-width: 767px) {
   .filter-space {
-    height: 70px; } }
-
-.c-select-box {
-  position: relative;
-  cursor: pointer; }
-  .c-select-box .field-title {
-    display: none; }
-  .c-select-box.is--active .field input {
-    border-radius: 20px 20px 0 0; }
-  .c-select-box.is--active .field-dropdown {
-    display: block;
-    -webkit-box-shadow: 0 0 32px 0 rgba(77, 91, 105, 0.24);
-            box-shadow: 0 0 32px 0 rgba(77, 91, 105, 0.24); }
-  .c-select-box .field {
-    position: relative; }
-    .c-select-box .field input {
-      font-family: 'Effra-bold';
-      font-size: 15px;
-      color: #000;
-      text-transform: uppercase;
-      line-height: 40px;
-      background: url("../img/misc/dropdown.png") no-repeat right center;
-      border-radius: 20px;
-      padding: 6px 30px 6px 70px;
-      display: inline-block;
-      -webkit-box-shadow: none;
-              box-shadow: none;
-      border: 0;
-      width: 240px;
-      outline: none;
-      cursor: pointer; }
-      @media (max-width: 1600px) {
-        .c-select-box .field input {
-          width: 240px;
-          font-size: 14px;
-          text-transform: uppercase;
-          color: #000;
-          line-height: 30px; } }
-      @media (max-width: 1400px) {
-        .c-select-box .field input {
-          padding-left: 60px; } }
-      @media (max-width: 767px) {
-        .c-select-box .field input {
-          background: none; } }
-    .c-select-box .field input.medium {
-      width: 200px; }
-    .c-select-box .field input.small {
-      width: 160px; }
-    .c-select-box .field ::-webkit-input-placeholder {
-      /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: #222222;
-      opacity: 1;
-      /* Firefox */ }
-    .c-select-box .field ::-ms-input-placeholder {
-      /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: #222222;
-      opacity: 1;
-      /* Firefox */ }
-    .c-select-box .field ::placeholder {
-      /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: #222222;
-      opacity: 1;
-      /* Firefox */ }
-    .c-select-box .field :-ms-input-placeholder {
-      /* Internet Explorer 10-11 */
-      color: #222222; }
-    .c-select-box .field ::-ms-input-placeholder {
-      /* Microsoft Edge */
-      color: #222222; }
-    .c-select-box .field .icon {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 80px;
-      background: url("../img/icons/icon-movies.svg") no-repeat center center/24px auto;
-      height: 100%; }
-      @media (max-width: 1600px) {
-        .c-select-box .field .icon {
-          background-size: 27px auto; } }
-      @media (max-width: 1400px) {
-        .c-select-box .field .icon {
-          width: 60px; } }
-      .c-select-box .field .icon.icon--location {
-        background: url("../img/icons/icon-location.svg") no-repeat center center/17px auto; }
-      .c-select-box .field .icon.icon--exp {
-        background: url("../img/icons/icon-experience.svg") no-repeat center center/18px auto; }
-      .c-select-box .field .icon.icon--genere {
-        background: url("../img/icons/icon-genere.svg") no-repeat center center/26px auto; }
-  .c-select-box .field-dropdown {
-    display: none;
-    position: absolute;
-    top: 0;
-    height: auto;
-    width: 100%;
-    background: #FFF;
-    border-radius: 8px;
-    overflow: hidden;
-    padding-bottom: 24px;
-    z-index: 99; }
-    .c-select-box .field-dropdown .field input {
-      width: 100%;
-      background: url("../img/misc/search-bg.png") no-repeat right top; }
-      .c-select-box .field-dropdown .field input::-webkit-input-placeholder {
-        color: #909090; }
-      .c-select-box .field-dropdown .field input::-moz-placeholder {
-        color: #909090; }
-      .c-select-box .field-dropdown .field input:-ms-input-placeholder {
-        color: #909090; }
-      .c-select-box .field-dropdown .field input:-moz-placeholder {
-        color: #909090; }
-    .c-select-box .field-dropdown .scroll {
-      overflow-y: auto;
-      max-height: 420px; }
-    .c-select-box .field-dropdown .item {
-      position: relative;
-      padding-bottom: 2px; }
-      .c-select-box .field-dropdown .item:last-child {
-        padding-bottom: 0; }
-      .c-select-box .field-dropdown .item.custom-action label {
-        background: #fafbfc;
-        color: #626262; }
-        .c-select-box .field-dropdown .item.custom-action label .selected {
-          display: none; }
-        .c-select-box .field-dropdown .item.custom-action label .not-selected {
-          display: block; }
-        .c-select-box .field-dropdown .item.custom-action label:before {
-          opacity: 1;
-          background-image: url("../img/icons/icon-check--grey.svg"); }
-        .c-select-box .field-dropdown .item.custom-action label:hover {
-          background: #b5b5b5; }
-      .c-select-box .field-dropdown .item.custom-action input:checked + label {
-        background: #FFF;
-        color: #626262; }
-        .c-select-box .field-dropdown .item.custom-action input:checked + label .selected {
-          display: block; }
-        .c-select-box .field-dropdown .item.custom-action input:checked + label .not-selected {
-          display: none; }
-        .c-select-box .field-dropdown .item.custom-action input:checked + label:before {
-          background-image: url("../img/icons/icon-cross.svg");
-          background-size: 12px auto; }
-      .c-select-box .field-dropdown .item input {
-        opacity: 0;
-        position: absolute; }
-      .c-select-box .field-dropdown .item label {
-        display: block;
-        width: 100%;
-        font-size: 16px;
-        line-height: 0.9em;
-        color: #000;
-        padding: 15px 20px 15px 43px;
-        -webkit-transition: all .35s;
-        -o-transition: all .35s;
-        transition: all .35s;
-        background: #FFF; }
-        @media (max-width: 1600px) {
-          .c-select-box .field-dropdown .item label {
-            font-size: 15px;
-            padding-top: 12px;
-            padding-bottom: 12px; } }
-        .c-select-box .field-dropdown .item label:before {
-          content: '';
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 43px;
-          background: url(../img/icons/icon-check.svg) no-repeat 16px/17px auto;
-          opacity: 0;
-          -webkit-transition: all .35s;
-          -o-transition: all .35s;
-          transition: all .35s; }
-        .c-select-box .field-dropdown .item label:hover {
-          background: #cfb4d7; }
-      .c-select-box .field-dropdown .item input:checked + label {
-        background: #6e3996;
-        color: #fff; }
-        .c-select-box .field-dropdown .item input:checked + label:before {
-          opacity: 1; }
+    height: 66px; } }
+  @media (max-width: 767px) and (max-height: 650px) {
+    .filter-space {
+      height: 58px; } }
 
 .c-movies-list {
   margin-bottom: 40px;
@@ -5044,7 +5124,7 @@ label {
   .c-movies-list .booknow-tag {
     width: 85px;
     height: 70px;
-    background: url(/assets/img/misc/booknow-tag.png) no-repeat left top;
+    background: url(../img/misc/booknow-tag.png) no-repeat left top;
     position: absolute;
     left: -2px;
     top: -2px;
@@ -5125,18 +5205,23 @@ label {
 				background-size: cover;
 				background-origin: left bottom;
 				z-index: 99;
-			} */ }
+			} */
+      /* &:nth-child(2){ .bot-img, &:before{ background-position-x: -250px; } }
+		    &:nth-child(3){ .bot-img, &:before{ background-position-x: -500px; } }
+		    &:nth-child(4){ .bot-img, &:before{ background-position-x: -750px; } }
+		    &:nth-child(5){ .bot-img, &:before{ background-position-x: -1000px; } }
+		    &:nth-child(6){ .bot-img, &:before{ background-position-x: -1250px; } } */ }
       .c-movies-list .movie-item.is--active:before {
         content: '';
         display: block;
         position: absolute;
         top: 0;
         left: 10px;
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, rgba(0, 0, 0, 0.5)), to(black));
-        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 75%, black 100%);
-        background: -o-linear-gradient(top, rgba(0, 0, 0, 0.5) 75%, black 100%);
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 75%, black 100%);
-        background: transparent url(/assets/img/movie-posters/movies-list-overlay.png);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, rgba(217, 217, 217, 0.5)), to(#dadada));
+        background: -webkit-linear-gradient(top, rgba(217, 217, 217, 0.5) 75%, #dadada);
+        background: -o-linear-gradient(top, rgba(217, 217, 217, 0.5) 75%, #dadada);
+        background: linear-gradient(180deg, rgba(217, 217, 217, 0.5) 75%, #dadada);
+        /* background: transparent url(../img/movie-posters/movies-list-overlay.png); */
         background-origin: left top;
         background-size: auto 416px;
         height: 100%;
@@ -5175,16 +5260,6 @@ label {
         @media (max-width: 767px) {
           .c-movies-list .movie-item.is--active:after {
             display: none; } }
-      .c-movies-list .movie-item.is--active:nth-child(2) .bot-img, .c-movies-list .movie-item.is--active:nth-child(2):before {
-        background-position-x: -250px; }
-      .c-movies-list .movie-item.is--active:nth-child(3) .bot-img, .c-movies-list .movie-item.is--active:nth-child(3):before {
-        background-position-x: -500px; }
-      .c-movies-list .movie-item.is--active:nth-child(4) .bot-img, .c-movies-list .movie-item.is--active:nth-child(4):before {
-        background-position-x: -750px; }
-      .c-movies-list .movie-item.is--active:nth-child(5) .bot-img, .c-movies-list .movie-item.is--active:nth-child(5):before {
-        background-position-x: -1000px; }
-      .c-movies-list .movie-item.is--active:nth-child(6) .bot-img, .c-movies-list .movie-item.is--active:nth-child(6):before {
-        background-position-x: -1250px; }
       .c-movies-list .movie-item.is--active .item-wrap {
         border-radius: 5px 5px 0 0; }
       .c-movies-list .movie-item.is--active .item-wrap:hover .img:before {
@@ -5428,7 +5503,7 @@ label {
           width: 17px;
           height: 2px; }
     .c-movies-list .movie-details .item-details {
-      background: #FFF;
+      background: #d9d9d9;
       position: relative;
       border-radius: 7px;
       overflow: hidden; }
@@ -5456,17 +5531,19 @@ label {
       height: 100%;
       z-index: 1;
       overflow: hidden;
-      text-align: right; }
-      .c-movies-list .movie-details .img:before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: url("/assets/img/movie-posters/movie-cover-overlay.png") no-repeat left top;
-        position: absolute;
-        z-index: 2;
-        left: 0;
-        top: 0; }
+      text-align: right;
+      background: #d9d9d9;
+      /* &:before{
+				content:'';
+				display: block;
+				width:100%;
+				height: 100%;
+				background: url("../img/movie-posters/movie-cover-overlay.png") no-repeat left top;
+				position:absolute; 
+				z-index: 2;
+				left: 0;  
+				top: 0; 
+			}  */ }
       .c-movies-list .movie-details .img img {
         display: block;
         height: 100%;
@@ -5476,7 +5553,8 @@ label {
         height: calc(100% + 40px);
         -webkit-transform: translateY(-webkit-calc(20px - 60px));
             -ms-transform: translateY(calc(20px - 60px));
-                transform: translateY(calc(20px - 60px)); }
+                transform: translateY(calc(20px - 60px));
+        mix-blend-mode: multiply; }
         @media (max-width: 1200px) {
           .c-movies-list .movie-details .img img {
             position: relative;
@@ -5494,7 +5572,7 @@ label {
     .c-movies-list .movie-details .title {
       font-size: 55px;
       line-height: 1em;
-      color: #FFF;
+      color: #222;
       font-weight: bold; }
       @media (max-width: 1800px) {
         .c-movies-list .movie-details .title {
@@ -5507,7 +5585,7 @@ label {
           font-size: 35px; } }
     .c-movies-list .movie-details .info {
       font-size: 12px;
-      color: #FFF;
+      color: #222;
       line-height: 1.2em;
       margin: 5px 0;
       max-width: 420px; }
@@ -5574,12 +5652,16 @@ label {
         display: inline-block;
         width: 20px;
         height: 20px;
-        /*background: url("/assets/img/icons/duration.png") no-repeat left top;*/
+        /*background: url("../img/icons/duration.png") no-repeat left top;*/
         position: relative;
         top: 6px;
         margin-right: 15px; }
         .c-movies-list .movie-details .duration .icon svg, .c-movies-list .movie-details .language .icon svg {
-          fill: #FFFFFF; }
+          fill: #222; }
+          .c-movies-list .movie-details .duration .icon svg path, .c-movies-list .movie-details .language .icon svg path {
+            stroke: #222; }
+          .c-movies-list .movie-details .duration .icon svg text, .c-movies-list .movie-details .language .icon svg text {
+            fill: #222; }
       .c-movies-list .movie-details .duration .medium, .c-movies-list .movie-details .language .medium {
         width: 25px !important;
         top: 5px;
@@ -7179,19 +7261,6 @@ label {
             background-image: url("../img/icons/icon-experience--black.svg"); }
         .stime-movie-filters .stime-select-box .field .field-title {
           display: block; } }
-
-@media (max-width: 767px) {
-  .filter-open {
-    overflow: hidden; }
-    .filter-open .c-movie-filters {
-      top: 0;
-      -webkit-transform: translateY(0%);
-          -ms-transform: translateY(0%);
-              transform: translateY(0%); } }
-
-@media (max-width: 767px) {
-  .filter-space {
-    height: 70px; } }
 
 .stime-select-box {
   position: relative; }
@@ -8796,22 +8865,6 @@ label {
             background-image: url("../img/icons/icon-experience--black.svg"); }
         .stime-movie-filters .stime-select-box .field .field-title {
           display: block; } }
-
-@media (max-width: 767px) {
-  .filter-open {
-    overflow: hidden; }
-    .filter-open .c-movie-filters {
-      top: 0;
-      -webkit-transform: translateY(0%);
-          -ms-transform: translateY(0%);
-              transform: translateY(0%); } }
-
-@media (max-width: 767px) {
-  .filter-space {
-    height: 66px; } }
-  @media (max-width: 767px) and (max-height: 650px) {
-    .filter-space {
-      height: 58px; } }
 
 .stime-select-box {
   position: relative; }

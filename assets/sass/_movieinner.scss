@@ -1410,20 +1410,6 @@ border-bottom-right-radius: 10px;
 
 	}
 }
-.filter-open{
-	@media (max-width: 767px){
-		overflow: hidden;
-		.c-movie-filters{
-			top: 0;
-			transform: translateY(0%);
-		}
-	}
-}
-.filter-space{
-	@media (max-width: 767px){
-		height: 70px;
-	}
-}
 
 .stime-select-box{
 	position: relative;

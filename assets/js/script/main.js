@@ -9,11 +9,14 @@ ChangeToSvg();
 setOnTopClass();
 initSlick();
 
-$('.c-main-header').attr('data-aos', 'fade-down');
-$('.c-main-banner, .c-main-banner .main-carousel-thumb').attr('data-aos', 'fade-up');
-
+if(winWidth > 1024){
+    $('.c-main-header').attr('data-aos', 'fade-down');
+    $('.c-main-banner, .c-main-banner .main-carousel-thumb').attr('data-aos', 'fade-up');
+}
 $('.c-loader').fadeOut('slow', function () {
-	AOS.init();
+    if(winWidth > 1024){
+	   AOS.init();
+    }
 });
 
 
@@ -381,7 +384,9 @@ function customSelectBox() {
 		$('.js-custom-select:not(.is--active-now)').removeClass('is--active');
 		$('.js-custom-select.is--active-now').removeClass('is--active-now');
 		
-		$(this).closest('.js-custom-select').find('.field-dropdown .js-field').val('').focus();
+        if(winWidth > 1024){
+		  $(this).closest('.js-custom-select').find('.field-dropdown .js-field').val('').focus();
+        }
 		$('html').addClass('filter-open');
 	});
 	$('.js-custom-select .js-field').on('blur', function() {
@@ -429,11 +434,13 @@ function hideOnClickOutside(selector) {
 		$('.js-custom-select input[type="text"]').blur();
 	}
   const outsideClickListener = (event) => {
-    if (!$(event.target).closest(selector).length) {
-      if ($(selector).hasClass('is--active')) {
-        $(selector).removeClass('is--active');
-        // removeClickListener();
-      }
+    if(winWidth >= 768){
+        if (!$(event.target).closest(selector).length) {
+          if ($(selector).hasClass('is--active')) {
+            $(selector).removeClass('is--active');
+            // removeClickListener();
+          }
+        }
     }
   }
 

@@ -3,7 +3,7 @@
 }
 body::after{
     position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
-    content:url(/assets/img/movie-posters/movies-list-overlay.png) url(/assets/img/movie-posters/movie-cover-overlay.png);
+    content:url(../img/movie-posters/movies-list-overlay.png) url(../img/movie-posters/movie-cover-overlay.png);
 }
 html,
 body{
