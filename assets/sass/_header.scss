@@ -24,11 +24,11 @@
 	.logo{
 		width: 180px;
 
-		@media (max-height: 750px){
-			width: 140px;
-		}
+		// @media (max-height: 750px){
+			width: 145px;
+		// }
 		@media (max-width: 1600px){
-			width: 150px;
+			// width: 150px;
 		}
 		@media (max-width: 767px){
 			width: 110px;
@@ -53,9 +53,9 @@
 				//border-bottom: 3px solid #6e3996;
 			}
 
-			@media (max-height: 750px){
+			// @media (max-height: 750px){
 				font-size: 20px;
-			}
+			// }
 			@media (max-width: 1800px){
 				font-size: 18px;
 			}
@@ -72,9 +72,9 @@
 					padding: 50px 30px 47px;
 					border-bottom: 3px solid  rgba(255,255,255,0);
 
-					@media (max-height: 750px){
+					// @media (max-height: 750px){
 						padding: 30px 30px 25px;
-					}
+					// }
 				}
 
 				&:hover{
@@ -141,9 +141,9 @@
 		padding: 52px 40px;
 		border-left: 1px solid #efefef;
 
-		@media (max-height: 750px){
+		// @media (max-height: 750px){
 			padding: 33px 40px;
-		}
+		// }
 	}
 
 	.not-at-top &{
@@ -151,18 +151,18 @@
 		.header-links>ul>li>a{
 			padding-top:    40px;
 			padding-bottom: 40px;
-			@media (max-height: 750px){
+			// @media (max-height: 750px){
 				padding-top: 30px;
 				padding-bottom: 25px;
-			}
+			// }
 		}
 		.c-menu-btn{
 			padding-top: 42px;
 			padding-bottom: 42px;
-			@media (max-height: 750px){
+			// @media (max-height: 750px){
 				padding-top: 33px;
 				padding-bottom: 33px;
-			}
+			// }
 		}
 	}
 
@@ -360,10 +360,10 @@
     	margin-bottom: 50px;
 		margin-top: 70px;
 
-		@media (max-height: 750px){
+		// @media (max-height: 750px){
 			margin-bottom: 30px;
 			margin-top: 10px;
-		}
+		// }
     	@media (max-width: 767px){
     		margin-bottom: 30px;
 			padding-left: 0;
@@ -387,14 +387,15 @@
 	    		display: block;
 				position: relative;
 
-				@media (max-width: 1400px){
-					padding: 15px 0 15px 40px;
-					font-size: 30px;
-				}
-				@media (max-height: 750px){
+				// @media (max-height: 750px){
 					font-size: 26px;
 					padding-top: 16px;
 					padding-bottom: 16px;
+				// }
+
+				@media (max-width: 1400px){
+					padding: 15px 0 15px 40px;
+					// font-size: 30px;
 				}
 
 				&:after {
@@ -435,12 +436,12 @@
 			li:first-child{
 				a {
 					padding-top:30px;
+	    			// @media (max-height: 750px){
+	    				padding-top: 20px;
+	    			// }
 					@media (max-width: 1400px){
 						padding-top: 20px;
 					}
-	    			@media (max-height: 750px){
-	    				padding-top: 20px;
-	    			}
 				}
 			}
 			a {	
@@ -547,9 +548,9 @@
     	// margin-bottom: 100px;
 		border-top: 1px solid #CCC;
 		padding: 60px 0 2px 30px;
-		@media (max-height: 750px){
+		// @media (max-height: 750px){
 			padding-top: 30px;
-		}
+		// }
 		li {
 			padding-left:30px;
 			.svg {

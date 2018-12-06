@@ -16,6 +16,43 @@
 	@media (max-width: 1600px){
 		margin: 0 auto 30px;
 	}
+
+	&.filters--sty-1{
+		.wrap{
+			background: rgba(242, 245, 248, 0.5);
+		}
+	}
+	&.filters--sty-a{
+		.wrap > .item{
+			margin-right: 0;
+			&:nth-child(1){
+				width: 35%;
+				width: calc(35% - 20px);
+			}
+			&:nth-child(2){
+				width: 20%;
+				width: calc(20% + 10px);
+			}
+			&:nth-child(3){
+				width: 45%;
+			}
+			@media (max-width: 1023px){
+				&:nth-child(1){
+					width: 33%;
+				}
+				&:nth-child(2){
+					width: 33%;
+				}
+				&:nth-child(3){
+					width: 33%;
+				}	
+			}
+			@media (max-width: 767px){
+				width: 33.33% !important;
+				padding: 0;
+			}
+		}
+	}
 	.close-btn-m{
 		display: none;
 	}
@@ -27,7 +64,13 @@
 		background: rgba(126,156,190,0.10);
 		//border-top: 1px solid #e5e5e5;
 		//border-bottom: 1px solid #e5e5e5; 
-
+		.item{
+			&.has--viewbar{
+				@media (max-width: 1023px){
+					display: none;
+				}
+			}
+		}
 		> *{
 			margin-right: 20px;
 			width: 100%;
@@ -126,12 +169,18 @@
 				@media (max-width: 1400px){
 					padding-left: 60px;
 				}
+				@media (max-width: 1300px){
+					padding-left: 45px;
+				}
 				@media (max-width: 767px){
 					background: none;
 				}
 			}
 			input.medium {
 				width: 200px;
+				@media (max-width: 1300px){
+					width: 190px;
+				}
 			}
 			input.small {
 				width: 160px;
@@ -162,10 +211,14 @@
 				@media (max-width: 1400px){
 					width: 60px;
 				}
+				@media (max-width: 1300px){
+					width: 45px;
+				}
 
 				&.icon--location{ background: url('../img/icons/icon-location.svg') no-repeat center center / 17px 100%; }
 				&.icon--exp		{ background: url('../img/icons/icon-experience.svg') no-repeat center center / 18px 100%; }
 				&.icon--genere	{ background: url('../img/icons/icon-genere.svg') no-repeat center center / 26px 100%; }
+				&.icon--showtime{ background: url('../img/icons/icon-time.svg') no-repeat center center / 26px 100%; }
 			}
 		}
 		.field-dropdown{
@@ -179,6 +232,7 @@
 			overflow: hidden;
 			padding-bottom: 24px;
 			z-index: 99;
+
 			.field {
 				input {
 					width: 100%;
@@ -197,6 +251,7 @@
 					}
 				}
 			}
+
 			.scroll{
 				overflow-y: auto;
 				max-height: 420px;
@@ -427,6 +482,7 @@
 					&.icon--location{ background-image: url('../img/icons/icon-location--black.svg'); }
 					&.icon--exp		{ background-image: url('../img/icons/icon-experience--black.svg'); }
 					&.icon--genere { background-image: url('../img/icons/icon-genere--black.svg'); }
+					&.icon--showtime { background-image: url('../img/icons/icon-time--black.svg'); }
 				}
 				.field-title{
 					display: block;
