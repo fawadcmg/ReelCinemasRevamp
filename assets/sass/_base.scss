@@ -21,8 +21,7 @@ body{
 
 body {
 	min-height: 100vh;
-	overflow-x: hidden;
-	overflow-y: auto;
+	overflow: hidden;
 	font-size: 16px;
 	// background: url('../img/dummy-bg.jpg') no-repeat center top;
 	background-size: 100% auto;
@@ -41,7 +40,7 @@ a{
 	text-decoration: none !important;
 	outline: none !important;
 	color: #6e3996;
-	transition: all .35s ease-in-out;
+	transition: all .35s;
 }
 
 p {
@@ -308,22 +307,25 @@ label{
 		top: 0;
 		z-index: -1;
 		transition: all 0.5s ease;
-		display: none;
-		
-		}
-	&:hover{
-	color: #909090;
-	&:after{ 
-	transition: all 0.5s ease;
-		width: 110%;
-		height: 130%;
-		left: -5%;
-		top: -15%;
-		opacity: 0;
-		border: 3px solid #909090;
-		}
-		
+		display: none;	
 	}
+
+	&:hover{
+	    background: #6e3896;
+	    color: #fff;
+	    border-color: #6e3896;
+	    
+		&:after{ 
+			transition: all 0.5s ease;
+			width: 110%;
+			height: 130%;
+			left: -5%;
+			top: -15%;
+			opacity: 0;
+			border: 3px solid #909090;
+		}
+	}
+
 	@media (max-width: 1800px){ 
 		font-size: 18px; 
 		padding: 15px 30px;
@@ -814,4 +816,336 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 			height: auto;
 		}
 	}
+}
+
+
+
+
+
+
+
+/* ==================================== */
+/* Video Play Button */
+/* ==================================== */
+
+.c-btn-video {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #000;
+    padding: 15px 30px;
+    font-size: 16px;
+    line-height: 1em;
+    font-family: arial;
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.2);
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+    -ms-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+.c-btn-video + .c-btn-video {
+    margin-top: 100px;
+}
+.c-btn-video:before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 7px solid #fff;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    margin-right: 15px;
+    position: relative;
+    left: 0;
+    top: 2px;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+    -ms-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+.c-btn-video:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.c-btn-video:hover:before {
+    /*left: 2px;*/
+}
+/* ==================================== */
+/* END - Video Play Button */
+/* ==================================== */
+
+
+
+
+/* ==================================== */
+/* Popup CSS */
+/* ==================================== */
+
+.c-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+}
+
+.c-popup .overlay {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    transition: all .3s;
+}
+
+.c-popup.popup--open .overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.c-popup .popup {
+    display: none;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    max-width: 740px;
+    padding: 20px;
+    max-height: 100%;
+    width: 100%;
+    opacity: 0;
+    top: 40%;
+    transition: all .3s 0s;
+    overflow-y: auto;
+}
+
+.c-popup .popup.popup--full-screen {
+    top: 0;
+    left: 0;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    max-width: none;
+}
+
+.c-popup .popup.popup--full-screen.active {
+    top: 0;
+}
+
+.c-popup .popup.popup--full-screen .popup-wrap {
+    padding: 0;
+    height: 100%;
+}
+
+.c-popup .popup.popup--full-screen .popup-wrap .plyr {
+    height: 100%;
+}
+
+.c-popup .popup .popup-wrap {
+    background: #fff;
+    padding: 20px;
+}
+
+.c-popup .popup.active {
+    top: 50%;
+    opacity: 1;
+    transition-delay: .3s;
+}
+
+.c-popup .popup.popup--full-screen .popup-action {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    margin: 0px;
+}
+
+.c-popup .title {
+    font-size: 1.5625em;
+    line-height: 1.3em;
+    margin: 0 0 15px;
+    font-weight: bold;
+    color: #6e3996;
+}
+
+.c-popup .txt-wrap {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.c-popup .deco {
+    display: block;
+    margin: 5px 0 15px 0;
+    border: none;
+    position: relative;
+    height: 1px;
+    background: #6e3996;
+}
+
+.c-popup .deco:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 6px;
+    background: #6e3996;
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+}
+
+.c-popup .popup-action {
+    text-align: center;
+    margin-top: 20px;
+}
+.c-popup .js-video{
+    height: 100%;
+}
+
+/* ==================================== */
+/* END - Popup CSS */
+/* ==================================== */
+
+
+
+
+/* ==================================== */
+/* Popup Close BUtton  */
+/* ==================================== */
+
+.c-close {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #6e3996;
+    border-radius: 999px;
+    position: relative;
+    transform: rotate(45deg);
+    background: #fff;
+    transition: all .3s;
+    box-sizing: border-box;
+
+	border-radius: 0 0 0 10px;
+	transform: none;
+	border: 0;
+	width: 60px;
+	height: 60px;
+	background: #fff;
+}
+.c-close span {
+    font-size: 0;
+    color: transparent;
+    text-indent: -9999px;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+	top: 13px;
+	left: 13px;
+    transform: rotate(45deg);
+    transition: all .35s;
+    display: block;
+
+	&:before,
+	&:after {
+	    content: "";
+	    box-sizing: border-box;
+	    display: block;
+	    position: absolute;
+	    top: 50%;
+	    left: 0;
+	    height: 1px;
+	    width: 100%;
+	    background: #6e3996;
+	    transition: all .3s;
+	}
+}
+
+.c-close span:after {
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 1px;
+}
+.c-close:hover {
+    background: #6e3996;
+    span{
+    	transform: rotate(135deg);
+    }
+}
+.c-close:hover span:before,
+.c-close:hover span:after {
+    background: #fff;
+}
+.c-close span:active {
+    transform: rotate(225deg);
+}
+/* ==================================== */
+/* END - Popup Close BUtton  */
+/* ==================================== */
+/* Some responsive css for close button and popup */
+
+@media (max-width: 767px) {
+    .c-close {
+        width: 20px;
+        height: 20px;
+    }
+    .c-close span:after {
+        left: 9px;
+    }
+    .c-close span:before {
+        top: 9px;
+    }
+    .c-popup .deco:after {
+        width: 60px;
+        height: 4px;
+        left: 15px;
+    }
+    .c-popup .popup .popup-wrap {
+        padding: 15px;
+    }
+    .popup .c-form-1 {
+        position: static;
+        margin: 0;
+    }
+    .popup .c-form-1 .wrap {
+        padding: 0;
+    }
+    .popup .c-form-1 select,
+    .popup .c-form-1 .select2-container {
+        width: 100% !important;
+    }
+}
+/* This will keep the video to be complete visible rather than partially! */
+.plyr__video-wrapper{
+    height: 100%;
+    padding: 0 !important;
+}
+.plyr--full-ui input[type=range]{
+	color: #6e3996;
+}
+.plyr__control--overlaid{
+	background: rgba(110, 57, 150, .8);
+}
+.plyr__control--overlaid:focus, .plyr__control--overlaid:hover{
+	background: #6e3996;
+}
+
+.popup-is-active{
+	overflow: hidden;
 }

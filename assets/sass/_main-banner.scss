@@ -15,17 +15,45 @@
 		&.slick-initialized{
 			.slick-slide{
 				.txt{
-					transform: translateX(100px);
-					transition: transform .35s;
+					// transform: translateX(100px);
+					// transition: transform .35s;
+					.anim-wrap--ready{
+						position: relative;
+						display: block;
+						> *{
+							display: block;
+							position: absolute;
+							height: 0%;
+							left: 0;
+							transition: height .3s;
+							overflow: hidden;
+							bottom: 0;
+							top: auto;
+						}
+					}
 				}
 				&.slick-active{
 					.txt{
-						transform: translateX(0px);
+						// transform: translateX(0px);
+						.anim-wrap--ready{
+							> *{
+								bottom: auto;
+								top: 0;
+								height: 100%;
+								transition-delay: .3s;
+							}
+						}
 					}
 
 					& ~ .slick-slide{
 						.txt{
-							transform: translateX(-100px);
+							.anim-wrap--ready{
+								> *{
+									bottom: 0;
+									top: auto;
+									height: 0;
+								}
+							}
 						}
 					}
 				}
@@ -45,10 +73,10 @@
 				padding: 50px 0 115px;
 				min-height: 550px;
 				height: 75vh;
-				height: calc(100vh - 230px);
+				height: calc(100vh - 180px);
 
 				@media (max-width: 1600px){
-					height: calc(100vh - 210px);
+					height: calc(100vh - 160px);
 				}
 
 				@media (max-height: 750px){
@@ -91,6 +119,7 @@
 			img{
 				display: block;
 				object-fit: cover;
+				object-position: center 0;
 				height: 100%;
 				width: 100%;
 			}
@@ -366,5 +395,50 @@
 @media (min-width: 1024px){
 	.c-btn-white.btn--play-1:hover{
 		width: 200px;
+	}
+}
+
+@media (min-width: 1025px) and (max-height: 780px){
+	.c-main-banner .main-carousel .txt h1{
+		font-size: 50px;
+	}
+	.c-main-banner .main-carousel .txt .details, .c-main-banner .main-carousel .txt p{
+		margin-bottom: 15px;
+	}
+	.c-main-banner .main-carousel .txt .det-1{
+		margin-bottom: 10px;
+	}
+	.c-main-banner .main-carousel .item .item-inner{
+		min-height: 440px;
+	}
+}
+@media (min-width: 1025px) and (max-height: 660px){
+	.c-main-banner .main-carousel .txt h1{
+		font-size: 40px;
+		margin-bottom: 13px;
+	}
+	.c-main-banner .main-carousel .txt .details, .c-main-banner .main-carousel .txt p{
+		margin-bottom: 13px;
+	}
+	.c-main-banner .main-carousel .txt .det-1{
+		margin-bottom: 5px;
+	}
+	.c-main-banner .main-carousel .action{
+		margin-top: 20px;
+	}
+	.c-main-banner .main-carousel .item .item-inner {
+	    min-height: 400px;
+	    padding-bottom: 80px;
+	    padding-top: 20px;
+	    height: calc(100vh - 172px);
+	}
+}
+@media (min-width: 1025px) and (max-height: 575px){
+	.c-main-banner .main-carousel-thumb .item .wrap{
+		height: 100px;
+	}
+	.c-main-banner .main-carousel .item .item-inner {
+		min-height: 400px;
+		height: calc(100vh - 140px);
 	}
 }

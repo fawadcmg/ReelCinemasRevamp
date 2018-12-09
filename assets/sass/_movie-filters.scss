@@ -14,12 +14,15 @@
 	z-index: 99;
 	
 	@media (max-width: 1600px){
-		margin: 0 auto 30px;
+		margin: 20px auto 30px;
 	}
 
 	&.filters--sty-1{
 		.wrap{
 			background: rgba(242, 245, 248, 0.5);
+			@media (max-width: 767px){
+				background: rgb(242, 245, 248);
+			}
 		}
 	}
 	&.filters--sty-a{
@@ -133,12 +136,12 @@
 			.field{
 				input{
 					border-radius: 20px 20px 0 0;
-					//box-shadow: 2px 0px 1px 1px rgba(0,0,0,0.4);
 				}
 			}
 			.field-dropdown{
-				display: block;
-				box-shadow: 0 0 32px 0 rgba(77,91,105,.24);
+				// display: block;
+				opacity: 1;
+				// box-shadow: 0 0 32px 0 rgba(77,91,105,.24);
 			}
 		}
 		.field{
@@ -222,7 +225,8 @@
 			}
 		}
 		.field-dropdown{
-			display: none;
+			// display: none;
+			box-shadow: 0 0 32px 0 rgba(77,91,105,.24);
 			position: absolute;
 			top: 0;
 			height: auto;
@@ -230,8 +234,13 @@
 			background: #FFF;
 			border-radius:8px;
 			overflow: hidden;
-			padding-bottom: 24px;
+			padding-bottom: 0;
 			z-index: 99;
+			opacity: 0;
+
+			.scroll{
+				display: none;
+			}
 
 			.field {
 				input {
@@ -276,7 +285,7 @@
 							background-image: url('../img/icons/icon-check--grey.svg');
 						}
 						&:hover{
-							background: #b5b5b5;
+							background: #dadada;
 						}
 					}
 					input:checked + label{
@@ -362,14 +371,14 @@
 		z-index: 99;
 		background: #fff;
 		margin: 0;
-		transition: all .35s;
+		transition: all .35s ease-in-out;
 		// top: 0;
 		z-index: 1001;
-		top: 100vh;
+		top: 0;
 		bottom: auto;
-		transition: all .35s;
-		transform: translateY(-66px);
-		height: 65vh;
+		transform: translateY(65px);
+		height: 66px;
+		overflow: hidden;
 
 		.close-btn-m{
 			display: block;
@@ -384,9 +393,10 @@
 			bottom: 0;
 			position: absolute;
 			left: 0;
-			transform: translateY(0%);
+			transform: translateY(0);
 			height: auto;
 			width: 100%;
+			z-index: -1;
 
 			@media (max-height: 650px){
 				padding-top: 12px;
@@ -499,6 +509,8 @@
 				border-radius: 0;
 				background: #fff;
 				padding-bottom: 0;
+				// transform: translateY(-100vh);
+				transition: transform .35s;
 				.field{
 					input{
 						padding: 10px 10px 10px 43px;
@@ -506,7 +518,11 @@
 					}
 				}
 				.scroll{
-					max-height: 100%;
+					height: 190px;
+				    // height: calc(65vh - 169px);
+				    @media (max-height: 650px){
+				    	// height: calc(65vh - 147px);
+				    }
 				}
 
 				.item{
@@ -567,10 +583,11 @@
 				}
 				.field-dropdown{
 				    top: 66px;
-				    height: calc(65vh - 119px);
+				    // height: calc(65vh - 119px);
+				    height: 240px;
 				    @media (max-height: 650px){
 				    	top: 58px;
-				    	height: calc(65vh - 97px);
+				    	// height: calc(65vh - 97px);
 				    }
 					.field{
 						.field-title,
@@ -587,7 +604,8 @@
 		}
 		
 		@media (max-height: 650px){
-			transform: translateY(-58px);
+			transform: translateY(56px);
+			height: 58px;
 			.c-select-box > .field{
 				padding: 8px;
 			}
@@ -610,23 +628,44 @@
 .filter-open{
 	@media (max-width: 767px){
 		overflow: hidden;
+		body{
+			overflow: hidden;
+			position: fixed;
+			left: 0;
+			width: 100%;
+			top: 0;
+		}
 
 		.c-overlay-white{
 			z-index: 1001;
 		    opacity: 1;
 	    }
 		.c-movie-filters{
-			top: 35%;
-			transform: translateY(0%);
+			height: 358px;
+			@media (max-height: 650px){
+				height: 336px;
+			}
+			.c-select-box .field-dropdown,
+			.close-btn-m{
+				// transform: translateY(0);
+			}
 		}
 	}
 }
 
 .filter-space{
 	@media (max-width: 767px){
-		height: 66px;
+		// height: 66px;
 		@media (max-height: 650px){
-			height: 58px;
+			// height: 58px;
+		}
+	}
+}
+
+@media (max-width: 767px){
+	.not-at-top{
+		.c-movie-filters{
+			transform: translateY(56px);
 		}
 	}
 }

@@ -10,90 +10,131 @@
 	</head>
 
 	<body>
-	   <!--[if lte IE 9]>
-	   <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-	   <![endif]-->
-	   <div class="c-overlay js-close-side-nav"></div>
-	   <div class="header-space"></div>
-	   <header class="c-main-header">
-	      <a href="#" class="logo">
-	         <picture>
-	            <source srcset="assets/img/brand/logo-colored.png" media="(max-width: 767px)">
-	            <img src="assets/img/brand/logo.png" alt="Reel Cinemas">
-	         </picture>
-	      </a>
-	      <nav class="header-links js-header-links">
-	         <ul>
-	            <li><a href="#">Showtimes</a></li>
-	            <li>
-	               <a href="#">Experiences</a>
-	               <ul>
-	                  <li><a href="#">Standard</a></li>
-	                  <li><a href="#">Dolby Cinema</a></li>
-	                  <li><a href="#">Reel Dine-In Cinema</a></li>
-	                  <li><a href="#">Reel Boutique</a></li>
-	                  <li><a href="#">ScreenX</a></li>
-	                  <li><a href="#">Platinum</a></li>
-	                  <li><a href="#">MX4D</a></li>
-	                  <li><a href="#">Reel Junior</a></li>
-	               </ul>
-	            </li>
-	            <li><a href="#">Offers</a></li>
-	            <li class="">
-	               <!-- is-current -->
-	               <a href="#">Locations</a>
-	               <ul>
-	                  <li><a href="#">The Dubai Mall</a></li>
-	                  <li><a href="#">Dubai Marina Mall</a></li>
-	                  <li><a href="#">Jabel Ali Recreation Club</a></li>
-	                  <!-- class="is-current" -->
-	                  <li><a href="#">Rove Downtown</a></li>
-	                  <li><a href="#">The Spring Souk</a></li>
-	               </ul>
-	            </li>
-	         </ul>
-	      </nav>
-	      <a href="#" class="c-menu-btn js-open-side-nav">
-	      <span class="icon-wrap"><i></i><i></i><i></i><span class="txt">Menu</span></span>
-	      </a>
-	   </header>
-	   <aside class="c-side-nav">
-	      <a href="#" class="logo js-close-side-nav"><img src="assets/img/brand/logo.svg" alt="Reel Cinemas"></a>
-	      <div class="nav-wrap">
-	         <nav class="nav">
-	            <ul>
-	               <li><a href="#">About Reel</a></li>
-	               <li><a href="#">Promotions</a></li>
-	               <li><a href="#">Services</a></li>
-	               <li><a href="#">Gift Cards</a></li>
-	               <li><a href="#">FAQs</a></li>
-	               <li><a href="#">Media Centre</a></li>
-	            </ul>
-	         </nav>
-	         <ul class="c-social">
-	            <li>
-	               <a href="#" target="_blank"><img src="assets/img/social/fb.svg" alt="FB"></a>
-	            </li>
-	            <li>
-	               <a href="#" target="_blank"><img src="assets/img/social/insta.svg" alt="Insta"></a>
-	            </li>
-	            <li>
-	               <a href="#" target="_blank"><img src="assets/img/social/snap.svg" alt="Snap"></a>
-	            </li>
-	            <li>
-	               <a href="#" target="_blank"><img src="assets/img/social/twitter.svg" alt="Twitter"></a>
-	            </li>
-	            <li>
-	               <a href="#" target="_blank"><img src="assets/img/social/youtube.svg" alt="Youtube"></a>
-	            </li>
-	         </ul>
-	         <div class="c-subs-box">
-	            <i class="icon"></i>
-	            <input type="email" placeholder="KEEP IN TOUCH">
-	            <a href="#" class="c-btn-glow btn--sm"><span>Join</span></a>
-	         </div>
-	      </div>
-	   </aside>
+	    <!--[if lte IE 9]>
+	        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	    <![endif]-->
+		<div class="c-loader"></div>
+	    <div class="c-overlay js-close-side-nav"></div>
+	    <div class="c-overlay-white js-close-filter-m"></div>
+		<div class="header-space"></div>
+		<a href="#" class="logo">
+			<picture>
+				<!-- <source srcset="assets/img/brand/logo-colored.png" media="(max-width: 767px)"> -->
+				<img src="assets/img/brand/reel-logo.svg" alt="Reel Cinemas">
+			</picture>
+		</a>
+	    <header class="c-main-header">
+	    	<nav class="header-links js-header-links">
+	    		<ul>
+	    			<li><a href="#">Showtimes</a></li>
+	    			<li>
+	    				<a href="#">Experiences</a>
+	    				<ul>
+	    					<li><a href="#">Standard</a></li>
+	    					<li><a href="#">Dolby Cinema</a></li>
+	    					<li><a href="#">Reel Dine-In Cinema</a></li>
+	    					<li><a href="#">Reel Boutique</a></li>
+	    					<li><a href="#">ScreenX</a></li>
+	    					<li><a href="#">Platinum</a></li>
+	    					<li><a href="#">MX4D</a></li>
+	    					<li><a href="#">Reel Junior</a></li>
+	    				</ul>
+	    			</li>
+	    			<li><a href="#">Offers</a></li>
+	    			<li class=""> <!-- is-current -->
+	    				<a href="#">Locations</a>
+	    				<ul>
+	    					<li><a href="#">The Dubai Mall</a></li>
+	    					<li><a href="#">Dubai Marina Mall</a></li>   
+	    					<li><a href="#">Jabel Ali Recreation Club</a></li> <!-- class="is-current" -->
+	    					<li><a href="#">Rove Downtown</a></li>
+	    					<li><a href="#">The Spring Souk</a></li>
+	    				</ul>
+	    			</li>
+	    		</ul>
+	    	</nav>
+	    	<a href="#" class="c-menu-btn js-open-side-nav">
+	    		<span class="icon-wrap"><i></i><i></i><i></i><span class="txt">Menu</span></span>
+	    	</a>
+	    </header>
+
+	    <aside class="c-side-nav">
+	    	<div class="action-row">
+	    		<a href="#" class="close js-close-side-nav"><i></i></a>
+	    	</div>
+			<div class="container-nav">
+	    	<div class="nav-wrap">
+				<div class="nav-offer js-nav-carousel">
+					<div class="nav-offer-item">
+					  	<img src="assets/img/misc/nav-offer.png" alt=""/>
+						<h4>
+							Upgrade your trip - 1!<br>
+							<strong>Bring a friend for free!</strong>
+						</h4>
+						<p>
+							Enjoy buy one get one free tickets, plus complimentary popcorn and drinks with <strong>Emirates NBD</strong> and <strong>U By Emaar</strong>.
+							<a href="#" class="c-btn-glow">GET OFFER</a>
+						</p>
+					</div>
+					<div class="nav-offer-item">
+					  	<img src="assets/img/misc/nav-offer.png" alt=""/>
+						<h4>
+							Upgrade your trip - 2!<br>
+							<strong>Bring a friend for free!</strong>
+						</h4>
+						<p>
+							Enjoy buy one get one free tickets, plus complimentary popcorn and drinks with <strong>Emirates NBD</strong> and <strong>U By Emaar</strong>.
+							<a href="#" class="c-btn-glow">GET OFFER</a>
+						</p>
+					</div>
+					<div class="nav-offer-item">
+					  	<img src="assets/img/misc/nav-offer.png" alt=""/>
+						<h4>
+							Upgrade your trip - 3!<br>
+							<strong>Bring a friend for free!</strong>
+						</h4>
+						<p>
+							Enjoy buy one get one free tickets, plus complimentary popcorn and drinks with <strong>Emirates NBD</strong> and <strong>U By Emaar</strong>.
+							<a href="#" class="c-btn-glow">GET OFFER</a>
+						</p>
+					</div>
+				</div>
+		    	<nav class="nav">
+		    		<ul>
+						<li><a href="#">Showtimes</a></li>
+						<li><a href="#">Experiences</a></li>
+						<li><a href="#">offers</a></li>
+						<li><a href="#">food</a></li>
+						<li><a href="#">locations</a></li>
+		    		</ul>
+		    		<ul>
+						<li><a href="#">About Reel</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">Gift Cards</a></li>
+						<li><a href="#">FAQs</a></li>
+						<li><a href="#">Blog</a></li>
+		    		</ul>
+		    	</nav>
+				<ul class="c-social">
+					<li>
+						<a href="#" target="_blank"><img src="assets/img/social/fb.svg" alt="FB" class="svg fb"></a>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="assets/img/social/insta.svg" alt="Insta" class="svg insta"></a>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="assets/img/social/snap.svg" alt="Snap" class="svg snap"></a>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="assets/img/social/twitter.svg" alt="Twitter" class="svg twitter"></a>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="assets/img/social/youtube.svg" alt="Youtube" class="svg youtube"></a>
+					</li>
+				</ul>
+			</div>
+	    </aside>
+	    
 	   <div class="movieheader">
 	      <div class="img">
 				<picture>
@@ -120,7 +161,7 @@
 	               <div class="movie-desc"><span>About:</span>   The second installment of the "Fantastic Beasts" series set in J.K. Rowling's Wizarding World featuring the adventures of magizoologist Newt Scamander.</div>
 	               <div class="action">
 	                  <a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-	                  <a href="#" class="c-btn-white btn--play-1"><i class="icon"></i><span>Play Trailer</span></a>
+	                  <a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>
 	               </div>
 	            </div>
 	         </div>
@@ -452,7 +493,7 @@
 			                                 8:00
 			                              </div>
 			                           </li>
-			                           <li class="nearsold-low">
+			                           <li>
 			                              <div class="showtime">
 			                                 8:00
 			                              </div>
@@ -536,15 +577,15 @@
 					Director:  Christian Rivers 
 					Cast: Hera Hilmar, Hugo Weaving, Robert Sheehan 
 
-					</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--play-1"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Mortal-Engines.jpg" alt="Mortal Engines"></div></section> </div><div class="movie-item aquaman genre-action genre-adventure dolby platinum the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Aquaman.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>13</div><div class="booknow-tag"><span>BOOK NOW</span></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Aquaman.jpg" alt="Aquaman"></div><div class="info"><div class="name">Aquaman</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 40 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
+					</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Mortal-Engines.jpg" alt="Mortal Engines"></div></section> </div><div class="movie-item aquaman genre-action genre-adventure dolby platinum the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Aquaman.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>13</div><div class="booknow-tag"><span>BOOK NOW</span></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Aquaman.jpg" alt="Aquaman"></div><div class="info"><div class="name">Aquaman</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 40 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
 					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic 
 					</span></div></div><div class="detail"><div class="detail-inner-wrap">Action, Adventure | 2 hr 40 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Aquaman</h1> <div class="stamp">PG <br>13</div></div><div class="info genere"><span>Action</span><span> Adventure</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 40 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
 					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic 
-					</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> Arthur Curry learns that he is the heir to the underwater kingdom of Atlantis, and must step forward to lead his people and be a hero to the world.</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--play-1"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Aquaman.jpg" alt="Aquaman"></div></section> </div><div class="movie-item creed-2 genre-drama genre-sports dine-in dolby platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Creed-2.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>15</div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Creed-2.jpg" alt="Creed 2"></div><div class="info"><div class="name">Creed 2</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 30 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
+					</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> Arthur Curry learns that he is the heir to the underwater kingdom of Atlantis, and must step forward to lead his people and be a hero to the world.</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Aquaman.jpg" alt="Aquaman"></div></section> </div><div class="movie-item creed-2 genre-drama genre-sports dine-in dolby platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Creed-2.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>15</div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Creed-2.jpg" alt="Creed 2"></div><div class="info"><div class="name">Creed 2</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 30 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
 					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic &amp; French</span></div></div><div class="detail"><div class="detail-inner-wrap">Drama, Sports | 2 hr 30 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Creed 2</h1> <div class="stamp">PG <br>15</div></div><div class="info genere"><span>Drama</span><span> Sports</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 30 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic &amp; French</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> Under the tutelage of Rocky Balboa, newly crowned light heavyweight champion Adonis Creed faces off against Viktor Drago, the son of Ivan Drago.</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--play-1"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Creed-2.jpg" alt="Creed 2"></div></section> </div><div class="movie-item ralph-breaks-the-internet genre-animation genre-adventure dine-in premier reel junior standard the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Ralph-Breaks-The-Internet.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Ralph-Breaks-The-Internet.jpg" alt="Ralph Breaks The Internet"></div><div class="info"><div class="name">Ralph Breaks The Internet</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 5 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
+					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic &amp; French</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> Under the tutelage of Rocky Balboa, newly crowned light heavyweight champion Adonis Creed faces off against Viktor Drago, the son of Ivan Drago.</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Creed-2.jpg" alt="Creed 2"></div></section> </div><div class="movie-item ralph-breaks-the-internet genre-animation genre-adventure dine-in premier reel junior standard the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Ralph-Breaks-The-Internet.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Ralph-Breaks-The-Internet.jpg" alt="Ralph Breaks The Internet"></div><div class="info"><div class="name">Ralph Breaks The Internet</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 5 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
 					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic</span></div></div><div class="detail"><div class="detail-inner-wrap">Animation, Adventure | 2 hr 5 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Ralph Breaks The Internet</h1> <div class="stamp">PG <br></div></div><div class="info genere"><span>Animation</span><span> Adventure</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 5 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> Six years after the events of Wreck-It Ralph, Ralph and Vanellope now friends, discover a wi-fi router in their arcade leading them into a new adventure.</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--play-1"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Ralph-Breaks-The-Internet.jpg" alt="Ralph Breaks The Internet"></div></section> </div><div class="movie-item green-book genre-biography genre-comedy dine-in platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Green-Book.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>15</div><div class="booknow-tag"><span>BOOK NOW</span></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Green-Book.jpg" alt="Green Book"></div><div class="info"><div class="name">Green Book</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 25 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
+					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> Six years after the events of Wreck-It Ralph, Ralph and Vanellope now friends, discover a wi-fi router in their arcade leading them into a new adventure.</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Ralph-Breaks-The-Internet.jpg" alt="Ralph Breaks The Internet"></div></section> </div><div class="movie-item green-book genre-biography genre-comedy dine-in platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Green-Book.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>15</div><div class="booknow-tag"><span>BOOK NOW</span></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Green-Book.jpg" alt="Green Book"></div><div class="info"><div class="name">Green Book</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 25 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
 					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic
 
 					</span></div></div><div class="detail"><div class="detail-inner-wrap">Biography, Comedy | 2 hr 25 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Green Book</h1> <div class="stamp">PG <br>15</div></div><div class="info genere"><span>Biography</span><span> Comedy</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 25 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
@@ -553,7 +594,7 @@
 					</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> A working-class Italian-American bouncer becomes the driver of an African-American classical pianist on a tour of venues through the 1960s American South.
 					Director:Peter Farrelly 
 					Cast:Linda Cardellini, Viggo Mortensen, Mahershala Ali 
-					</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--play-1"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Green-Book.jpg" alt="Green Book"></div></section> </div><div class="movie-item instant-family genre-comedy genre-drama dine-in platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Instant-Family.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>13</div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Instant-Family.jpg" alt="Instant Family"></div><div class="info"><div class="name">Instant Family</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 15 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
+					</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Green-Book.jpg" alt="Green Book"></div></section> </div><div class="movie-item instant-family genre-comedy genre-drama dine-in platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Instant-Family.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>13</div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Instant-Family.jpg" alt="Instant Family"></div><div class="info"><div class="name">Instant Family</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 15 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
 					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic
 
 					</span></div></div><div class="detail"><div class="detail-inner-wrap">Comedy, Drama | 2 hr 15 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details is--last-item"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Instant Family</h1> <div class="stamp">PG <br>13</div></div><div class="info genere"><span>Comedy</span><span> Drama</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 15 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
@@ -561,7 +602,7 @@
 
 					</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> A couple find themselves in over their heads when they adopt three children. 
 					Director: Sean Anders 
-					Cast: Mark Wahlberg, Rose Byrne, Isabela Moner </div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--play-1"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Instant-Family.jpg" alt="Instant Family"></div></section> </div></div>
+					Cast: Mark Wahlberg, Rose Byrne, Isabela Moner </div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Instant-Family.jpg" alt="Instant Family"></div></section> </div></div>
 				</div>
 			</div>
 		</section>

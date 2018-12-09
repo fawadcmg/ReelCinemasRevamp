@@ -68,7 +68,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99eaecee', e
 	@media (max-width: 767px){
 		background: rgba(245, 247, 248, 0.8);
 		padding: 20px 0;
-			
+
+		&:after{
+			// background: linear-gradient(90deg,rgba(245, 247, 248,0) 1%,#f5f7f8 80%,#f5f7f8) !important;
+			}
 		}
 	
 	
@@ -81,6 +84,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99eaecee', e
 			font-size: 40px;
 			font-weight: 700;
 			color: #383041;
+		    transition: all .35s;
 
 			@media (max-width: 1300px){
 				font-size: 30px;
@@ -94,6 +98,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99eaecee', e
 			font-size: 16px;
 			font-weight: 400;
 			color: #383041;
+		    transition: all .35s;
 
 			@media (max-width: 1300px){
 				font-size: 13px;
@@ -106,6 +111,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99eaecee', e
 			font-size: 16px;
 			font-weight: 400;
 			color: #383041;
+		    transition: all .35s;
 
 			@media (max-width: 1300px){
 				font-size: 13px;
@@ -125,6 +131,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99eaecee', e
 		    cursor: pointer;
 		    display: inline-block;
 		    min-width: 90px;
+		    transition: all .35s;
 			@media (max-width: 1300px){
 				min-width: 0;
 			}
@@ -137,19 +144,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99eaecee', e
 	}
 			
 	.dboxelement:hover{
-		background: #6e3996;
-		-webkit-border-radius: 10px;
-		-moz-border-radius: 10px;
-		border-radius: 10px;
+		color: #6e3996;
+		background: transparent;
+		// background: #6e3996;
+		// -webkit-border-radius: 10px;
+		// -moz-border-radius: 10px;
+		// border-radius: 10px;
 		
 		.date{
-			color: #fff;
+			color: #6e3996;
 		}
 		.day{
-			color: #fff;
+			color: #6e3996;
 		}
 		.month{
-			color: #fff;
+			color: #6e3996;
 		}
 		
 	}
@@ -1676,16 +1685,11 @@ border-radius: 5px;
 			color: #ccd4df;
 			border: 1px solid #ccd4df;
 		}
-		.nearsold-low .showtime,
 		.nearsold .showtime{
 			background-color: #ec7848;
 			color: #fff;
 			border: 1px solid #ec7848;
-			}
-			.nearsold-low .showtime{
-				color: #ec7848;
-				background: transparent;
-			}
+		}
 		
 		.sold-out span,
 		.nearsold span{
@@ -1697,6 +1701,25 @@ border-radius: 5px;
 			display: block;
 			@media (max-width: 767px){
 				display: none;
+			}
+		}
+		.nearsold{
+			.showtime{
+				color: #ec7848;
+				background: transparent;
+			}
+			span{
+				opacity: 0;
+			}
+
+			&:hover{
+				.showtime{
+					background-color: #ec7848;
+					color: #fff;
+				}
+				span{
+					opacity: 1;
+				}
 			}
 		}
 		.sold-out span{
