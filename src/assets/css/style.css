@@ -6551,6 +6551,11 @@ label {
         color: #222222;
         opacity: 1;
         /* Firefox */ }
+      .c-movie-filters .c-select-box .field :-ms-input-placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #222222;
+        opacity: 1;
+        /* Firefox */ }
       .c-movie-filters .c-select-box .field ::-ms-input-placeholder {
         /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: #222222;
