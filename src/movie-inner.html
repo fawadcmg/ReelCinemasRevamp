@@ -146,23 +146,37 @@
 	      <div class="txt">
 	         <div class="o-container">
 	            <div class="movie-poster">
-	               <img src="assets/img/movie-posters/fantastic-beasts.png" alt="beats">
+	               <img class="js-movieImage" src="assets/img/movie-posters/fantastic-beasts.png" alt="beats">
 	            </div>
 	            <div class="movie-poster-detail">
-	               <div class="title">Fantastic Beasts 
+	               <!-- <div class="title">Fantastic Beasts 
 	                  <span>The Crimes Of Grindelwald</span>
 	               </div>
 	               <div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
 	               <div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
 	               <div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
 	               <div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-	               <div class="movie-desc"><span>Director:</span>    David Yates</div>
-	               <div class="movie-desc"><span>Cast: </span>   Eddie Redmayne, Katherine Waterston, Dan Fogler </div>
-	               <div class="movie-desc"><span>About:</span>   The second installment of the "Fantastic Beasts" series set in J.K. Rowling's Wizarding World featuring the adventures of magizoologist Newt Scamander.</div>
+	               <div class="movie-desc js-movieDirector"><span>Director:</span>    David Yates</div>
+	               <div class="movie-desc js-movieCast"><span>Cast: </span>   Eddie Redmayne, Katherine Waterston, Dan Fogler </div>
+	               <div class="movie-desc js-movieAbout"><span>About:</span>   The second installment of the "Fantastic Beasts" series set in J.K. Rowling's Wizarding World featuring the adventures of magizoologist Newt Scamander.</div>
+	               <div class="action">
+	                  <a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
+	                  <a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>
+	               </div> -->
+				   <div class="title js-movieTitle">Fantastic Beasts
+	               </div>
+	               <div class="info genere js-movieGenere"></div>
+	               <div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
+	               <div class="info language js-movieLanguage"></div>
+	               <div class="info language js-movieSubtitle"></div>
+	               <div class="movie-desc js-movieDirector"></div>
+	               <div class="movie-desc js-movieCast"></div>
+	               <div class="movie-desc js-movieAbout"></div>
 	               <div class="action">
 	                  <a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
 	                  <a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>
 	               </div>
+
 	            </div>
 	         </div>
 	      </div>
@@ -172,69 +186,15 @@
 		      <div class="d-box-wrap">
 		         <div class="o-container container--indent-1">
 		            <div class="row date-items js-date-time">
+
 		               <div class="d-box">
-		                  <div class="dboxelement active">
+		                  <div class="dboxelement">
 		                     <div class="month">OCT</div>
 		                     <div class="date">10</div>
 		                     <div class="day">SUN</div>
 		                  </div>
 		               </div>
-		               <div class="d-box">
-		                  <div class="dboxelement">
-		                     <div class="month">OCT</div>
-		                     <div class="date">11</div>
-		                     <div class="day">MON</div>
-		                  </div>
-		               </div>
-		               <div class="d-box">
-		                  <div class="dboxelement">
-		                     <div class="month">OCT</div>
-		                     <div class="date">12</div>
-		                     <div class="day">TUES</div>
-		                  </div>
-		               </div>
-		               <div class="d-box">
-		                  <div class="dboxelement">
-		                     <div class="month">OCT</div>
-		                     <div class="date">13</div>
-		                     <div class="day">WED</div>
-		                  </div>
-		               </div>
-		               <div class="d-box">
-		                  <div class="dboxelement">
-		                     <div class="month">OCT</div>
-		                     <div class="date">14</div>
-		                     <div class="day">THUR</div>
-		                  </div>
-		               </div>
-		               <div class="d-box">
-		                  <div class="dboxelement">
-		                     <div class="month">OCT</div>
-		                     <div class="date">15</div>
-		                     <div class="day">FRI</div>
-		                  </div>
-		               </div>
-		               <div class="d-box">
-		                  <div class="dboxelement">
-		                     <div class="month">OCT</div>
-		                     <div class="date">16</div>
-		                     <div class="day">SAT</div>
-		                  </div>
-		               </div>
-		               <div class="d-box">
-		                  <div class="dboxelement">
-		                     <div class="month">OCT</div>
-		                     <div class="date">17</div>
-		                     <div class="day">SUN</div>
-		                  </div>
-		               </div>
-		               <div class="d-box">
-		                  <div class="dboxelement">
-		                     <div class="month">OCT</div>
-		                     <div class="date">18</div>
-		                     <div class="day">SUN</div>
-		                  </div>
-		               </div>
+		               
 		            </div>
 		         </div>
 		         <div class="clearfix"></div>
@@ -258,11 +218,6 @@
 		                                    <input type="text" placeholder="Location" class="js-field">
 		                                </div>
 		                                    <div class="scroll js-cimemas-listing">
-		                                        <!-- <div class="item custom-action js-select-all"><input type="checkbox" id="select-all-locations"><label for="select-all-locations"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-		                                        <div class="item"><input type="checkbox" id="the-dubai-mall"><label for="the-dubai-mall">The Dubai Mall</label></div>
-		                                        <div class="item"><input type="checkbox" id="dubai-marina-mall"><label for="dubai-marina-mall">Dubai Marina Mall</label></div>
-		                                        <div class="item"><input type="checkbox" id="jabel-ali-recreation-club"><label for="jabel-ali-recreation-club">Jabel Ali Recreation Club</label></div>
-		                                        <div class="item"><input type="checkbox" id="rove-downtown"><label for="rove-downtown">Rove Downtown</label></div> -->
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -290,15 +245,6 @@
 									           <div class="item"><input type="checkbox" value="platinum" class="js-experienceItem" id="platinum"><label for="platinum">Platinum</label></div>
 									           <div class="item"><input type="checkbox" value="mx4d" class="js-experienceItem" id="mx4d"><label for="mx4d">MX4D</label></div>
 									           <div class="item"><input type="checkbox" value="reel-junior" class="js-experienceItem" id="reel-junior"><label for="reel-junior">Reel Junior</label></div>
-		                                        <!-- <div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp"><label for="select-all-exp"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-		                                        <div class="item"><input type="checkbox" id="standard"><label for="standard">Standard</label></div>
-		                                        <div class="item"><input type="checkbox" id="dolby-cinema"><label for="dolby-cinema">Dolby Cinema</label></div>
-		                                        <div class="item"><input type="checkbox" id="reel-dine-in-cinema"><label for="reel-dine-in-cinema">Reel Dine-In Cinema</label></div>
-		                                        <div class="item"><input type="checkbox" id="reel-boutique"><label for="reel-boutique">Reel Boutique</label></div>
-		                                        <div class="item"><input type="checkbox" id="screenx"><label for="screenx">ScreenX</label></div>
-		                                        <div class="item"><input type="checkbox" id="platinum"><label for="platinum">Platinum</label></div>
-		                                        <div class="item"><input type="checkbox" id="mx4d"><label for="mx4d">MX4D</label></div>
-		                                        <div class="item"><input type="checkbox" id="reel-junior"><label for="reel-junior">Reel Junior</label></div> -->
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -334,93 +280,11 @@
 		            </section>
 			      <div class="o-container">
 			         <div class="row">
-			            <section class="titleview-wrap">
-			               <div class="tileview-movies-list">
-			                  <div class="item">
-			                     <div class="movielocation">
-			                        Jebel Ali Recreation Club
-			                     </div>
-			                  </div>
-			                  <div class="item" style="display: none;">
-			                     <div class="img">
-			                        <img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			                     </div>
-			                     <div class="moviename">Venom</div>
-			                     <div class="locationmobile">Jebel Ali Recreation...</div>
-			                  </div>
-			                  <div class="item">
-			                     <div class="logoimg">
-			                        <img src="assets\img\brand\logo-reel-red.png" alt="Mission Impossible - Fallout">
-			                     </div>
-			                  </div>
-			                  <div class="item">
-			                     <div class="showtimewrap">
-			                        <ul>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li class="nearsold">
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                              <span>Nearly Sold</span>
-			                           </li>
-			                        </ul>
-			                     </div>
-			                  </div>
-			               </div>
-			               <div class="tileview-movies-list">
-			                  <div class="item">
-			                     <div class="movielocation">
-			                        Rove Downtown
-			                     </div>
-			                  </div>
-			                  <div class="item" style="display: none;">
-			                     <div class="img">
-			                        <img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			                     </div>
-			                     <div class="moviename">Venom</div>
-			                     <div class="locationmobile">Jebel Ali Recreation...</div>
-			                  </div>
-			                  <div class="item">
-			                     <div class="logoimg">
-			                        <img src="assets\img\brand\logo-reel-red.png" alt="Mission Impossible - Fallout">
-			                     </div>
-			                  </div>
-			                  <div class="item">
-			                     <div class="showtimewrap">
-			                        <ul>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                        </ul>
-			                     </div>
-			                  </div>
-			               </div>
+			            <section class="titleview-wrap js-loadCinamaListing">
+
+			               
+
+			               
 			               <div class="tileview-movies-list">
 			                  <div class="item">
 			                     <div class="movielocation">
@@ -467,96 +331,8 @@
 			                     </div>
 			                  </div>
 			               </div>
-			               <div class="tileview-movies-list">
-			                  <div class="item">
-			                     <div class="movielocation">
-			                        The Dubai Mall
-			                     </div>
-			                  </div>
-			                  <div class="item" style="display: none;">
-			                     <div class="img">
-			                        <img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			                     </div>
-			                     <div class="moviename">Venom</div>
-			                     <div class="locationmobile">Jebel Ali Recreation...</div>
-			                  </div>
-			                  <div class="item">
-			                     <div class="logoimg">
-			                        <img src="assets\img\logos\logo-mxd.png" alt="logo-dolby">
-			                     </div>
-			                  </div>
-			                  <div class="item">
-			                     <div class="showtimewrap">
-			                        <ul>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                        </ul>
-			                     </div>
-			                  </div>
-			               </div>
-			               <div class="tileview-movies-list">
-			                  <div class="item">
-			                     <div class="movielocation">
-			                        Rove Downtown
-			                     </div>
-			                  </div>
-			                  <div class="item" style="display: none;">
-			                     <div class="img">
-			                        <img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			                     </div>
-			                     <div class="moviename">Venom</div>
-			                     <div class="locationmobile">Jebel Ali Recreation...</div>
-			                  </div>
-			                  <div class="item">
-			                     <div class="logoimg">
-			                        <img src="assets\img\logos\logo-reel-platinum-suties.png" alt="logo-dolby">
-			                     </div>
-			                  </div>
-			                  <div class="item">
-			                     <div class="showtimewrap">
-			                        <ul>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                           <li>
-			                              <div class="showtime">
-			                                 8:00
-			                              </div>
-			                           </li>
-			                        </ul>
-			                     </div>
-			                  </div>
-			               </div>
+
+			               
 			            </section>
 			         </div>
 			      </div>
@@ -568,41 +344,8 @@
 				<div class="sec-title">WHAT’S Popular</div>
 			</div>
 			<div class="c-movies-list">
-				<div class="o-container movie-lsit-wrap js-movie-list js-movie-list--not-open">
-					<div class="list-wrap list-wrap-page list-wrap-page--1"><div class="movie-item mortal-engines genre-action genre-adventure dine-in dolby platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Mortal-Engines.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br></div><div class="booknow-tag"><span>BOOK NOW</span></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Mortal-Engines.jpg" alt="Mortal Engines"></div><div class="info"><div class="name">Mortal Engines</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 25 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic
-					</span></div></div><div class="detail"><div class="detail-inner-wrap">Action, Adventure | 2 hr 25 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details is--first-item"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Mortal Engines</h1> <div class="stamp">PG <br></div></div><div class="info genere"><span>Action</span><span> Adventure</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 25 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic
-					</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> A mysterious young woman named Hester Shaw joins forces with Anna Fang, a dangerous outlaw with a bounty on her head, and Tom Natsworthy, an outcast from London, to lead a rebellion against a giant predator city on wheels.
-					Director:  Christian Rivers 
-					Cast: Hera Hilmar, Hugo Weaving, Robert Sheehan 
-
-					</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Mortal-Engines.jpg" alt="Mortal Engines"></div></section> </div><div class="movie-item aquaman genre-action genre-adventure dolby platinum the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Aquaman.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>13</div><div class="booknow-tag"><span>BOOK NOW</span></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Aquaman.jpg" alt="Aquaman"></div><div class="info"><div class="name">Aquaman</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 40 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic 
-					</span></div></div><div class="detail"><div class="detail-inner-wrap">Action, Adventure | 2 hr 40 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Aquaman</h1> <div class="stamp">PG <br>13</div></div><div class="info genere"><span>Action</span><span> Adventure</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 40 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic 
-					</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> Arthur Curry learns that he is the heir to the underwater kingdom of Atlantis, and must step forward to lead his people and be a hero to the world.</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Aquaman.jpg" alt="Aquaman"></div></section> </div><div class="movie-item creed-2 genre-drama genre-sports dine-in dolby platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Creed-2.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>15</div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Creed-2.jpg" alt="Creed 2"></div><div class="info"><div class="name">Creed 2</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 30 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic &amp; French</span></div></div><div class="detail"><div class="detail-inner-wrap">Drama, Sports | 2 hr 30 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Creed 2</h1> <div class="stamp">PG <br>15</div></div><div class="info genere"><span>Drama</span><span> Sports</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 30 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic &amp; French</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> Under the tutelage of Rocky Balboa, newly crowned light heavyweight champion Adonis Creed faces off against Viktor Drago, the son of Ivan Drago.</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Creed-2.jpg" alt="Creed 2"></div></section> </div><div class="movie-item ralph-breaks-the-internet genre-animation genre-adventure dine-in premier reel junior standard the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Ralph-Breaks-The-Internet.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Ralph-Breaks-The-Internet.jpg" alt="Ralph Breaks The Internet"></div><div class="info"><div class="name">Ralph Breaks The Internet</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 5 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic</span></div></div><div class="detail"><div class="detail-inner-wrap">Animation, Adventure | 2 hr 5 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Ralph Breaks The Internet</h1> <div class="stamp">PG <br></div></div><div class="info genere"><span>Animation</span><span> Adventure</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 5 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> Six years after the events of Wreck-It Ralph, Ralph and Vanellope now friends, discover a wi-fi router in their arcade leading them into a new adventure.</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Ralph-Breaks-The-Internet.jpg" alt="Ralph Breaks The Internet"></div></section> </div><div class="movie-item green-book genre-biography genre-comedy dine-in platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Green-Book.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>15</div><div class="booknow-tag"><span>BOOK NOW</span></div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Green-Book.jpg" alt="Green Book"></div><div class="info"><div class="name">Green Book</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 25 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic
-
-					</span></div></div><div class="detail"><div class="detail-inner-wrap">Biography, Comedy | 2 hr 25 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Green Book</h1> <div class="stamp">PG <br>15</div></div><div class="info genere"><span>Biography</span><span> Comedy</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 25 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic
-
-					</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> A working-class Italian-American bouncer becomes the driver of an African-American classical pianist on a tour of venues through the 1960s American South.
-					Director:Peter Farrelly 
-					Cast:Linda Cardellini, Viggo Mortensen, Mahershala Ali 
-					</div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Green-Book.jpg" alt="Green Book"></div></section> </div><div class="movie-item instant-family genre-comedy genre-drama dine-in platinum premier reel boutique standard the-dubai-mall---platinum-suites the-dubai-mall dubai-marina-mall jebel-ali-recreation-club the-pointe rove-downtown the-springs-souk"><div class="bot-img" style="background-image: url(https://www.reelcinemas.ae/en/KeyArts/Vertical/Instant-Family.jpg);"></div><div class="item-wrap"><div class="img"><div class="stamp">PG <br>13</div><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Instant-Family.jpg" alt="Instant Family"></div><div class="info"><div class="name">Instant Family</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 15 min</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic
-
-					</span></div></div><div class="detail"><div class="detail-inner-wrap">Comedy, Drama | 2 hr 15 min</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details is--last-item"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">Instant Family</h1> <div class="stamp">PG <br>13</div></div><div class="info genere"><span>Comedy</span><span> Drama</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2 hr 15 min</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English
-					</span></div><div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="" class="svg"></i><span>Arabic
-
-					</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list"><li><picture><source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Platinum"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-premier--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-premier.png" alt="Premier"></picture></li><li><picture><source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-junior.png" alt="standard"></picture></li></ul></div><div class="info"><strong>Storyline:</strong> A couple find themselves in over their heads when they adopt three children. 
-					Director: Sean Anders 
-					Cast: Mark Wahlberg, Rose Byrne, Isabela Moner </div><div class="action"><a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="https://www.reelcinemas.ae/en/KeyArts/Vertical/Instant-Family.jpg" alt="Instant Family"></div></section> </div></div>
+				<div class="o-container movie-lsit-wrap js-movie-list js-movie-list--not-open js-play-movies-listing">
+					<div class="u-loader"></div>
 				</div>
 			</div>
 		</section>
@@ -735,7 +478,7 @@
 	    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	    <script>window.jQuery || document.write('<script src="assets/js/script/jquery-3.3.1.min.js"><\/script>')</script>
 
-	    <script src="json-script.js"></script>
+	    <script src="json-movie-detail.js"></script>
 	    <script src="assets/js/script.min.js"></script>
 
 	    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
