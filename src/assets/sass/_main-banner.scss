@@ -12,6 +12,29 @@
 		display: none;
 	}
 	.main-carousel{
+		.slick-arrow{
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 25px;
+		    width: 33px;
+		    height: 60px;
+			appearance: none;
+			border-radius: 0;
+			z-index: 10;
+			font-size: 0;
+			color: transparent;
+			border: 0;
+			cursor: pointer;
+			background: transparent url(../img/icons/arrow-left.svg) no-repeat 50%;
+			transform: translateY(-50%);
+
+			&.slick-next{
+				right: 25px;
+				left: auto;
+				background-image: url(../img/icons/arrow-right.svg);
+			}
+		}
 		&.slick-initialized{
 			.slick-slide{
 				.txt{
@@ -70,18 +93,21 @@
 				display: flex;
 				position: relative;
 				align-items: center;
-				padding: 50px 0 115px;
+				padding: 50px 0 240px;
 				min-height: 550px;
 				height: 75vh;
-				height: calc(100vh - 180px);
+				height: calc(100vh - 80px);
 
 				@media (max-width: 1600px){
-					height: calc(100vh - 160px);
+					// height: calc(100vh - 80px);
 				}
-
+				@media (max-height: 820px){
+					padding-bottom: 200px;
+					padding-top: 10px;
+				}
 				@media (max-height: 750px){
-					padding-bottom: 115px;
-					height: calc(100vh - 192px);
+					padding-bottom: 170px;
+					height: calc(100vh - 82px);
 				}
 			}
 		}
@@ -114,6 +140,10 @@
 				height: 100%;
 				background: url('../img/movie-posters/bottom-overlay.png') repeat-x center bottom;
 				z-index: 2;
+
+				@media (max-height: 820px){
+					background-size: 100% 130px;
+				}
 			}
 
 			img{
@@ -128,6 +158,7 @@
 		    width: 100%;
 		    z-index: 2;
 		    color: #222;
+		    padding: 0 100px;
 
 			@media (max-width: 1527px){ 
 				/*bottom: 8vw;*/
@@ -224,11 +255,19 @@
 		}
 	} 
 	.main-carousel-thumb{
-		margin: -79px 0 70px;
+		margin: -260px 0 70px;
 		height: 160px;
 		overflow: hidden;
 
+		@media (max-height: 820px){
+			margin-top: -215px;
+		}
+		@media (max-height: 750px){
+			margin-top: -185px;
+		}
+
 		@media (max-width: 1527px){
+			// margin-top: -146px;
 			height: calc(10.4vw);
 		}
 
@@ -361,25 +400,45 @@
 				.slick-slide{
 					.wrap{
 						background: #fff;
+						&:before{
+							content: '';
+							display: block;
+							width: 100%;
+							height: 100%;
+							position: absolute;
+							top: 0;
+							left: 0;
+							border: 0px solid #fff;
+							z-index: 1;
+							border-radius: 7px;
+						}
 						&:after{
-							opacity: 0.5;
+							opacity: 0.1;
 						}
 					}
 					img{
 						transition: transform .35s, filter .35s, opacity .35s;
 						transform: scale(1);
-						filter: grayscale(50%);
-						opacity: 0.75;
+						filter: grayscale(75%);
+						opacity: 0.6;
 					}
 					&:hover,
 					&.slick-active{
 						&:hover,
 						&.slick-current{
+							.wrap{
+								&:before{
+									border-width: 2px;
+								}
+							}
 							img{
 								opacity: 1;
 								filter: grayscale(0%);
 								transform: scale(1.2);
-
+							}
+						}
+						&.slick-current{
+							.wrap{
 								&:after{
 									opacity: 0.1;
 								}

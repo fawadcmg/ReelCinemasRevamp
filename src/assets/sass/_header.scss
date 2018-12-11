@@ -440,6 +440,9 @@
 		}
 		ul+ul { 
 			vertical-align:top;
+			@media (min-width: 768px){
+				max-width: 50%;
+			}
 			@media (max-width: 1200px){
 				display: block;
 			}
@@ -492,6 +495,7 @@
 		position: relative;
 		margin-top: 25px;
 		margin-bottom: 40px;
+		z-index: 2;
 
 		transition: opacity .1s, transform .35s .35s;
 		opacity: 0;
@@ -505,10 +509,37 @@
 			width: 510px;
 		}
 
+
+		.slick-arrow{
+			display: block;
+			position: absolute;
+			bottom: -17px;
+			right: 60px;
+		    width:  12px;
+		    height: 23px;
+			appearance: none;
+			border-radius: 0;
+			z-index: 10;
+			font-size: 0;
+			color: transparent;
+			border: 0;
+			cursor: pointer;
+			background: transparent url(../img/icons/arrow-left.svg) no-repeat 50%;
+			transform: translateY(-50%);
+			padding: 0;
+
+			&.slick-next{
+				right: 20px;
+				background-image: url(../img/icons/arrow-right.svg);
+			}
+		}
+
 		.nav-offer-item{
 			position: relative;
 		}
 		.slick-dots{
+			font-size: 0;
+			margin-top: 10px;
 			button{
 				border-radius: 999px;
 				font-size: 0px;
