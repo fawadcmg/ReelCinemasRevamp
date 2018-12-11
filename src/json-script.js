@@ -30,6 +30,9 @@ $(document).ready(function () {
 
 	loadPlayMovies();
 	loadComingMovies();
+
+	scrollCustomSelect();
+	AOS.refresh();
 });
 
 $('.js-select-all-exp').click(function () {
@@ -101,11 +104,12 @@ function loadCinemas(){
 	}).done(function( data ) {   
 
 		cinemasListing.append('<div class="item custom-action js-select-all js-select-all-location"><input type="checkbox" id="select-all-locations"><label for="select-all-locations"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
-
+		cinemasListing.append('<div class="scroll-area"></div>');
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];				
-			cinemasListing.append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-cinemaItem" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
+			cinemasListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-cinemaItem" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
 		}
+		cinemasListing.append('<div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>');
 
 		$('.js-cinemaItem').click(function () {
 			var cinemaNames = $(this).val();
@@ -132,7 +136,10 @@ function loadCinemas(){
 			cinemaFilter = startFromZero(cinemaFilter);
 			filterMoviesListing(moviewFilter, cinemaFilter, experienceFilter, genreFilter);
 		});
-		
+
+		scrollCustomSelect();
+		AOS.refresh();
+
 	  	console.log("Cinemas completed");
 
 	}).fail(function( data ) {
@@ -173,11 +180,12 @@ function loadCinemas1(){
 	}).done(function( data ) {   
 
 		cinemasListing.append('<div class="item custom-action js-select-all js-select-all-location-1"><input type="checkbox" id="select-all-locations-1"><label for="select-all-locations-1"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
-
+		cinemasListing.append('<div class="scroll-area"></div>');
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];				
-			cinemasListing.append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-cinemaItem-1" id="'+tempEntry[1]+'-1'+'"><label for="'+tempEntry[1]+'-1'+'">'+tempEntry[0]+'</label></div>');
+			cinemasListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-cinemaItem-1" id="'+tempEntry[1]+'-1'+'"><label for="'+tempEntry[1]+'-1'+'">'+tempEntry[0]+'</label></div>');
 		}
+		cinemasListing.append('<div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>');
 
 		$('.js-cinemaItem-1').click(function () {
 			var cinemaNames = $(this).val();
@@ -204,7 +212,10 @@ function loadCinemas1(){
 			cinemaFilter1 = startFromZero(cinemaFilter1);
 			filterMoviesListing1(moviewFilter1, cinemaFilter1, experienceFilter1, genreFilter1);
 		});
-		
+
+		scrollCustomSelect();
+		AOS.refresh();
+
 	  	console.log("Coming Cinemas completed");
 
 	}).fail(function( data ) {
@@ -297,17 +308,17 @@ function loadMovies(){
 	}).done(function( data ) {  
 
 		moviesListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-movies"><label for="select-all-movies"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
-
+		moviesListing.append('<div class="scroll-area"></div>');
 		tempArray.sort(function(a, b){
 		    if(a[0] < b[0]) { return -1; }
 		    if(a[0] > b[0]) { return 1; }
 		    return 0;
 		});
-
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];				
-			moviesListing.append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem" id="'+tempEntry[1]+'"><label for="'+tempEntry[1]+'">'+tempEntry[0]+'</label></div>');
+			moviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem" id="'+tempEntry[1]+'"><label for="'+tempEntry[1]+'">'+tempEntry[0]+'</label></div>');
 		}
+		moviesListing.append('<div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>');
 
 
 		$('.js-movieItem').click(function () {
@@ -328,8 +339,13 @@ function loadMovies(){
 			}else{
 				$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop( "checked", true );			
 			}
-		});	  	
+		});	  
+
+		scrollCustomSelect();
+		AOS.refresh();
+
 	  	console.log("Movies completed");
+
 	}).fail(function( data ) {
 	  	console.log("Movies failed");
 	});
@@ -367,17 +383,17 @@ function loadMovies1(){
 	}).done(function( data ) {  
 
 		moviesListing.append('<div class="item custom-action js-select-all-1"><input type="checkbox" id="select-all-movies-1"><label for="select-all-movies-1"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
-
+		moviesListing.append('<div class="scroll-area"></div>');
 		tempArray.sort(function(a, b){
 		    if(a[0] < b[0]) { return -1; }
 		    if(a[0] > b[0]) { return 1; }
 		    return 0;
 		});
-
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];				
-			moviesListing.append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem-1" id="'+tempEntry[1]+"-1"+'"><label for="'+tempEntry[1]+"-1"+'">'+tempEntry[0]+'</label></div>');
+			moviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem-1" id="'+tempEntry[1]+"-1"+'"><label for="'+tempEntry[1]+"-1"+'">'+tempEntry[0]+'</label></div>');
 		}
+		moviesListing.append('<div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>');
 
 
 		$('.js-movieItem-1').click(function () {
@@ -398,8 +414,13 @@ function loadMovies1(){
 			}else{
 				$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop( "checked", true );			
 			}
-		});	  	
+		});	  
+
+		scrollCustomSelect();
+		AOS.refresh();	
+
 	  	console.log("Coming Movies completed");
+
 	}).fail(function( data ) {
 	  	console.log("Coming Movies failed");
 	});
@@ -437,19 +458,23 @@ function loadExperiences(){
 	  
 	}).done(function( data ) {
 		experiencesListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp"><label for="select-all-exp"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
-		
+		experiencesListing.append('<div class="scroll-area"></div>');
 		tempArray.sort(function(a, b){
 		    if(a[0] < b[0]) { return -1; }
 		    if(a[0] > b[0]) { return 1; }
 		    return 0;
 		});
-
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];				
-			experiencesListing.append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-experienceItem" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
+			experiencesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-experienceItem" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
 		}
+		experiencesListing.append('<div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>');
+
+		scrollCustomSelect();
+		AOS.refresh();
 
 	    console.log("Experiences completed");
+
 	}).fail(function( data ) {
 	    console.log("Experiences failed");
 	});
@@ -487,19 +512,23 @@ function loadExperiences1(){
 	  
 	}).done(function( data ) {
 		experiencesListing.append('<div class="item custom-action js-select-all-1"><input type="checkbox" id="select-all-exp-1"><label for="select-all-exp-1"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
-		
+		experiencesListing.append('<div class="scroll-area"></div>');
 		tempArray.sort(function(a, b){
 		    if(a[0] < b[0]) { return -1; }
 		    if(a[0] > b[0]) { return 1; }
 		    return 0;
 		});
-
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];				
-			experiencesListing.append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-experienceItem-1" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
+			experiencesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-experienceItem-1" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
 		}
+		experiencesListing.append('<div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>');
+
+		scrollCustomSelect();
+		AOS.refresh();
 
 	    console.log("Coming Experiences completed");
+
 	}).fail(function( data ) {
 	    console.log("Coming Experiences failed");
 	});
@@ -586,7 +615,7 @@ function loadPlayMovies(){
 			}
 
 			if(movieExprerienceTemp.indexOf('dolby') > -1  ){
-				movieExprerience += '<li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li>';
+				movieExprerience += '<li><picture><source srcset="assets/img/logos/logo-reel-dolby-cinema--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li>';
 			}
 
 			if(movieExprerienceTemp.indexOf('mx4d') > -1  ){
@@ -632,8 +661,6 @@ function loadPlayMovies(){
 		});
 	  
 	}).done(function( data ) {
-	    movieListSetHTML();
-	    movieList();
 
 	    $('.list-wrap-page').fadeOut('fast');
 	    moreMoviesListing.fadeOut('fast');	
@@ -656,6 +683,17 @@ function loadPlayMovies(){
 		    	$(this).attr('data-aos-delay', (50*i));
 			});
 		});
+
+		scrollCustomSelect();
+		AOS.refresh();
+
+	    movieListSetHTML();
+	    movieList();
+
+	    toSVG();
+		movieListCarousel();
+		filterSearch();
+
 	}).fail(function( data ) {
 	    console.log("Play movies failed");
 	});
@@ -987,7 +1025,7 @@ function loadComingMovies(){
 			}
 
 			if(movieExprerienceTemp.indexOf('dolby') > -1  ){
-				movieExprerience += '<li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li>';
+				movieExprerience += '<li><picture><source srcset="assets/img/logos/logo-reel-dolby-cinema--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li>';
 			}
 
 			if(movieExprerienceTemp.indexOf('mx4d') > -1  ){
@@ -1030,6 +1068,9 @@ function loadComingMovies(){
 			playMoviesListing.append(comingMovieListingArray[movieCounter]);
 			movieCounter++;
 		});
+
+		scrollCustomSelect();
+		AOS.refresh();
 	  
 	}).done(function( data ) {	    
 	    movieListSetHTML();

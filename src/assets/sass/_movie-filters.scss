@@ -146,11 +146,12 @@
 		}
 		.field{
 			position: relative;
+			text-transform: uppercase;
 			input{
 				font-family: 'Effra-bold';
 				font-size: 15px;
 				color: #000;
-				text-transform: uppercase;
+				// text-transform: uppercase;
 				line-height: 40px;
 				background: url("../img/misc/dropdown.png") no-repeat right center;
 				border-radius: 20px;
@@ -162,10 +163,23 @@
 				outline: none;
 				cursor: pointer;
 
+				&::-webkit-input-placeholder {
+				  text-transform: uppercase;
+				}
+				&::-moz-placeholder {
+				  text-transform: uppercase;
+				}
+				&:-ms-input-placeholder {
+				  text-transform: uppercase;
+				}
+				&:-moz-placeholder {
+				  text-transform: uppercase;
+				}
+
 				@media (max-width: 1600px){
 					width: 240px;
 					font-size: 14px;
-					text-transform: uppercase;
+					// text-transform: uppercase;
 					color: #000;
 					line-height: 30px;
 				}
@@ -261,14 +275,61 @@
 				}
 			}
 
-			.scroll{
+			.scroll-area{
 				overflow-y: auto;
-				max-height: 420px;
+				max-height: 280px;
+				overflow-x: hidden;
+			}
+
+			.scroll-down-arrow,
+			.scroll-up-arrow{
+				display: block;
+				width: 30px;
+				height: 30px;
+				background: #fff url(../img/icons/arrow-up.svg) no-repeat 50%;
+				background-size: 16px auto;
+				position: absolute;
+				top: 103px;
+				right: 10px;
+				cursor: pointer;
+				border-radius: 999px;
+
+			    &.is--deactive{
+			    	// pointer-events: none;
+			    	opacity: 0.2;
+			    }
+			}
+			.scroll-down-arrow{
+				background-image: url('../img/icons/arrow-down.svg');
+				top: auto;
+				bottom: 10px;
 			}
 
 			.item{
 				position: relative;
 				padding-bottom: 2px;
+
+				&.item--close{
+					height: 40px;
+					a{
+						bottom: 0;
+						position: absolute;
+						width: 100%;
+						background: #222222;
+						color: #fff;
+						font-size: 12px;
+						line-height: 22px;
+						height: 40px;
+						text-transform: uppercase;
+						text-align: center;
+						padding: 10px;
+						transition: background .35s;
+
+						&:hover{
+							background: #333;
+						}
+				    }
+			    }
 
 				&:last-child{
 					padding-bottom: 0;
@@ -517,8 +578,12 @@
 						background: none;
 					}
 				}
-				.scroll{
-					height: 190px;
+
+				.item--close{
+					display: none;
+				}
+				.scroll-area{
+					height: 141px;
 				    // height: calc(65vh - 169px);
 				    @media (max-height: 650px){
 				    	// height: calc(65vh - 147px);

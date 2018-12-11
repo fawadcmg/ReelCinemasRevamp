@@ -65,6 +65,9 @@
 					transition: transform 0.35s;
 					overflow: visible;
 					border-radius: 0;
+					@media (max-height: 590px){
+						transform: scale(0.9) translateZ(0);
+					}
 
 					img{
 						border-radius: 10px;
@@ -535,6 +538,16 @@
 						color: #222222;
 						text-transform: uppercase;
 						margin: 10px 20px 0 0;
+
+						&:nth-child(2n),
+						&:last-child{
+							margin-right: 0;
+						}
+						&:nth-child(n+2){
+							margin-top: 0;
+							padding-top: 10px;
+							padding-bottom: 0;
+						}
 						svg  { 
 							width: 22px;
 							height: auto;
@@ -667,6 +680,13 @@
 			overflow: hidden;
 			text-align: right;
 			background: #d9d9d9;
+			padding: 30px 260px 30px 20px;
+			@media (max-width: 1660px){
+				padding-right: 14.5vw;
+			}
+			@media (max-width: 1200px){
+				padding-right: 9.5vw;
+			}
 			//mix-blend-mode: multiply;	
 			/* &:before{
 				content:'';
@@ -684,13 +704,12 @@
 				height: 100%;
 				width: auto;
 				margin: 0 0 0 auto;
-				height: calc(100% + 40px);
-				transform: translateY(calc(20px - 60px));
+				height: 100%;
+				// height: calc(100% + 40px);
+				// transform: translateY(calc(20px - 60px));
 				mix-blend-mode: multiply;
 
 				@media (max-width: 1200px){
-					position: relative;
-					right: -150px;
 				}
 			}
 			@media (max-width: 1023px){
@@ -843,6 +862,14 @@
 	    justify-content: space-around;
 	    margin-bottom: 60px;
 
+	    .slick-initialized .slick-track{
+	    	&:after{
+				// content: "";
+				// display: table;
+				// clear: both;
+		    }
+		}
+
 	    &.movies-list--1{
 	    	height: auto;
 			@media (max-width: 767px){
@@ -872,7 +899,12 @@
 	    	margin-right: 0;
 	    }
 	    .list-tabs{
-	    	margin: 10px 0;
+	    	margin: 4vh 0;
+
+			@media (max-height: 610px){
+				margin-top: 3vh;
+				margin-bottom: 3vh;
+			}
 	    }
 	    .movie-item .stamp{
 	    	transform: none;
@@ -887,7 +919,7 @@
 				margin-top: 8px;
 			}
 			.movie-item .item-wrap .action{
-				margin-top: 10px;
+				margin-top: 5px;
 			}
 		}
 		@media (max-height: 650px){
@@ -902,7 +934,7 @@
 				font-size: 11px;
 			}
 			.movie-lsit-wrap .movie-item .img{
-				width: 26vh;
+				width: 30vh;
 			}
 			.movie-lsit-wrap{
 				max-width: 230px;
@@ -914,10 +946,18 @@
 				font-size: 20px;
 			}
 		}
+		@media (max-height: 585px){
+			.movie-lsit-wrap .movie-item .img{
+				width: 28vh;
+			}
+			.c-movies-list .movie-lsit-wrap{
+				width: 200px;
+			}
+		}
 		@media (max-height: 550px){
 			margin-bottom: 40px;
 			.movie-lsit-wrap .movie-item .img{
-				width: 24vh;
+				width: 28vh;
 			}
 			.movie-item .item-wrap .action{
     			margin-top: 5px;
