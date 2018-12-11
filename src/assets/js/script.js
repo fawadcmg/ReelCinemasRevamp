@@ -3101,7 +3101,7 @@ var isRTL = $('html').attr('dir') == "rtl" ? true : false,
     bodyHeight,
     bodyTopPos;
 
-loadPlayMovies();
+// loadPlayMovies();
 ChangeToSvg();
 setOnTopClass();
 initSlick();
@@ -3127,15 +3127,6 @@ if (winWidth > 1024) {
 	$('.popular-heading').attr('data-aos-delay', 300);
 	$('.movieheader .txt .movie-poster-detail, .movieheader .txt .movie-poster, .popular-heading').attr('data-aos-delay', 300);
 }
-$('.c-loader').fadeOut('slow', function () {
-	// setTimeout(function () {
-	if (winWidth > 1024) {
-		AOS.init({
-			once: true
-		});
-	}
-	// }, 1000);
-});
 
 $(function () {
 	winDimensions();
@@ -3153,6 +3144,15 @@ $(function () {
 	bindPopupEve();
 	setOnTopClass();
 	customSelectBox();
+	$('.c-loader').fadeOut('slow', function () {
+		// setTimeout(function () {
+		if (winWidth > 1024) {
+			AOS.init({
+				once: true
+			});
+		}
+		// }, 1000);
+	});
 });
 
 //On Window Load
