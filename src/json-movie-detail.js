@@ -384,6 +384,8 @@ function loadCinamaListing(movieName){
 	}	
 }
 
+$('.list-main-action').fadeOut('false');
+
 function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 
 	var movieDate, movieDateValue, targetItem, movieResult, counter, itemClass, movieCinema, movieExprerienceTemp;
