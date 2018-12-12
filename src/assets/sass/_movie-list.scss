@@ -666,6 +666,8 @@
 			display: flex;
 			align-items: center;
 			margin-bottom: 20px;
+			align-items: flex-start;
+
 			.stamp{
 				margin-left: 20px;
 			}
@@ -725,18 +727,20 @@
 			}
 		} 
 		.title{
-			font-size: 55px;
+			font-size: 40px;
 			line-height: 1em;
 			color: #222;
-			font-weight: bold;
+			font-weight: 700;
+			max-width: 44%;
 			@media (max-width: 1800px){
-				font-size: 45px;
+				// font-size: 40px;
 			}
-			@media (max-width: 1500px){
-				font-size: 40px;
+			@media (max-width: 1700px){
+				font-size: 35px;
 			}
 			@media (max-width: 1023px){
-				font-size: 35px;
+				max-width: 100%;
+				font-size: 30px;
 			}
 		}
 			.info{

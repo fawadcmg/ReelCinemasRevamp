@@ -4,7 +4,8 @@ var isRTL = ($('html').attr('dir') == "rtl") ? true : false,
 	headerHeight = $('.c-main-header').outerHeight(),
 	footerHeight = $('.c-main-footer').outerHeight(),
 	bodyHeight,
-	bodyTopPos;
+	bodyTopPos,
+	isIE = detectIE();
 
 // loadPlayMovies();
 ChangeToSvg();
@@ -14,30 +15,6 @@ headerSpace();
 
 if(winWidth<768){
 	$('.js-movie-list .u-loader').remove();
-}
-if(winWidth > 1024){
-	// Left
-	$('.movieheader .txt .movie-poster-detail').attr('data-aos', 'fade-left');
-	// Right
-	$('.movieheader .txt .movie-poster, .popular-heading, .logo img').attr('data-aos', 'fade-right');
-	// Down
-    $('.c-main-header').attr('data-aos', 'fade-down');
-    // Up
-    $('.movieheader, .c-whats-popular .sec-title, .tileview-movies-list, .c-show-list-page, .c-show-list-page .d-box-wrap, .c-show-list-page > .o-container:first-child, .list-main-action, .c-exp-views .carousel .item:first-child .txt, .c-main-footer, .c-main-footer > .o-container > .row > *, .c-exp-views, .c-movie-filters, .c-movies-list .list-tabs, .c-main-banner, .c-main-banner .main-carousel-thumb').attr('data-aos', 'fade-up');
-
-    $('.c-exp-views .carousel-thumb .slick-slide').each(function (i) {
-    	$(this).attr('data-aos', 'fade-right');
-    	$(this).attr('data-aos-delay', (50*i));
-    });
-	$('.popular-heading').attr('data-aos-delay', 300);
-	$('.movieheader .txt .movie-poster-detail, .movieheader .txt .movie-poster, .popular-heading').attr('data-aos-delay', 300);
-
-	$('.c-movies-list .list-wrap').each(function () {
-		$(this).find('.movie-item').each(function (i) {
-	    	$(this).attr('data-aos', 'fade-up');
-	    	$(this).attr('data-aos-delay', (50*i));
-		});
-	});
 }
 
 
@@ -783,8 +760,9 @@ function detectIE() {
     // other browser
     return false;
 }
-var isIE = detectIE();
+
 if(isIE){
+	console.log("IE Version:" + isIE);
     $('html').addClass('is--ie');
     $('html').addClass('is--ie-'+isIE);
 
@@ -798,6 +776,42 @@ if(isIE){
 
 		$('.c-main-banner .item-inner .item-inner-wrap').height(itemHeight);
     }
+}
+
+if(winWidth > 1024 && isIE == false){
+	// Left
+	$('.movieheader .txt .movie-poster-detail').attr('data-aos', 'fade-left');
+	// Right
+	$('.movieheader .txt .movie-poster, .popular-heading, .logo img').attr('data-aos', 'fade-right');
+	// Down
+    $('.c-main-header').attr('data-aos', 'fade-down');
+    // Up
+    $('.movieheader, .c-whats-popular .sec-title, .tileview-movies-list, .c-show-list-page, .c-show-list-page .d-box-wrap, .c-show-list-page > .o-container:first-child, .list-main-action, .c-exp-views .carousel .item:first-child .txt, .c-main-footer, .c-main-footer > .o-container > .row > *, .c-exp-views, .c-movie-filters, .c-movies-list .list-tabs, .c-main-banner, .c-main-banner .main-carousel-thumb').attr('data-aos', 'fade-up');
+
+    $('.c-exp-views .carousel-thumb .slick-slide').each(function (i) {
+    	$(this).attr('data-aos', 'fade-right');
+    	$(this).attr('data-aos-delay', (50*i));
+    });
+	$('.popular-heading').attr('data-aos-delay', 300);
+	$('.movieheader .txt .movie-poster-detail, .movieheader .txt .movie-poster, .popular-heading').attr('data-aos-delay', 300);
+
+	$('.c-movies-list .list-wrap').each(function () {
+		$(this).find('.movie-item').each(function (i) {
+	    	$(this).attr('data-aos', 'fade-up');
+	    	$(this).attr('data-aos-delay', (50*i));
+		});
+	});
+}
+
+function refreshAOS(aosFunc){
+	if(winWidth > 1024 && isIE == false){
+		if(aosFunc == 'init'){
+			AOS.init();
+		}
+		if(aosFunc == 'refresh'){
+			AOS.refresh();
+		}
+	}
 }
 
 function headerSpace() {
@@ -897,7 +911,7 @@ function closePopup() {
 }
 
 function addVideoPlugin() {
-	if(winWidth > 1024 && $('.js-video').get(0)){
+	if(winWidth > 1024 && $('.js-video').get(0) && isIE == false){
 		var plyrScriptElement = document.createElement("script");
 		plyrScriptElement.setAttribute('src', 'assets/js/plyr.min.js');
 
@@ -982,7 +996,6 @@ function filterSearch() {
 
 function scrollTo() {
 	$('[data-scrollto]').click(function (e) {
-		console.log('fsdafasd');
 		e.preventDefault();
 		var target = '#' + $(this).attr('data-scrollto');
 		$('html, body').stop().animate({

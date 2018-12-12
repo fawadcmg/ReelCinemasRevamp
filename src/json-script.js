@@ -19,6 +19,9 @@ var comingMovieListingArray = new Array();
 
 var moviesPerPage = 3;
 
+var playMoviesListing = $('.js-play-movies-listing');  	
+var moreMoviesListing = $('.js-load-play-movies-listing');
+
 $(document).ready(function () {
 	loadCinemas();
 	loadMovies();
@@ -32,7 +35,7 @@ $(document).ready(function () {
 	loadComingMovies();
 
 	scrollCustomSelect();
-	AOS.refresh();
+	refreshAOS('refresh');
 });
 
 $('.js-select-all-exp').click(function () {
@@ -138,7 +141,7 @@ function loadCinemas(){
 		});
 
 		scrollCustomSelect();
-		AOS.refresh();
+		refreshAOS('refresh');
 
 	  	console.log("Cinemas completed");
 
@@ -214,7 +217,7 @@ function loadCinemas1(){
 		});
 
 		scrollCustomSelect();
-		AOS.refresh();
+		refreshAOS('refresh');
 
 	  	console.log("Coming Cinemas completed");
 
@@ -280,10 +283,12 @@ $('.js-load-play-movies-listing').click(function () {
 
 function loadMovies(){
 	var moviesListing = $('.js-movies-listing');
+	var moreMoviesListing = $('.js-load-play-movies-listing');
 	var itemValue, itemClass;
 	var tempArray = [];
 	var tempEntry = [];	
 	var count=0;
+	var movieCounter = 0;
 
 	moviesListing.empty();
 
@@ -302,11 +307,10 @@ function loadMovies(){
 			    	itemClass			    	
 			    ]
 			);
-
+			movieCounter++;
 			count++;		  
 		});
 	}).done(function( data ) {  
-
 		moviesListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-movies"><label for="select-all-movies"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
 		moviesListing.append('<div class="scroll-area"></div>');
 		tempArray.sort(function(a, b){
@@ -339,10 +343,22 @@ function loadMovies(){
 			}else{
 				$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop( "checked", true );			
 			}
-		});	  
+		});
 
 		scrollCustomSelect();
-		AOS.refresh();
+		refreshAOS('refresh');
+
+		$('.list-wrap-page').fadeOut('fast');
+	    $('.js-load-play-movies-listing').fadeOut('fast');
+	  
+	    $('.list-wrap-page--1').fadeIn('slow');
+	    $('.list-wrap-page--2').fadeIn('slow');
+	    $('.list-wrap-page--3').fadeIn('slow');  
+	    if(movieCounter/6 > 3 ){
+			$('.js-load-play-movies-listing').fadeIn('fast');
+		}
+	    // resetPagination(1);
+	    playMoviesListing.removeClass('is--loading');
 
 	  	console.log("Movies completed");
 
@@ -417,7 +433,7 @@ function loadMovies1(){
 		});	  
 
 		scrollCustomSelect();
-		AOS.refresh();	
+		refreshAOS('refresh');	
 
 	  	console.log("Coming Movies completed");
 
@@ -471,7 +487,7 @@ function loadExperiences(){
 		experiencesListing.append('<div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>');
 
 		scrollCustomSelect();
-		AOS.refresh();
+		refreshAOS('refresh');
 
 	    console.log("Experiences completed");
 
@@ -525,7 +541,7 @@ function loadExperiences1(){
 		experiencesListing.append('<div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>');
 
 		scrollCustomSelect();
-		AOS.refresh();
+		refreshAOS('refresh');
 
 	    console.log("Coming Experiences completed");
 
@@ -535,9 +551,6 @@ function loadExperiences1(){
 }
 
 function loadPlayMovies(){
-	
-  	var playMoviesListing = $('.js-play-movies-listing');  	
-  	var moreMoviesListing = $('.js-load-play-movies-listing');  	
   	var movieName, movieImage, movieGenre, movieTrailer, movieDuration, moviePG, movieLanguage;
   	var movieExPlatinum, movieExPremier, movieExStandard, movieExDineIn, movieExBoutique;
   	var movieExMX4D, movieExJunior, movieExDobly, movieExprerience, movieExprerienceTemp;
@@ -674,7 +687,7 @@ function loadPlayMovies(){
 	    console.log("Play movies completed");
 
 		scrollCustomSelect();
-		AOS.refresh();
+		refreshAOS('refresh');
 
 	    movieListSetHTML();
 	    movieList();
@@ -683,13 +696,21 @@ function loadPlayMovies(){
 		movieListCarousel();
 		filterSearch();
 
-		$('.c-movies-list .list-wrap').each(function () {
-			$(this).find('.movie-item').each(function (i) {
-		    	$(this).attr('data-aos', 'fade-up');
-		    	$(this).attr('data-aos-delay', (50*i));
+		if(winWidth > 1024 && isIE == false){
+			$('.c-movies-list .list-wrap').each(function () {
+				$(this).find('.movie-item').each(function (i) {
+			    	$(this).attr('data-aos', 'fade-up');
+			    	$(this).attr('data-aos-delay', (50*i));
+				});
 			});
-		});
-		AOS.init();
+		}
+		refreshAOS('init');
+
+
+		$('.list-wrap-page').fadeOut('fast');
+	    $('.list-wrap-page--1').stop().fadeIn('slow');
+	    $('.list-wrap-page--2').stop().fadeIn('slow');
+	    $('.list-wrap-page--3').stop().fadeIn('slow');
 
 		moreMoviesListing.fadeOut('fast');
 	    if($('.js-play-movies-listing > .list-wrap').length > 3 ){
@@ -713,9 +734,11 @@ function resetPagination(currentPageNumber){
 		}
 	}
 	pageNumber++;		
-
+	console.log(counter, pageNumber, nextPage, currentPage, moviesPerPage);
 	moreMoviesListing.fadeOut('fast');
-    if($('.js-play-movies-listing > .list-wrap').length > 3 ){
+	var listItems = $('#whats-on .movie-item').length;
+
+    if($('.js-play-movies-listing > .list-wrap').length > 3 && listItems > nextPage*18 ){
 		moreMoviesListing.fadeIn('slow');
 	}
 
@@ -728,7 +751,6 @@ function filterMoviesListing(movieIDs, cinemaIDs, experienceIDs, genreIDs){
 	var tempArray = [];
 	var movieCounter=0;	
 	var playMoviesListing = $('.js-play-movies-listing');
-	var moreMoviesListing = $('.js-load-play-movies-listing');
 	moreMoviesListing.fadeOut('fast');
 	playMoviesListing.addClass('is--loading');
 	playMoviesListing.empty(); 
@@ -829,14 +851,16 @@ function filterMoviesListing(movieIDs, cinemaIDs, experienceIDs, genreIDs){
 	if(movieItems.length == 0){
 		playMoviesListing.addClass('empty--record');
 	}
-
-	$('.c-movies-list .list-wrap').each(function () {
-		$(this).find('.movie-item').each(function (i) {
-	    	$(this).attr('data-aos', 'fade-up');
-	    	$(this).attr('data-aos-delay', (50*i));
+	
+	if(winWidth > 1024 && isIE == false){
+		$('.c-movies-list .list-wrap').each(function () {
+			$(this).find('.movie-item').each(function (i) {
+		    	$(this).attr('data-aos', 'fade-up');
+		    	$(this).attr('data-aos-delay', (50*i));
+			});
 		});
-	});
-	AOS.init();
+	}
+	refreshAOS('init');
 }
 
 
@@ -955,7 +979,7 @@ function filterMoviesListing1(movieIDs, cinemaIDs, experienceIDs, genreIDs){
 	    	$(this).attr('data-aos-delay', (50*i));
 		});
 	});
-	AOS.init();
+	refreshAOS('init');
 }
 
 function unique(list) {
@@ -1117,7 +1141,7 @@ function loadComingMovies(){
 		    	$(this).attr('data-aos-delay', (50*i));
 			});
 		});
-		AOS.init();
+		refreshAOS('init');
 
 	    console.log("Coming soon movies completed");
 	}).fail(function( data ) {
