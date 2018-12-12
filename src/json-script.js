@@ -675,15 +675,6 @@ function loadPlayMovies(){
 	    playMoviesListing.removeClass('is--loading');
 	    console.log("Play movies completed");
 
-	    
-	    // $('.c-movies-list .list-wrap').attr('data-aos', 'fade-up');
-		$('.c-movies-list .list-wrap').each(function () {
-			$(this).find('.movie-item').each(function (i) {
-		    	$(this).attr('data-aos', 'fade-up');
-		    	$(this).attr('data-aos-delay', (50*i));
-			});
-		});
-
 		scrollCustomSelect();
 		AOS.refresh();
 
@@ -693,6 +684,14 @@ function loadPlayMovies(){
 	    toSVG();
 		movieListCarousel();
 		filterSearch();
+
+		$('.c-movies-list .list-wrap').each(function () {
+			$(this).find('.movie-item').each(function (i) {
+		    	$(this).attr('data-aos', 'fade-up');
+		    	$(this).attr('data-aos-delay', (50*i));
+			});
+		});
+		AOS.init();
 
 	}).fail(function( data ) {
 	    console.log("Play movies failed");
@@ -1070,7 +1069,6 @@ function loadComingMovies(){
 		});
 
 		scrollCustomSelect();
-		AOS.refresh();
 	  
 	}).done(function( data ) {	    
 	    movieListSetHTML();
@@ -1084,6 +1082,15 @@ function loadComingMovies(){
 			$('.js-load-coming-movies-listing').fadeOut('fast');
 		}	    
 	    $('.js-coming-movies-listing').removeClass('is--loading');
+
+
+		$('.c-movies-list .list-wrap').each(function () {
+			$(this).find('.movie-item').each(function (i) {
+		    	$(this).attr('data-aos', 'fade-up');
+		    	$(this).attr('data-aos-delay', (50*i));
+			});
+		});
+		AOS.init();
 
 	    console.log("Coming soon movies completed");
 	}).fail(function( data ) {

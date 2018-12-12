@@ -141,20 +141,12 @@
 	.not-at-top &{
 		background: rgba(255, 255, 255, 0.9);
 		.header-links>ul>li>a{
-			padding-top:    40px;
-			padding-bottom: 40px;
-			// @media (max-height: 750px){
-				padding-top: 32px;
-				padding-bottom: 27px;
-			// }
+			/* padding-top: 32px;
+			padding-bottom: 27px; */
 		}
 		.c-menu-btn{
-			padding-top: 42px;
-			padding-bottom: 42px;
-			// @media (max-height: 750px){
-				padding-top: 33px;
-				padding-bottom: 33px;
-			// }
+			/* padding-top: 33px;
+			padding-bottom: 33px; */
 		}
 	}
 

@@ -3126,6 +3126,13 @@ if (winWidth > 1024) {
 	});
 	$('.popular-heading').attr('data-aos-delay', 300);
 	$('.movieheader .txt .movie-poster-detail, .movieheader .txt .movie-poster, .popular-heading').attr('data-aos-delay', 300);
+
+	$('.c-movies-list .list-wrap').each(function () {
+		$(this).find('.movie-item').each(function (i) {
+			$(this).attr('data-aos', 'fade-up');
+			$(this).attr('data-aos-delay', 50 * i);
+		});
+	});
 }
 
 $(function () {
@@ -3157,6 +3164,7 @@ $(window).on('load', function () {
 	// calcBodyarea();
 	setTimeout(function () {
 		addVideoPlugin();
+		AOS.refresh();
 	}, 200);
 });
 
@@ -3849,6 +3857,15 @@ if (isIE) {
 	$('html').addClass('is--ie-' + isIE);
 
 	$('[src*=reel-logo]').attr('src', 'assets/img/brand/logo.png');
+
+	if ($('.c-main-banner').get(0)) {
+		var itemHeight = $('.c-main-banner .item-inner').height();
+		$('.c-main-banner .item-inner .txt').each(function () {
+			$(this).wrapAll('<div class="item-inner-wrap"></div>');
+		});
+
+		$('.c-main-banner .item-inner .item-inner-wrap').height(itemHeight);
+	}
 }
 
 function headerSpace() {

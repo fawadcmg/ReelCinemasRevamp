@@ -8,6 +8,8 @@
 }
 .c-main-banner{
 	// min-height: 880px;
+	margin-bottom: 40px;
+
 	@media (max-width: 767px){
 		display: none;
 	}
@@ -109,6 +111,12 @@
 					padding-bottom: 170px;
 					height: calc(100vh - 82px);
 				}
+
+				.item-inner-wrap{
+					position: relative;
+					height: 100%;
+					width: 100%;
+				}
 			}
 		}
 		.img{
@@ -180,16 +188,17 @@
 			p,
 			.details{
 				max-width: 600px;
-				font-size: 12px;
+				font-size: 15px;
 				line-height: 1.4em;
 				margin-bottom: 25px;
 				text-transform: uppercase;
 				@media (max-width: 1600px){
+					font-size: 14px;
 					margin-bottom: 20px;
 				}
 			}
 			p {
-				font-weight: 600;
+				font-weight: normal;
 				max-width: 400px;
 				text-transform:none;
 				@media (max-width: 1600px){
@@ -255,15 +264,20 @@
 		}
 	} 
 	.main-carousel-thumb{
-		margin: -260px 0 70px;
+		position: relative;
+		margin: 0px 0 70px;
 		height: 160px;
 		overflow: hidden;
+		position: absolute;
+		width: 100%;
+		bottom: 20px;
 
 		@media (max-height: 820px){
-			margin-top: -215px;
+			// margin-top: -215px;
+			bottom: -5px;
 		}
 		@media (max-height: 750px){
-			margin-top: -185px;
+			bottom: -35px;
 		}
 
 		@media (max-width: 1527px){
@@ -486,10 +500,13 @@
 		margin-top: 20px;
 	}
 	.c-main-banner .main-carousel .item .item-inner {
-	    min-height: 400px;
-	    padding-bottom: 80px;
-	    padding-top: 20px;
-	    height: calc(100vh - 172px);
+		min-height: 400px;
+		padding-bottom: 180px;
+		padding-top: 20px;
+		height: calc(100vh - 80px);
+	}
+	.c-main-banner .main-carousel-thumb {
+	    bottom: -55px;
 	}
 }
 @media (min-width: 1025px) and (max-height: 575px){
