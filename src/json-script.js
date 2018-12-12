@@ -368,7 +368,7 @@ function loadMovies(){
 
 }
 
-loadPlayPopup();
+// loadPlayPopup();
 
 function loadPlayPopup(){
 	var moviesListing = $('.js-c-popup');
