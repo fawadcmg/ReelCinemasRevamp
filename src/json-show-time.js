@@ -603,8 +603,6 @@ function resetPagination(currentPageNumber){
 	if($('.list-wrap-page--'+counter).length == 0 ){
 		$('.js-load-play-movies-listing').fadeOut('fast');
 	}
-
-
 }
 
 // Check movie filter functionality for combine with Movie Cinema and Experience
