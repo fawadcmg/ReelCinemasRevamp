@@ -3099,7 +3099,8 @@ var isRTL = $('html').attr('dir') == "rtl" ? true : false,
     headerHeight = $('.c-main-header').outerHeight(),
     footerHeight = $('.c-main-footer').outerHeight(),
     bodyHeight,
-    bodyTopPos;
+    bodyTopPos,
+    isIE = detectIE();
 
 // loadPlayMovies();
 ChangeToSvg();
@@ -3827,7 +3828,7 @@ function detectIE() {
 	// other browser
 	return false;
 }
-var isIE = detectIE();
+
 if (isIE) {
 	console.log("IE Version:" + isIE);
 	$('html').addClass('is--ie');
@@ -3872,10 +3873,10 @@ if (winWidth > 1024 && isIE == false) {
 
 function refreshAOS(aosFunc) {
 	if (winWidth > 1024 && isIE == false) {
-		if (aosFun == 'init') {
+		if (aosFunc == 'init') {
 			AOS.init();
 		}
-		if (aosFun == 'refresh') {
+		if (aosFunc == 'refresh') {
 			AOS.refresh();
 		}
 	}
@@ -3974,7 +3975,7 @@ function closePopup() {
 }
 
 function addVideoPlugin() {
-	if (winWidth > 1024 && $('.js-video').get(0)) {
+	if (winWidth > 1024 && $('.js-video').get(0) && isIE == false) {
 		var plyrScriptElement = document.createElement("script");
 		plyrScriptElement.setAttribute('src', 'assets/js/plyr.min.js');
 
