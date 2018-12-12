@@ -15,7 +15,8 @@ var movieShowTime = new Array();
 var movieSearchDate;
 var searchDateValue;
 var weekName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  	var monthName = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+var monthName = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+experienceFilter = ['Standard','Dolby','Dine','Boutique','ScreenX','Platinum','Premier','MX4D'];
 
 $(document).ready(function () {	
 	loadCinemas();	
@@ -29,7 +30,7 @@ $(document).ready(function () {
 $('.js-select-all-exp').click(function () {
 	// var experienceNames = $(this).val();
 	if($(this).prop('checked') == false){		
-		experienceFilter = ['Standard','Dolby','Dine','Boutique','ScreenX','Platinum','MX4D'];
+		experienceFilter = ['Standard','Dolby','Dine','Boutique','ScreenX','Platinum','Premier','MX4D'];
 	}else{				
 		experienceFilter = [];
 	}
@@ -376,11 +377,14 @@ function loadCinamaListing(movieName){
   		showTime = "";
   		tempValue1 = tempCinemaListing[counter];
   		var selectedDate = searchDateValue;
-  		movieTiles(tempMovieName,tempValue1,selectedDate);		
+  		for(counter=0; counter < experienceFilter.length; counter++){
+  			console.log(tempMovieName + tempCinemaListing[counter] + selectedDate + experienceFilter[counter] );
+  			movieTiles(tempMovieName, tempCinemaListing[counter], selectedDate, experienceFilter[counter]);	
+  		}
 	}	
 }
 
-function movieTiles(movieName, cinemaName, movieDate){
+function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 
 	var movieDate, movieDateValue, targetItem, movieResult, counter, itemClass, movieCinema, movieExprerienceTemp;
   	var tempMovieName = movieName;  	
@@ -401,6 +405,7 @@ function movieTiles(movieName, cinemaName, movieDate){
  	showTime = ""; 
  	var speratorLabel = "";
  	movieImage = "";
+ 	var checkCount =1;
 
 	$.getJSON('Sessions.json', function (data) {
 		$.each( data, function( i, item ) {
@@ -419,15 +424,26 @@ function movieTiles(movieName, cinemaName, movieDate){
 			movieExprerienceClass = item.Experience;			
 			movieExprerienceClass = movieExprerienceClass.toLowerCase();	
 			movieExprerienceClass = movieExprerienceClass.replace(/,/g, " ");
+			movieExprerienceTemp = item.Experience;
+			movieExprerienceTemp = movieExprerienceTemp.toLowerCase();
+			movieExprience = movieExprience.toLowerCase();
+
+			// console.log(itemClass + movieExprerienceTemp + movieCinema + movieCinema + movieExprerienceTemp.indexOf(movieExprience));
+			// console.log(searchMovieDate + itemClass);
+			// console.log(movieExprience + movieExprerienceTemp+"-----------");
 
 			if(movieName == tempMovieName 
 				&& movieCinema == tempCinemaLabel 
-				&& searchMovieDate == itemClass){	
+				&& searchMovieDate == itemClass 
+				&& movieExprerienceTemp.indexOf(movieExprience) > -1 ){	
+
+				console.log( movieCinema + "-"+itemClass +"-"+searchMovieDate+"-"+movieExprerienceTemp+ "Check " + checkCount);
+
+				checkCount++;
 
 				var currentDate = new Date();				
 				var tempBaseURL;
-				
-				movieExprerienceTemp = item.Experience;				
+
 				movieImage = moviePostURL+item.MovieImage;
 				
 				movieTime = item.SessionTime;
@@ -437,8 +453,7 @@ function movieTiles(movieName, cinemaName, movieDate){
 				if(counter ==0){
 					speratorLabel = "";
 				}
-
-				movieExprerienceTemp = movieExprerienceTemp.toLowerCase();
+				
 				if(movieExprerienceTemp.indexOf('dine') > -1  ){
 					movieExprerience = 'logo-reel-dine-in.png';
 				}
@@ -468,7 +483,8 @@ function movieTiles(movieName, cinemaName, movieDate){
 				}
 
 				showTime += speratorLabel+item.SessionTime;
-				counter++;			
+				counter++;
+
 			}			
 		});
 	  
@@ -503,7 +519,7 @@ function movieTiles(movieName, cinemaName, movieDate){
 			movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
 			movieCinemaClass = movieCinemaClass.toLowerCase();			
 
-			result = '<div class="tileview-movies-list '+movieExprerienceClass+' '+movieCinemaClass+' '+tempDateClass+'">\
+			result = '<div class="tileview-movies-list '+movieExprerienceClass+' '+movieCinemaClass+'">\
 		                     <div class="item">\
 		                        <div class="movielocation">\
 		                           '+cinemaName+'\
