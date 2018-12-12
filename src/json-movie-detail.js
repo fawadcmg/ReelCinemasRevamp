@@ -535,11 +535,13 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 			movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
 			movieCinemaClass = movieCinemaClass.toLowerCase();			
 
-			result = '<div class="tileview-movies-list '+movieExprerienceClass+' '+movieCinemaClass+'">\
+			result = '<div class="tileview-movies-list tileview-movies-list--sty1 '+movieExprerienceClass+' '+movieCinemaClass+'">\
 		                     <div class="item">\
 		                        <div class="movielocation">\
 		                           '+cinemaName+'\
 		                        </div>\
+		                     </div>\
+		                     <div class="item">\
 		                     </div>\
 		                     <div class="item">\
 		                        <div class="logoimg">\
