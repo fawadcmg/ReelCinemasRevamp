@@ -727,6 +727,8 @@ function filterMoviesListing(movieIDs, cinemaIDs, experienceIDs, genreIDs, movie
 	if(movieItems.length == 0){
 		playMoviesListing.addClass('empty--record');
 	}
+
+	
 }
 
 function unique(list) {
