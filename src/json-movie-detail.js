@@ -24,7 +24,11 @@ $(document).ready(function () {
 	loadPlayMovies();
 	loadMovieDetail(searchMovieName);
 	loadMovieDates(searchMovieName);
-	
+
+	// $('.slick-current > .js-movieDateFilter').trigger( "click" );
+	setTimeout(function() {
+	    $(".slick-current > div > .js-movieDateFilter").trigger('click');
+	}, 500);
 });
 
 $('.js-select-all-exp').click(function () {
@@ -353,6 +357,13 @@ function loadMovieDates(movieName){
 	    console.log("Movies dates failed");
 	});
 }
+
+$('.js-movieDateFilter').click(function () {
+	alert("1");
+	var movieDateFilter = $(this).attr('attr-movie-date');
+	searchDateValue = movieDateFilter;
+	loadCinamaListing(searchMovieName);			
+});
 
 function loadCinamaListing(movieName){
 	

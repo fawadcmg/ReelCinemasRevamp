@@ -25,7 +25,9 @@ $(document).ready(function () {
 	
 	loadMovieDetail();
 	loadMovieDates();
-	
+	setTimeout(function() {
+	    $(".slick-current > div > .js-movieDateFilter").trigger('click');
+	}, 500);
 });
 
 function loadMovies(){
