@@ -418,6 +418,8 @@ function loadPlayMovies(){
 			});
 		});
 
+		refreshAOS('init');
+
 		loadMovieDates();
 		loadMovieDateFilter();
 
