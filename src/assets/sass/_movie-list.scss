@@ -896,14 +896,21 @@
 	    .movie-item{
 	    	margin-bottom: 0;
 	    }
+	    .slick-slide{
+	    	overflow: visible;
+	    }
 	    .movie-item .info{
 	    	min-height: 0;
 	    	.name{
-				white-space: nowrap;
-				display: block;
-				width: 100%;
-				overflow: hidden;
-				text-overflow: ellipsis;
+			    white-space: nowrap;
+			    display: block;
+			    width: 100vw;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    max-width: none;
+			    text-align: center;
+			    padding: 0 20px;
+
 				br{
 					display: none;
 				}

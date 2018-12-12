@@ -13,3 +13,6 @@ src/assets/css/style.min.css.rej
 src/assets/js/script.js
 src/assets/js/script.min.js
 src/assets/js/script.min.js.map
+*.map
+src/assets/css/style.min.css
+src/assets/css/style.min.css.map
