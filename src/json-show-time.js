@@ -108,6 +108,8 @@ function loadCinemas(){
 			movieDateFilter = movieSearchDate;
 			filterMoviesListing(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
 		});
+
+		addingAOSData();
 		
 	  	console.log("Cinemas completed");
 
@@ -210,6 +212,7 @@ function loadMovies(){
 				$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop( "checked", true );			
 			}
 		});	  	
+		addingAOSData();
 	  	console.log("Movies completed");
 	}).fail(function( data ) {
 	  	console.log("Movies failed");
@@ -259,7 +262,7 @@ function loadExperiences(){
 			tempEntry = tempArray[arrayIndex];				
 			experiencesListing.append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-experienceItem" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
 		}
-
+addingAOSData();
 	    console.log("Experiences completed");
 	}).fail(function( data ) {
 	    console.log("Experiences failed");

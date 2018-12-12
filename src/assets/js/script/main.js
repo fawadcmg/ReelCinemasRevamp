@@ -37,6 +37,7 @@ $(function () {
 	    if(winWidth > 1024){
 		   AOS.init({
 			once: true,
+			offset: 50,
 		   });
 	    }
 	});
@@ -438,6 +439,9 @@ function tabs() {
 		if($(target).find('.js-movie-list').get(0)){
 			movieListCarousel();
 		}
+		setTimeout(function () {
+			AOS.refresh();
+		}, 200);
 	});
 }
 
@@ -830,36 +834,43 @@ if(isIE){
 		$('.c-main-banner .item-inner .item-inner-wrap').height(itemHeight);
     }
 }
+addingAOSData();
+function addingAOSData() {
+	if(winWidth > 1024 && isIE == false){
+		// Left
+		$('.movieheader .txt .movie-poster-detail').attr('data-aos', 'fade-left');
+		// Right
+		$('.movieheader .txt .movie-poster, .popular-heading, .logo img').attr('data-aos', 'fade-right');
+		// Down
+	    $('.c-main-header').attr('data-aos', 'fade-down');
+	    // Up
+	    $('.movieheader, .c-whats-popular .sec-title, .tileview-movies-list, .c-show-list-page, .c-show-list-page .d-box-wrap, .c-show-list-page > .o-container:first-child, .list-main-action, .c-exp-views .carousel .item:first-child .txt, .c-main-footer, .c-main-footer > .o-container > .row > *, .c-exp-views, .c-movie-filters, .c-movies-list .list-tabs, .c-main-banner, .c-main-banner .main-carousel-thumb').attr('data-aos', 'fade-up');
 
-if(winWidth > 1024 && isIE == false){
-	// Left
-	$('.movieheader .txt .movie-poster-detail').attr('data-aos', 'fade-left');
-	// Right
-	$('.movieheader .txt .movie-poster, .popular-heading, .logo img').attr('data-aos', 'fade-right');
-	// Down
-    $('.c-main-header').attr('data-aos', 'fade-down');
-    // Up
-    $('.movieheader, .c-whats-popular .sec-title, .tileview-movies-list, .c-show-list-page, .c-show-list-page .d-box-wrap, .c-show-list-page > .o-container:first-child, .list-main-action, .c-exp-views .carousel .item:first-child .txt, .c-main-footer, .c-main-footer > .o-container > .row > *, .c-exp-views, .c-movie-filters, .c-movies-list .list-tabs, .c-main-banner, .c-main-banner .main-carousel-thumb').attr('data-aos', 'fade-up');
-
-    $('.c-exp-views .carousel-thumb .slick-slide').each(function (i) {
-    	$(this).attr('data-aos', 'fade-right');
-    	$(this).attr('data-aos-delay', (50*i));
-    });
-	$('.popular-heading').attr('data-aos-delay', 300);
-	$('.movieheader .txt .movie-poster-detail, .movieheader .txt .movie-poster, .popular-heading').attr('data-aos-delay', 300);
-
-	$('.c-movies-list .list-wrap').each(function () {
-		$(this).find('.movie-item').each(function (i) {
-	    	$(this).attr('data-aos', 'fade-up');
+	    $('.c-exp-views .carousel-thumb .slick-slide').each(function (i) {
+	    	$(this).attr('data-aos', 'fade-right');
 	    	$(this).attr('data-aos-delay', (50*i));
+	    });
+		$('.popular-heading').attr('data-aos-delay', 300);
+		$('.movieheader .txt .movie-poster-detail, .movieheader .txt .movie-poster, .popular-heading').attr('data-aos-delay', 300);
+
+		$('.c-movies-list .list-wrap').each(function () {
+			$(this).find('.movie-item').each(function (i) {
+		    	$(this).attr('data-aos', 'fade-up');
+		    	$(this).attr('data-aos-delay', (50*i));
+			});
 		});
-	});
+
+		AOS.refresh();
+	}
 }
 
 function refreshAOS(aosFunc){
 	if(winWidth > 1024 && isIE == false){
 		if(aosFunc == 'init'){
-			AOS.init();
+			AOS.init({
+			once: true,
+			offset: 50,
+		   });
 		}
 		if(aosFunc == 'refresh'){
 			AOS.refresh();
@@ -1001,17 +1012,19 @@ function jsVideoDirect() {
 
 function bindPopupEve() {
 	// Popup Open
-	$('.js-popup-link').click(function (e) {
+	$('.js-popup-link:not(.popup--even-binded)').click(function (e) {
 		e.preventDefault();
 		var target = $(this).attr('href');
 		openPopup(target);
 	});
+	$('.js-popup-link').addClass('popup--even-binded');
 
 	// Popup Close
-	$('.js-close-popup').click(function (e) {
+	$('.js-close-popup:not(.js-close-even-binded)').click(function (e) {
 		e.preventDefault();
 		closePopup();
 	});
+	$('.js-close-popup').addClass('js-close-even-binded');
 }
 
 function animWrapHeight() {
