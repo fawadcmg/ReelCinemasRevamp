@@ -27,6 +27,7 @@ $(document).ready(function () {
 	loadMovieDates();
 	setTimeout(function() {
 	    $(".slick-current > div > .js-movieDateFilter").trigger('click');
+	    $(".slick-current > div > .js-movieDateFilter > dboxelement").addClass('active');
 	}, 500);
 });
 
@@ -444,6 +445,8 @@ function loadMovieDates(){
 			for(counter=0; counter < MovieListingArray.length; counter++ ){
 				loadCinamaListing(MovieListingArray[counter]);
 			}	
+			$('.dboxelement').removeClass('active');
+			$(this).find('.dboxelement').addClass('active');
 			// console.log(MovieListingArray);		
 			// filterMoviesListing(cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
 		});
