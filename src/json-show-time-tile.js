@@ -261,7 +261,7 @@ function findAndReplace(string, target, replacement) {
  	}
  	return string; 
 }
-
+$('.list-main-action').fadeOut('false');
 function loadMovieDetail(){
 	
   	var movieName, movieImage, movieGenre, movieTrailer, movieDuration, moviePG, movieLanguage, movieSubtitle;  	
