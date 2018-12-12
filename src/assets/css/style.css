@@ -7665,7 +7665,11 @@ label {
       -webkit-align-items: center;
           -ms-flex-align: center;
               align-items: center;
-      margin-bottom: 20px; }
+      margin-bottom: 20px;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+          -ms-flex-align: start;
+              align-items: flex-start; }
       .c-movies-list .movie-details .title-wrap .stamp {
         margin-left: 20px; }
     .c-movies-list .movie-details .img {
@@ -7714,19 +7718,18 @@ label {
         .c-movies-list .movie-details .text {
           padding: 40px 50px; } }
     .c-movies-list .movie-details .title {
-      font-size: 55px;
+      font-size: 40px;
       line-height: 1em;
       color: #222;
-      font-weight: bold; }
-      @media (max-width: 1800px) {
-        .c-movies-list .movie-details .title {
-          font-size: 45px; } }
-      @media (max-width: 1500px) {
-        .c-movies-list .movie-details .title {
-          font-size: 40px; } }
-      @media (max-width: 1023px) {
+      font-weight: 700;
+      max-width: 44%; }
+      @media (max-width: 1700px) {
         .c-movies-list .movie-details .title {
           font-size: 35px; } }
+      @media (max-width: 1023px) {
+        .c-movies-list .movie-details .title {
+          max-width: 100%;
+          font-size: 30px; } }
     .c-movies-list .movie-details .info {
       font-size: 12px;
       color: #222;
