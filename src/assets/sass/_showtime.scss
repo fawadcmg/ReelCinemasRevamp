@@ -1770,12 +1770,17 @@ box-shadow: 0px 10px 23px -11px rgba(0,0,0,0.26);
 		}
 
 .titleview-wrap{
-				text-transform: uppercase;
-			font-size: 14px;
+	text-transform: uppercase;
+	font-size: 14px;
+
+	@media (min-width: 767px){
+		min-height: 330px;
+	}
+
 	.list-main-action{
-	text-align: center;
-	margin: 50px 0;
-}
+		text-align: center;
+		margin: 50px 0;
+	}
 	
 	.c-btn-outline:hover{
 		background-color: #6e3996;
