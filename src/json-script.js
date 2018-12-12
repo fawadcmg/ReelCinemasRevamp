@@ -746,6 +746,7 @@ function resetPagination(currentPageNumber){
 
 // Check movie filter functionality for combine with Movie Cinema and Experience
 function filterMoviesListing(movieIDs, cinemaIDs, experienceIDs, genreIDs){
+	movieListRemoveCarousel();
 
 	var movieItems = [];
 	var tempArray = [];
@@ -860,6 +861,9 @@ function filterMoviesListing(movieIDs, cinemaIDs, experienceIDs, genreIDs){
 			});
 		});
 	}
+	
+	toSVG();
+	movieListStartCarousel();
 	refreshAOS('init');
 }
 

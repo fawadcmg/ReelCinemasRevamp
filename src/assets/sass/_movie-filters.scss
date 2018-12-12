@@ -681,10 +681,13 @@
 
 .is-tab{
 	.c-movie-filters{
+		/* height: 0;
+		overflow: hidden; */
 		display: none;
 	}
 	&.is--active{
 		.c-movie-filters{
+			// height: auto;
 			display: block;
 		}
 	}

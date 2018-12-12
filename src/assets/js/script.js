@@ -3142,6 +3142,7 @@ $(window).on('load', function () {
 	setTimeout(function () {
 		addVideoPlugin();
 		AOS.refresh();
+		fixMobileCarouselWrongDisplay();
 	}, 200);
 });
 
@@ -3160,6 +3161,7 @@ $(window).on('resize orientationchange', function () {
 			winDimensions();
 			movieListSetHTML();
 		}, 250);
+		movieListCarousel();
 	}
 });
 
@@ -3454,7 +3456,22 @@ function movieListSetHTML() {
 
 	if ($('.js-movie-list').hasClass('slick-initialized')) {
 		$('.js-movie-list').slick('unslick');
-		movieList();
+		if (winWidth >= 768) {
+			movieList();
+		} else {
+			$('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
+
+			var movieListInfinite = false;
+			if ($('.js-movie-list > *').length > 2) {
+				movieListInfinite = true;
+			}
+			$('.js-movie-list').slick({
+				arrows: false,
+				focusOnSelect: true,
+				swipeToSlide: true,
+				infinite: movieListInfinite
+			});
+		}
 	}
 
 	// Normalize First
@@ -3499,6 +3516,9 @@ function tabs() {
 		$('.is-tab[data-tab-name="' + tabName + '"]').removeClass('is--active');
 		var target = $(this).attr('href');
 		$(target).addClass('is--active');
+		if ($(target).find('.js-movie-list').get(0)) {
+			movieListCarousel();
+		}
 	});
 }
 
@@ -3686,20 +3706,53 @@ $(document).ready(function (e) {
 	toSVG();
 });
 
-function movieListCarousel() {
-
+function movieListRemoveCarousel() {
 	if ($('.js-movie-list').hasClass('slick-initialized')) {
 		$('.js-movie-list').slick('unslick');
 	}
-	if ($(window).width() < 768) {
+}
+function movieListStartCarousel() {
+	if ($(window).width() < 768 && $('.js-movie-list').get(0)) {
+		$('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
+
+		var movieListInfinite = false;
+		if ($('.js-movie-list > *').length > 2) {
+			movieListInfinite = true;
+		}
 		$('.js-movie-list').slick({
 			arrows: false,
 			focusOnSelect: true,
 			swipeToSlide: true,
-			infinite: true
+			infinite: movieListInfinite
 		});
-		// $('.js-movie-list').slick('slickGoTo', 1);
 	}
+}
+function movieListCarousel() {
+	movieListRemoveCarousel();
+	movieListStartCarousel();
+}
+var jsMovieCarouselTimmer;
+function fixMobileCarouselWrongDisplay() {
+	setTimeout(function () {
+		if ($(window).width() < 768 && $('.js-movie-list').get(0)) {
+			jsMovieCarouselTimmer = setInterval(function () {
+				if (!$('.js-movie-list').hasClass('slick-initialized')) {
+					$('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
+
+					var movieListInfinite = false;
+					if ($('.js-movie-list > *').length > 2) {
+						movieListInfinite = true;
+					}
+					$('.js-movie-list').slick({
+						arrows: false,
+						focusOnSelect: true,
+						swipeToSlide: true,
+						infinite: movieListInfinite
+					});
+				}
+			}, 1000);
+		}
+	}, 1000);
 }
 
 function toSVG() {
