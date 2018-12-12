@@ -668,13 +668,10 @@ function loadPlayMovies(){
 	    $('.list-wrap-page--1').fadeIn('slow');
 	    $('.list-wrap-page--2').fadeIn('slow');
 	    $('.list-wrap-page--3').fadeIn('slow');  
-	    if(movieCounter/6 > 3 ){
-			moreMoviesListing.fadeIn('fast');			
-		}
+	    
 	    // resetPagination(1);
 	    playMoviesListing.removeClass('is--loading');
 	    console.log("Play movies completed");
-
 	    
 	    // $('.c-movies-list .list-wrap').attr('data-aos', 'fade-up');
 		$('.c-movies-list .list-wrap').each(function () {
@@ -694,6 +691,11 @@ function loadPlayMovies(){
 		movieListCarousel();
 		filterSearch();
 
+		moreMoviesListing.fadeOut('fast');
+	    if($('.js-play-movies-listing > .list-wrap').length > 3 ){
+			moreMoviesListing.fadeIn('slow');
+		}
+
 	}).fail(function( data ) {
 	    console.log("Play movies failed");
 	});
@@ -710,11 +712,12 @@ function resetPagination(currentPageNumber){
 			$('.list-wrap-page--'+counter).fadeIn('slow');	
 		}
 	}
-	pageNumber++;	
-	if($('.list-wrap-page--'+counter).length == 0 ){
-		$('.js-load-play-movies-listing').fadeOut('fast');
-	}
+	pageNumber++;		
 
+	moreMoviesListing.fadeOut('fast');
+    if($('.js-play-movies-listing > .list-wrap').length > 3 ){
+		moreMoviesListing.fadeIn('slow');
+	}
 
 }
 
@@ -815,9 +818,12 @@ function filterMoviesListing(movieIDs, cinemaIDs, experienceIDs, genreIDs){
     for(var counter=pageNumber; counter <= moviesPerPage; counter++){
     	$('.list-wrap-page--'+counter).fadeIn('slow');
     }
-    if($('.list-wrap-page--'+counter).length > 1 ){
+
+    moreMoviesListing.fadeOut('fast');
+    if($('.js-play-movies-listing > .list-wrap').length > 3 ){
 		moreMoviesListing.fadeIn('slow');
 	}
+    
 	playMoviesListing.removeClass('is--loading');
 	playMoviesListing.removeClass('empty--record');
 	if(movieItems.length == 0){
@@ -922,10 +928,13 @@ function filterMoviesListing1(movieIDs, cinemaIDs, experienceIDs, genreIDs){
 		
     for(var counter=pageNumber; counter <= moviesPerPage; counter++){
     	$('.list-wrap-page--'+counter).fadeIn('slow');
-    }
-    if($('.list-wrap-page--'+counter).length > 1 ){
+    }    
+
+	moreMoviesListing.fadeOut('fast');
+    if($('.js-coming-movies-listing > .list-wrap').length > 3 ){
 		moreMoviesListing.fadeIn('slow');
 	}
+
 	playMoviesListing.removeClass('is--loading');
 	playMoviesListing.removeClass('empty--record');
 	if(movieItems.length == 0){
@@ -1080,9 +1089,10 @@ function loadComingMovies(){
 	    for(var counter=pageNumber; counter <= moviesPerPage; counter++){
 	    	$('.list-wrap-page--'+counter).fadeIn('slow');
 	    }
-	    if($('.list-wrap-page--'+counter).length == 0 ){
-			$('.js-load-coming-movies-listing').fadeOut('fast');
-		}	    
+	    moreMoviesListing.fadeOut('fast');
+	    if($('.js-coming-movies-listing > .list-wrap').length > 3 ){
+			moreMoviesListing.fadeIn('slow');
+		}    
 	    $('.js-coming-movies-listing').removeClass('is--loading');
 
 	    console.log("Coming soon movies completed");
