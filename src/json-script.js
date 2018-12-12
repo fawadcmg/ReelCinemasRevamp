@@ -1,5 +1,5 @@
 var moviePostURL = 'https://www.reelcinemas.ae/en/KeyArts/Vertical/';
-var movieURL = 'http://reelcinemas.ae/en/movies/ShowTrailer.aspx?param1=';	
+var movieURL = 'http://www.reelcinemas.ae/en/KeyArts/Tarilers/';	
 var moviewFilter = new Array();
 var cinemaFilter = new Array();
 var experienceFilter = new Array();
@@ -372,7 +372,7 @@ loadPlayPopup();
 
 function loadPlayPopup(){
 	var moviesListing = $('.js-c-popup');
-	var itemValue, itemClass;
+	var itemValue, itemClass, itemPopupClass;
 	moviesListing.empty();
 	result = '<div class="overlay js-close-popup"></div>';
 
@@ -385,15 +385,14 @@ function loadPlayPopup(){
 			itemClass = itemClass.replace(/\s+/g, "-");
 			itemClass = itemClass.replace(".", "-");
 			itemClass = 'play-video-'+itemClass.toLowerCase();
+			itemPopupClass = 'popup-play-video-'+itemClass.toLowerCase();
 			var movieImage = moviePostURL+item.MovieImage;			
 			var movieTrailer = movieURL+item.MovieTrailer;
 			
-
 	        result += '<section id="'+itemClass+'" class="popup popup--full-screen">\
 	            <div class="popup-wrap">\
-	                <video poster="assets/img/poster.jpg" id="player" playsinline controls>\
-	                    <source src="assets/img/video.mp4" type="video/mp4">\
-	                    <source src="assets/img/video.webm" type="video/webm">\
+	                <video class="js-video" poster="" id="'+itemPopupClass+'" autoplay playsinline controls>\
+	                    <source src="'+movieTrailer+'" type="video/mp4">\
 	                </video>\
 	                <div class="popup-action">\
 	                    <a href="javascript:void(0);" class="c-close js-close-popup"><span>Close</span></a>\
@@ -404,10 +403,45 @@ function loadPlayPopup(){
 		});
 	}).done(function( data ) {  
 		moviesListing.append(result);
-		bindPopupEve();
+		
 	  	console.log("Movies popup completed");
 	}).fail(function( data ) {
 	  	console.log("Movies popup failed");
+	});
+
+	result = '';
+
+	$.getJSON('ComingSoon.json', function (data) {
+	
+		$.each( data, function( i, item ) {  
+
+			itemValue = item.MovieName;	
+			itemClass = itemValue;
+			itemClass = itemClass.replace(/\s+/g, "-");
+			itemClass = itemClass.replace(".", "-");
+			itemClass = 'coming-video-'+itemClass.toLowerCase();
+			itemPopupClass = 'popup-coming-video-'+itemClass.toLowerCase();
+			var movieImage = moviePostURL+item.MovieImage;			
+			var movieTrailer = movieURL+item.MovieTrailer;
+			
+	        result += '<section id="'+itemClass+'" class="popup popup--full-screen">\
+	            <div class="popup-wrap">\
+	                <video class="js-video" poster="" id="'+itemPopupClass+'" autoplay playsinline controls>\
+	                    <source src="'+movieTrailer+'" type="video/mp4">\
+	                </video>\
+	                <div class="popup-action">\
+	                    <a href="javascript:void(0);" class="c-close js-close-popup"><span>Close</span></a>\
+	                </div>\
+	            </div>\
+	        </section>';
+
+		});
+	}).done(function( data ) {  
+		moviesListing.append(result);
+		
+	  	console.log("Coming popup completed");
+	}).fail(function( data ) {
+	  	console.log("Coming popup failed");
 	});
 
 }
@@ -1060,7 +1094,7 @@ function loadComingMovies(){
 			movieName = item.MovieName;
 			movieImage = moviePostURL+item.MovieImage;
 			movieGenre = item.Genre;
-			movieTrailer = moviePostURL+item.MovieTrailer;
+			movieTrailer = movieURL+item.MovieTrailer;
 			movieDuration = item.Duration;
 			moviePG = item.Rating; // PG <br> 13			
 			movieLanguage = item.MovieLanguage;		
@@ -1162,9 +1196,10 @@ function loadComingMovies(){
 			movieGenreClass = movieGenreClass.toLowerCase();
 
 			bookNowClass = '<div class="booknow-tag"><span>BOOK NOW</span></div>';
-				
 
-			comingMovieListingArray[movieCounter] = '<div class="movie-item '+movieNameClass + ' '+movieGenreClass+' '+movieExprerienceClass+' '+movieCinemaClass+'"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap">'+movieGenre+' | '+movieDuration+'</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+movieExprerience+'</ul></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+movieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="'+movieImage+'" alt="'+movieName+'"></div></section> </div>';
+			movieTrailerURL = 'coming-video-'+movieNameClass;
+				
+			comingMovieListingArray[movieCounter] = '<div class="movie-item '+movieNameClass + ' '+movieGenreClass+' '+movieExprerienceClass+' '+movieCinemaClass+'"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap">'+movieGenre+' | '+movieDuration+'</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+movieExprerience+'</ul></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+movieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#'+movieTrailerURL+'" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="'+movieImage+'" alt="'+movieName+'"></div></section> </div>';
 			playMoviesListing.append(comingMovieListingArray[movieCounter]);
 			movieCounter++;
 		});

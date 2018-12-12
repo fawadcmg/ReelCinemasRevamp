@@ -329,6 +329,8 @@ function slideDownMovieDetails(thisSelf) {
 		$(thisSelf).closest('.movie-item').addClass('is--active');
 		$(thisSelf).closest('.list-wrap').next().append(detailsHTML);
 		$(thisSelf).closest('.list-wrap').next().slideDown();
+		$(thisSelf).closest('.list-wrap').next().find('.popup--even-binded').removeClass('popup--even-binded');
+		bindPopupEve();
 
 		setInView($(thisSelf).closest('.list-wrap').next().find('.item-details')[0]);
 
@@ -1011,20 +1013,21 @@ function jsVideoDirect() {
 }
 
 function bindPopupEve() {
+
+	console.log('binding');
 	// Popup Open
 	$('.js-popup-link:not(.popup--even-binded)').click(function (e) {
 		e.preventDefault();
+		console.log('clicked poup even');
 		var target = $(this).attr('href');
 		openPopup(target);
-	});
-	$('.js-popup-link').addClass('popup--even-binded');
+	}).addClass('popup--even-binded');
 
 	// Popup Close
 	$('.js-close-popup:not(.js-close-even-binded)').click(function (e) {
 		e.preventDefault();
 		closePopup();
-	});
-	$('.js-close-popup').addClass('js-close-even-binded');
+	}).addClass('js-close-even-binded');
 }
 
 function animWrapHeight() {

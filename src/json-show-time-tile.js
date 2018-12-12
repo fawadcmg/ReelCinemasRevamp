@@ -28,7 +28,7 @@ $(document).ready(function () {
 	setTimeout(function() {
 	    $(".slick-current > div > .js-movieDateFilter").trigger('click');
 	    $(".slick-current > div > .js-movieDateFilter > dboxelement").addClass('active');
-	}, 500);
+	}, 1000);
 });
 
 function loadMovies(){
@@ -183,11 +183,12 @@ function loadCinemas(){
 	}).done(function( data ) {   
 
 		cinemasListing.append('<div class="item custom-action js-select-all js-select-all-location"><input type="checkbox" id="select-all-locations"><label for="select-all-locations"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
-
+		cinemasListing.append('<div class="scroll-area"></div>');
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];				
-			cinemasListing.append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-cinemaItem" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
+			cinemasListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-cinemaItem" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
 		}
+		cinemasListing.append('<div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>');
 
 		$('.js-cinemaItem').click(function () {
 			var cinemaNames = $(this).val();
