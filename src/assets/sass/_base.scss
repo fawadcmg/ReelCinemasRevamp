@@ -688,6 +688,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 	}
 	.c-movies-list .movie-item{
 	}
+
+	&.is--ie-10{
+		.c-movie-filters .wrap>*{
+			width: auto;
+			&.has--viewbar{
+				&:last-child{
+					margin: 0 0 0 auto;
+				}
+			}
+		}
+	}
 }
 
 .is--loading{

@@ -3708,6 +3708,11 @@ label {
   line-height: 1em;
   height: 52px; }
 
+.is--ie.is--ie-10 .c-movie-filters .wrap > * {
+  width: auto; }
+  .is--ie.is--ie-10 .c-movie-filters .wrap > *.has--viewbar:last-child {
+    margin: 0 0 0 auto; }
+
 .is--loading {
   position: relative; }
   .is--loading:before {
