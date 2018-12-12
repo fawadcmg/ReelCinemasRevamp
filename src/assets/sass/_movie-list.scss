@@ -1,7 +1,14 @@
+
 .c-movies-list{
 	margin-bottom: 40px;
 	overflow: hidden;
 	width: 100%;
+
+	.js-movie-list{
+		@media (min-width: 767px){
+			min-height: 300px;
+		}
+	}
 
 	&.movies-list--a{
 		.tileview-movies-list >*{
@@ -269,6 +276,9 @@
 	.list-wrap{
 		display: flex;
 		margin: 0 -10px;
+		@media (min-width: 768px){
+			min-height: 240px;
+		}
 		@media (max-width: 1400px){
 			margin: 0 -5px;
 		}
