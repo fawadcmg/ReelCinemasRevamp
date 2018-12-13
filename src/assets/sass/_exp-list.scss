@@ -20,6 +20,14 @@
 		color: #fff;
 	}
 
+	&.sec--highlight{
+		.txt-block{
+			h1{
+				font-size: 60px;
+			}
+		}
+	}
+
 	.wrap-col{
 		width: 50%;
 	}
