@@ -1,0 +1,46 @@
+
+.c-content-tiles{
+	background: #000 no-repeat center center / cover;
+	min-height: 75vh;
+	padding: 12.5vh 0;
+
+	&:nth-child(2n+1){
+		.wrap-col{
+			margin: 0 0 0 auto;
+			padding-left: 60px;
+		}
+	}
+	&:nth-child(2n){
+		.wrap-col{
+			padding-right: 60px;
+		}
+	}
+
+	&.txt--white{
+		color: #fff;
+	}
+
+	.wrap-col{
+		width: 50%;
+	}
+
+	.txt-block{
+		max-width: 540px;
+
+		h1{
+			font-size: 60px;
+			line-height: 1.2em;
+			margin: 0 0 30px 0;
+			font-weight: bold;
+
+			& + h2{
+				margin-top: -15px;
+			}
+		}
+		h2{
+			font-size: 28px;
+			line-height: 1.2em;
+			margin: 0 0 30px 0;
+		}
+	}
+}
