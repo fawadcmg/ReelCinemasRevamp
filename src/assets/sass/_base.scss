@@ -345,13 +345,13 @@ label{
 	}
 }
 .c-btn-glow{
-		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#552879+0,311758+25,170a3f+100 */
-background: #552879; /* Old browsers */
-background: -moz-linear-gradient(-45deg, #552879 0%, #311758 25%, #170a3f 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg, #552879 0%,#311758 25%,#170a3f 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg, #552879 0%,#311758 25%,#170a3f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', endColorstr='#170a3f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: #552879; /* Old browsers */
+	background: -moz-linear-gradient(-45deg, #552879 0%, #311758 25%, #170a3f 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, #552879 0%,#311758 25%,#170a3f 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg, #552879 0%,#311758 25%,#170a3f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', endColorstr='#170a3f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	transition: none;
+
 	&:after{
 		content: '';
 		display: block;
@@ -398,6 +398,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 			box-shadow: none;
 			&:active{
 				background: #164a5f;
+			}
+		}
+	}
+
+	&.sty--a{
+		background: rgba(255,255,255,0);
+		color: #000;
+		border: 1px solid #000;
+		transition: all .35s;
+		&:after{
+			background: linear-gradient(135deg, #552879 0%,#311758 25%,#170a3f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			-webkit-mix-blend-mode: unset;
+			mix-blend-mode: unset;
+		}
+		&:hover{
+			color: #fff;
+			background: rgba(255,255,255,0);
+			border-color: #552879;
+			border-color: transparent;
+
+			&:after{
+				opacity: 1;
 			}
 		}
 	}
@@ -450,6 +472,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 			padding-left: 0;
 			transition: all .35s;
 			margin: -1px -13px -1px -10px;
+
+			@media (max-width: 1023px){
+				margin: 0px -14px -2px -10px;
+			}
 		}
 
 		span{
@@ -482,6 +508,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 			width: 44px;
 			padding: 11px 21px 10px;
 		}
+
+		&.btn-play--prom{
+			background: #fff;
+
+			&:hover{
+				background: #fff;
+			}
+		}
 	}
 
 	&.btn--play{
@@ -507,6 +541,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 					margin-right: 8px;
 				}
 			}
+		}
+	}
+
+	&.sty--a{
+		border: 1px solid #fff;
+		background: transparent;
+
+		&:hover{
+			background: #fff;
+			color: #000;
 		}
 	}
 }
@@ -1159,4 +1203,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', end
 
 .popup-is-active{
 	overflow: hidden;
+}
+
+@media (max-width: 1500px){
+	p{
+		font-size: 15px;
+	}
+}
+@media (max-width: 1200px){
+	p{
+		font-size: 14px;
+		line-height: 1.5em;
+	}
+}
+@media (max-width: 767px){
+	p{
+		font-size: 13px;
+		line-height: 1.4em;
+	}
 }
