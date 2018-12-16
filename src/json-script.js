@@ -664,8 +664,8 @@ function loadPlayMovies(){
 			movieLanguage = movieLanguage.replace(/ Language:/g, "");
 			movieLanguage = movieLanguage.replace(/ Language: /g, "");
 			movieLanguage = movieLanguage.replace(/ Language/g, "");
-			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class='svg'></i><span>");
-			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class='svg'></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
 		
 			movieExprerience = "";
 			movieExprerienceTemp = movieExprerienceTemp.toLowerCase();		
@@ -1058,12 +1058,14 @@ function filterMoviesListing1(movieIDs, cinemaIDs, experienceIDs, genreIDs){
 		playMoviesListing.addClass('empty--record');
 	}
 	
-	$('.c-movies-list .list-wrap').each(function () {
-		$(this).find('.movie-item').each(function (i) {
-	    	$(this).attr('data-aos', 'fade-up');
-	    	$(this).attr('data-aos-delay', (50*i));
+	if(winWidth > 1024 && isIE == false){
+		$('.c-movies-list .list-wrap').each(function () {
+			$(this).find('.movie-item').each(function (i) {
+		    	$(this).attr('data-aos', 'fade-up');
+		    	$(this).attr('data-aos-delay', (50*i));
+			});
 		});
-	});
+	}
 	refreshAOS('init');
 }
 
@@ -1112,8 +1114,8 @@ function loadComingMovies(){
 			movieLanguage = movieLanguage.replace(/ Language:/g, "");
 			movieLanguage = movieLanguage.replace(/ Language: /g, "");
 			movieLanguage = movieLanguage.replace(/ Language/g, "");
-			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class='svg'></i><span>");
-			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class='svg'></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
 
 			movieExprerience = "";
 			// movieExprerienceTemp = movieExprerienceTemp.toLowerCase();		

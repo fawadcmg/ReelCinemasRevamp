@@ -212,7 +212,7 @@ function loadMovieDetail(movieName){
 		                strLen = tempMovieLanguage[counter].length;
 			  			strposition = tempMovieLanguage[counter].indexOf('Subtitle: ');
 			  			tempSubtile = tempMovieLanguage[counter].substring(strposition+10,strLen);
-			  			movieSubtitle =  '<i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>'+tempSubtile+'</span>'			  			
+			  			movieSubtitle =  '<i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class=""></i><span>'+tempSubtile+'</span>'			  			
 		            }
 			 	}
 			
@@ -780,8 +780,8 @@ function loadPlayMovies(){
 				movieLanguage = movieLanguage.replace(/ Language:/g, "");
 				movieLanguage = movieLanguage.replace(/ Language: /g, "");
 				movieLanguage = movieLanguage.replace(/ Language/g, "");
-				movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class='svg'></i><span>");
-				movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class='svg'></i><span>");
+				movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+				movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
 			
 				movieExprerience = "";
 				movieExprerienceTemp = movieExprerienceTemp.toLowerCase();		
@@ -822,7 +822,7 @@ function loadPlayMovies(){
 				}
 
 				if(movieExprerienceTemp.indexOf('dolby') > -1  ){
-					movieExprerience += '<li><picture><source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li>';
+					movieExprerience += '<li><picture><source srcset="assets/img/logos/logo-reel-dolby-cinema--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema"></picture></li>';
 				}
 
 				if(movieExprerienceTemp.indexOf('mx4d') > -1  ){
@@ -889,14 +889,15 @@ function loadPlayMovies(){
 	    playMoviesListing.removeClass('is--loading');
 	    console.log("Play movies completed");
 
-	    
-	    // $('.c-movies-list .list-wrap').attr('data-aos', 'fade-up');
-		$('.c-movies-list .list-wrap').each(function () {
-			$(this).find('.movie-item').each(function (i) {
-		    	$(this).attr('data-aos', 'fade-up');
-		    	$(this).attr('data-aos-delay', (50*i));
+	    if(winWidth > 1024 && isIE == false){
+		    // $('.c-movies-list .list-wrap').attr('data-aos', 'fade-up');
+			$('.c-movies-list .list-wrap').each(function () {
+				$(this).find('.movie-item').each(function (i) {
+			    	$(this).attr('data-aos', 'fade-up');
+			    	$(this).attr('data-aos-delay', (50*i));
+				});
 			});
-		});
+		}
 	}).fail(function( data ) {
 	    console.log("Play movies failed");
 	});

@@ -107,13 +107,21 @@
 	}
 
 	.action-block{
+		vertical-align: top;
 		margin-top: 35px;
+
+		> *{
+			vertical-align: top;
+		}
+
 		.c-btn-white:not(.btn--play-1), .c-btn-glow{
 			min-width: 200px;
 		}
+
 		a + a{
 			margin-left: 40px;
 		}
+		
 		.c-btn-white.btn--play-1{
 			border: 1px solid #000;
 		}
@@ -300,5 +308,8 @@
 		font-size: 24px;
 		margin-bottom: 15px;
 		font-weight: normal;
+	}
+	.c-content-tiles .action-block{
+		margin-top: 20px;
 	}
 }

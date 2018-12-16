@@ -306,7 +306,7 @@ function loadMovieDetail(){
 		                strLen = tempMovieLanguage[counter].length;
 			  			strposition = tempMovieLanguage[counter].indexOf('Subtitle: ');
 			  			tempSubtile = tempMovieLanguage[counter].substring(strposition+10,strLen);
-			  			movieSubtitle =  '<i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>'+tempSubtile+'</span>'			  			
+			  			movieSubtitle =  '<i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class=""></i><span>'+tempSubtile+'</span>'			  			
 		            }
 			 	}
 			
