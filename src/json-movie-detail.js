@@ -126,7 +126,7 @@ function loadCinemas(){
 		var currentDate = new Date();
 		searchDateValue = currentDate.getDate()+"-"+monthName[currentDate.getMonth()]+"-"+weekName[currentDate.getDay()];
 
-		loadCinamaListing(searchMovieName);
+		// loadCinamaListing(searchMovieName);
 		
 	  	console.log("Cinemas completed");
 
@@ -271,18 +271,18 @@ function loadMovieDetail(movieName){
 				var movieImage = moviePostURL+item.MovieImage;			
 				var movieTrailer = movieURL+item.MovieTrailer;
 
-				result = '<div class="overlay js-close-popup"></div><section id="'+itemClass+'" class="popup popup--full-screen">\
-	            <div class="popup-wrap">\
-	                <video class="js-video" poster="" id="'+itemPopupClass+'" autoplay playsinline controls>\
-	                    <source src="'+movieTrailer+'" type="video/mp4">\
-	                </video>\
-	                <div class="popup-action">\
-	                    <a href="javascript:void(0);" class="c-close js-close-popup"><span>Close</span></a>\
-	                </div>\
-	            </div>\
-	        </section>';
+				// result = '<div class="overlay js-close-popup"></div><section id="'+itemClass+'" class="popup popup--full-screen">\
+	   //          <div class="popup-wrap">\
+	   //              <video class="js-video" poster="" id="'+itemPopupClass+'" autoplay playsinline controls>\
+	   //                  <source src="'+movieTrailer+'" type="video/mp4">\
+	   //              </video>\
+	   //              <div class="popup-action">\
+	   //                  <a href="javascript:void(0);" class="c-close js-close-popup"><span>Close</span></a>\
+	   //              </div>\
+	   //          </div>\
+	   //      </section>';
 
-	        $('.js-c-popup').append(result);
+	   //      $('.js-c-popup').append(result);
 				
 			}			
 		});
@@ -609,6 +609,10 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 	});
 }
 
+$('.js-load-movie-listing').click(function () {	
+	resetMovieDetailPagination(pageNumber);
+});	
+
 function getShowTime(movieTimeValue){	
 	var hourValue, minuteValue, result;	
 
@@ -916,20 +920,20 @@ function loadPlayMovies(){
 	});
 }
 
-function resetPagination(currentPageNumber){
+function resetMovieDetailPagination(currentPageNumber){
     var currentPage = currentPageNumber;
 	var nextPage = (currentPage+1);
 	
 	for(var counter= currentPage*moviesPerPage; counter <= nextPage*moviesPerPage ; counter++){
-		if($('.list-wrap-page--'+counter).length == 0 ){
-			$('.js-load-play-movies-listing').fadeOut('fast');
+		if($('.js-movie-list-'+counter).length == 0 ){
+			$('.js-load-movie-listing').fadeOut('fast');
 		}else{
-			$('.list-wrap-page--'+counter).fadeIn('slow');	
+			$('.js-movie-list-'+counter).fadeIn('slow');	
 		}
 	}
 	pageNumber++;	
-	if($('.list-wrap-page--'+counter).length == 0 ){
-		$('.js-load-play-movies-listing').fadeOut('fast');
+	if($('.js-movie-list-'+counter).length == 0 ){
+		$('.js-load-movie-listing').fadeOut('fast');
 	}
 }
 
