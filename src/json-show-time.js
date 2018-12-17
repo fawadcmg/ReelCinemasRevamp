@@ -19,7 +19,7 @@ $(document).ready(function () {
 	setTimeout(function() {
 	    $(".slick-current > div > .js-movieDateFilter").trigger('click');
 	    $(".slick-current > div > .js-movieDateFilter > dboxelement").addClass('active');
-	}, 1000);
+	}, 2000);
 });
 
 $('.js-select-all-exp').click(function () {
@@ -559,6 +559,8 @@ function loadMovieDateFilter(){
 
 		$('.js-movieDateFilter').click(function () {
 			var movieDateFilter = $(this).attr('attr-movie-date');
+			$('.dboxelement').removeClass('active');
+			$(this).find('.dboxelement').addClass('active');
 			filterMoviesListing(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
 		});
 
