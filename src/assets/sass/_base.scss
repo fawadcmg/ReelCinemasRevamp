@@ -44,7 +44,7 @@ a{
 }
 
 p {
-	font-size: 16px;
+	font-size: 15px;
 	line-height: 1.6em;
 	margin: 10px 0;
 }
@@ -850,14 +850,24 @@ label{
 	    margin-top: 45px;
 	    margin-bottom: 50px;
 	}
+	.action{
+		margin-top: 30px;
+		text-align: center;
+		a{
+			min-width: 200px;
+		}
+	}
 	.sec-title{
 		font-size: 25px;
 		line-height: 1em;
 		text-transform: uppercase;
 		font-weight: 500;
 		margin-bottom: 30px;
+		@media (max-width: 992px){
+			font-size: 23px;
+		}
 		@media (max-width: 767px){
-			font-size: 22px;
+			font-size: 21px;
 			line-height: 1em;
 			text-align: center;
 		}
@@ -1209,6 +1219,10 @@ label{
 
 .popup-is-active{
 	overflow: hidden;
+}
+
+.u-fw-normal{
+	font-weight: normal !important;
 }
 
 @media (max-width: 1500px){

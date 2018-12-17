@@ -3240,6 +3240,18 @@ function calcBodyarea() {
 }
 
 function initSlick() {
+
+	$('.js-offer-carousel').slick({
+		slidesToShow: 4,
+		arrows: false,
+		responsive: [{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 1
+			}
+		}]
+	});
+
 	// Main Carousel
 	$('.js-main-carousel').slick({
 		arrows: true,
