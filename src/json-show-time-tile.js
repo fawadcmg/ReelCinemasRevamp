@@ -630,7 +630,7 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 		    	itemClass = "style='display:flex;'";
 		    }
 
-			result = '<div class="tileview-movies-list '+tempMovieName+' '+movieExprerienceClass+' '+movieCinemaClass+' '+movieCountClass+'">\
+			result = '<div '+itemClass+' class="tileview-movies-list '+tempMovieName+' '+movieExprerienceClass+' '+movieCinemaClass+' '+movieCountClass+'">\
 		                     <div class="item">\
 		                        <div class="movielocation">\
 		                           '+cinemaName+'\
