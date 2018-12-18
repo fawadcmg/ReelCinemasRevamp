@@ -7,7 +7,7 @@ var showTimeFilter = new Array();
 var MovieListingArray = new Array();
 var cienmasFilterListing = new Array();
 var movieCinamaListing = new Array();
-var pageNumber = 1;
+var pageNumber = 0;
 var movieCount=1;
 var baseURL = window.location.protocol + "//" + window.location.host + "/";
 var searchMovieName = window.location.search.split('?param1=')[1];
@@ -382,6 +382,7 @@ function loadMovieDates(movieName){
 			searchDateValue = movieDateFilter;			
 			$('.dboxelement').removeClass('active');
 			$(this).find('.dboxelement').addClass('active');
+			pageNumber=0;
 			loadCinamaListing(searchMovieName);
 		});
 		console.log("Movies dates completed");
@@ -389,7 +390,7 @@ function loadMovieDates(movieName){
 	    console.log("Movies dates failed");
 	});
 }
-
+$('.js-load-movie-listing').fadeOut('fast');
 function loadCinamaListing(movieName){
 	
   	var movieDate, movieDateValue, targetItem, movieResult, counter, itemClass, movieCinema, movieExprerienceTemp;
@@ -408,7 +409,10 @@ function loadCinamaListing(movieName){
 
   	tempCinemaListing = movieCinamaListing;
   	movieCount = 1;
-
+  	pageNumber=0;
+  	movieTilesListing = [];
+  	$('.js-load-movie-listing').fadeOut('fast');
+  	
   	for(counter=0; counter< tempCinemaListing.length; counter++){	
   		movieExprerience = "";				
   		showTime = "";
@@ -417,9 +421,15 @@ function loadCinamaListing(movieName){
   		for(innercounter=0; innercounter < experienceFilter.length; innercounter++){
   			movieTiles(tempMovieName, tempCinemaListing[counter], selectedDate, experienceFilter[innercounter]);
   		}
-	}
+	}	
+
+	setTimeout(function() {
+	    resetMovieDetailPagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
+	}, 1500);
 
 }
+
+
 
 // $('.list-main-action').fadeOut('false');
 
@@ -563,11 +573,7 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 			movieExprerienceClass = movieExprience.toLowerCase();
 			movieCountClass += movieCount;	
 
-			if(movieCount < 5 ){
-		    	itemClass = "style='display:flex;'";
-		    }		
-
-			result = '<div '+itemClass+' class="tileview-movies-list tileview-movies-list--sty1 '+movieExprerienceClass+' '+movieCinemaClass+' '+movieCountClass+'">\
+			result = '<div '+itemClass+' class="tileview-movies-list tileview-movies-list--sty1 '+movieExprerienceClass+' '+movieCinemaClass+'">\
 		                     <div class="item">\
 		                        <div class="movielocation">\
 		                           '+cinemaName+'\
@@ -589,19 +595,9 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 		                     </div>\
 		                  </div>';
 
-		    // console.log(result);
-
 		    movieTilesListing.push(result);			    
 		    $('.js-loadCinamaListing').append(result);
-		   
-		    if(movieCount > 4){
-		    	$('.js-load-movie-listing').fadeIn('slow');		    	
-		    }else{
-		    	$('.js-load-movie-listing').fadeOut('fast');		    	
-		    }
-
 		    movieCount++;
-
 		}
 		console.log("Movies cinema listing completed for " + cinemaName);
 	}).fail(function( data ) {
@@ -610,7 +606,7 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 }
 
 $('.js-load-movie-listing').click(function () {	
-	resetMovieDetailPagination(pageNumber);
+	resetMovieDetailPagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);	
 });	
 
 function getShowTime(movieTimeValue){	
@@ -920,21 +916,32 @@ function loadPlayMovies(){
 	});
 }
 
-function resetMovieDetailPagination(currentPageNumber){
-    var currentPage = currentPageNumber;
-	var nextPage = (currentPage+1);
+// showFirstPage('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing');
+
+function resetMovieDetailPagination(parentItem, loadMoreItem, currentPageNumber){
+
+	var currentPage = currentPageNumber;
+	var endItem = (currentPage+1)*moviesPerPage;
+	var startItem = (currentPage*moviesPerPage)-moviesPerPage;
+	var counter;
+
+	$(parentItem+':nth-child(1)').fadeIn('slow');
+	$(parentItem+':nth-child(2)').fadeIn('slow');
+	$(parentItem+':nth-child(3)').fadeIn('slow');
+	$(parentItem+':nth-child(4)').fadeIn('slow');
+	for(counter= startItem; counter <= endItem ; counter++){
+		$(parentItem+':nth-child('+counter+')').fadeIn('slow');
+	}
 	
-	for(var counter= currentPage*moviesPerPage; counter <= nextPage*moviesPerPage ; counter++){
-		if($('.js-movie-list-'+counter).length == 0 ){
-			$('.js-load-movie-listing').fadeOut('fast');
-		}else{
-			$('.js-movie-list-'+counter).fadeIn('slow');	
-		}
-	}
-	pageNumber++;	
-	if($('.js-movie-list-'+counter).length == 0 ){
-		$('.js-load-movie-listing').fadeOut('fast');
-	}
+	if($(parentItem+':nth-child(1)').length == 0 || $(parentItem+':nth-child('+counter+')').length == 0){
+		$(loadMoreItem).fadeOut('fast');
+	}else if(movieCount < counter){
+    	$(loadMoreItem).fadeOut('fast');
+    }else if(movieCount > 4){
+    	$(loadMoreItem).fadeIn('slow');
+    }
+
+    pageNumber++;
 }
 
 // Check movie filter functionality for combine with Movie Cinema and Experience
@@ -948,7 +955,7 @@ function filterMoviesListing(cinemaIDs, experienceIDs, showTimeIDs){
 	moreMoviesListing.fadeOut('fast');
 	playMoviesListing.addClass('is--loading');
 	playMoviesListing.empty(); 
-	pageNumber = 1;
+	pageNumber = 0;
 	
 	if(cinemaIDs.length == 0 && experienceIDs.length == 0 && showTimeIDs.length == 0  ){
 		for(innerCounter=0; innerCounter < movieTilesListing.length; innerCounter++){		
@@ -1028,6 +1035,8 @@ function filterMoviesListing(cinemaIDs, experienceIDs, showTimeIDs){
 		playMoviesListing.addClass('empty--record');
 		playMoviesListing.append('Record not found...');
 	}
+
+	resetMovieDetailPagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
 }
 
 function unique(list) {
