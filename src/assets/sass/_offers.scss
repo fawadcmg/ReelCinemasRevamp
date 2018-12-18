@@ -1,0 +1,32 @@
+.c-tabs{
+	.tabs-links{
+		font-size: 0;
+		transform: translateY(-100%);
+		position: relative;
+		z-index: 3;
+
+		a{
+			border-radius: 10px 10px 0 0;
+			background: #fff;
+			display: inline-block;
+			font-size: 15px;
+			line-height: 1em;
+			padding: 24px;
+			text-transform: uppercase;
+			background: rgba(255,255,255,.2);
+			transition: background .35s, color .35s;
+			color: #fff;
+			min-width: 220px;
+			text-align: center;
+
+			+ a{
+				margin-left: 2px;
+			}
+
+			&.is--active{
+				background: rgba(255,255,255,1);
+				color: #383041;
+			}
+		}
+	}
+}

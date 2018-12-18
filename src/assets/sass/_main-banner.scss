@@ -30,7 +30,7 @@
 			cursor: pointer;
 			background: transparent url(../img/icons/arrow-left.svg) no-repeat 50%;
 			transform: translateY(-50%);
-			
+
 			&.slick-next{
 				right: 25px;
 				left: auto;
@@ -40,8 +40,6 @@
 		&.slick-initialized{
 			.slick-slide{
 				.txt{
-					// transform: translateX(100px);
-					// transition: transform .35s;
 					.anim-wrap--ready{
 						position: relative;
 						display: block;

@@ -193,7 +193,7 @@
 				.replaced-svg{
 					fill: #fff;
 					path{
-						stroke: #fff;
+						// stroke: #fff;
 					}
 					text{
     					fill: #fff;
@@ -201,7 +201,7 @@
 					@media (max-width: 767px){
 						fill: #000;
 						path{
-							stroke: #000;
+							// stroke: #000;
 						}
 						text{
 	    					fill: #000;
@@ -214,7 +214,7 @@
 		@media (max-width: 767px){
 						.st0 {
     fill: none;
-    stroke: #000;
+    // stroke: #000;
     stroke-miterlimit: 10;
 }
 	.st2 {
