@@ -3120,6 +3120,7 @@ $(function () {
 	movieListSetHTML();
 	movieList();
 	tabs();
+	activeHashTab();
 	sideNav();
 	animWrapHeight();
 	bindPopupEve();
@@ -3128,6 +3129,7 @@ $(function () {
 	filterSearch();
 	scrollTo();
 	bgMobImg();
+
 	$('.c-loader').fadeOut('slow', function () {
 		if (winWidth > 1024) {
 			AOS.init({
@@ -3135,7 +3137,6 @@ $(function () {
 				offset: 10
 			});
 		}
-		activeHashTab();
 	});
 });
 
@@ -3182,6 +3183,8 @@ $(document).keyup(function (e) {
 		$('.js-custom-select input[type="text"]').blur();
 
 		closePopup();
+
+		movieListSty1Close();
 	}
 });
 
@@ -3398,6 +3401,8 @@ function movieList() {
 	$('.js-movie-list .movie-item .item-wrap').click(function (e) {
 		e.preventDefault();
 		var _self = this;
+		$(this).closest('.js-movie-list').removeClass('panel--closed');
+		$(this).closest('.js-movie-list').addClass('has--open-panel');
 		if (!$(this).closest('.js-movie-list').hasClass('js-movie-list--not-open')) {
 
 			// Check if some other movie is already open and if its on another row
@@ -3445,9 +3450,11 @@ function slideDownMovieDetails(thisSelf) {
 			e.preventDefault();
 
 			$(this).closest('.movie-details').slideUp();
+			$(this).closest('.js-movie-list').removeClass('has--open-panel');
 			setTimeout(function () {
 				$(thisSelf).closest('.js-movie-list').find('.movie-item').removeClass('is--active');
 				$(thisSelf).closest('.js-movie-list').find('.movie-details .item-details').remove();
+				$(thisSelf).closest('.js-movie-list.js-movie-list--sty-1').addClass('panel--closed');
 			}, 400);
 		});
 	}
@@ -3477,10 +3484,24 @@ function setInView(el) {
 }
 
 function movieListSetHTML() {
+	var itemsPerRow = 1;
 	if (winWidth < 1024) {
-		var itemsPerRow = 4;
+		itemsPerRow = 4;
 	} else {
-		var itemsPerRow = 6;
+		itemsPerRow = 6;
+	}
+
+	if ($('.js-movie-list').hasClass('js-movie-list--sty-1')) {
+		itemsPerRow = 4;
+		if (winWidth < 1500) {
+			itemsPerRow = 3;
+		}
+		if (winWidth < 920) {
+			itemsPerRow = 2;
+		}
+		if (winWidth < 768) {
+			itemsPerRow = 1;
+		}
 	}
 
 	if ($('.js-movie-list').hasClass('slick-initialized')) {
@@ -3510,6 +3531,7 @@ function movieListSetHTML() {
 			$('.list-wrap .movie-item .is--active', this).removeClass('is--active');
 			$('.list-wrap .movie-item', this).appendTo($(this));
 			$('.list-wrap', this).remove();
+			$('.list-row', this).remove();
 			$('.movie-details', this).remove();
 		});
 	}
@@ -3517,13 +3539,20 @@ function movieListSetHTML() {
 	$('.js-movie-list .is--last-item').removeClass('is--last-item');
 	$('.js-movie-list .is--first-item').removeClass('is--first-item');
 
-	if (winWidth >= 768) {
+	if (winWidth >= 768 || $('.js-movie-list').hasClass('js-movie-list--sty-1')) {
 		// Set HTML
 		$('.js-movie-list').each(function () {
 			var i = 1;
 			while ($('> .movie-item', this).length) {
 				$('> .movie-item:lt(' + itemsPerRow + ')', this).wrapAll('<div class="list-wrap list-wrap-page list-wrap-page--' + i + '" />');
 				i++;
+			}
+
+			if ($(this).hasClass('js-movie-list--sty-1')) {
+				$('.list-wrap', this).each(function (i) {
+					console.log(i, this);
+					$(this).wrap('<div class="list-row"/>');
+				});
 			}
 			$('.list-wrap', this).after('<div class="movie-details"></div>');
 
@@ -3557,9 +3586,9 @@ function tabs() {
 				filterHeight = $('.c-movie-filters').height();
 			}
 			var topScroll = $(self).offset().top;
-			var elemTopSpace = parseInt($(self).css('marginTop'));
+			var elemTopSpace = parseInt($(self).css('margin-top'));
 			$('html, body').stop().animate({
-				scrollTop: topScroll + elemTopSpace - headerHeight - filterHeight
+				scrollTop: topScroll - elemTopSpace - headerHeight - filterHeight
 			}, 500);
 		}, 200);
 	});
@@ -3751,11 +3780,11 @@ $(document).ready(function (e) {
 
 function movieListRemoveCarousel() {
 	if ($('.js-movie-list').hasClass('slick-initialized')) {
-		$('.js-movie-list').slick('unslick');
+		$('.js-movie-list:not(.js-movie-list--sty-1)').slick('unslick');
 	}
 }
 function movieListStartCarousel() {
-	if ($(window).width() < 768 && $('.js-movie-list').get(0)) {
+	if ($(window).width() < 768 && $('.js-movie-list:not(.js-movie-list--sty-1)').get(0)) {
 		$('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
 
 		var movieListInfinite = false;
@@ -3777,7 +3806,7 @@ function movieListCarousel() {
 var jsMovieCarouselTimmer;
 function fixMobileCarouselWrongDisplay() {
 	setTimeout(function () {
-		if ($(window).width() < 768 && $('.js-movie-list').get(0)) {
+		if ($(window).width() < 768 && $('.js-movie-list:not(.js-movie-list--sty-1)').get(0)) {
 			jsMovieCarouselTimmer = setInterval(function () {
 				if (!$('.js-movie-list').hasClass('slick-initialized')) {
 					$('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
@@ -4199,4 +4228,16 @@ function activeHashTab() {
 	if (winHashVal) {
 		$('.js-tab-link[href="#' + winHashVal + '"]').click();
 	}
+}
+
+// Close Movie List Sty 1
+function movieListSty1Close() {
+	$('.js-movie-list.js-movie-list--sty-1 .movie-details').slideUp();
+	$('.js-movie-list.js-movie-list--sty-1').removeClass('has--open-panel');
+
+	setTimeout(function () {
+		$('.js-movie-list.js-movie-list--sty-1').find('.movie-item').removeClass('is--active');
+		$('.js-movie-list.js-movie-list--sty-1').find('.movie-details .item-details').remove();
+		$('.js-movie-list.js-movie-list--sty-1').addClass('panel--closed');
+	}, 400);
 }
