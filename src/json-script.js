@@ -1,5 +1,5 @@
 var moviePostURL = 'https://www.reelcinemas.ae/en/KeyArts/Vertical/';
-var movieURL = 'http://www.reelcinemas.ae/en/KeyArts/Tarilers/';	
+var movieURL = 'http://www.reelcinemas.ae/en/KeyArts/Tarilers/';
 var moviewFilter = new Array();
 var cinemaFilter = new Array();
 var experienceFilter = new Array();
