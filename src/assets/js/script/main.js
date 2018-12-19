@@ -562,7 +562,8 @@ function sideNav() {
 }
 
 function selectAllEvent() {
-	$('.js-select-all').click(function () {
+	$('.js-select-all:not(.has-select-all-event)').click(function () {
+		$(this).addClass('has-select-all-event');
 		if($(this).find('input').is(":checked")){
 			$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop( "checked", false );
 		}else{

@@ -3638,6 +3638,17 @@ function sideNav() {
 	});
 }
 
+function selectAllEvent() {
+	$('.js-select-all:not(.has-select-all-event)').click(function () {
+		$(this).addClass('has-select-all-event');
+		if ($(this).find('input').is(":checked")) {
+			$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop("checked", false);
+		} else {
+			$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop("checked", true);
+		}
+	});
+}
+
 function customSelectBox() {
 	/*$('.js-custom-select .js-field').on('focus', function() {
  	$(this).closest('.js-custom-select').addClass('is--active');
@@ -3660,13 +3671,7 @@ function customSelectBox() {
 
 	selectOutsideClickEvent();
 
-	$('.js-select-all').click(function () {
-		if ($(this).find('input').is(":checked")) {
-			$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop("checked", false);
-		} else {
-			$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop("checked", true);
-		}
-	});
+	selectAllEvent();
 
 	// for mobile
 	$('.js-custom-select .field').click(function (e) {
