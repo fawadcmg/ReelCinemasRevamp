@@ -115,6 +115,23 @@
 		line-height: 1.1em;
 		margin: 0 0 15px 0;
 	}
+
+	&.banner--1a{
+		padding-bottom: 0;
+
+		.txt-sec{
+			left: 0;
+			transform: none;
+			padding: 0;
+			.item{
+				padding-right: 0;
+			}
+		}
+
+		.txt-wrap{
+			margin-bottom: 0;
+		}
+	}
 }
 
 @media screen and (max-height: 700px), screen and (max-width: 1600px){
@@ -149,5 +166,18 @@
 	}
 	.c-banner-1 .txt-wrap{
 		margin-bottom: 15px;
+	}
+}
+@media (max-height: 767px){
+	.c-banner-1 h1{
+		font-size: 32px;
+	}
+	.c-banner-1 h2{
+		font-size: 24px;
+	}
+	.c-banner-1.banner--1a{
+		padding-bottom: 20px;
+		display: flex;
+		align-items: flex-end;
 	}
 }

@@ -1,0 +1,120 @@
+.c-content-sty-1{
+	margin: 100px 0px;
+
+	.c-btn-glow{
+		margin: 30px 0;
+	}
+
+	h1{
+		font-size: 45px;
+		line-height: 1em;
+		font-weight: bold;
+		margin: 0 0 30px 0;
+
+		&.highlight{
+			color: #6e3996;
+		}
+
+		i{
+			font-family: 'arquitecta_mediummedium';
+			display: block;
+			font-size: 25px;
+			color: #505459;
+			font-weight: normal;
+			text-transform: uppercase;
+		}
+	}
+
+	figure{
+		position: relative;
+		max-width: 480px;
+		margin: 0px auto 20px;
+
+		&:before{
+			content: '';
+			display: block;
+			width: 367px;
+			height: 308px;
+			position: absolute;
+			top: -40px;
+			right: -70px;
+			background: url('../img/icons/icon-r.png');
+		}
+
+		img{
+			border-radius: 5px;
+			position: relative;
+			overflow: hidden;
+
+			+ figcaption{
+				margin-top: 20px;
+			}
+		}
+
+		figcaption{
+			font-size: 14px;
+			line-height: 1.4em;
+			font-style: italic;
+		}
+	}
+
+	ul{
+		list-style: none;
+		margin: 0 0 20px 0;
+		padding: 0;
+
+		li{
+			padding-left: 45px;
+			position: relative;
+
+			&:before{
+				content: '';
+				display: block;
+				width: 14px;
+				height: 7px;
+				background: url('../img/icons/bullet.svg') no-repeat center center;
+				background-size: 100% auto;
+				position: absolute;
+				top: 7px;
+				left: 0;
+			}
+
+			+ li{
+				margin-top: 20px;
+			}
+		}
+	}
+
+	blockquote{
+		font-weight: 100;
+		font-size: 24px;
+		font-style: italic;
+		line-height: 1.4em;
+		color: #6e3996;
+		padding-left: 80px;
+		position: relative;
+		margin-bottom: 30px;
+
+		&:before{
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: url('../img/icons/quotes.svg') no-repeat top left;
+			background-size: 100% auto;
+			width: 43px;
+			height: 43px;
+		}
+	}
+
+	.row{
+		display: flex;
+		margin: 0 -20px 20px;
+
+		.col{
+			width: 50%;
+			padding: 0 20px;
+		}
+	}
+}
