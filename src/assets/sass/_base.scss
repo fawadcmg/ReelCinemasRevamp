@@ -43,7 +43,7 @@ a{
 	transition: all .35s;
 }
 
-p {
+ul, p{
 	font-size: 15px;
 	line-height: 1.6em;
 	margin: 10px 0;
@@ -598,9 +598,10 @@ label{
 	
 	&.is--active{
 		height: auto;
+		overflow: visible;
 	}
 	@media (max-width: 767px){
-	overflow: hidden;
+		/* overflow: hidden; */
 	}
 }
 
@@ -1226,19 +1227,27 @@ label{
 }
 
 @media (max-width: 1500px){
-	p{
+	ul, p{
 		font-size: 15px;
 	}
 }
 @media (max-width: 1200px){
-	p{
+	ul, p{
 		font-size: 14px;
 		line-height: 1.5em;
 	}
 }
 @media (max-width: 767px){
-	p{
+	ul, p{
 		font-size: 13px;
 		line-height: 1.4em;
+	}
+	.only-desktop{
+		display: none !important;
+	}
+}
+@media (min-width: 768px){
+	.only-mobile{
+		display: none !important;
 	}
 }
