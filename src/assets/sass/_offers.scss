@@ -37,8 +37,9 @@
 		}
 	}
 	.action{
-		margin-top: 30px;
-		text-align: center;
+	    margin-top: 20px;
+	    text-align: center;
+	    margin-bottom: 20px;
 		a{
 			min-width: 200px;
 		}
@@ -71,6 +72,11 @@
 	}
 	.list-row{
 		position: relative;
+		@media (min-width: 1500px){
+			&:last-child{
+				display: none;
+			}
+		}
 	}
 	.btn-close{
 		@extend .c-btn-close;
@@ -86,9 +92,11 @@
 		justify-content: space-between;
 
 		.movie-item{
-			width: 33.33%;
-			max-width: 355px;
 			margin-bottom: 40px;
+
+			.item-wrap{
+				max-width: 355px;
+			}
 
 			.quick-head{
 				opacity: 1;
@@ -108,8 +116,8 @@
 					position: absolute;
 					top: 0;
 					height: 120%;
-					height: calc(100% + 20px);
-					width: 100%;
+					height: calc(100% + 15px);
+					width: 100.02%;
 					transition: transform .35s;
 					transform: translateY(100%);
 					background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 90%,rgba(255,255,255,1) 100%);
@@ -120,16 +128,19 @@
 					position: absolute;
 					top: -5px;
 					left: 0;
-					background: rgba(0,0,0,0.2);
+					background: rgba(0,0,0,0.1);
 					filter: blur(10px);
 					height: 100%;
 					width: 100%;
-					z-index: 0;
 					opacity: 0;
+					z-index: -1;
 				}
 			}
 
 			&.is--active{
+				.item-wrap{
+					cursor: auto;
+				}
 				.quick-head{
 					transform: translateY(50px);
 					opacity: 0;
@@ -297,7 +308,7 @@
 			transform: translateX(-50%);
 		}
 		&:after{
-			margin-top: -3px;
+			margin-bottom: 3px;
 		}
 		&:before{
 			margin-bottom: -3px;
@@ -308,6 +319,98 @@
 			line-height: 1.3em;
 			text-align: center;
 			padding: 30px;
+			min-height: 106px;
 		}
+	}
+}
+.c-page-heading{
+	display: flex;
+	align-items: center;
+	min-height: 220px;
+	padding-bottom: 55px;
+	background: #194367 url('../img/pattern/bg-blue-shine--mob.jpg');
+
+	h1{
+		font-size: 36px;
+		font-weight: 700;
+		color: #fff;
+	}
+}
+
+@media (max-width: 1499px){
+}
+@media (max-width: 919px){
+	.c-list-1 .movie-details .item-details .left{
+		width: 60%;
+		padding-right: 10px;
+	}
+	.c-list-1 .movie-details .item-details .right{
+		padding-left: 10px;
+	}
+	.c-list-1 .movie-details .item-details h1{
+		font-size: 23px;
+	}
+	.c-list-1 .movie-details .item-details{
+		padding: 30px;
+	}
+	.c-list-1 .movie-details .item-details ul li{
+		padding-left: 25px;
+	}
+}
+
+@media (max-width: 1200px){
+	.c-list-1 .quick-head h1{
+	    font-size: 17px;
+	    padding: 25px;
+	    min-height: 96px;
+    }
+    .c-list-1 .list-wrap .item-wrap{
+    	padding: 0 10px;
+    }
+    .c-list-1 .list-wrap{
+    	margin: 0 -10px;
+    }
+}
+
+@media (max-width: 767px){
+	.c-tabs .tabs-links a{
+		font-size: 14px;
+		padding: 22px 15px 19px;
+		min-width: 130px;
+	}
+	.c-tabs .tabs-links{
+		margin-bottom: -60px;
+	}
+	.c-list-1 .list-wrap .item-wrap{
+		padding-right: 0;
+	}
+	.c-list-1 .movie-details .item-details .content{
+		display: block;
+	}
+	.c-list-1 .movie-details .item-details{
+		padding: 20px;
+		.left, .right{
+			width: 100%;
+			padding: 0;
+		}
+	}
+	.c-list-1 .btn-close{
+		opacity: 0;
+		pointer-events: none;
+		transform: rotate(-45deg);
+		background: rgba(0,0,0,.2);
+	}
+	.c-list-1 .is--active .btn-close{
+		pointer-events: auto;
+		transform: rotate(45deg);
+		opacity: 1;
+	}
+	.c-list-1 .quick-head h1 {
+	    font-size: 17px;
+	    padding: 15px;
+	    min-height: 74px;
+	}
+	.c-list-1 .quick-head{
+		padding-bottom: 30px;
 	}
 }

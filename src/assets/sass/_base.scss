@@ -598,9 +598,10 @@ label{
 	
 	&.is--active{
 		height: auto;
+		overflow: visible;
 	}
 	@media (max-width: 767px){
-	overflow: hidden;
+		/* overflow: hidden; */
 	}
 }
 
@@ -1240,5 +1241,13 @@ label{
 	ul, p{
 		font-size: 13px;
 		line-height: 1.4em;
+	}
+	.only-desktop{
+		display: none !important;
+	}
+}
+@media (min-width: 768px){
+	.only-mobile{
+		display: none !important;
 	}
 }

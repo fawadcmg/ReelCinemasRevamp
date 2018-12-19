@@ -5,7 +5,8 @@ var isRTL = ($('html').attr('dir') == "rtl") ? true : false,
 	footerHeight = $('.c-main-footer').outerHeight(),
 	bodyHeight,
 	bodyTopPos,
-	isIE = detectIE();
+	isIE = detectIE(),
+	movieListAnimating = false;
 
 // loadPlayMovies();
 ChangeToSvg();
@@ -35,6 +36,7 @@ $(function () {
 	filterSearch();
 	scrollTo();
 	bgMobImg();
+	movieListSty1AutoCloseEvent();
 
 	$('.c-loader').fadeOut('slow', function () {
 	    if(winWidth > 1024){
@@ -53,6 +55,7 @@ $(window).on('load', function () {
 		addVideoPlugin();
 		AOS.refresh();
 		fixMobileCarouselWrongDisplay();
+		movieListSetDropDownPos();
 	}, 200);
 });
 
@@ -321,6 +324,13 @@ function initSelect2() {
 function movieList() {
 	$('.js-movie-list .movie-item .item-wrap').click(function (e) {
 		e.preventDefault();
+		
+		if($(e.target).closest('.js-close-movie-list-detail').length || movieListAnimating){
+			return;
+		}
+
+		movieListAnimating = true;
+
 		var _self = this;
 		$(this).closest('.js-movie-list').removeClass('panel--closed');
 		$(this).closest('.js-movie-list').addClass('has--open-panel');
@@ -329,15 +339,21 @@ function movieList() {
 			// Check if some other movie is already open and if its on another row
 			// then make sure we keep scroll jerk off the bay
 			if(!$(this).closest('.list-wrap').next().find('.item-details').get(0) && $(this).closest('.js-movie-list').find('.movie-details .item-details').get(0)){
-				/*var prevDetailHeight = $(this).closest('.js-movie-list').find('.movie-details .item-details').height();
-				var prevDetailTopOffset = $(this).closest('.js-movie-list').find('.movie-details .item-details').offset().top;
-				var thisItemTopScroll = $(this).offset().top;
-				var currentScroll = $(window).scrollTop();
-				if(thisItemTopScroll > prevDetailTopOffset){
-					// window.scrollTo(0, (currentScroll - prevDetailHeight) );
-				}*/
 
 				var openOnOtherRowDetail = $(this).closest('.js-movie-list').find('.movie-details .item-details');
+
+				// START -  Make sure there is enough space
+				/*if($(this).closest('.js-movie-list').hasClass('js-movie-list--sty-1')){
+					openOnOtherRowDetail.parent().css('display', 'block');
+					var thisHeight = openOnOtherRowDetail.height();
+					openOnOtherRowDetail.parent().css('display', 'none');
+
+					var innerTab = $(this).closest('.is-tab').height() + $(this).closest('.is-tab');
+
+					var botValue = thisHeight + openOnOtherRowDetail.parent().offset().top;
+				}*/
+				// END
+
 				openOnOtherRowDetail.parent().slideUp();
 
 				setTimeout(function () {
@@ -354,7 +370,7 @@ function movieList() {
 }
 
 function slideDownMovieDetails(thisSelf) {
-	if(winWidth >=768){
+	if(winWidth >=768 || $(thisSelf).closest('.js-movie-list').hasClass('js-movie-list--sty-1')){
 		$(thisSelf).closest('.js-movie-list').find('.movie-item').removeClass('is--active');
 		$(thisSelf).closest('.js-movie-list').find('.movie-details .item-details').remove();
 
@@ -367,15 +383,32 @@ function slideDownMovieDetails(thisSelf) {
 
 		setInView($(thisSelf).closest('.list-wrap').next().find('.item-details')[0]);
 
-		$('.movie-details .js-close-movie-list-detail').click(function (e) {
-			e.preventDefault();
+		movieListAnimating = false;
 
-			$(this).closest('.movie-details').slideUp();
+		$('.js-movie-list .movie-details .js-close-movie-list-detail, .js-movie-list .list-wrap .js-close-movie-list-detail:not(.js-close-applied)').click(function (e) {
+			e.preventDefault();
+			
+			$(this).addClass('js-close-applied');
+
+			if(movieListAnimating){
+				return;
+			}
+
+			movieListAnimating = true;
+
+			if($(this).closest('.movie-details').get(0)){
+				$(this).closest('.movie-details').slideUp();
+			}else{
+				$(this).closest('.list-row').find('.movie-details').slideUp();
+			}
+
 			$(this).closest('.js-movie-list').removeClass('has--open-panel');
+
 			setTimeout(function () {
 				$(thisSelf).closest('.js-movie-list').find('.movie-item').removeClass('is--active');
 				$(thisSelf).closest('.js-movie-list').find('.movie-details .item-details').remove();
 				$(thisSelf).closest('.js-movie-list.js-movie-list--sty-1').addClass('panel--closed');
+				movieListAnimating = false;
 			}, 400);
 		});
 	}
@@ -446,7 +479,7 @@ function movieListSetHTML() {
 	}
 	
 	// Normalize First
-		$('.js-movie-list .movie-item.is--active').removeClass('is--active');
+	$('.js-movie-list .movie-item.is--active').removeClass('is--active');
 	if($('.js-movie-list .list-wrap').get(0)){
 		$('.js-movie-list').each(function () {
 			$('.list-wrap .movie-item .is--active', this).removeClass('is--active');
@@ -471,7 +504,6 @@ function movieListSetHTML() {
 
 			if($(this).hasClass('js-movie-list--sty-1')){
 				$('.list-wrap', this).each(function(i){
-					console.log(i, this);
 					$(this).wrap('<div class="list-row"/>');
 				});
 			}
@@ -484,6 +516,7 @@ function movieListSetHTML() {
 		$('.js-movie-list .movie-item:last-child .item-details').addClass('is--last-item');
 		$('.js-movie-list .movie-item:first-child .item-details').addClass('is--first-item');
 	}
+	movieListSetDropDownPos();
 }
 
 function tabs() {
@@ -581,7 +614,6 @@ function customSelectBox() {
 		$('.js-custom-select').removeClass('is--active');
 		$('.js-custom-select').find('.field-dropdown .scroll').slideUp();
 		$('html').removeClass('filter-open');
-		console.log(bodyTopPos);
 		setBodyToNormal();
 	});
 
@@ -620,7 +652,6 @@ function hideOnClickOutside(selector) {
 function selectOutsideClickEvent() {
 
   const outsideClickListener = (event) => {
-  	console.log('clicked');
     if(winWidth >= 768){
         if (!$(event.target).closest('.js-custom-select').length) {
 			$('.js-custom-select.is--active').find('.field-dropdown .scroll').slideUp(function () {
@@ -889,7 +920,6 @@ function detectIE() {
 }
 
 if(isIE){
-	console.log("IE Version:" + isIE);
     $('html').addClass('is--ie');
     $('html').addClass('is--ie-'+isIE);
 
@@ -1002,10 +1032,8 @@ function openPopup(target) {
 	setTimeout(function(){
 		$(target).addClass('active');
 		$(target).closest('.c-popup').addClass('popup--open');
-		console.log($(target).find('.plyr'));
 		if($(target).find('.plyr').length){
 			var videoInstance = $(target).find('.plyr').attr('data-video-instance');
-			console.log(videoInstance);
 			players[videoInstance].play();
 		}
 
@@ -1092,12 +1120,9 @@ function jsVideoDirect() {
 }
 
 function bindPopupEve() {
-
-	console.log('binding');
 	// Popup Open
 	$('.js-popup-link:not(.popup--even-binded)').click(function (e) {
 		e.preventDefault();
-		console.log('clicked poup even');
 		var target = $(this).attr('href');
 		openPopup(target);
 	}).addClass('popup--even-binded');
@@ -1182,3 +1207,19 @@ function movieListSty1Close() {
 	}, 400);
 }
 
+function movieListSty1AutoCloseEvent() {
+	if($('.js-movie-list--sty-1').get(0)){
+		$('body').click(function(event) {
+			var $target = $(event.target);
+			if ($target.parents('.movie-item').length == 0 && $target.parents('.item-details').length == 0) {
+				movieListSty1Close();
+			}
+		});
+	}	
+}
+function movieListSetDropDownPos(){
+	if($('.js-movie-list--sty-1').get(0)){
+		var imgHeight = $('.js-movie-list--sty-1 .list-wrap .movie-item .img').height();
+		$('.js-movie-list--sty-1 .movie-details').css('top', imgHeight);
+	}
+}
