@@ -606,7 +606,7 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 }
 
 $('.js-load-movie-listing').click(function () {	
-	resetMovieDetailPagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);	
+	resetMovieDetailPagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
 });	
 
 function getShowTime(movieTimeValue){	
