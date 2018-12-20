@@ -1,0 +1,100 @@
+.heading-sty-3{
+	font-size: 50px;
+	line-height: 1.3em;
+	font-weight: bold;
+	margin: 0 0 20px 0;
+}
+.heading-sty-4{
+	font-size: 45px;
+	line-height: 1em;
+	font-weight: bold;
+	margin: 0 0 0.67em 0;
+
+	&.highlight{
+		color: #6e3996;
+	}
+
+	i{
+		font-family: 'arquitecta_mediummedium';
+		display: block;
+		font-size: 25px;
+		color: #505459;
+		font-weight: normal;
+		text-transform: uppercase;
+	}
+}
+.heading-sty-5{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 10px;
+
+	span{
+		font-family: 'arquitecta_mediummedium';
+		font-weight: normal;
+		font-size: 20px;
+		text-transform: uppercase;
+		display: block;
+		margin-bottom: 5px;
+	}
+}
+.para-sty-2{
+	color: #c381f4;
+	font-size: 14px;
+	line-height: 1.3em;
+}
+.para-sty-3{
+	font-size: 14px;
+	line-height: 1.2em;
+	margin: 0 0 20px 0;
+
+	&:last-child{
+		margin-bottom: 0;
+	}
+}
+
+@media (max-width: 1700px){
+	.heading-sty-3{
+		font-size: 45px;
+		line-height: 1.2em;
+	}
+	.heading-sty-4{
+		font-size: 40px;
+		i{
+			font-size: 23px;
+		}
+	}
+}
+@media (max-width: 1500px){
+	.heading-sty-3{
+		font-size: 40px;
+	}
+	.heading-sty-4{
+		font-size: 35px;
+		i{
+			font-size: 20px;
+		}
+	}
+}
+@media (max-width: 1400px){
+	.heading-sty-3{
+		font-size: 35px;
+	}
+	.heading-sty-4{
+		font-size: 30px;
+		i{
+			font-size: 18px;
+		}
+	}
+}
+@media (max-width: 767px){
+	.heading-sty-3{
+		font-size: 31px;
+		line-height: 1.1em;
+	}
+	.heading-sty-4{
+		font-size: 26px;
+		i{
+			font-size: 16px;
+		}
+	}
+}

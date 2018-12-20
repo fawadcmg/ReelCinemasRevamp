@@ -1,9 +1,12 @@
+@import "_mixin";
 @import "_reset";
 @import "variable";
 @import "_plyr";
 @import "_fonts";
-// @import "select2";
 @import "_base";
+@import "_layout";
+@import "_miscellaneous";
+@import "_typography";
 @import "slick";
 @import "aos";
 @import "elements";
@@ -18,3 +21,7 @@
 @import "_exp-list";
 @import "_banner";
 @import "_offers";
+@import "_content";
+@import "_bars";
+@import "_subs-box";
+@import "_ie";

@@ -1,0 +1,28 @@
+/* ================== */
+/* 100VH */
+/* Makes sure element is covering entire height by subtracting header height from it. */
+/* NOTE: Filter bar height will be subtracted from javascript and will need manual working on it. */
+/* ================== */
+
+.height-cover{
+	height: 90vh;
+	height: calc(100vh - 85px);
+
+	@media (max-width: 1800px){
+		height: calc(100vh - 83px);
+	}
+	@media (max-width: 1600px){
+		height: calc(100vh - 82px);
+	}
+	@media (max-width: 767px){
+		height: calc(100vh - 66px);
+
+		@media (min-height: 650px){
+			height: calc(100vh - 58px);
+		}
+	}
+}
+
+/* ================== */
+/* END - 100VH */
+/* ================== */
