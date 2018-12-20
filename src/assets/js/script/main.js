@@ -1040,19 +1040,33 @@ function ChangeToSvg() {
 	});
 }
 
+var popupTarget;
+function openPopup(target, videoLink) {
+	console.log('1', videoLink);
+	popupTarget = target;
 
-function openPopup(target) {
+	if(videoLink){
+		var thisId = $(target).find('[data-video-instance]').attr('data-video-instance');
+		players[thisId].destroy();
+		$(target).find('.has--plyr').removeClass('has--plyr');
+		$(target).find('.js-video source').attr('src', videoLink);
+		var thisVideoTag = $(target).find('.js-video')[0].outerHTML;
+		var parentRef = $(target).find('.js-video').parent();
+		$(target).find('.js-video').remove();
+		parentRef.append(thisVideoTag);
+		jsVideo();
+	}
+
 	$('html').addClass('popup-is-active');
 	$(target).show();
 	$(target).closest('.c-popup').show();
 	setTimeout(function(){
-		$(target).addClass('active');
-		$(target).closest('.c-popup').addClass('popup--open');
-		if($(target).find('.plyr').length){
-			var videoInstance = $(target).find('.plyr').attr('data-video-instance');
+		$(popupTarget).addClass('active');
+		$(popupTarget).closest('.c-popup').addClass('popup--open');
+		if($(popupTarget).find('.plyr').length){
+			var videoInstance = $(popupTarget).find('.plyr').attr('data-video-instance');
 			players[videoInstance].play();
 		}
-
 	}, 10);
 
 
@@ -1112,15 +1126,18 @@ function addVideoPlugin() {
 }
 
 var players = [];
+var playersIndex = 0;
 function jsVideo() {
 	// Custom player
-	if($('.js-video').length){
-		$('.js-video').each(function(i) {
+	if($('.js-video:not(.has--plyr)').length){
+		$('.js-video:not(.has--plyr)').each(function(i) {
+			$(this).addClass('has--plyr');
 			var thisParent = $(this).parent();
-			players[i] = new Plyr(this, {
+			players[playersIndex] = new Plyr(this, {
 				playsinline: true,
 			});
-			thisParent.find('.plyr').attr('data-video-instance', i);
+			thisParent.find('.plyr').attr('data-video-instance', playersIndex);
+			playersIndex++;
 		});
 	}
 }
@@ -1140,7 +1157,8 @@ function bindPopupEve() {
 	$('.js-popup-link:not(.popup--even-binded)').click(function (e) {
 		e.preventDefault();
 		var target = $(this).attr('href');
-		openPopup(target);
+		var videoLink = $(this).attr('data-video');
+		openPopup(target, videoLink);
 	}).addClass('popup--even-binded');
 
 	// Popup Close
