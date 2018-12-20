@@ -1203,34 +1203,22 @@ function loadMovieDetail(movieName){
 				movieNameClass = movieNameClass.replace(" ", "-");
 				movieNameClass = movieNameClass.replace(".", "-");
 				movieNameClass = movieNameClass.toLowerCase();
-				movieTrailerURL = '#play-video-'+movieNameClass;
+				movieTrailerURL = '#video-1'+movieNameClass;
 				$('.js-popup-link').attr('href',movieTrailerURL);
+				$('.js-popup-link').attr('data-video',movieTrailer);
 
 				itemValue = item.MovieName;	
 				itemClass = itemValue;
 				itemClass = itemClass.replace(/\s+/g, "-");
 				itemClass = itemClass.replace(".", "-");
 				itemClass = 'play-video-'+itemClass.toLowerCase();
-				itemPopupClass = 'popup-play-video-'+itemClass.toLowerCase();
-				var movieImage = moviePostURL+item.MovieImage;			
-				var movieTrailer = movieURL+item.MovieTrailer;
-
-				result = '<div class="overlay js-close-popup"></div><section id="'+itemClass+'" class="popup popup--full-screen">\
-	            <div class="popup-wrap">\
-	                <video class="js-video" poster="" id="'+itemPopupClass+'" autoplay playsinline controls>\
-	                    <source src="'+movieTrailer+'" type="video/mp4">\
-	                </video>\
-	                <div class="popup-action">\
-	                    <a href="javascript:void(0);" class="c-close js-close-popup"><span>Close</span></a>\
-	                </div>\
-	            </div>\
-	        </section>';
-
+				itemPopupClass = 'popup-play-video-'+itemClass.toLowerCase();				
+				
 			}			
 		});
 	  
 	}).done(function( data ) {
-		$('.js-c-popup').append(result);	 
+	 
 		bindPopupEve();  
 		toSVG(); 
 		console.log("Movies detail completed");
