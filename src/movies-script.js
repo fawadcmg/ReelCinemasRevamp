@@ -67,7 +67,7 @@ $(document).ready(function () {
 
 	}else if($('.showtime-tile-page').length > 0){
 		// loadMovieDetail();
-		loadMovieDates();
+		loadMovieAllDates();
 		experienceFilter = ['standard','dolby','dine','boutique','screenx','platinum','premier','mx4d'];
 		setTimeout(function() {
 		    $(".slick-current > div > .js-movieDateFilter").trigger('click');
@@ -1212,7 +1212,8 @@ function loadMovieDetail(movieName){
 				itemClass = itemClass.replace(/\s+/g, "-");
 				itemClass = itemClass.replace(".", "-");
 				itemClass = 'play-video-'+itemClass.toLowerCase();
-				itemPopupClass = 'popup-play-video-'+itemClass.toLowerCase();				
+				itemPopupClass = 'popup-play-video-'+itemClass.toLowerCase();
+				
 				
 			}			
 		});
@@ -1309,8 +1310,7 @@ function loadMovieDates(movieName){
 		});
 
 		$('.js-movieDateFilter').click(function () {
-			var movieDateFilter = $(this).attr('attr-movie-date');
-			alert("Check 1");
+			var movieDateFilter = $(this).attr('attr-movie-date');			
 			searchDateValue = movieDateFilter;			
 			$('.dboxelement').removeClass('active');
 			$(this).find('.dboxelement').addClass('active');
@@ -1347,7 +1347,7 @@ function loadCinamaListing(movieName){
   	pageNumber=0;
   	movieTilesListing = [];
   	$('.js-load-movie-listing').fadeOut('fast');
-  	$('.js-load-play-movies-listing').fadeOut();
+  	$('.js-load-play-movies-listing').fadeOut();  	
 
   	for(counter=0; counter< tempCinemaListing.length; counter++){	
   		movieExprerience = "";				
@@ -1355,28 +1355,20 @@ function loadCinamaListing(movieName){
   		tempValue1 = tempCinemaListing[counter];
   		var selectedDate = searchDateValue;
   		for(innercounter=0; innercounter < experienceFilter.length; innercounter++){
-  			movieTiles(tempMovieName, tempCinemaListing[counter], selectedDate, experienceFilter[innercounter]);
+  			movieTiles(tempMovieName, tempCinemaListing[counter], selectedDate, experienceFilter[innercounter]);  			
   		}
 	}	
-
-	
-
-	// if($('.showtime-page').length > 0  ){
-	// 	movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-play-movies-listing',pageNumber);
-	// }else if($('.showtime-tile-page').length > 0){
-	// 	movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-	// }else if($('.movie-detail-page').length > 0 ){
-	// 	movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-	// }
 
 }
 
 function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 
 	var movieDate, movieDateValue, targetItem, movieResult, counter, itemClass, movieCinema, movieExprerienceTemp;
-  	var tempMovieName = movieName;  	
-  	tempMovieName = findAndReplace(tempMovieName, "%20", " ");
+  	var tempMovieName = movieName;  	 
+
+  	tempMovieName = findAndReplace(tempMovieName, "%20", "-");
   	tempMovieName = findAndReplace(tempMovieName, " ", "-");
+
   	movieResult = "";
   	targetItem = $('.js-loadCinamaListing');
   	var weekName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -1417,7 +1409,8 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 			movieExprerienceTemp = item.Experience;
 			movieExprerienceTemp = movieExprerienceTemp.toLowerCase();
 			movieExprience = movieExprience.toLowerCase();
-
+			
+			movieNameValue = findAndReplace(movieNameValue, " ", "-");			
 
 			if(movieNameValue == tempMovieName 
 				&& movieCinema == tempCinemaLabel 
@@ -1490,7 +1483,7 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 			movieExprerienceClass = movieExprience.toLowerCase();
 			movieCountClass += movieCount;	
 			tempMovieName = tempMovieName.toLowerCase();
-			movieNameValue = findAndReplace(tempMovieName,"-", " ");
+			movieNameValue = findAndReplace(tempMovieName," ", "-");
 			var movieLabel = "";
 			var hideMovieClass = 'tileview-movies-list--sty1';
 
@@ -1498,9 +1491,11 @@ function movieTiles(movieName, cinemaName, movieDate, movieExprience){
 				movieLabel = '<div class="img">\
 			                        <img src="'+movieImage+'" alt="'+movieNameValue+'">\
 			                     </div>\
-			                     <div class="moviename">'+movieNameValue+'</div>\
+			                     <div class="moviename">'+findAndReplace(movieNameValue,"-", " ")+'</div>\
 			                     <div class="locationmobile">'+cinemaName+'</div>';
 			                     hideMovieClass= "";
+
+				
 			}
 
 			result = '<div '+itemClass+' class="tileview-movies-list '+hideMovieClass+' '+movieNameValue+' '+movieExprerienceClass+' '+movieCinemaClass+'">\
@@ -2083,7 +2078,7 @@ function filterShowtimeMovieBlock(movieIDs, cinemaIDs, experienceIDs, genreIDs, 
 	$('.is--loading').removeClass('is--loading');
 }
 
-function loadMovieDates(){
+function loadMovieAllDates(){
 	
   	var movieName, movieDate, movieDateValue, targetItem, movieDates, counter, itemClass;  	
   	movieDates = "";
@@ -2169,10 +2164,16 @@ function loadMovieDates(){
 			$('.dboxelement').removeClass('active');
 			$(this).find('.dboxelement').addClass('active');
 			movieTilesListing = [];			
-			pageNumber=0;  						
-			for(counter=0; counter < movieListingTempArray.length; counter++ ){				
-				loadCinamaListing(movieListingTempArray[counter]);
-			}			
+			pageNumber=0;  	
+			if($('.movie-detail-page').length>0){				
+				loadCinamaListing(searchMovieName);
+			}else{
+				
+				for(counter=0; counter < movieListingTempArray.length; counter++ ){				
+					loadCinamaListing(movieListingTempArray[counter]);
+				}
+			}
+						
 			setTimeout(function() {				
 			    resetShowTimePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
 			}, 5000);		
