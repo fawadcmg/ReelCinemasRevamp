@@ -72,7 +72,7 @@ $(document).ready(function () {
 		setTimeout(function() {
 		    $(".slick-current > div > .js-movieDateFilter").trigger('click');
 		    $(".slick-current > div > .js-movieDateFilter > .dboxelement").addClass('active');
-		}, 350);
+		}, 1000);
 	}
 
 	scrollCustomSelect();
