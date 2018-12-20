@@ -1041,7 +1041,13 @@ function ChangeToSvg() {
 }
 
 
-function openPopup(target) {
+function openPopup(target, videoLink) {
+	if(videoLink){
+		var thisId = $(target).find('[data-video-instance]').attr('data-video-instance');
+		players[thisId].destroy();
+		$(target).find('.js-video source').attr('src', videoLink);
+		jsVideo();
+	}
 	$('html').addClass('popup-is-active');
 	$(target).show();
 	$(target).closest('.c-popup').show();
@@ -1112,15 +1118,17 @@ function addVideoPlugin() {
 }
 
 var players = [];
+var playersIndex = 0;
 function jsVideo() {
 	// Custom player
-	if($('.js-video').length){
+	if($('.js-video').length && !$('.js-video').closest('plyr')){
 		$('.js-video').each(function(i) {
 			var thisParent = $(this).parent();
-			players[i] = new Plyr(this, {
+			players[playersIndex] = new Plyr(this, {
 				playsinline: true,
 			});
-			thisParent.find('.plyr').attr('data-video-instance', i);
+			thisParent.find('.plyr').attr('data-video-instance', playersIndex);
+			playersIndex++;
 		});
 	}
 }
@@ -1140,7 +1148,8 @@ function bindPopupEve() {
 	$('.js-popup-link:not(.popup--even-binded)').click(function (e) {
 		e.preventDefault();
 		var target = $(this).attr('href');
-		openPopup(target);
+		var videoLink = $(this).attr('data-video');
+		openPopup(target, videoLink);
 	}).addClass('popup--even-binded');
 
 	// Popup Close
