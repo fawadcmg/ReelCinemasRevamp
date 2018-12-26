@@ -794,5 +794,13 @@
 		width: 110px;
 		top: 9px;
 		left: 10px;
+
+		@media (min-height: 651px){
+			top: 14px;
+
+			.not-at-top &{
+				top: 9px;
+			}
+		}
 	}
 }

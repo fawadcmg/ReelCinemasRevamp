@@ -47,7 +47,11 @@ a{
 ul, p{
 	font-size: 15px;
 	line-height: 1.5em;
-	margin: 0 0 1.333em 0;
+	margin: 0 0 20px 0;
+	
+	@media (max-width: 767px){
+		margin-bottom: 15px;
+	}
 }
 
 ul{
@@ -974,6 +978,8 @@ label{
 }
 .c-popup .js-video{
     height: 100%;
+    width: 100%;
+    background: #000;
 }
 
 /* ==================================== */
@@ -1040,6 +1046,7 @@ label{
     left: 50%;
     height: 100%;
     width: 1px;
+    margin-left: -1px;
 }
 .c-close:hover {
     background: #6e3996;
@@ -1060,12 +1067,17 @@ label{
 /* Some responsive css for close button and popup */
 
 @media (max-width: 767px) {
-    .c-close {
+	.c-close{
+		width: 45px;
+	    height: 45px;
+    }
+    .c-close span{
         width: 20px;
         height: 20px;
     }
     .c-close span:after {
         left: 9px;
+        margin: 0;
     }
     .c-close span:before {
         top: 9px;
@@ -1158,7 +1170,32 @@ label{
 		transition: width .35s;
 		display: inline-block;
 		white-space: nowrap;
-	}	
+	}
+
+	@media (max-width: 1800px){
+		width:  80px;
+		height: 80px;
+	}
+
+	@media (max-width: 1600px){
+		width:  75px;
+		height: 75px;
+	}
+
+	@media (max-width: 1400px){
+		width:  70px;
+		height: 70px;
+	}
+
+	@media (max-width: 922px){
+		width:  65px;
+		height: 65px;
+	}
+
+	@media (max-width: 767px){
+		width:  60px;
+		height: 60px;
+	}
 }
 
 
@@ -1167,4 +1204,8 @@ label{
 
 .js-select-all{
 	display: none !important;
+}
+
+.clearfix{
+	clear: both;
 }

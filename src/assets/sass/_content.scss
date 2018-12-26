@@ -22,10 +22,17 @@
 
 	.c-btn-glow{
 		margin: 30px 0;
+		min-width: 150px;
 	}
 
 	h1{
 		@extend .heading-sty-4;
+	}
+
+	section{
+		+ section{
+			margin-top: 20px;
+		}
 	}
 
 	figure{
@@ -125,6 +132,18 @@
 
 .c-content-sty-2{
 	margin: 60px 0;
+	@media (max-width: 1600px){
+		margin: 50px 0;
+	}
+	@media (max-width: 1200px){
+		margin: 40px 0;
+	}
+	@media (max-width: 920px){
+		margin: 30px 0;
+	}
+	@media (max-width: 767px){
+		margin: 25px 0;
+	}
 	p{
 		@extend .para-sty-3;
 	}
@@ -164,6 +183,9 @@
 	}
 }
 @media (max-width: 1200px){
+	.c-banner-2 .action{
+		margin-top: 35px;
+	}
 	.c-content-sty-1 blockquote{
 		margin-bottom: 20px;
 	}
@@ -174,6 +196,9 @@
 	}
 }
 @media (max-width: 920px){
+	.c-banner-2 .action{
+		margin-top: 30px;
+	}
 	.c-content-sty-1 blockquote{
 		font-size: 18px;
 		line-height: 1.3em;
@@ -185,6 +210,21 @@
 	}
 }
 @media (max-width: 767px){
+	.c-banner-2 .action{
+		margin-top: 25px;
+	}
+	.c-content-sty-1 figure{
+		margin-top: 20px;
+	}
+	.c-content-sty-1 .c-btn-glow{
+		margin: 15px 0;
+	}
+	.c-content-sty-1 ul li+li{
+		margin-top: 15px;
+	}
+	.c-content-sty-1 blockquote{
+		margin-top: 10px;
+	}
 	.c-content-sty-1 figure:before{
 		display: none;
 	}

@@ -1,0 +1,103 @@
+.c-selection-banner{
+	background: url('../img/locations/bg-banner-img--cinema.jpg') no-repeat center center;
+	background-size: cover;
+	// @extend .height-cover;
+	display: flex;
+	align-items: center;
+	padding: 50px 0;
+	
+	.txt{
+		color: #fff;
+		max-width: 500px;
+		
+		h1{
+			@extend .heading-sty-3;
+			margin-bottom: 10px;
+
+			@media (max-width: 767px){
+				margin-bottom: 15px;
+			}
+		}
+		
+		h2{
+			@extend .heading-sty-6;
+		}
+	}
+
+	.selectors{
+		display: flex;
+		margin: 0 -10px;
+		a{
+			margin: 30px 10px 0;
+			display: block;
+
+			.img, img{
+				border-radius: 7px;
+				overflow: hidden;
+				position: relative;
+			}
+
+			.img{
+				margin-top: 20px;
+				margin-bottom: 30px;
+				transition: margin .35s;
+
+				img{
+					margin: -20px -10px;
+					transition: margin .35s;
+					max-width: none;
+				}
+			}
+
+			.label{
+				font-size: 15px;
+				line-height: 1em;
+				text-transform: uppercase;
+				text-align: center;
+				color: #fff;
+				opacity: 0;
+				transition: opacity .35s;
+			}
+
+			&.is--active{
+				.img{
+					margin-top: 0px;
+					margin-bottom: 10px;
+
+					img{
+						margin: 0px;
+					}
+				}
+			}
+			&.is--active,
+			&:hover{
+				.label{
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+.c-maps-sec{
+	position: relative;
+	.map-wrap{
+		width: calc(50vw + 140px);
+		transform: translateX(-140px);
+		position: absolute;
+		top: 0;
+		right: 50%;
+		height: 500px;
+	}
+
+	.txt-wrap{
+		width:   600px;
+		padding: 100px;
+		margin: 0 0 0 auto;
+	}
+	
+	.loc-map{
+		height: 100%;
+		width: 100%;
+	}
+}

@@ -5,20 +5,20 @@
 /* ================== */
 
 .height-cover{
-	height: 90vh;
-	height: calc(100vh - 85px);
+	min-height: 90vh;
+	min-height: calc(100vh - 85px);
 
 	@media (max-width: 1800px){
-		height: calc(100vh - 83px);
+		min-height: calc(100vh - 83px);
 	}
 	@media (max-width: 1600px){
-		height: calc(100vh - 82px);
+		min-height: calc(100vh - 82px);
 	}
 	@media (max-width: 767px){
-		height: calc(100vh - 66px);
+		min-height: calc(100vh - 67px);
 
-		@media (min-height: 650px){
-			height: calc(100vh - 58px);
+		@media (max-height: 650px){
+			min-height: calc(100vh - 57px);
 		}
 	}
 }
@@ -26,3 +26,29 @@
 /* ================== */
 /* END - 100VH */
 /* ================== */
+
+.slick-arrows-1{
+	.slick-arrow{
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 25px;
+	    width: 33px;
+	    height: 60px;
+		appearance: none;
+		border-radius: 0;
+		z-index: 10;
+		font-size: 0;
+		color: transparent;
+		border: 0;
+		cursor: pointer;
+		background: transparent url(../img/icons/arrow-left.svg) no-repeat 50%;
+		transform: translateY(-50%);
+
+		&.slick-next{
+			right: 25px;
+			left: auto;
+			background-image: url(../img/icons/arrow-right.svg);
+		}
+	}
+}

@@ -26,19 +26,58 @@
 
 		.o-col{
 			padding: 0 15px;
-			&.col--45{ width: 45%; }
-			&.col--50{ width: 50%; }
-			&.col--55{ width: 55%; }
-			
-			@media (max-width: 1200px){
-				&.col--lg--75{ width: 75%; }
-			}
-			@media (max-width: 922px){
-				&.col--md--85{ width: 85%; }
-			}
-			@media (max-width: 767px){
-				&.col--sm--100{ width: 100%; }
-			}
 		}
+	}
+}
+
+
+$class-slug: col- !default;
+
+@for $i from 0 through 20{
+  .#{$class-slug}-#{$i*5}{
+    width: $i*5 + %;
+  }
+}
+
+
+@media (max-width: 1700px){
+
+	$class-xl: col--xl- !default;
+
+	@for $i from 0 through 20{
+	  .#{$class-xl}-#{$i*5}{
+	    width: $i*5 + %;
+	  }
+	}
+
+}
+@media (max-width: 1200px){
+
+	$class-lg: col--lg- !default;
+
+	@for $i from 0 through 20{
+	  .#{$class-lg}-#{$i*5}{
+	    width: $i*5 + %;
+	  }
+	}
+}
+@media (max-width: 922px){
+
+	$class-md: col--md- !default;
+
+	@for $i from 0 through 20{
+	  .#{$class-md}-#{$i*5}{
+	    width: $i*5 + %;
+	  }
+	}
+}
+@media (max-width: 767px){
+
+	$class-sm: col--sm- !default;
+
+	@for $i from 0 through 20{
+	  .#{$class-sm}-#{$i*5}{
+	    width: $i*5 + %;
+	  }
 	}
 }

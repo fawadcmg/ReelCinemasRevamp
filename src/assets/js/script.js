@@ -3114,6 +3114,7 @@ if (winWidth < 768) {
 }
 
 $(function () {
+	locMapInit();
 	winDimensions();
 	ChangeToSvg();
 	footerLogosCarousel();
@@ -3251,7 +3252,7 @@ function calcBodyarea() {
 function initSlick() {
 
 	$('.js-banner-1a').slick({
-		arrows: false,
+		arrows: true,
 		fade: true,
 		asNavFor: '.js-banner-1b'
 	});
@@ -3278,20 +3279,27 @@ function initSlick() {
 		infinite: true,
 		fade: true,
 		speed: 600,
-		autoplay: 5000,
+		autoplay: true,
+		autoplaySpeed: 5000,
+		slidesToShow: 1,
+		slidesToScroll: 1,
 		asNavFor: '.js-main-carousel-thumb'
 	});
 	$('.js-main-carousel-thumb').slick({
 		arrows: false,
 		slidesToShow: 6,
-		slidesToScroll: 6,
+		slidesToScroll: 1,
+		swipeToSlide: true,
+		touchThreshold: 7,
 		infinite: false,
-		asNavFor: '.js-main-carousel'
+		asNavFor: '.js-main-carousel',
+		focusOnSelect: true
 	});
-	$('.js-main-carousel-thumb .item').click(function (e) {
-		e.preventDefault();
-		var thisIndex = $(this).closest('.slick-slide').attr('data-slick-index');
-		$('.js-main-carousel').slick('slickGoTo', thisIndex);
+	$('.js-main-carousel').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+		console.log(slick.slideCount, currentSlide, nextSlide);
+		if (nextSlide == 0 || nextSlide == slick.slideCount - 1) {
+			$('.js-main-carousel-thumb').slick('slickGoTo', nextSlide);
+		}
 	});
 
 	$('.js-nav-carousel').slick({
@@ -3961,6 +3969,17 @@ function footerLogosCarousel() {
 			focusOnSelect: true
 		});
 		// $('.js-footer-logos-carousel').slick('slickGoTo', 1);
+	} else {
+		$('.js-footer-logos-carousel').slick({
+			arrows: false,
+			dots: false,
+			slidesToShow: 3,
+			infinite: true,
+			focusOnSelect: true,
+			slidesToScroll: 1,
+			swipeToSlide: true,
+			touchThreshold: 4
+		});
 	}
 }
 
@@ -4127,9 +4146,12 @@ function openPopup(target, videoLink) {
 	setTimeout(function () {
 		$(popupTarget).addClass('active');
 		$(popupTarget).closest('.c-popup').addClass('popup--open');
+		console.log($(popupTarget).find('.plyr').length, $(popupTarget).find('.js-video')[0]);
 		if ($(popupTarget).find('.plyr').length) {
 			var videoInstance = $(popupTarget).find('.plyr').attr('data-video-instance');
 			players[videoInstance].play();
+		} else {
+			$(popupTarget).find('.js-video')[0].play();
 		}
 	}, 10);
 
@@ -4161,7 +4183,8 @@ function closePopup() {
 				players[videoInstance].pause();
 			}
 		} else if ($('.c-popup .active .js-video').length) {
-			$('.popup.active iframe')[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+			$('.c-popup .active .js-video')[0].pause();
+			// $('.popup.active iframe')[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
 		}
 
 		// Close Popup
@@ -4330,5 +4353,193 @@ function movieListSetDropDownPos() {
 	if ($('.js-movie-list--sty-1').get(0)) {
 		var imgHeight = $('.js-movie-list--sty-1 .list-wrap .movie-item .img').height();
 		$('.js-movie-list--sty-1 .movie-details').css('top', imgHeight);
+	}
+}
+
+function clickedMovieEvent() {
+	$('[data-link-to]:not("has--event-link-to")').click(function (e) {
+		e.preventDefault();
+		var toUrl = $(this).attr('has--event-link-to');
+		if (winWidth >= 768) {
+			window.location = toUrl;
+		} else {}
+	});
+}
+
+var locMap;
+var markersRef = [];
+function initMap() {
+	// Styles
+	var styledMapType = new google.maps.StyledMapType([{
+		"elementType": "geometry",
+		"stylers": [{
+			"color": "#f5f5f5"
+		}]
+	}, {
+		"elementType": "labels.icon",
+		"stylers": [{
+			"visibility": "off"
+		}]
+	}, {
+		"elementType": "labels.text.fill",
+		"stylers": [{
+			"color": "#414141"
+		}]
+	}, {
+		"elementType": "labels.text.stroke",
+		"stylers": [{
+			"color": "#f5f5f5"
+		}, {
+			"visibility": "off"
+		}]
+	}, {
+		"featureType": "administrative.land_parcel",
+		"elementType": "labels",
+		"stylers": [{
+			"visibility": "off"
+		}]
+	}, {
+		"featureType": "administrative.land_parcel",
+		"elementType": "labels.text.fill",
+		"stylers": [{
+			"color": "#bdbdbd"
+		}]
+	}, {
+		"featureType": "poi",
+		"elementType": "geometry",
+		"stylers": [{
+			"color": "#eeeeee"
+		}]
+	}, {
+		"featureType": "poi",
+		"elementType": "labels.text",
+		"stylers": [{
+			"visibility": "off"
+		}]
+	}, {
+		"featureType": "poi",
+		"elementType": "labels.text.fill",
+		"stylers": [{
+			"color": "#757575"
+		}]
+	}, {
+		"featureType": "poi.business",
+		"stylers": [{
+			"visibility": "off"
+		}]
+	}, {
+		"featureType": "poi.park",
+		"elementType": "geometry",
+		"stylers": [{
+			"color": "#e5e5e5"
+		}]
+	}, {
+		"featureType": "poi.park",
+		"elementType": "labels.text.fill",
+		"stylers": [{
+			"color": "#9e9e9e"
+		}]
+	}, {
+		"featureType": "road",
+		"elementType": "geometry",
+		"stylers": [{
+			"color": "#ffffff"
+		}]
+	}, {
+		"featureType": "road",
+		"elementType": "labels.icon",
+		"stylers": [{
+			"visibility": "off"
+		}]
+	}, {
+		"featureType": "road.arterial",
+		"elementType": "labels.text.fill",
+		"stylers": [{
+			"color": "#757575"
+		}]
+	}, {
+		"featureType": "road.highway",
+		"elementType": "geometry",
+		"stylers": [{
+			"color": "#dadada"
+		}]
+	}, {
+		"featureType": "road.highway",
+		"elementType": "labels.text.fill",
+		"stylers": [{
+			"color": "#616161"
+		}]
+	}, {
+		"featureType": "road.local",
+		"elementType": "labels",
+		"stylers": [{
+			"visibility": "off"
+		}]
+	}, {
+		"featureType": "road.local",
+		"elementType": "labels.text.fill",
+		"stylers": [{
+			"color": "#9e9e9e"
+		}]
+	}, {
+		"featureType": "transit",
+		"stylers": [{
+			"visibility": "off"
+		}]
+	}, {
+		"featureType": "transit.line",
+		"elementType": "geometry",
+		"stylers": [{
+			"color": "#e5e5e5"
+		}]
+	}, {
+		"featureType": "transit.station",
+		"elementType": "geometry",
+		"stylers": [{
+			"color": "#eeeeee"
+		}]
+	}, {
+		"featureType": "water",
+		"elementType": "geometry.fill",
+		"stylers": [{
+			"color": "#e0e5e9"
+		}]
+	}, {
+		"featureType": "water",
+		"elementType": "labels.text.fill",
+		"stylers": [{
+			"color": "#9e9e9e"
+		}]
+	}], { name: 'Styled Map' });
+
+	// Marker Image
+	var markerImage = new google.maps.MarkerImage('http://theprojectstagingserver.com/reelcinemas/website1.2/v3/assets/img/locations/loc-marker.png', new google.maps.Size(101, 101), new google.maps.Point(0, 0), new google.maps.Point(50, 50));
+
+	// Initiate Map
+	locMap = new google.maps.Map($('.js-loc-map')[0], {
+		center: { lat: 25.0764348, lng: 55.1383153 },
+		zoom: 16,
+		mapTypeControlOptions: {
+			mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
+		}
+	});
+
+	// Map Style
+	locMap.mapTypes.set('styled_map', styledMapType);
+	locMap.setMapTypeId('styled_map');
+
+	// Adding Marker
+	for (var i = 0; i < markers.length; i++) {
+		markersRef = new google.maps.Marker({
+			position: markers[i].position,
+			icon: 'http://theprojectstagingserver.com/reelcinemas/website1.2/v3/assets/img/locations/loc-marker.png',
+			map: locMap
+		});
+	}
+}
+
+function locMapInit() {
+	if ($('.js-loc-map').get(0)) {
+		$('body').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhXFH3diOrb9h_znP9ndacEZ0FGfDSwas&callback=initMap" async defer></script>');
 	}
 }

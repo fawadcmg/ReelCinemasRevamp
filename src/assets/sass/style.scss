@@ -1,11 +1,11 @@
 @import "_mixin";
 @import "_reset";
 @import "variable";
-@import "_plyr";
 @import "_fonts";
+@import "_miscellaneous";
+@import "_plyr";
 @import "_base";
 @import "_layout";
-@import "_miscellaneous";
 @import "_typography";
 @import "slick";
 @import "aos";
@@ -24,4 +24,5 @@
 @import "_content";
 @import "_bars";
 @import "_subs-box";
+@import "_location";
 @import "_ie";

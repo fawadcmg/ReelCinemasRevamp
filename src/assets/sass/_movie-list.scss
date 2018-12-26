@@ -57,13 +57,16 @@
 			max-width: 270px;
 			padding: 0;
 			width: 100%;
-
+			
 			.slick-slide{
 				transform: translateX(30px);
 				transition: transform .35s;
+				position: relative;
+				z-index: 1;
 
 				&.slick-current.slick-active{
 					transform: translateX(0px);
+					z-index: 2;
 					& + .slick-slide{
 						transform: translateX(-30px);
 					}
@@ -424,10 +427,34 @@
 	    		@media (max-width: 767px){
 	    			display: block;
 					.c-btn-white {
-						display: none;
+						font-size: 0;
+					    line-height: 0;
+					    color: transparent;
+					    width: 44px;
+					    height: 44px;
+					    padding: 5px;
+					    margin-left: 10px;
+
+					    &:before{
+							width: 16px;
+							height: 19px;
+							margin-top: 8px;
+							margin-right: -6px;
+					    }
+
+					    @media (max-height: 550px){
+							width: 36px;
+							height: 36px;
+							&:before{
+							    width: 12px;
+							    height: 14px;
+							    margin-top: 6px;
+							    margin-right: -4px;
+							}
+					    }
 					}
 					.c-btn-glow.btn--sm {
-						width: 200px;
+						width: 170px;
 						padding:15px 25px;
 					}
 	    		}

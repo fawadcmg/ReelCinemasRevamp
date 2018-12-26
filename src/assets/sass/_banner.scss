@@ -118,6 +118,15 @@
 			margin-bottom: 0;
 		}
 	}
+	
+	@extend .slick-arrows-1;
+
+	.slick-arrow{
+		background-image: url(../img/icons/arrow-left--white.svg);
+		&.slick-next{
+			background-image: url(../img/icons/arrow-right--white.svg);
+		}
+	}
 }
 
 @media screen and (max-height: 700px), screen and (max-width: 1600px){
