@@ -289,7 +289,7 @@
 				background: #fff url(../img/icons/arrow-up.svg) no-repeat 50%;
 				background-size: 16px auto;
 				position: absolute;
-				top: 57px;
+				top: 102px;
 				right: 10px;
 				cursor: pointer;
 				border-radius: 999px;
@@ -584,7 +584,7 @@
 					display: none;
 				}
 				.scroll-area{
-					height: 141px;
+					height: 186px;
 				    // height: calc(65vh - 169px);
 				    @media (max-height: 650px){
 				    	// height: calc(65vh - 147px);
@@ -650,7 +650,7 @@
 				.field-dropdown{
 				    top: 66px;
 				    // height: calc(65vh - 119px);
-				    height: 187px;
+				    height: 232px;
 				    @media (max-height: 650px){
 				    	top: 58px;
 				    	// height: calc(65vh - 97px);
@@ -710,9 +710,9 @@
 		    opacity: 1;
 	    }
 		.c-movie-filters{
-			height: 311px;
+			height: 357px;
 			@media (max-height: 650px){
-				height: 289px;
+				height: 334px;
 			}
 			.c-select-box .field-dropdown,
 			.close-btn-m{

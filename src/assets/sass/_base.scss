@@ -573,6 +573,9 @@ label{
 
 
 .c-social{
+	@media (max-width: 1200px){
+		text-align: center;
+	}
 	li{
 		display: inline-block;
 		margin-right: 15px;

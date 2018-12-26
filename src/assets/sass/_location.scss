@@ -81,19 +81,59 @@
 
 .c-maps-sec{
 	position: relative;
+
 	.map-wrap{
 		width: calc(50vw + 140px);
-		transform: translateX(-140px);
+		transform: translateX(140px);
 		position: absolute;
 		top: 0;
 		right: 50%;
-		height: 500px;
 	}
 
 	.txt-wrap{
 		width:   600px;
 		padding: 100px;
 		margin: 0 0 0 auto;
+	    display: flex;
+		flex-flow: column;
+		justify-content: center;
+
+		h1{
+			@extend .heading-sty-4;
+		}
+
+		.info{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+
+			li{
+				padding-left: 50px;
+				margin-bottom: 25px;
+				position: relative;
+
+				i{
+					position: absolute;
+					top: 5px;
+					left: 0;
+					width: 26px;
+					height: 26px;
+					background: url('../img/icons/icon-phone.svg') no-repeat top left;
+					background-size: 100% auto;
+
+					&.venu{
+						width: 17px;
+						background-image: url('../img/icons/icon-venue.svg');
+					}
+				}
+			}
+		}
+	}
+
+	.map-wrap,
+	.txt-wrap{
+		@extend .height-cover--solid;
+		min-height: 500px;
 	}
 	
 	.loc-map{

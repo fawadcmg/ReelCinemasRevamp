@@ -147,7 +147,7 @@
 		}
 	}
 	.list-tabs{
-		margin: 0 0 20px;
+		margin: 0 0 0px;
 		
 		@media (max-width: 1400px){
 			margin: 10px 0 30px 0;
@@ -420,6 +420,7 @@
 				margin-top: 20px;
 				a{ 
 					margin-right: 10px;
+
 					&:last-child{
 						margin-right: 0;
 					}
@@ -810,6 +811,10 @@
 				}
 				margin-right: 30px;
 				//min-width: 160px;
+				
+				&.c-btn-glow{
+					min-width: 200px;
+				}
 			}
 		} 
 		.genere {
@@ -880,7 +885,7 @@
 	    height: calc(100vh - 133px);
 	    display: flex;
 	    flex-direction: column;
-	    justify-content: space-around;
+	    // justify-content: space-around;
 	    margin-bottom: 0px;
 
 	    .slick-initialized .slick-track{

@@ -540,6 +540,12 @@ function tabs() {
 		if($(target).find('.js-movie-list').get(0)){
 			movieListCarousel();
 		}
+
+		// Maps
+		if($(this).closest('.c-selection-banner').get(0)){
+			setMarkerTo($(this).index());
+		}
+
 		var self = this;
 		setTimeout(function () {
 			AOS.refresh();
@@ -548,11 +554,13 @@ function tabs() {
 			if(winWidth < 768 && $('.c-movie-filters').get(0)){
 				filterHeight = $('.c-movie-filters').height();
 			}
-			var topScroll = $(self).offset().top;
-			var elemTopSpace = parseInt($(self).css('margin-top'));
-			$('html, body').stop().animate({
-				scrollTop: topScroll - elemTopSpace - headerHeight - filterHeight
-			}, 500);
+			if(!(winWidth < 768 && $(self).closest('.c-movies-list').get(0))){
+				var topScroll = $(self).offset().top;
+				var elemTopSpace = parseInt($(self).css('margin-top'));
+				$('html, body').stop().animate({
+					scrollTop: topScroll - elemTopSpace - headerHeight - filterHeight
+				}, 500);
+			}
 		}, 200);
 	});
 }
@@ -895,27 +903,28 @@ function footerLogosCarousel() {
     if($('.js-footer-logos-carousel').hasClass('slick-initialized')){
         $('.js-footer-logos-carousel').slick('unslick');
     }
-    if(winWidth < 768){
-        $('.js-footer-logos-carousel').slick({
-            arrows: false,
-            dots: false,
-            items: 1,
-            infinite: true,
-            focusOnSelect: true,
-        });
-        // $('.js-footer-logos-carousel').slick('slickGoTo', 1);
-    }else{
-        $('.js-footer-logos-carousel').slick({
-            arrows: false,
-            dots: false,
-            slidesToShow: 3,
-            infinite: true,
-            focusOnSelect: true,
-            slidesToScroll: 1,
-			swipeToSlide: true,
-			touchThreshold: 4,
-        });
-    }
+
+    $('.js-footer-logos-carousel').slick({
+        arrows: false,
+        dots: false,
+        infinite: true,
+        focusOnSelect: true,
+        slidesToScroll: 1,
+		swipeToSlide: true,
+		touchThreshold: 4,
+		autoplay: true,
+		autoplaySpeed: 5000,
+        slidesToShow: 3,
+		responsive: [
+				    {
+				      breakpoint: 768,
+				      settings: {
+				      	slidesToShow: 1,
+						touchThreshold: 1,
+				      }
+				    },
+			   	],
+    });
 }
 
 function detectIE() {
@@ -1031,8 +1040,24 @@ function headerSpace() {
 	if(!$('.c-movie-filters').get(0)){
 		filterSpace = 0;
 	}
+	var headerHeight = $('.c-main-header').height();
+	if(headerHeight < 20){
+		headerHeight = 85;
+		if(winWidth<=1800){
+			headerHeight = 83;
+			if(winWidth<=1600){
+				headerHeight = 82;
+				if(winWidth<=767){
+					headerHeight = 67;
+					if(winHeight<=650){
+						headerHeight = 57;
+					}
+				}
+			}
+		}
+	}
 	
-	$('.header-space').css('height', $('.c-main-header').height() + filterSpace);
+	$('.header-space').css('height', headerHeight + filterSpace);
 }
 ChangeToSvg();
 function ChangeToSvg() {
@@ -1064,15 +1089,21 @@ function openPopup(target, videoLink) {
 	popupTarget = target;
 
 	if(videoLink){
-		var thisId = $(target).find('[data-video-instance]').attr('data-video-instance');
-		players[thisId].destroy();
-		$(target).find('.has--plyr').removeClass('has--plyr');
+		if(isIE == false){
+			var thisId = $(target).find('[data-video-instance]').attr('data-video-instance');
+			players[thisId].destroy();
+			$(target).find('.has--plyr').removeClass('has--plyr');
+		}
+
 		$(target).find('.js-video source').attr('src', videoLink);
 		var thisVideoTag = $(target).find('.js-video')[0].outerHTML;
 		var parentRef = $(target).find('.js-video').parent();
 		$(target).find('.js-video').remove();
 		parentRef.append(thisVideoTag);
-		jsVideo();
+
+		if(isIE == false){
+			jsVideo();
+		}
 	}
 
 	$('html').addClass('popup-is-active');
@@ -1105,7 +1136,7 @@ function openPopup(target, videoLink) {
 				players[videoInstance].play();
 			}
 		}else if($(target).find('.js-video').length){
-			$('.popup.active iframe')[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+			// $('.popup.active iframe')[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
 		}
 
 	}, 10);
@@ -1165,13 +1196,13 @@ function jsVideo() {
 }
 
 function jsVideoDirect() {
-	if($('.js-video').length){
+	/*if($('.js-video').length){
 		$('.js-video').each(function(i) {
 			$(this).attr('data-video-instance', i);
 			var videoId = $(this).attr('data-plyr-embed-id');
 			$(this).html('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+videoId+'?rel=0&playsinline=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
 		});
-	}
+	}*/
 }
 
 function bindPopupEve() {
@@ -1309,6 +1340,9 @@ function clickedMovieEvent(){
 
 var locMap;
 var markersRef = [];
+var markerImage;
+var markerImageActive;
+
 function initMap() {
 	// Styles
 	var styledMapType = new google.maps.StyledMapType(
@@ -1530,11 +1564,20 @@ function initMap() {
 	    {name: 'Styled Map'});
 
 	// Marker Image
-	var markerImage = new google.maps.MarkerImage('http://theprojectstagingserver.com/reelcinemas/website1.2/v3/assets/img/locations/loc-marker.png', new google.maps.Size(101, 101), new google.maps.Point(0, 0), new google.maps.Point(50, 50));
+	markerImage = new google.maps.MarkerImage('http://theprojectstagingserver.com/reelcinemas/website1.2/v3/assets/img/locations/loc-marker.png',
+		new google.maps.Size(101, 101),
+		new google.maps.Point(0, 0),
+		new google.maps.Point(50, 50));
+
+	// Marker Image Active
+	markerImageActive = new google.maps.MarkerImage('http://theprojectstagingserver.com/reelcinemas/website1.2/v3/assets/img/locations/loc-marker--selected.png',
+		new google.maps.Size(101, 101),
+		new google.maps.Point(0, 0),
+		new google.maps.Point(50, 50));
 
 	// Initiate Map
 	locMap = new google.maps.Map($('.js-loc-map')[0], {
-	  center: {lat: 25.0764348, lng: 55.1383153},
+	  center: markers[0].position,
 	  zoom: 16,
 	  mapTypeControlOptions: {
 	    mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
@@ -1547,12 +1590,21 @@ function initMap() {
 
 	// Adding Marker
 	for (var i = 0; i < markers.length; i++) {
-	    markersRef = new google.maps.Marker({
+	    markersRef[i] = new google.maps.Marker({
 		    position: markers[i].position,
-		    icon: 'http://theprojectstagingserver.com/reelcinemas/website1.2/v3/assets/img/locations/loc-marker.png',
+		    icon: markerImage,
 		    map: locMap
 		});
 	}
+}
+
+function setMarkerTo(targetIndex) {
+	for (var i = markersRef.length - 1; i >= 0; i--) {
+		markersRef[i].icon = markerImage;
+	}
+
+	markersRef[targetIndex].icon = markerImageActive;
+	locMap.setCenter(markersRef[targetIndex].position);
 }
 
 function locMapInit() {

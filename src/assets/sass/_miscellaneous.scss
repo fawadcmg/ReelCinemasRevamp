@@ -23,6 +23,25 @@
 	}
 }
 
+.height-cover--solid{
+	height: 90vh;
+	height: calc(100vh - 85px);
+
+	@media (max-width: 1800px){
+		height: calc(100vh - 83px);
+	}
+	@media (max-width: 1600px){
+		height: calc(100vh - 82px);
+	}
+	@media (max-width: 767px){
+		height: calc(100vh - 67px);
+
+		@media (max-height: 650px){
+			height: calc(100vh - 57px);
+		}
+	}
+}
+
 /* ================== */
 /* END - 100VH */
 /* ================== */
@@ -44,7 +63,7 @@
 		cursor: pointer;
 		background: transparent url(../img/icons/arrow-left.svg) no-repeat 50%;
 		transform: translateY(-50%);
-
+		
 		&.slick-next{
 			right: 25px;
 			left: auto;
