@@ -89,7 +89,7 @@ $(document).ready(function () {
 		|| currentPageName == 'showtime grid'
 		|| currentPageName == 'showtime tile'){
 		setTimeout(function() {			
-			// $(".slick-current > div > .js-movieDateFilter").trigger('click');			
+			$(".slick-current > div > .js-movieDateFilter").trigger('click');			
 		    $(".slick-current > div > .js-movieDateFilter > dboxelement").addClass('active');
 		}, 1000);
 	}
@@ -388,6 +388,7 @@ function loadExperiencesLogos(){
 	movieExperienceArray.push( ['boutique','boutique'] );
 	movieExperienceArray.push( ['dolby','dolby-cinema'] );
 	movieExperienceArray.push( ['mx4d','mx4d'] );
+	movieExperienceArray.push( ['screenx','screenx'] );	
 	movieExperienceArray.push( ['platinum','platinum-suties'] );
 	movieExperienceArray.push( ['premier','premier'] );
 	movieExperienceArray.push( ['standard','standard'] );
@@ -880,7 +881,7 @@ function loadComingMovieGridBlocks(){
 function initMovieDates(argMovieName){
 	
   	var movieDate, movieDateValue, targetItem, movieDates, counter, itemClass,
-  	movieName, showMovie, movieDates = "", tempMovieDateList = [];
+  	movieName, showMovie, movieDates = "", tempMovieDateList = [], tempArray = [];
 
   	targetItem = $('.js-date-time');
   	if(argMovieName != 'all'){
@@ -907,33 +908,65 @@ function initMovieDates(argMovieName){
 
 			if(showMovie == 1){
 				var movieDateValue = new Date(movieDate);
-				var movieMonthValue = new Date(movieDate);
-				var movieDayValue = new Date(movieDate);
-
-				movieDateValue = movieDateValue.getDate();
-				movieMonthValue = monthName[movieMonthValue.getMonth()];
-				movieDayValue = weekName[movieDayValue.getDay()];
-
-				itemClass = movieDateValue+"-"+movieMonthValue+"-"+movieDayValue;
-
-				if(counter==0){
-					movieSearchDate = itemClass;
-				}
-
-				movieDates = '<div class="d-box js-movieDateFilter" attr-movie-date="'+itemClass+'">\
-		                  <div class="dboxelement" >\
-		                     <div class="month">'+movieMonthValue+'</div>\
-		                     <div class="date">'+movieDateValue+'</div>\
-		                     <div class="day">'+movieDayValue+'</div>\
-		                  </div>\
-		               </div>';
-		        
-		        tempMovieDateList[counter] = movieDates;
-		        counter++;
+				tempArray.push(
+					[
+						movieDateValue.getFullYear(),
+						movieDateValue.getDate(),
+						monthName[movieDateValue.getMonth()],
+						weekName[movieDateValue.getDay()]
+					]
+				);
 			}
 		});
 	  
-	}).done(function( data ) {	 
+	}).done(function( data ) {	
+
+		var currentDate = new Date(), activeClass;
+		for(var counter=0;counter < tempArray.length; counter++){
+			tempEntry = tempArray[counter];
+
+			if(currentDate.getFullYear() == tempEntry[0]){
+				itemClass = tempEntry[1]+"-"+tempEntry[2]+"-"+tempEntry[3];
+
+				if(counter==0){
+					movieSearchDate = itemClass;
+					activeClass = 'active';
+				}
+
+				movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
+		                  <div class="dboxelement" >\
+		                     <div class="month">'+tempEntry[2]+'</div>\
+		                     <div class="date">'+tempEntry[1]+'</div>\
+		                     <div class="day">'+tempEntry[3]+'</div>\
+		                  </div>\
+		               </div>';
+		        
+		        tempMovieDateList.push(movieDates);
+			}			
+		}
+
+		for(var counter=0;counter < tempArray.length; counter++){
+			tempEntry = tempArray[counter];
+
+			if(currentDate.getFullYear() < tempEntry[0]){
+				itemClass = tempEntry[1]+"-"+tempEntry[2]+"-"+tempEntry[3];
+
+				if(counter==0){
+					movieSearchDate = itemClass;
+					activeClass = 'active';
+				}
+
+				movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
+		                  <div class="dboxelement" >\
+		                     <div class="month">'+tempEntry[2]+'</div>\
+		                     <div class="date">'+tempEntry[1]+'</div>\
+		                     <div class="day">'+tempEntry[3]+'</div>\
+		                  </div>\
+		               </div>';
+		        
+		        tempMovieDateList.push(movieDates);
+			}			
+		}	
 
 		tempMovieDateList = unique(tempMovieDateList);
 		targetItem.html(tempMovieDateList);
@@ -1163,7 +1196,7 @@ function initMovieListing(argMovieName){
   	tempCinemaListing = movieCinamaListing;
   	movieCount = 1;
   	pageNumber=0;
-  	// movieTilesListingArray = [];  	
+  	movieTilesListingArray = [];  	
 
   	for(counter=0; counter< tempCinemaListing.length; counter++){				
   		tempValue1 = tempCinemaListing[counter];
