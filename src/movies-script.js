@@ -961,7 +961,8 @@ function initMovieDates(argMovieName){
 		  	]
 		});
 
-		$('.js-movieDateFilter').click(function () {			
+		$('.js-movieDateFilter').click(function () {	
+			$('.list-main-action a').attr('attr-current-page',1);
 			$('.js-loadCinamaListing').empty();
 			var movieDateFilter = $(this).attr('attr-movie-date');
 			searchDateValue = movieDateFilter;
@@ -1326,7 +1327,7 @@ function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExp
 	    	movieCount++;
 	    }
 	}
-
+	$('.is--loading').removeClass('is--loading');
 }
 
 function loadPopularMovies(){
@@ -1600,7 +1601,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 
 	movieItems = [];
 	tempArray = [];
-
+	moviePagination(1, 'now');
 }
 
 function moviePagination(argCurrentPageNumber, argSourceObj){	
@@ -1617,6 +1618,8 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 			$('.js-play-movies-listing .list-wrap-page:nth-child(-n+'+(pageNumber*6)+')').show();
 			if($('.js-play-movies-listing .list-wrap-page:nth-child('+nextItem+')').length == 0){
 		 		$(targetObj).hide();
+		 	}else{
+		 		$(targetObj).show();
 		 	}
 
 		}else if(argSourceObj == 'coming'){
@@ -1625,6 +1628,8 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 			$('.js-coming-movies-listing .list-wrap-page:nth-child(-n+'+(pageNumber*6)+')').show();
 			if($('.js-coming-movies-listing .list-wrap-page:nth-child('+nextItem+')').length == 0){
 		 		$(targetObj).hide();
+		 	}else{
+		 		$(targetObj).show();
 		 	}
 
 		}
@@ -1635,6 +1640,8 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 		$('.c-movies-list .list-wrap-page:nth-child(-n+'+(pageNumber)+')').show();
 		if($('.c-movies-list .list-wrap:nth-child('+nextItem+')').length == 0){
 	 		$(targetObj).hide();
+	 	}else{
+	 		$(targetObj).show();
 	 	}
 
 	}else if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){		
@@ -1644,8 +1651,9 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 		$('.tileview-movies-list:nth-child(-n+'+(pageNumber*3)+')').show();
 		if($('.tileview-movies-list:nth-child('+nextItem+')').length == 0){
 	 		$(targetObj).hide();
+	 	}else{
+	 		$(targetObj).show();
 	 	}
-
 	}
  	
  	pageNumber++;
@@ -1726,5 +1734,4 @@ $('.js-showTime').click(function () {
 	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 
 });
-
 	
