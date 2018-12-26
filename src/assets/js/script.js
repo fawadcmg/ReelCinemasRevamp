@@ -4573,12 +4573,15 @@ function initMap() {
 	}
 }
 
+var prevActiveMarkerIndex = 0;
 function setMarkerTo(targetIndex) {
-	for (var i = markersRef.length - 1; i >= 0; i--) {
-		markersRef[i].icon = markerImage;
-	}
+	// Remove Active State from Previous Marker
+	markersRef[prevActiveMarkerIndex].setIcon(markerImage);
 
-	markersRef[targetIndex].icon = markerImageActive;
+	// Set Active State on New Marker
+	markersRef[targetIndex].setIcon(markerImageActive);
+	prevActiveMarkerIndex = targetIndex;
+
 	locMap.setCenter(markersRef[targetIndex].position);
 }
 
