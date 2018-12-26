@@ -1,12 +1,44 @@
-var moviePostURL = 'https://www.reelcinemas.ae/en/KeyArts/Vertical/';
-var movieURL = 'http://www.reelcinemas.ae/en/KeyArts/Tarilers/';
-var moviewFilter = new Array();
-var cinemaFilter = new Array();
-var experienceFilter = new Array();
-var genreFilter = new Array();
-var movieListingArray = new Array();
-var movieListingTempArray = new Array();
-var cienmasFilterListing = new Array();
+var moviePostURL = 'https://www.reelcinemas.ae/en/KeyArts/Vertical/',
+movieURL = 'http://www.reelcinemas.ae/en/KeyArts/Tarilers/',
+weekName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+monthName = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+baseURL = window.location.protocol + "//" + window.location.host + "/",
+searchMovieName = window.location.search.split('?param1=')[1],
+playMoviesListing = $('.js-play-movies-listing'),
+comingMoviesListing = $('.js-coming-movies-listing'),
+moviesPerPage = 3,
+currentPageName='',
+movieSearchDate,
+searchDateValue,
+movieExperienceArray = new Array(),
+movieListingArray = new Array(),
+movieComingListingArray = new Array(),
+movieGridListing = new Array(),
+comingMovieListingArray = new Array(),
+comingMovieComingListingArray = new Array(),
+comingMovieGridListing = new Array(),
+movieSessionListing = new Array(),
+movieTilesListingArray = new Array(),
+movieCinamaListing = new Array(),
+moviewFilter = new Array(),
+cinemaFilter = new Array(),
+experienceFilter = new Array(),
+genreFilter = new Array(),
+showTimeFilter = new Array(),
+
+comingMovieFilter = new Array(),
+comingCinemaFilter = new Array(),
+comingExperienceFilter = new Array(),
+comingGenreFilter = new Array(),
+
+cienmasFilterListing = new Array(),
+comingCienmasFilterListing = new Array(),
+tempExperienceFilter = new Array(),
+movieListingTempArray = new Array(),
+experienceMovieListing = new Array();
+
+
+/*
 var pageNumber = 0;
 var movieCount=1;
 var comingMovieFilter = new Array();
@@ -18,60 +50,77 @@ var comingCienmasFilterListing = new Array();
 var comingmovieListingArray = new Array();
 var comingPageNumber = 0;
 var comingMovieCount=1;
-var moviesPerPage = 3;
-var playMoviesListing = $('.js-play-movies-listing');  	
+
+var playMoviesListing = $('.js-play-movies-listing');
 var moreMoviesListing = $('.js-load-play-movies-listing');
-var movieExperienceArray = new Array();
-var weekName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-var monthName = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-var baseURL = window.location.protocol + "//" + window.location.host + "/";
-var searchMovieName = window.location.search.split('?param1=')[1];
-var movieTilesListing = new Array();
+
+
+var movieTilesListingArray = new Array();
 var movieShowTime = new Array();
 var movieSearchDate;
 var searchDateValue;
 var movieCinamaListing = new Array();
 var tempExperienceFilter = new Array();
-var showTimeFilter = new Array();
+var showTimeFilter = new Array();*/
+
+/*loadCinemasDropdown();
+loadMoviesDropdown();
+loadExperiencesDropdown();*/
+
+if($('.home-page').length > 0 ){
+	currentPageName = 'home';
+	initPageModules();
+	loadHomePageModules();
+}else if($('.movie-detail-page').length > 0){
+	currentPageName = 'movie detail';
+	initPageModules();	
+}else if($('.showtime-page').length > 0){
+	currentPageName = 'showtime grid';
+	initPageModules();
+	loadShowtimeGridModules();
+}else if($('.showtime-tile-page').length > 0){
+	initPageModules();
+	currentPageName = 'showtime tile';
+}
+
+function loadHomePageModules(){	
+	initMovieGrid("all");
+	initComingMovieGrid();
+}
+
+function loadShowtimeGridModules(){
+	var currentDate = new Date();
+	searchDateValue = currentDate.getDate()+"-"+monthName[currentDate.getMonth()]+"-"+weekName[currentDate.getDay()];
+	initMovieSessions();
+	initMovieDates("all");
+	initMovieGrid(searchDateValue);
+}
+
+function loadMovieDetailModules(){
+	var currentDate = new Date();
+	searchDateValue = currentDate.getDate()+"-"+monthName[currentDate.getMonth()]+"-"+weekName[currentDate.getDay()];
+	initMovieSessions();
+	loadMovieDetail(searchMovieName);
+	initMovieDates(searchMovieName);	
+	loadPopularMovies();
+}
+
+function loadShowtimeTileModules(){
+	var currentDate = new Date();
+	searchDateValue = currentDate.getDate()+"-"+monthName[currentDate.getMonth()]+"-"+weekName[currentDate.getDay()];
+	initMovieSessions();	
+	initMovieDates("all");	
+	loadPopularMovies();
+}
 
 $(document).ready(function () {
-	loadCinemasDropdown();
-	loadMoviesDropdown();
-	loadExperiencesDropdown();
-
-	// $('.is--loading').removeClass('is--loading');
-
-	if($('.home-page').length > 0 ){
-		
-		loadMovieBlocks();	
-
-	}else if( $('.movie-detail-page').length > 0 ){
-
-		experienceFilter = ['standard','dolby','dine','boutique','screenx','platinum','premier','mx4d'];
-		// $('.js-load-movie-listing').fadeOut('fast');
-		loadPopularMovies();
-		loadMovieDetail(searchMovieName);
-		loadMovieDates(searchMovieName);
+	
+	if(currentPageName == 'movie detail' 
+		|| currentPageName == 'showtime grid'
+		|| currentPageName == 'showtime tile'){
 		setTimeout(function() {
 		    $(".slick-current > div > .js-movieDateFilter").trigger('click');
-		    $(".slick-current > div > .js-movieDateFilter > .dboxelement").addClass('active');
-		}, 500);
-
-	}else if($('.showtime-page').length > 0){
-
-		loadMovieBlocks();
-		setTimeout(function() {
-		    $(".slick-current > div > .js-movieDateFilter").trigger('click');
-		    $(".slick-current > div > .js-movieDateFilter > .dboxelement").addClass('active');
-		}, 1000);
-
-	}else if($('.showtime-tile-page').length > 0){
-		// loadMovieDetail();
-		loadMovieAllDates();
-		experienceFilter = ['standard','dolby','dine','boutique','screenx','platinum','premier','mx4d'];
-		setTimeout(function() {
-		    $(".slick-current > div > .js-movieDateFilter").trigger('click');
-		    $(".slick-current > div > .js-movieDateFilter > .dboxelement").addClass('active');
+		    $(".slick-current > div > .js-movieDateFilter > dboxelement").addClass('active');
 		}, 1000);
 	}
 
@@ -80,6 +129,11 @@ $(document).ready(function () {
 
 });
 
+function initPageModules(){
+	loadCinemasDropdown();
+	loadMoviesDropdown();
+	loadExperiencesDropdown();	
+}
 
 // Load Cinema Listing
 function loadCinemasDropdown(){
@@ -103,10 +157,8 @@ function loadCinemasDropdown(){
 
 			cienmasFilterListing.push( [itemClass ] );
 		  	tempArray.push( [itemValue, itemClass] );
-
 			comingCienmasFilterListing.push( [itemClass ] );
-			comingTempArray.push( [itemValue, itemClass] );
-			
+			comingTempArray.push( [itemValue, itemClass] );			
 			movieCinamaListing.push(itemValue);							
 		  
 		});
@@ -127,17 +179,18 @@ function loadCinemasDropdown(){
 			}else{				
 				cinemaFilter.splice($.inArray(cinemaNames, cinemaFilter),1);
 			}
-			cinemaFilter = startFromZero(cinemaFilter);			
-			if($('.movie-detail-page').length > 0){
-				filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
-			}else if ($('.showtime-page').length >0 ){
+			cinemaFilter = startFromZero(cinemaFilter);
+			/*if( currentPageName == 'movie detail'){
+				filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);				
+			}else if ( currentPageName == 'showtime grid' ){
 				movieDateFilter = movieSearchDate;
-				filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
-			}else if ($('.home-page').length >0 ){
-				filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');
-			}else if ($('.showtime-tile-page').length >0 ){				
-				filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);
-			}
+				filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter);				
+			}else if ( currentPageName == 'home' ){
+				filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');				
+			}else if ( currentPageName == 'showtime tile' ){				
+				filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);				
+			}*/			
+			filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 		});
 
 		$('#select-all-locations').click(function () {
@@ -145,7 +198,7 @@ function loadCinemasDropdown(){
 			dropdownSelectAll(obj, "cinemaFilter", moviewFilter, cinemaFilter, experienceFilter, genreFilter);
 		});
 
-		if( $('.home-page').length > 0 ){
+		if( currentPageName == 'home' ){
 			comingCinemasListing.append('<div class="item custom-action js-select-all js-select-all-location-coming"><input type="checkbox" id="select-all-locations-1"><label for="select-all-locations-1"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
 			comingCinemasListing.append('<div class="scroll-area"></div>');
 			for (arrayIndex = 0; arrayIndex < comingTempArray.length; arrayIndex++) {
@@ -162,7 +215,8 @@ function loadCinemasDropdown(){
 					comingCinemaFilter.splice($.inArray(cinemaNames, comingCinemaFilter),1);
 				}
 				comingCinemaFilter = startFromZero(comingCinemaFilter);							
-				filterMovieBlock(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, 'coming');
+				// filterMovieBlock(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, 'coming');
+				filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "coming");
 			});
 
 			$('#select-all-locations-coming').click(function () {
@@ -177,12 +231,11 @@ function loadCinemasDropdown(){
 		scrollCustomSelect();
 		refreshAOS('refresh');
 		selectAllEvent();
-	  	console.log("Cinemas completed");
-
+	  	
 	  	tempArray = [];
 		comingTempArray = [];
 		tempEntry = [];	
-
+		console.log("Cinemas completed");
 	}).fail(function( data ) {
 	  	console.log("Cinemas failed");
 	});
@@ -242,7 +295,7 @@ function loadMoviesDropdown(){
 				moviewFilter.splice($.inArray(movieNames, moviewFilter),1);
 			}
 			moviewFilter = startFromZero(moviewFilter);	
-			if($('.movie-detail-page').length > 0){
+			/*if($('.movie-detail-page').length > 0){
 				filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
 			}else if ($('.showtime-page').length >0 ){
 				movieDateFilter = movieSearchDate;
@@ -252,7 +305,9 @@ function loadMoviesDropdown(){
 			}else if ($('.showtime-tile-page').length >0 ){
 				movieDateFilter = movieSearchDate;
 				filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);
-			}
+			}*/
+			filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
+
 		});
 
 		$('#select-all-movies').click(function () {
@@ -260,7 +315,7 @@ function loadMoviesDropdown(){
 			dropdownSelectAll(obj, "movieFilter", moviewFilter, cinemaFilter, experienceFilter, genreFilter);
 		});
 
-		movieGridPagination('.js-play-movies-listing .list-wrap-page--','.js-load-play-movies-listing',pageNumber);
+		// movieGridPagination('.js-play-movies-listing .list-wrap-page--','.js-load-play-movies-listing',pageNumber);
 
 		if( $('.home-page').length > 0 ){
 
@@ -286,7 +341,8 @@ function loadMoviesDropdown(){
 				}
 
 				comingMovieFilter = startFromZero(comingMovieFilter);			
-				filterMovieBlock(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, 'coming');
+				// filterMovieBlock(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, 'coming');
+				filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
 			});
 
 			$('select-all-movies-coming').click(function () {
@@ -294,7 +350,7 @@ function loadMoviesDropdown(){
 				dropdownSelectAll(obj, "comingMovieFilter", comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter);
 			});		
 
-			movieGridPagination('.js-coming-movies-listing .list-wrap-page--','.js-load-coming-movies-listing',comingPageNumber);	
+			// movieGridPagination('.js-coming-movies-listing .list-wrap-page--','.js-load-coming-movies-listing',comingPageNumber);	
 		}
 
 		scrollCustomSelect();
@@ -349,7 +405,7 @@ function loadExperiencesDropdown(){
 		    return 0;
 		});
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
-			tempEntry = tempArray[arrayIndex];				
+			tempEntry = tempArray[arrayIndex];			
 			experiencesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-experienceItem" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
 		}
 		experiencesListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
@@ -357,16 +413,21 @@ function loadExperiencesDropdown(){
 		scrollCustomSelect();
 		refreshAOS('refresh');
 		selectAllEvent();	
-
-		loadExperiencesLogos();
-
+	
 	    console.log("Experiences completed");
 	    tempArray = [];
 		tempEntry = [];
-
+		loadExperiencesLogos()
+		if(currentPageName == 'movie detail'){
+			loadMovieDetailModules();
+		}else if(currentPageName == 'showtime tile'){
+			loadShowtimeTileModules();
+		}
+		
 	}).fail(function( data ) {
 	    console.log("Experiences failed");
 	});
+
 }
 
 function loadExperiencesLogos(){
@@ -378,6 +439,11 @@ function loadExperiencesLogos(){
 	movieExperienceArray.push( ['premier','premier'] );
 	movieExperienceArray.push( ['standard','standard'] );
 	movieExperienceArray.push( ['junior','junior'] );
+
+	for (arrayIndex = 0; arrayIndex < movieExperienceArray.length; arrayIndex++) {
+		temp = movieExperienceArray[arrayIndex];			
+		experienceMovieListing.push(temp[0]);		
+	}
 }
 
 function dropdownSelectAll(targetObj, filterName, tempMovieArray, tempCinemaArray, tempExperienceArray, tempGenreArray ){
@@ -493,8 +559,8 @@ $('#select-all-exp').click(function () {
 $('.js-experienceItem').click(function () {
 
 	var experienceNames = $(this).val();
-	var tempArray = [];
-
+	// var tempArray = [];
+/*
 	if($('.movie-detail-page').length > 0 || $('.showtime-tile-page').length > 0){
 		tempArray = tempExperienceFilter;
 	}else if($('.home-page').length > 0 || $('.showtime-page').length > 0 ){
@@ -506,9 +572,23 @@ $('.js-experienceItem').click(function () {
 	}else{				
 		tempArray.splice($.inArray(experienceNames, tempArray),1);
 	}
-	tempArray = startFromZero(tempArray);
+	tempArray = startFromZero(tempArray);*/
+
+/*	if($(this).prop('checked') == true){
+		tempArray[tempArray.length] = experienceNames;
+	}else{				
+		tempArray.splice($.inArray(experienceNames, tempArray),1);
+	}
+	tempArray = startFromZero(tempArray);*/
+
+	if($(this).prop('checked') == true){
+		experienceFilter[experienceFilter.length] = experienceNames;
+	}else{				
+		experienceFilter.splice($.inArray(experienceNames, experienceFilter),1);
+	}
+	experienceFilter = startFromZero(experienceFilter);
 	
-	if($('.movie-detail-page').length > 0){		
+	/*if($('.movie-detail-page').length > 0){		
 		tempExperienceFilter = tempArray;
 		filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
 	}else if($('.showtime-page').length > 0){		
@@ -520,9 +600,31 @@ $('.js-experienceItem').click(function () {
 		filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');
 	}else if ($('.showtime-tile-page').length >0 ){		
 		filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);
-	}
+	}*/
 
-	tempArray = [];
+/*	if($('.movie-detail-page').length > 0){		
+		tempExperienceFilter = tempArray;
+		// filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
+		filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
+	}else if($('.showtime-page').length > 0){		
+		experienceFilter = tempArray;
+		// filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
+		filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
+	}else if($('.home-page').length > 0){		
+		experienceFilter = tempArray;
+		// filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');
+		filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
+	}else if ($('.showtime-tile-page').length >0 ){	
+		tempExperienceFilter = tempArray;	
+		// filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);
+		filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
+	}*/
+
+	// filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
+
+	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
+
+	// tempArray = [];
 	experienceNames = "";
 });
 
@@ -532,10 +634,10 @@ $('.js-genreItem').click(function () {
 		genreFilter[genreFilter.length] = genreNames;
 	}else{				
 		genreFilter.splice($.inArray(genreNames, genreFilter),1);
-	}	
+	}
 
-	genreFilter = startFromZero(genreFilter);			
-	filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');
+	genreFilter = startFromZero(genreFilter);
+	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 });	
 
 $('#select-all-exp-coming').click(function () {
@@ -552,7 +654,8 @@ $('.js-genreItem-coming').click(function () {
 	}	
 
 	comingGenreFilter = startFromZero(comingGenreFilter);			
-	filterMovieBlock(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, 'coming');
+	// filterMovieBlock(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, 'coming');
+	filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
 });	
 
 $('.js-showTime').click(function () {
@@ -565,19 +668,21 @@ $('.js-showTime').click(function () {
 
 	showTimeFilter = startFromZero(showTimeFilter);	
 	
-	if($('.movie-detail-page').length > 0){		
+/*	if($('.movie-detail-page').length > 0){		
 		filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
 	}else if($('.showtime-page').length > 0){		
 		movieDateFilter = movieSearchDate;
 		filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
 	}else if ($('.showtime-tile-page').length >0 ){		
 		filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);
-	}	
+	}*/	
+
+	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 
 });
 
-$('.js-load-play-movies-listing').click(function () {		
-	movieGridPagination('.js-play-movies-listing .list-wrap-page--','.js-load-play-movies-listing',pageNumber);
+$('.js-load-play-movies-listing').click(function () {
+	moviePagination('.js-load-play-movies-listing',$(this).attr('attr-current-page'));
 });	
 
 $('.js-load-coming-movies-listing').click(function () {		
@@ -589,654 +694,398 @@ $('.js-tab-link').click(function () {
 		var sourceObj = $(this).attr('href');
 		var countBlock = $(sourceObj).find('.js-movie-list').find('.list-wrap').length;
 		if(countBlock == 0 && sourceObj == '#whats-coming'){
-			loadHomeComingMovies();
+			// loadHomeComingMovies();
 		}
 	}
 });	
 
-$('.js-load-movie-listing').click(function () {	
-	movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-});	
+var showtimeMoviesByDate = new Array();
 
-// loadPlayPopup();
-function loadPlayPopup(){
-	var moviesListing = $('.js-c-popup');
-	var itemValue, itemClass, itemPopupClass;
-	moviesListing.empty();
-	result = '<div class="overlay js-close-popup"></div>';
+function initShowtimeMoviesByDate(argMovieDate){	
+	showtimeMoviesByDate = [];
+	var tempArray = new Array()
+	for (var listCount = 0; listCount < movieSessionListing.length; listCount++) {
+		tempArray = movieSessionListing[listCount];
+
+		if(tempArray[2] == argMovieDate){
+			showtimeMoviesByDate.push(tempArray[0]);
+		}
+	}	
+	showtimeMoviesByDate = unique(showtimeMoviesByDate);
+	tempArray = [];	
+	loadMovieGridBlocks("moviveGrid");
+}
+
+function initMovieGrid(){
+
+  	var movieItemClass, moviePG, movieName, movieCinema, movieGenreDetail, movieLanguage, movieSynopsis,
+  	tempSynopsis, tempDirector, tempCast, strLen, strposition, tempDirector, tempCast,
+  	movieExperience, movieExperienceTemp, movieGenre, movieExperienceClass,
+  	movieNameClass, movieCinemaClass, movieGenreClass, showMovie;
+
+  	var tempMovieSynopsis=[], tempGenre = [];
 
 	$.getJSON('MoviesSession.json', function (data) {
-	
-		$.each( data, function( i, item ) {  
+		$.each( data, function( i, item ) {
 
-			itemValue = item.MovieName;	
-			itemClass = itemValue;
-			itemClass = itemClass.replace(/\s+/g, "-");
-			itemClass = itemClass.replace(".", "-");
-			itemClass = 'play-video-'+itemClass.toLowerCase();
-			itemPopupClass = 'popup-play-video-'+itemClass.toLowerCase();
-			var movieImage = moviePostURL+item.MovieImage;			
-			var movieTrailer = movieURL+item.MovieTrailer;
+			movieName = item.MovieName;
+
+			moviePG = item.Rating;
+			movieLanguage = item.MovieLanguage;
+			movieSynopsis = item.Synopsis;
+			movieExperience = item.Experience;
+			movieGenre = item.Genre;			
+			movieCinema = item.CinemaName;
+
+			moviePG = moviePG.replace(/PG/g, "PG <br>");
+			moviePG = moviePG.replace(/-/g, "<br>");			
+			movieGenreDetail = moviePG.replace(/,/g, "</span><span>");
 			
-	        result += '<section id="'+itemClass+'" class="popup popup--full-screen">\
-	            <div class="popup-wrap">\
-	                <video class="js-video" poster="" id="'+itemPopupClass+'" autoplay playsinline controls>\
-	                    <source src="'+movieTrailer+'" type="video/mp4">\
-	                </video>\
-	                <div class="popup-action">\
-	                    <a href="javascript:void(0);" class="c-close js-close-popup"><span>Close</span></a>\
-	                </div>\
-	            </div>\
-	        </section>';
+			movieLanguage = movieLanguage.replace(/Language /g, "");
+			movieLanguage = movieLanguage.replace(/Language: /g, "");
+			movieLanguage = movieLanguage.replace(/Language:/g, "");
+			movieLanguage = movieLanguage.replace(/ Language:/g, "");
+			movieLanguage = movieLanguage.replace(/ Language: /g, "");
+			movieLanguage = movieLanguage.replace(/ Language/g, "");
+			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
 
+			tempMovieSynopsis = movieSynopsis.split('\n');
+		 	
+		 	for(var counter=0; counter < tempMovieSynopsis.length; counter++){
+		 		if (tempMovieSynopsis[counter].indexOf('Synopsis') > -1) {
+		 			strLen = tempMovieSynopsis[counter].length;
+		  			strposition = tempMovieSynopsis[counter].indexOf('Synopsis: ');
+		  			tempSynopsis = tempMovieSynopsis[counter].substring(strposition+10,strLen);
+	            }            
+	            if (tempMovieSynopsis[counter].indexOf('Director') > -1) {	                
+	                strLen = tempMovieSynopsis[counter].length;
+		  			strposition = tempMovieSynopsis[counter].indexOf('Director: ');
+		  			tempDirector = "<br><br><strong>Director:</strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
+	            }
+	            if (tempMovieSynopsis[counter].indexOf('Cast') > -1) {
+	            	strLen = tempMovieSynopsis[counter].length;
+		  			strposition = tempMovieSynopsis[counter].indexOf('Cast: ');
+		  			tempCast = "<br><br><strong>Cast:</strong>" + tempMovieSynopsis[counter].substring(strposition+6,strLen);	                
+	            }	            
+		 	}
+
+		 	movieSynopsis =  tempSynopsis + tempDirector + tempCast;
+		 	
+		 	movieExperienceTemp = movieExperience;
+		 	movieExperienceTemp = movieExperienceTemp.toLowerCase();
+		 	movieExperience = "";
+
+		 	for (arrayIndex = 0; arrayIndex < movieExperienceArray.length; arrayIndex++) {
+				temp = movieExperienceArray[arrayIndex];			
+				if(movieExperienceTemp.indexOf(temp[0]) > -1  ){					
+					movieExperience += '<li><picture><source srcset="assets/img/logos/logo-reel-'+temp[1]+'--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-'+temp[1]+'.png" alt="Reel '+temp[0]+'"></picture></li>';
+				}				
+			}
+
+			movieExperienceClass = movieExperienceTemp.replace(/,/g, " ");
+			movieNameClass = movieName.replace(/\s+/g, "-");
+			movieNameClass = movieNameClass.replace(" ", "-");
+			movieNameClass = movieNameClass.replace(".", "-");
+			movieNameClass = movieNameClass.toLowerCase();
+
+			movieCinemaClass = movieCinema;			
+			movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
+			movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
+			movieCinemaClass = movieCinemaClass.toLowerCase();
+
+			movieGenreClass = "genre-"+movieGenre;
+			movieGenreClass = movieGenreClass.replace(/\s+/g, "");
+			movieGenreClass = movieGenreClass.replace(/,/g, " genre-");
+			movieGenreClass = movieGenreClass.toLowerCase();
+
+			tempGenre = movieGenre.split(',');
+			movieGenre = "";
+			var spaceLabel;
+			for(var counter=0; counter < tempGenre.length; counter++){
+				spaceLabel = " | ";
+				if(counter == 0){
+					spaceLabel = ""
+				}
+		 		movieGenre += spaceLabel+  $.trim(tempGenre[counter]);
+		 	}
+
+			movieItemClass = movieNameClass + " " +movieCinemaClass + " "+ movieExperienceClass + " " +movieGenreClass;
+
+			movieGridListing.push(
+				[					
+					movieItemClass,
+					item.movieType,
+					movieExperience,
+					movieCinema,
+					movieName,
+					moviePostURL+item.MovieImage,
+					movieURL+item.MovieTrailer,
+					movieLanguage,
+					item.Duration,
+					moviePG,
+					movieSynopsis,
+					movieGenre,
+					'movie-inner.html?param1='+movieName		
+				]
+			);			
 		});
-	}).done(function( data ) {  
-		moviesListing.append(result);
-		
-	  	console.log("Movies popup completed");
+	  
+	}).done(function( data ) {
+		if(currentPageName == 'home'){
+			loadMovieGridBlocks('all');
+		}else if(currentPageName == 'showtime grid'){
+			initShowtimeMoviesByDate(searchDateValue);
+		}			
+		console.log("Movie grid completed");		
 	}).fail(function( data ) {
-	  	console.log("Movies popup failed");
-	});
-
-	result = '';
-
-	$.getJSON('ComingSoon.json', function (data) {
-	
-		$.each( data, function( i, item ) {  
-
-			itemValue = item.MovieName;	
-			itemClass = itemValue;
-			itemClass = itemClass.replace(/\s+/g, "-");
-			itemClass = itemClass.replace(".", "-");
-			itemClass = 'coming-video-'+itemClass.toLowerCase();
-			itemPopupClass = 'popup-coming-video-'+itemClass.toLowerCase();
-			var movieImage = moviePostURL+item.MovieImage;			
-			var movieTrailer = movieURL+item.MovieTrailer;
-			
-	        result += '<section id="'+itemClass+'" class="popup popup--full-screen">\
-	            <div class="popup-wrap">\
-	                <video class="js-video" poster="" id="'+itemPopupClass+'" autoplay playsinline controls>\
-	                    <source src="'+movieTrailer+'" type="video/mp4">\
-	                </video>\
-	                <div class="popup-action">\
-	                    <a href="javascript:void(0);" class="c-close js-close-popup"><span>Close</span></a>\
-	                </div>\
-	            </div>\
-	        </section>';
-
-		});
-	}).done(function( data ) {  
-		moviesListing.append(result);
-		
-	  	console.log("Coming popup completed");
-	}).fail(function( data ) {
-	  	console.log("Coming popup failed");
+	    console.log("Movie grid  failed");
 	});
 }
 
-function movieGridPagination(parentItem, loadMoreItem, currentPageNumber){
+function loadMovieGridBlocks( argMovie){
 
-	var currentPage = currentPageNumber;
-	var startItem = (currentPage*moviesPerPage)-moviesPerPage;
-	var endItem = (currentPage+1)*moviesPerPage;	
+  	playMoviesListing.addClass('is--loading');
+	playMoviesListing.empty();
+	
+	var result = "", bookNowClass = "", tempEntry = [], showMovie = 0;
+
+	for(var counter=0; counter < movieGridListing.length; counter++){
+		tempEntry = movieGridListing[counter];
+
+		if(argMovie == "all"){
+			showMovie = 1;
+		}else if ( argMovie == "moviveGrid" && $.inArray( tempEntry[4], showtimeMoviesByDate ) > -1 ){
+			showMovie = 1;
+		}
+
+
+		if(showMovie == 1){
+
+	if(tempEntry[1] == 'coming'){
+		bookNowClass = '<div class="booknow-tag"><span>BOOK NOW</span></div>';
+	}
+
+	result = '<div class="movie-item '+tempEntry[0]+'">\
+	<div class="bot-img" style="background-image: url('+tempEntry[5]+');"></div>\
+	<div class="item-wrap"><div class="img"><div class="stamp">'+tempEntry[9]+'</div>'+bookNowClass+'<img src="'+tempEntry[5]+'" alt="'+tempEntry[4]+'"></div>\
+		<div class="info"><div class="name">'+tempEntry[4]+'</div>\
+			<div class="duration-language">\
+			<div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[8]+'</span></div>\
+			<div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div></div>\
+			<div class="detail"><div class="detail-inner-wrap">'+tempEntry[11]+' | '+tempEntry[8]+'</div></div></div>\
+		<div class="action"><a href="javascript:void(0);" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="javascript:void(0);" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div>\
+	<section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>\
+		<div class="text"> <div class="title-wrap"> <h1 class="title">'+tempEntry[4]+'</h1> <div class="stamp">'+tempEntry[9]+'</div></div>\
+			<div class="info genere"><span>'+tempEntry[11]+'</span></div>\
+			<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[8]+'</span></div>\
+			<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
+			<div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+tempEntry[2]+'</ul></div>\
+			<div class="info"><strong>Storyline:</strong> '+tempEntry[10]+'</div>\
+			<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[6]+' class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div>\
+		<div class="img"><img src="'+tempEntry[5]+'" alt="'+tempEntry[4]+'"></div>\
+	</section></div>';
+
+	movieListingArray.push(result);
+
+	playMoviesListing.append(result);
+
+		}
+	}
+
+	playMoviesListing.removeClass('is--loading');	
+	movieListSetHTML();
+	movieList();
+	moviePagination('.js-load-play-movies-listing', 1);
+}
+
+function initComingMovieGrid(){
+
+  	var movieItemClass, moviePG, movieName, movieCinema, movieGenreDetail, movieLanguage, movieSynopsis,
+  	tempSynopsis, tempDirector, tempCast, strLen, strposition, tempDirector, tempCast,
+  	movieGenre, movieExperienceClass,
+  	movieNameClass, movieCinemaClass, movieGenreClass;
+
+  	var tempMovieSynopsis=[], tempGenre = [];
+
+	$.getJSON('ComingSoon.json', function (data) {
+		$.each( data, function( i, item ) {
+
+			moviePG = item.Rating;
+			movieLanguage = item.MovieLanguage;
+			movieSynopsis = item.Synopsis;
+			movieGenre = item.Genre;
+			movieName = item.MovieName;
+			movieCinema = item.CinemaName;
+
+			moviePG = moviePG.replace(/PG/g, "PG <br>");
+			moviePG = moviePG.replace(/-/g, "<br>");			
+			movieGenreDetail = moviePG.replace(/,/g, "</span><span>");
+			
+			movieLanguage = movieLanguage.replace(/Language /g, "");
+			movieLanguage = movieLanguage.replace(/Language: /g, "");
+			movieLanguage = movieLanguage.replace(/Language:/g, "");
+			movieLanguage = movieLanguage.replace(/ Language:/g, "");
+			movieLanguage = movieLanguage.replace(/ Language: /g, "");
+			movieLanguage = movieLanguage.replace(/ Language/g, "");
+			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+
+			tempMovieSynopsis = movieSynopsis.split('\n');
+		 	
+		 	for(var counter=0; counter < tempMovieSynopsis.length; counter++){
+		 		if (tempMovieSynopsis[counter].indexOf('Synopsis') > -1) {
+		 			strLen = tempMovieSynopsis[counter].length;
+		  			strposition = tempMovieSynopsis[counter].indexOf('Synopsis: ');
+		  			tempSynopsis = tempMovieSynopsis[counter].substring(strposition+10,strLen);
+	            }            
+	            if (tempMovieSynopsis[counter].indexOf('Director') > -1) {	                
+	                strLen = tempMovieSynopsis[counter].length;
+		  			strposition = tempMovieSynopsis[counter].indexOf('Director: ');
+		  			tempDirector = "<br><br><strong>Director:</strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
+	            }
+	            if (tempMovieSynopsis[counter].indexOf('Cast') > -1) {
+	            	strLen = tempMovieSynopsis[counter].length;
+		  			strposition = tempMovieSynopsis[counter].indexOf('Cast: ');
+		  			tempCast = "<br><br><strong>Cast:</strong>" + tempMovieSynopsis[counter].substring(strposition+6,strLen);	                
+	            }	            
+		 	}
+
+		 	movieSynopsis =  tempSynopsis + tempDirector + tempCast;
+		 	
+			movieNameClass = movieName.replace(/\s+/g, "-");
+			movieNameClass = movieNameClass.replace(" ", "-");
+			movieNameClass = movieNameClass.replace(".", "-");
+			movieNameClass = movieNameClass.toLowerCase();
+
+			movieCinemaClass = movieCinema;			
+			movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
+			movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
+			movieCinemaClass = movieCinemaClass.toLowerCase();
+
+			movieGenreClass = "genre-"+movieGenre;
+			movieGenreClass = movieGenreClass.replace(/\s+/g, "");
+			movieGenreClass = movieGenreClass.replace(/,/g, " genre-");
+			movieGenreClass = movieGenreClass.toLowerCase();
+
+			tempGenre = movieGenre.split(',');
+			movieGenre = "";
+			var spaceLabel;
+			for(var counter=0; counter < tempGenre.length; counter++){
+				spaceLabel = " | ";
+				if(counter == 0){
+					spaceLabel = ""
+				}
+		 		movieGenre += spaceLabel+  $.trim(tempGenre[counter]);
+		 	}
+
+			movieItemClass = movieNameClass + " " +movieCinemaClass + " " +movieGenreClass;
+
+			comingMovieGridListing.push(
+				[					
+					movieItemClass,
+					item.movieType,
+					movieCinema,
+					movieName,
+					moviePostURL+item.MovieImage,
+					movieURL+item.MovieTrailer,
+					movieLanguage,
+					item.Duration,
+					moviePG,
+					movieSynopsis,
+					movieGenre,
+					'movie-inner.html?param1='+movieName		
+				]
+			);
+		});
+	  
+	}).done(function( data ) {
+		loadComingMovieGridBlocks();
+		
+		console.log("Coming movie grid completed");		
+	}).fail(function( data ) {
+	    console.log("Coming movie grid  failed");
+	});
+}
+
+function loadComingMovieGridBlocks(){
+
+  	comingMoviesListing.addClass('is--loading');
+	comingMoviesListing.empty();
+	var result = "", bookNowClass = "", tempEntry = [];
+	for(var counter=0; counter < comingMovieGridListing.length; counter++){
+		tempEntry = comingMovieGridListing[counter];
+
+	if(tempEntry[1] == 'coming'){
+		bookNowClass = '<div class="booknow-tag"><span>BOOK NOW</span></div>';
+	}
+
+	result = '<div class="movie-item '+tempEntry[0]+'">\
+	<div class="bot-img" style="background-image: url('+tempEntry[4 ]+');"></div>\
+	<div class="item-wrap"><div class="img"><div class="stamp">'+tempEntry[8 ]+'</div>'+bookNowClass+'<img src="'+tempEntry[4 ]+'" alt="'+tempEntry[3 ]+'"></div>\
+		<div class="info"><div class="name">'+tempEntry[3 ]+'</div>\
+			<div class="duration-language">\
+			<div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
+			<div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div></div>\
+			<div class="detail"><div class="detail-inner-wrap">'+tempEntry[10]+' | '+tempEntry[7]+'</div></div></div>\
+		<div class="action"><a href="javascript:void(0);" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="javascript:void(0);" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div>\
+	<section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>\
+		<div class="text"> <div class="title-wrap"> <h1 class="title">'+tempEntry[3]+'</h1> <div class="stamp">'+tempEntry[8]+'</div></div>\
+			<div class="info genere"><span>'+tempEntry[10 ]+'</span></div>\
+			<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
+			<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div>\
+			<div class="info"><strong>Storyline:</strong> '+tempEntry[9 ]+'</div>\
+			<div class="action"><a href="'+tempEntry[11 ]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[5]+' class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div>\
+		<div class="img"><img src="'+tempEntry[4 ]+'" alt="'+tempEntry[3 ]+'"></div>\
+	</section></div>';
+
+		comingMovieListingArray.push(result);
+		comingMoviesListing.append(result);
+	}
+
+	$('.is--loading').removeClass('is--loading');	
+	movieListSetHTML();
+	movieList();
+	moviePagination('.js-load-play-movies-listing', 1);
+}
+
+function moviePagination(loadMoreItem, currentPageNumber){	
+
+	var pageNumber = parseInt(currentPageNumber);
+	var startItem = pageNumber;
+	var endItem = ++pageNumber;
 	var counter;
 
 	if(startItem < 0){
 		startItem = 1;
 	}
 
-    $('.js-play-movies-listing .list-wrap-page--1').fadeIn('slow');
-	$('.js-play-movies-listing .list-wrap-page--2').fadeIn('slow');
-	$('.js-play-movies-listing .list-wrap-page--3').fadeIn('slow');
-	$('.js-coming-movies-listing .list-wrap-page--1').fadeIn('slow');
-	$('.js-coming-movies-listing .list-wrap-page--2').fadeIn('slow');
-	$('.js-coming-movies-listing .list-wrap-page--3').fadeIn('slow');
-		
-	for(counter= startItem; counter <= endItem ; counter++){		
-		$(parentItem+counter).fadeIn('slow');
+	for(var counter= startItem; counter <= endItem ; counter++){		
+		$('.c-movies-list .list-wrap-page--'+counter).fadeIn('slow');		
 	}
 	
-	if($('.list-wrap-page--1').length == 0 || $('.list-wrap-page--'+counter).length == 0){
-		$(loadMoreItem).fadeOut('fast');		
-	}else if(movieCount < counter){
-    	$(loadMoreItem).fadeOut('fast');    	
+	if($('.list-wrap-page--1').length == 0 || $('.movie-lsit-wrap .list-wrap-page--'+counter).length == 0){
+		$(loadMoreItem).fadeOut('fast');   	
     }else if(endItem > 1){
     	$(loadMoreItem).fadeIn('slow');
     }
+    
+    $(loadMoreItem).attr('attr-current-page',pageNumber);
 
-    if(loadMoreItem == '.js-load-play-movies-listing' ){		
-    	pageNumber++;
-    }else if( loadMoreItem == '.js-load-coming-movies-listing'){    	
-    	comingPageNumber++;
-    }
 }
 
-function loadMovieBlocks(){
-  	var movieName, movieImage, movieGenre, movieTrailer, movieDuration, moviePG, movieLanguage;
-  	var movieExPlatinum, movieExPremier, movieExStandard, movieExDineIn, movieExBoutique;
-  	var movieExMX4D, movieExJunior, movieExDobly, movieExprerience, movieExprerienceTemp;
-  	var movieSynopsis, strLen, strposition, movieNameClass, movieExprerienceClass;
-  	var movieCinemaClass, movieCinema, movieGenreClass, bookNowClass, movieCounter, tempMovieURL;
-
-  	playMoviesListing.addClass('is--loading');
-	playMoviesListing.empty();
-
-	movieCounter =0;
-	movieCount = 1;	
-	pageNumber=0;
-
-	$.getJSON('MoviesSession.json', function (data) {
-		$.each( data, function( i, item ) {
-
-			movieName = item.MovieName;
-			movieImage = moviePostURL+item.MovieImage;
-			movieGenre = item.Genre;
-			movieTrailer = movieURL+item.MovieTrailer;
-			movieDuration = item.Duration;
-			moviePG = item.Rating; // PG <br> 13			
-			movieLanguage = item.MovieLanguage;		
-			movieExprerienceTemp = item.Experience;
-			movieCinema = item.CinemaName;
-			movieSynopsis = item.Synopsis;
-			tempMovieURL = 'movie-inner.html?param1='+movieName;
-
-			moviePG = moviePG.replace(/PG/g, "PG <br>");
-			moviePG = moviePG.replace(/-/g, "<br>");			
-			movieGenreDetail = movieGenre.replace(/,/g, "</span><span>");
-			movieLanguage = movieLanguage.replace(/Language /g, "");
-			movieLanguage = movieLanguage.replace(/Language: /g, "");
-			movieLanguage = movieLanguage.replace(/Language:/g, "");
-			movieLanguage = movieLanguage.replace(/ Language:/g, "");
-			movieLanguage = movieLanguage.replace(/ Language: /g, "");
-			movieLanguage = movieLanguage.replace(/ Language/g, "");
-			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
-			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
-		
-			movieExprerience = "";
-			movieExprerienceTemp = movieExprerienceTemp.toLowerCase();		
-
-			var tempMovieSynopsis = movieSynopsis.split('\n');
-		 	var tempVal = "";
-		 	var tempSynopsis, tempDirector, tempCast;
-		 	var movieTrailerURL, temp, arrayIndex;
-
-		 	for(var counter=0; counter < tempMovieSynopsis.length; counter++){
-		 		if (tempMovieSynopsis[counter].indexOf('Synopsis') > -1) {
-		 			strLen = tempMovieSynopsis[counter].length;
-		  			strposition = tempMovieSynopsis[counter].indexOf('Synopsis: ');
-		  			tempSynopsis = tempMovieSynopsis[counter].substring(strposition+10,strLen);
-	            }            
-	            if (tempMovieSynopsis[counter].indexOf('Director') > -1) {	                
-	                strLen = tempMovieSynopsis[counter].length;
-		  			strposition = tempMovieSynopsis[counter].indexOf('Director: ');
-		  			tempDirector = "<br><br><strong>Director:</strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
-	            }
-	            if (tempMovieSynopsis[counter].indexOf('Cast') > -1) {
-	            	strLen = tempMovieSynopsis[counter].length;
-		  			strposition = tempMovieSynopsis[counter].indexOf('Cast: ');
-		  			tempCast = "<br><br><strong>Cast:</strong>" + tempMovieSynopsis[counter].substring(strposition+6,strLen);	                
-	            }	            
-		 	}
-		 	    		 	
-			movieSynopsis =  tempSynopsis + tempDirector + tempCast;
-
-		  	movieCinemaClass = "";
-		  	movieGenreClass = "";
-	  				  	
-		  	for (arrayIndex = 0; arrayIndex < movieExperienceArray.length; arrayIndex++) {
-				temp = movieExperienceArray[arrayIndex];			
-				if(movieExprerienceTemp.indexOf(temp[0]) > -1  ){					
-					movieExprerience += '<li><picture><source srcset="assets/img/logos/logo-reel-'+temp[1]+'--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-'+temp[1]+'.png" alt="Reel '+temp[0]+'"></picture></li>';
-				}				
-			}
-
-			movieExprerienceClass = movieExprerienceTemp.replace(/,/g, " ");
-			movieNameClass = movieName.replace(/\s+/g, "-");
-			movieNameClass = movieNameClass.replace(" ", "-");
-			movieNameClass = movieNameClass.replace(".", "-");
-			movieNameClass = movieNameClass.toLowerCase();
-
-			movieCinemaClass = movieCinema;			
-			movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
-			movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
-			movieCinemaClass = movieCinemaClass.toLowerCase();
-
-			movieGenreClass = "genre-"+movieGenre;
-			movieGenreClass = movieGenreClass.replace(/\s+/g, "");
-			movieGenreClass = movieGenreClass.replace(/,/g, " genre-");
-			movieGenreClass = movieGenreClass.toLowerCase();
-			bookNowClass = "";
-
-			if(item.movieType == 'coming'){
-				bookNowClass = '<div class="booknow-tag"><span>BOOK NOW</span></div>';
-			}	
-
-			movieTrailerURL = movieTrailer;
-
-			movieListingArray[movieCounter] = '<div class="movie-item '+movieNameClass + ' '+movieGenreClass+' '+movieExprerienceClass+' '+movieCinemaClass+'"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap">'+movieGenre+' | '+movieDuration+'</div></div></div><div class="action"><a href="javascript:void(0);" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="javascript:void(0);" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+movieExprerience+'</ul></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+tempMovieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+movieTrailerURL+' class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="'+movieImage+'" alt="'+movieName+'"></div></section> </div>';
-			playMoviesListing.append(movieListingArray[movieCounter]);
-			movieCounter++;
-			movieCount++;
-		});
-	  
-	}).done(function( data ) {
-
-	    playMoviesListing.removeClass('is--loading');
-	    movieListSetHTML();
-	    movieList();
-
-	    if($('.showtime-page').length > 0){
-	    	loadAllMovieDates();
-			loadAllMovieDateFilter();
-	    }
-
-		scrollCustomSelect();
-		refreshAOS('refresh');
-	    toSVG();
-		movieListCarousel();
-		filterSearch();
-
-		$('.js-play-movies-listing .list-wrap').fadeOut('fast');
-		movieGridPagination('.js-play-movies-listing .list-wrap-page--','.js-load-play-movies-listing',pageNumber);
-
-		if(winWidth > 1024 && isIE == false){
-			$('.c-movies-list .list-wrap').each(function () {
-				$(this).find('.movie-item').each(function (i) {
-			    	$(this).attr('data-aos', 'fade-up');
-			    	$(this).attr('data-aos-delay', (50*i));
-				});
-			});
-		}
-		refreshAOS('init');
-		
-		console.log("Play movies completed");		
-	}).fail(function( data ) {
-	    console.log("Play movies failed");
-	});
-}
-
-function loadHomeComingMovies(){
-
-  	var playMoviesListing = $('.js-coming-movies-listing');  	
-	var movieName, movieImage, movieGenre, movieTrailer, movieDuration, moviePG, movieLanguage;
-  	var movieExPlatinum, movieExPremier, movieExStandard, movieExDineIn, movieExBoutique;
-  	var movieExMX4D, movieExJunior, movieExDobly, movieExprerience, movieExprerienceTemp;
-  	var movieSynopsis, strLen, strposition, movieNameClass, movieExprerienceClass;
-  	var movieCinemaClass, movieCinema, movieGenreClass, bookNowClass, movieCounter, tempMovieURL;
-
-	playMoviesListing.empty();
-	movieCounter =0;
-	comingPageNumber=0;
-
-	$.getJSON('ComingSoon.json', function (data) {
-		$.each( data, function( i, item ) {
-
-			movieName = item.MovieName;
-			movieImage = moviePostURL+item.MovieImage;
-			movieGenre = item.Genre;
-			movieTrailer = movieURL+item.MovieTrailer;
-			movieDuration = item.Duration;
-			moviePG = item.Rating; // PG <br> 13			
-			movieLanguage = item.MovieLanguage;		
-			movieExprerienceTemp = item.Experience;
-			movieCinema = item.CinemaName;
-			movieSynopsis = item.Synopsis;
-			tempMovieURL = 'movie-inner.html?param1='+movieName;
-
-			moviePG = moviePG.replace(/PG/g, "PG <br>");
-			moviePG = moviePG.replace(/-/g, "<br>");			
-			movieGenreDetail = movieGenre.replace(/,/g, "</span><span>");
-			movieLanguage = movieLanguage.replace(/Language /g, "");
-			movieLanguage = movieLanguage.replace(/Language: /g, "");
-			movieLanguage = movieLanguage.replace(/Language:/g, "");
-			movieLanguage = movieLanguage.replace(/ Language:/g, "");
-			movieLanguage = movieLanguage.replace(/ Language: /g, "");
-			movieLanguage = movieLanguage.replace(/ Language/g, "");
-			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
-			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
-
-			movieExprerience = "";
-
-			var tempMovieSynopsis = movieSynopsis.split('\n');
-		 	var tempVal = "";
-		 	var tempSynopsis, tempDirector, tempCast;
-
-		 	for(var counter=0; counter < tempMovieSynopsis.length; counter++){
-		 		if (tempMovieSynopsis[counter].indexOf('Synopsis') > -1) {
-		 			strLen = tempMovieSynopsis[counter].length;
-		  			strposition = tempMovieSynopsis[counter].indexOf('Synopsis: ');
-		  			tempSynopsis = tempMovieSynopsis[counter].substring(strposition+10,strLen);
-	            }            
-	            if (tempMovieSynopsis[counter].indexOf('Director') > -1) {	                
-	                strLen = tempMovieSynopsis[counter].length;
-		  			strposition = tempMovieSynopsis[counter].indexOf('Director: ');
-		  			tempDirector = "<br><br><strong>Director:</strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
-	            }
-	            if (tempMovieSynopsis[counter].indexOf('Cast') > -1) {
-	            	strLen = tempMovieSynopsis[counter].length;
-		  			strposition = tempMovieSynopsis[counter].indexOf('Cast: ');
-		  			tempCast = "<br><br><strong>Cast:</strong>" + tempMovieSynopsis[counter].substring(strposition+6,strLen);	                
-	            }	            
-		 	}
-		 	    		 	
-			movieSynopsis =  tempSynopsis + tempDirector + tempCast;
-
-		  	movieCinemaClass = "";
-		  	movieGenreClass = "";
-	  	
-			movieNameClass = movieName.replace(/\s+/g, "-");
-			movieNameClass = movieNameClass.replace(" ", "-");
-			movieNameClass = movieNameClass.replace(".", "-");
-			movieNameClass = movieNameClass.toLowerCase();
-
-			movieCinemaClass = movieCinema;			
-			movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
-			movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
-			movieCinemaClass = movieCinemaClass.toLowerCase();
-
-			movieGenreClass = "genre-"+movieGenre;
-			movieGenreClass = movieGenreClass.replace(/\s+/g, "");
-			movieGenreClass = movieGenreClass.replace(/,/g, " genre-");
-			movieGenreClass = movieGenreClass.toLowerCase();
-
-			bookNowClass = '<div class="booknow-tag"><span>BOOK NOW</span></div>';
-			
-			movieTrailerURL = movieTrailer;
-				
-			comingmovieListingArray[movieCounter] = '<div class="movie-item '+movieNameClass + ' '+movieGenreClass+' '+movieExprerienceClass+' '+movieCinemaClass+'"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap">'+movieGenre+' | '+movieDuration+'</div></div></div><div class="action"><a href="javascript:void(0);" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="javascript:void(0);" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+tempMovieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+movieTrailerURL+' class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="'+movieImage+'" alt="'+movieName+'"></div></section> </div>';
-			playMoviesListing.append(comingmovieListingArray[movieCounter]);
-			movieCounter++;
-			comingMovieCount++;
-		});
-
-		scrollCustomSelect();
-	  
-	}).done(function( data ) {	    
-
-	    movieListSetHTML();
-	    movieList();
-
-		scrollCustomSelect();
-		refreshAOS('refresh');
-	    toSVG();
-		movieListCarousel();
-		filterSearch();
-
-	    $('.js-coming-movies-listing').removeClass('is--loading');
-	    $('.js-coming-movies-listing .list-wrap').fadeOut('fast');
-	    movieGridPagination('.js-coming-movies-listing .list-wrap','.js-load-coming-movies-listing',comingPageNumber);
-
-		$('.c-movies-list .list-wrap').each(function () {
-			$(this).find('.movie-item').each(function (i) {
-		    	$(this).attr('data-aos', 'fade-up');
-		    	$(this).attr('data-aos-delay', (50*i));
-			});
-		});
-		refreshAOS('init');
-		$('.is--loading').removeClass('is--loading');
-
-	    console.log("Coming soon movies completed");
-	}).fail(function( data ) {
-	    console.log("Coming soon movies failed");
-	});
-}
-
-// Check movie filter functionality for combine with Movie Cinema and Experience
-function filterMovieBlock(movieIDs, cinemaIDs, experienceIDs, genreIDs, targetObj){
-	movieListRemoveCarousel();
-
-	var movieItems = [];
-	var tempArray = [];
-	var movieCounter=0;
-	var tempMovieArrayList = [];	
-	var playMoviesListing;	
-
-	if(targetObj == 'now'){
-		pageNumber = 0;
-		tempMovieArrayList = movieListingArray;
-		playMoviesListing = $('.js-play-movies-listing');		
-	}else if(targetObj == 'coming'){
-		comingPageNumber =0;
-		tempMovieArrayList = comingmovieListingArray;
-		playMoviesListing = $('.js-coming-movies-listing');		
-	}	
-	playMoviesListing.addClass('is--loading');
-	playMoviesListing.empty(); 
-
-	if(movieIDs.length == 0 && cinemaIDs.length == 0 && experienceIDs.length == 0 && genreIDs.length == 0  ){
-		for(innerCounter=0; innerCounter < tempMovieArrayList.length; innerCounter++){		
-			movieItems[movieCounter] = tempMovieArrayList[innerCounter];
-			movieCounter++;			
-		}
-	}else{
-
-		movieItems = tempMovieArrayList;
-		
-		if(cinemaIDs.length > 0 ){
-			movieCounter=0;
-			for(counter=0; counter < cinemaIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = cinemaIDs[counter];
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-
-		if(experienceIDs.length > 0 ){	
-			movieCounter = 0;	
-			tempArray = [];		
-			for(counter=0; counter < experienceIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = experienceIDs[counter];						
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-
-		if(genreIDs.length > 0 ){	
-			movieCounter = 0;	
-			tempArray = [];				
-			for(counter=0; counter < genreIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = genreIDs[counter];						
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-
-		if(movieIDs.length > 0 ){	
-			movieCounter = 0;
-			tempArray = [];					
-			for(counter=0; counter < movieIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = movieIDs[counter];						
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-	}
-
-	movieItems = unique(movieItems);
+function initMovieDates(argMovieName){
 	
-	for(counter=0; counter < movieItems.length; counter++){
-		playMoviesListing.append(movieItems[counter]);	
-	}
+  	var movieDate, movieDateValue, targetItem, movieDates, counter, itemClass,
+  	movieName, showMovie, movieDates = "", tempMovieDateList = [];
 
-	movieListSetHTML();
-	movieList();
-
-	if(targetObj == 'now'){		
-		$('.js-play-movies-listing .list-wrap').fadeOut('fast');
-		movieGridPagination('.js-play-movies-listing .list-wrap-page--','.js-load-play-movies-listing',pageNumber);
-	}else if(targetObj == 'coming'){
-		$('.js-coming-movies-listing .list-wrap').fadeOut('fast');
-	    movieGridPagination('.js-coming-movies-listing .list-wrap','.js-load-coming-movies-listing',comingPageNumber);
-	}
-	playMoviesListing.removeClass('is--loading');
-
-	if(winWidth > 1024 && isIE == false){
-		$('.c-movies-list .list-wrap').each(function () {
-			$(this).find('.movie-item').each(function (i) {
-		    	$(this).attr('data-aos', 'fade-up');
-		    	$(this).attr('data-aos-delay', (50*i));
-			});
-		});
-	}
-
-	tempMovieArrayList = [];
-	movieItems = [];
-	tempArray = [];	
-	tempMovieArrayList = [];
-	playMoviesListing = '';		
-	$('.is--loading').removeClass('is--loading');
-
-	toSVG();
-	movieListStartCarousel();
-	refreshAOS('init');
-	
-}
-
-function loadMovieDetail(movieName){
-	
-  	var movieName, movieImage, movieGenre, movieTrailer, movieDuration, moviePG, movieLanguage, movieSubtitle;  	
-  	var movieSynopsis, strLen, strposition, movieNameClass, movieExprerienceClass;
-  	var movieCinemaClass, movieCinema, movieGenreClass, bookNowClass;
-  	var tempMovieName = movieName;  	
-  	tempMovieName = findAndReplace(tempMovieName, "%20", " ");
-
-	$.getJSON('MoviesSession.json', function (data) {
-		$.each( data, function( i, item ) {
-
-			movieName = item.MovieName;			
-			if(movieName == tempMovieName){
-								
-				movieImage = moviePostURL+item.MovieImage;
-				movieGenre = item.Genre;
-				movieTrailer = moviePostURL+item.MovieTrailer;
-				movieDuration = item.Duration;
-				moviePG = item.Rating; // PG <br> 13			
-				movieLanguage = item.MovieLanguage;		
-				movieExprerienceTemp = item.Experience;
-				movieCinema = item.CinemaName;
-				movieSynopsis = item.Synopsis;
-
-				moviePG = moviePG.replace(/PG/g, "PG <br>");
-				moviePG = moviePG.replace(/-/g, "<br>");			
-				movieGenreDetail = movieGenre.replace(/,/g, "</span><span>");
-
-				var tempMovieLanguage = movieLanguage.split('\n');
-			 	var tempVal = "";
-			 	var tempLanguage, tempSubtile;
-
-			 	for(var counter=0; counter < tempMovieLanguage.length; counter++){
-			 		if (tempMovieLanguage[counter].indexOf('Language') > -1) {
-			 			strLen = tempMovieLanguage[counter].length;
-			  			strposition = tempMovieLanguage[counter].indexOf('Language: ');
-			  			tempLanguage = tempMovieLanguage[counter].substring(strposition+10,strLen);
-			  			movieLanguage = '<i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempLanguage+'</span>';
-		            }            
-		            if (tempMovieLanguage[counter].indexOf('Subtitle') > -1) {	                
-		                strLen = tempMovieLanguage[counter].length;
-			  			strposition = tempMovieLanguage[counter].indexOf('Subtitle: ');
-			  			tempSubtile = tempMovieLanguage[counter].substring(strposition+10,strLen);
-			  			movieSubtitle =  '<i class="icon medium"><picture><source srcset="assets/img/icons/subtitles.svg" media="(max-width: 767px)"><img src="assets/img/icons/subtitles-white.svg" alt="FB" class=""></picture></i><span>'+tempSubtile+'</span>'			  			
-		            }
-			 	}
-			
-				movieExprerience = "";
-				movieExprerienceTemp = movieExprerienceTemp.toLowerCase();		
-
-				var tempMovieSynopsis = movieSynopsis.split('\n');
-			 	tempVal = "";
-			 	var tempSynopsis, tempDirector, tempCast;
-
-			 	for(var counter=0; counter < tempMovieSynopsis.length; counter++){
-			 		if (tempMovieSynopsis[counter].indexOf('Synopsis') > -1) {
-			 			strLen = tempMovieSynopsis[counter].length;
-			  			strposition = tempMovieSynopsis[counter].indexOf('Synopsis: ');
-			  			tempSynopsis = "<strong>About: </strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
-			  			if (tempMovieSynopsis[counter].substring(strposition+10,strLen).indexOf(':') > -1) {
-			  				tempSynopsis = "<strong>About: </strong>" + tempMovieSynopsis[counter].substring(strposition+11,strLen);
-			  			}			  			
-		            }            
-		            if (tempMovieSynopsis[counter].indexOf('Director') > -1) {	                
-		                strLen = tempMovieSynopsis[counter].length;
-			  			strposition = tempMovieSynopsis[counter].indexOf('Director: ');
-			  			tempDirector = "<strong>Director: </strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
-		            }
-		            if (tempMovieSynopsis[counter].indexOf('Cast') > -1) {
-		            	strLen = tempMovieSynopsis[counter].length;
-			  			strposition = tempMovieSynopsis[counter].indexOf('Cast: ');
-			  			tempCast = "<strong>Cast: </strong>" + tempMovieSynopsis[counter].substring(strposition+6,strLen);
-		            }	            
-			 	}
-
-				movieSynopsis =  tempDirector + tempCast + tempSynopsis;				
-
-				$('.js-movieImage').attr('src',movieImage);
-				$('.js-movieTitle').html(movieName);
-				$('.js-movieGenere').html(movieGenre);
-				$('.js-movieDuration').html(movieDuration);
-				$('.js-movieLanguage').html(movieLanguage);
-				$('.js-movieSubtitle').html(movieSubtitle);
-				$('.js-movieDirector').html(tempDirector);
-				$('.js-movieDirector').html(tempDirector);
-				$('.js-movieCast').html(tempCast);
-				$('.js-movieAbout').html(tempSynopsis);
-				movieNameClass = movieName.replace(/\s+/g, "-");
-				movieNameClass = movieNameClass.replace(" ", "-");
-				movieNameClass = movieNameClass.replace(".", "-");
-				movieNameClass = movieNameClass.toLowerCase();
-				movieTrailerURL = '#video-1'+movieNameClass;
-				$('.js-popup-link').attr('href',movieTrailerURL);
-				$('.js-popup-link').attr('data-video',movieTrailer);
-
-				itemValue = item.MovieName;	
-				itemClass = itemValue;
-				itemClass = itemClass.replace(/\s+/g, "-");
-				itemClass = itemClass.replace(".", "-");
-				itemClass = 'play-video-'+itemClass.toLowerCase();
-				itemPopupClass = 'popup-play-video-'+itemClass.toLowerCase();
-				
-				
-			}			
-		});
-	  
-	}).done(function( data ) {
-	 
-		bindPopupEve();  
-		toSVG(); 
-		console.log("Movies detail completed");
-	}).fail(function( data ) {
-	    console.log("Movies detail failed");
-	});
-}
-
-function loadMovieDates(movieName){
-
-  	var movieName, movieDate, movieDateValue, targetItem, movieDates, counter, itemClass;
-  	var tempMovieName = movieName;  	
-  	tempMovieName = findAndReplace(tempMovieName, "%20", " ");
-  	movieDates = "";
   	targetItem = $('.js-date-time');
+  	if(argMovieName != 'all'){
+  		if(argMovieName.indexOf("%20") > -1){
+	  		argMovieName = findAndReplace(argMovieName, "%20", " ");	
+	  	}
+  	}
   	
-  	var tempMovieDateList = [];  	
 	targetItem = $('.js-date-time').removeClass('slick-initialized');
 	targetItem = $('.js-date-time').removeClass('slick-slider');
 
@@ -1246,862 +1095,14 @@ function loadMovieDates(movieName){
 	$.getJSON('Sessions.json', function (data) {
 		$.each( data, function( i, item ) {
 
-			movieName = item.MovieName;	
-			movieDate = item.SessionDate;	
-
-			if(movieName == tempMovieName){
-
-				itemClass = "";
-				var currentDate = new Date();
-				var tempMovieDate = new Date(movieDate);		
-				var movieDateValue = new Date(movieDate);
-				var movieMonthValue = new Date(movieDate);
-				var movieDayValue = new Date(movieDate);
-
-				movieDateValue = movieDateValue.getDate();
-				movieMonthValue = monthName[movieMonthValue.getMonth()];
-				movieDayValue = weekName[movieDayValue.getDay()];
-
-				itemClass = movieDateValue+"-"+movieMonthValue+"-"+movieDayValue;
-
-				if(counter==0){
-					movieSearchDate = itemClass;
-				}
-
-				movieDates = '<div class="d-box js-movieDateFilter" attr-movie-date="'+itemClass+'">\
-		                  <div class="dboxelement" >\
-		                     <div class="month">'+movieMonthValue+'</div>\
-		                     <div class="date">'+movieDateValue+'</div>\
-		                     <div class="day">'+movieDayValue+'</div>\
-		                  </div>\
-		               </div>';
-		        
-		        tempMovieDateList[counter] = movieDates;
-		        counter++;
-			}			
-		});
-	  
-	}).done(function( data ) {	 
-
-		tempMovieDateList = unique(tempMovieDateList);
-		targetItem.html(tempMovieDateList);
-		targetItem.slick({
-			dots: false,
-			infinite: false,
-			speed: 300,
-			slidesToShow: 7,
-			slidesToScroll: 1,
-			responsive: [
-			    {
-			      breakpoint: 1024,
-			      settings: {
-			        slidesToShow: 5,
-			        dots: false
-			      }
-			    },
-			    {
-			      breakpoint: 767,
-			      settings: {
-			      	arrows: false,
-			        slidesToShow: 5,
-			      }
-			    },
-		  	]
-		});
-
-		$('.js-movieDateFilter').click(function () {
-			var movieDateFilter = $(this).attr('attr-movie-date');			
-			searchDateValue = movieDateFilter;			
-			$('.dboxelement').removeClass('active');
-			$(this).find('.dboxelement').addClass('active');
-			pageNumber=0;
-
-			if($('.movie-detail-page').length > 0 ){				
-				loadCinamaListing(searchMovieName);
-			}
-		});
-		console.log("Movies dates completed");
-	}).fail(function( data ) {
-	    console.log("Movies dates failed");
-	});
-}
-
-function loadCinamaListing(movieName){
-
-  	var movieDate, movieDateValue, targetItem, movieResult, counter, itemClass, movieCinema, movieExprerienceTemp;
-  	var tempMovieName = movieName;  	
-  	tempMovieName = findAndReplace(tempMovieName, "%20", " ");
-  	movieResult = "";``
-  	targetItem = $('.js-loadCinamaListing');
-  	var weekName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  	var monthName = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  	var tempMovieDateList = []; 
-  	var tempCinemaListing = [];
-  	var movieExprerience, movieImage, movieTime, movieAvailability, showTime;
-
-  	targetItem.empty();
-  	tempCounter = 0;
-
-  	tempCinemaListing = movieCinamaListing;
-  	movieCount = 1;
-  	pageNumber=0;
-  	movieTilesListing = [];
-  	$('.js-load-movie-listing').fadeOut('fast');
-  	$('.js-load-play-movies-listing').fadeOut();  	
-
-  	for(counter=0; counter< tempCinemaListing.length; counter++){	
-  		movieExprerience = "";				
-  		showTime = "";
-  		tempValue1 = tempCinemaListing[counter];
-  		var selectedDate = searchDateValue;
-  		for(innercounter=0; innercounter < experienceFilter.length; innercounter++){
-  			movieTiles(tempMovieName, tempCinemaListing[counter], selectedDate, experienceFilter[innercounter]);  			
-  		}
-	}	
-
-}
-
-function movieTiles(movieName, cinemaName, movieDate, movieExprience){
-
-	var movieDate, movieDateValue, targetItem, movieResult, counter, itemClass, movieCinema, movieExprerienceTemp;
-  	var tempMovieName = movieName;  	 
-
-  	tempMovieName = findAndReplace(tempMovieName, "%20", "-");
-  	tempMovieName = findAndReplace(tempMovieName, " ", "-");
-
-  	movieResult = "";
-  	targetItem = $('.js-loadCinamaListing');
-  	var weekName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  	var monthName = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  	var tempMovieDateList = []; 
-  	var tempCinemaListing = [];
-  	var movieExprerience, movieImage, movieTime, movieAvailability, showTime, movieExprerienceTemp;
-  	var tempCinemaLabel = cinemaName;
-  	var searchMovieDate = movieDate;
-  	var movieExprerienceClass, movieCinemaClass, tempDateClass, movieNameValue, movieExprience; 	
-
-  	counter = 0;
-  	movieExprerience = "";
- 	showTime = ""; 
- 	var speratorLabel = "";
- 	movieImage = "";
- 	var checkCount =1;
- 	var movieCountClass= "js-movie-list-";
-
-
-	$.getJSON('Sessions.json', function (data) {
-		$.each( data, function( i, item ) {
-
-			movieNameValue = item.MovieName;	
-			movieDate = item.SessionDate;	
-			movieCinema = item.CinemaName;
-			var tempMovieDate = new Date(movieDate);		
-			var movieDateValue = new Date(movieDate);
-			var movieMonthValue = new Date(movieDate);
-			var movieDayValue = new Date(movieDate);
-			movieDateValue = movieDateValue.getDate();
-			movieMonthValue = monthName[movieMonthValue.getMonth()];
-			movieDayValue = weekName[movieDayValue.getDay()];
-			itemClass = movieDateValue+"-"+movieMonthValue+"-"+movieDayValue;
-			movieExprerienceClass = item.Experience;			
-			movieExprerienceClass = movieExprerienceClass.toLowerCase();	
-			movieExprerienceClass = movieExprerienceClass.replace(/,/g, " ");
-			movieExprerienceTemp = item.Experience;
-			movieExprerienceTemp = movieExprerienceTemp.toLowerCase();
-			movieExprience = movieExprience.toLowerCase();
-			
-			movieNameValue = findAndReplace(movieNameValue, " ", "-");			
-
-			if(movieNameValue == tempMovieName 
-				&& movieCinema == tempCinemaLabel 
-				&& searchMovieDate == itemClass 
-				&& movieExprerienceTemp.indexOf(movieExprience) > -1 ){	
-
-				checkCount++;
-
-				var currentDate = new Date();				
-				var tempBaseURL;
-
-				tempMovieName = findAndReplace(movieNameValue, " ", "-");
-				movieImage = moviePostURL+movieNameValue+'.jpg';				
-				movieTime = item.SessionTime;
-				movieAvailability = item.Availability;
-				
-				speratorLabel = ",";
-				if(counter ==0){
-					speratorLabel = "";
-				}
-
-				for (arrayIndex = 0; arrayIndex < movieExperienceArray.length; arrayIndex++) {
-					temp = movieExperienceArray[arrayIndex];			
-					if(movieExprerienceTemp.indexOf(temp[0]) > -1  ){					
-						movieExprerience = 'logo-reel-'+temp[1]+'.png';
-					}				
-				}
-
-				showTime += speratorLabel+item.SessionTime;
-				counter++;
-
-			}			
-		});
-	  
-	}).done(function( data ) {
-
-		pageNumber=0;
-		if(movieExprerience){		
-
-			if(movieExprerience.indexOf(',') > -1 ){
-				var movieExprerienceValue = [];				
-				movieExprerienceValue = movieExprerience.split(',');
-			}else{
-				var movieExprerienceValue = [movieExprerience];					
-			}
-
-			if(showTime.indexOf(',') > -1 ){				
-				var showTimeValue = [];
-				showTimeValue = showTime.split(',');				
-			}else{				
-				var showTimeValue = [showTime];	
-			}
-			
-			showTimeResult = "";
-			for(counter=0; counter < showTimeValue.length; counter++){
-				itemClass = getShowTime(showTimeValue[counter]);
-				showTimeResult += '<li class='+itemClass+'><div class="showtime">'+showTimeValue[counter]+'</div></li>';
-			}			
-			var itemClass = "style='display:none;'";
-
-			if($('.movie-detail-page').length>0){
-				var tempMovieImage = $('.js-movieImage').attr('src');
-				
-			}
-
-			movieCinemaClass = cinemaName;			
-			movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
-			movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
-			movieCinemaClass = movieCinemaClass.toLowerCase();
-			movieExprerienceClass = movieExprience.toLowerCase();
-			movieCountClass += movieCount;	
-			tempMovieName = tempMovieName.toLowerCase();
-			movieNameValue = findAndReplace(tempMovieName," ", "-");
-			var movieLabel = "";
-			var hideMovieClass = 'tileview-movies-list--sty1';
-
-			if($('.showtime-tile-page').length > 0 ){
-				movieLabel = '<div class="img">\
-			                        <img src="'+movieImage+'" alt="'+movieNameValue+'">\
-			                     </div>\
-			                     <div class="moviename">'+findAndReplace(movieNameValue,"-", " ")+'</div>\
-			                     <div class="locationmobile">'+cinemaName+'</div>';
-			                     hideMovieClass= "";
-
-				
-			}
-
-			result = '<div '+itemClass+' class="tileview-movies-list '+hideMovieClass+' '+movieNameValue+' '+movieExprerienceClass+' '+movieCinemaClass+'">\
-		                     <div class="item">\
-		                        <div class="movielocation">\
-		                           '+cinemaName+'\
-		                        </div>\
-		                     </div>\
-		                     <div class="item">'+movieLabel+'</div>\
-		                     <div class="item">\
-		                        <div class="logoimg">\
-		                           <img src="assets/img/logos/'+movieExprerience+'" alt="'+movieExprerienceClass+'">\
-		                        </div>\
-		                     </div>\
-		                     <div class="item">\
-		                        <div class="showtimewrap">\
-			                        <ul>\
-			                           '+showTimeResult+'\
-			                        </ul>\
-			                     </div>\
-		                     </div>\
-		                  </div>';
-
-		    movieTilesListing.push(result);			    
-		    $('.js-loadCinamaListing').append(result);
-		    movieCount++;
-		}
-		// movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-		if($('.showtime-page').length > 0 ){
-			movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-play-movies-listing',pageNumber);
-		}else if($('.showtime-tile-page').length > 0 ){
-			movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-		}else if($('.movie-detail-page').length > 0 ){
-			movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-		}
-
-		$('.js-loadCinamaListing > .tileview-movies-list:nth-child(1)').stop().fadeIn('slow');
-		$('.js-loadCinamaListing > .tileview-movies-list:nth-child(2)').stop().fadeIn('slow');
-		$('.js-loadCinamaListing > .tileview-movies-list:nth-child(3)').stop().fadeIn('slow');
-		// console.log("Movies cinema listing completed for " + cinemaName);
-	}).fail(function( data ) {
-	    // console.log("Movies cinema listing failed for " + cinemaName);
-	});
-}
-
-function loadPopularMovies(){
-	
-  	var playMoviesListing = $('.js-play-popular-listing');  	
-  	var movieName, movieImage, movieGenre, movieTrailer, movieDuration, moviePG, movieLanguage;
-  	var movieExPlatinum, movieExPremier, movieExStandard, movieExDineIn, movieExBoutique;
-  	var movieExMX4D, movieExJunior, movieExDobly, movieExprerience, movieExprerienceTemp;
-  	var movieSynopsis, strLen, strposition, movieNameClass, movieExprerienceClass;
-  	var movieCinemaClass, movieCinema, movieGenreClass, bookNowClass, movieCounter, movieURL;
-
-  	playMoviesListing.addClass('is--loading');
-	playMoviesListing.empty();
-	movieCounter =0;
-
-	$.getJSON('MoviesSession.json', function (data) {
-		$.each( data, function( i, item ) {
-
-			if(movieCounter < 6){
-				movieName = item.MovieName;
-				movieImage = moviePostURL+item.MovieImage;
-				movieGenre = item.Genre;
-				movieTrailer = moviePostURL+item.MovieTrailer;
-				movieDuration = item.Duration;
-				moviePG = item.Rating; // PG <br> 13			
-				movieLanguage = item.MovieLanguage;		
-				movieExprerienceTemp = item.Experience;
-				movieCinema = item.CinemaName;
-				movieSynopsis = item.Synopsis;
-				movieURL = 'movie-inner.html?param1='+movieName;
-
-				moviePG = moviePG.replace(/PG/g, "PG <br>");
-				moviePG = moviePG.replace(/-/g, "<br>");			
-				movieGenreDetail = movieGenre.replace(/,/g, "</span><span>");
-				movieLanguage = movieLanguage.replace(/Language /g, "");
-				movieLanguage = movieLanguage.replace(/Language: /g, "");
-				movieLanguage = movieLanguage.replace(/Language:/g, "");
-				movieLanguage = movieLanguage.replace(/ Language:/g, "");
-				movieLanguage = movieLanguage.replace(/ Language: /g, "");
-				movieLanguage = movieLanguage.replace(/ Language/g, "");
-				movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
-				movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
-			
-				movieExprerience = "";
-				movieExprerienceTemp = movieExprerienceTemp.toLowerCase();		
-
-				var tempMovieSynopsis = movieSynopsis.split('\n');
-			 	var tempVal = "";
-			 	var tempSynopsis, tempDirector, tempCast;
-
-			 	for(var counter=0; counter < tempMovieSynopsis.length; counter++){
-			 		if (tempMovieSynopsis[counter].indexOf('Synopsis') > -1) {
-			 			strLen = tempMovieSynopsis[counter].length;
-			  			strposition = tempMovieSynopsis[counter].indexOf('Synopsis: ');
-			  			tempSynopsis = tempMovieSynopsis[counter].substring(strposition+10,strLen);
-		            }            
-		            if (tempMovieSynopsis[counter].indexOf('Director') > -1) {	                
-		                strLen = tempMovieSynopsis[counter].length;
-			  			strposition = tempMovieSynopsis[counter].indexOf('Director: ');
-			  			tempDirector = "<br><br><strong>Director:</strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
-		            }
-		            if (tempMovieSynopsis[counter].indexOf('Cast') > -1) {
-		            	strLen = tempMovieSynopsis[counter].length;
-			  			strposition = tempMovieSynopsis[counter].indexOf('Cast: ');
-			  			tempCast = "<br><br><strong>Cast:</strong>" + tempMovieSynopsis[counter].substring(strposition+6,strLen);	                
-		            }	            
-			 	}
-			 	    		 	
-				movieSynopsis =  tempSynopsis + tempDirector + tempCast;
-
-			  	movieCinemaClass = "";
-			  	movieGenreClass = "";
-
-				movieExprerienceClass = movieExprerienceTemp.replace(/,/g, " ");
-				movieNameClass = movieName.replace(/\s+/g, "-");
-				movieNameClass = movieNameClass.replace(" ", "-");
-				movieNameClass = movieNameClass.replace(".", "-");
-				movieNameClass = movieNameClass.toLowerCase();
-
-				movieCinemaClass = movieCinema;			
-				movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
-				movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
-				movieCinemaClass = movieCinemaClass.toLowerCase();
-
-				movieGenreClass = "genre-"+movieGenre;
-				movieGenreClass = movieGenreClass.replace(/\s+/g, "");
-				movieGenreClass = movieGenreClass.replace(/,/g, " genre-");
-				movieGenreClass = movieGenreClass.toLowerCase();
-				bookNowClass = "";
-
-				if(item.movieType == 'coming'){
-					bookNowClass = '<div class="booknow-tag"><span>BOOK NOW</span></div>';
-				}	
-
-				movieURL =  "window.location='"+movieURL+"'";
-
-				movieListingArray[movieCounter] = '<div onclick="'+movieURL+'" class="movie-item '+movieNameClass + ' '+movieGenreClass+' '+movieExprerienceClass+' '+movieCinemaClass+'"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap">'+movieGenre+' | '+movieDuration+'</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+movieExprerience+'</ul></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+movieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="'+movieImage+'" alt="'+movieName+'"></div></section> </div>';
-				playMoviesListing.append(movieListingArray[movieCounter]);
-				movieCounter++;	
-			}			
-		});
-	  
-	}).done(function( data ) {
-	    movieListSetHTML();
-	    movieList();
-
-	    scrollCustomSelect();
-		refreshAOS('refresh');
-	    toSVG();
-		movieListCarousel();
-		filterSearch();
-
-	    // resetPagination(1);
-	    playMoviesListing.removeClass('is--loading');
-	    console.log("Play movies completed");
-
-	    if(winWidth > 1024 && isIE == false){
-		    // $('.c-movies-list .list-wrap').attr('data-aos', 'fade-up');
-			$('.c-movies-list .list-wrap').each(function () {
-				$(this).find('.movie-item').each(function (i) {
-			    	$(this).attr('data-aos', 'fade-up');
-			    	$(this).attr('data-aos-delay', (50*i));
-				});
-			});
-		}
-	}).fail(function( data ) {
-	    console.log("Play movies failed");
-	});
-}
-
-// showFirstPage('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing');
-function movieTilePagination(parentItem, loadMoreItem, currentPageNumber){
-
-	var currentPage = currentPageNumber;
-	var endItem = (currentPage+1)*moviesPerPage;
-	var startItem = (currentPage*moviesPerPage)-moviesPerPage;
-	var counter;
-
-	$('.js-load-play-movies-listing').fadeOut();
-
-	$(parentItem+':nth-child(1)').fadeIn('slow');
-	$(parentItem+':nth-child(2)').fadeIn('slow');
-	$(parentItem+':nth-child(3)').fadeIn('slow');
-	$(parentItem+':nth-child(4)').fadeIn('slow');
-	for(counter= startItem; counter <= endItem ; counter++){
-		$(parentItem+':nth-child('+counter+')').fadeIn('slow');
-	}
-	
-	if($(parentItem+':nth-child(1)').length == 0 || $(parentItem+':nth-child('+counter+')').length == 0){
-		$(loadMoreItem).fadeOut('fast');
-	}else if(movieCount < counter){
-    	$(loadMoreItem).fadeOut('fast');
-    }else if(movieCount > 3){
-    	$(loadMoreItem).fadeIn('slow');
-    }
-
-    if(currentPageNumber <= 0 ){
-    	$('.is--loading').removeClass('is--loading');
-    }
-
-    pageNumber++;
-}
-
-// Check movie filter functionality for combine with Movie Cinema and Experience
-function filterMoviesTiles(cinemaIDs, experienceIDs, showTimeIDs){
-
-	var movieItems = [];
-	var tempArray = [];
-	var movieCounter=0;	
-	var playMoviesListing = $('.js-loadCinamaListing');	
-	playMoviesListing.addClass('is--loading');
-	playMoviesListing.empty(); 
-	pageNumber = 0;
-	
-	if(cinemaIDs.length == 0 && experienceIDs.length == 0 && showTimeIDs.length == 0  ){
-		for(innerCounter=0; innerCounter < movieTilesListing.length; innerCounter++){		
-			movieItems[movieCounter] = movieTilesListing[innerCounter];
-			movieCounter++;			
-		}		
-	}else{
-
-		movieItems = movieTilesListing;
-		
-		if(cinemaIDs.length > 0 ){
-			movieCounter=0;
-			for(counter=0; counter < cinemaIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = cinemaIDs[counter];
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-
-		if(experienceIDs.length > 0 ){	
-			movieCounter = 0;	
-			tempArray = [];		
-			for(counter=0; counter < experienceIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = experienceIDs[counter];						
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-
-		if(showTimeIDs.length > 0 ){	
-			movieCounter = 0;	
-			tempArray = [];				
-			for(counter=0; counter < showTimeIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = showTimeIDs[counter];						
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-						console.log("Find Show Time" + showTimeIDs[counter]);
-					}
-				}
-			}
-			movieItems = tempArray;
-		}
-		
-	}
-
-	movieItems = unique(movieItems);
-	
-	for(counter=0; counter < movieItems.length; counter++){
-		playMoviesListing.append(movieItems[counter]);	
-	}
-
-	if(showTimeIDs.length > 0 ){		
-		$('.showtimewrap ul li').fadeOut('fast');
-		for(counter=0; counter < showTimeIDs.length; counter++){				
-			for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-				var findItem = "."+showTimeIDs[counter];						
-				$(findItem).fadeIn('slow');
-			}
-		}
-	}
-    
-	playMoviesListing.removeClass('is--loading');
-	playMoviesListing.removeClass('empty--record');
-	if(movieItems.length == 0){
-		playMoviesListing.addClass('empty--record');
-		playMoviesListing.append('Record not found...');
-	}
-
-	$('.is--loading').removeClass('is--loading');
-
-	movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-}
-
-// Load movie dates for all movies for show time page
-function loadAllMovieDates(){
-
-	var movieDate, movieNameClass, movieName, itemClass, movieTime;
-
-	var weekName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  	var monthName = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-	$.getJSON('Sessions.json', function (data) {
-		$.each( data, function( i, item ) {  
-
+			showMovie = 0;			
 			movieDate = item.SessionDate;
 			movieName = item.MovieName;
-			movieTime = item.SessionTime;
-
-			var tempMovieDate = new Date(movieDate);		
-			var movieDateValue = new Date(movieDate);
-			var movieMonthValue = new Date(movieDate);
-			var movieDayValue = new Date(movieDate);
-			var tempItemClass = "";
-
-			movieTime = getShowTime(movieTime);
-
-			movieDateValue = movieDateValue.getDate();
-			movieMonthValue = monthName[movieMonthValue.getMonth()];
-			movieDayValue = weekName[movieDayValue.getDay()];			
-			itemClass = movieDateValue+"-"+movieMonthValue+"-"+movieDayValue;
-
-			movieNameClass = movieName.replace(/\s+/g, "-");
-			movieNameClass = movieNameClass.replace(" ", "-");
-			movieNameClass = movieNameClass.replace(".", "-");
-			movieNameClass = movieNameClass.toLowerCase();
-
-			$('.'+movieNameClass).addClass(itemClass);
-			tempItemClass = "js-"+itemClass+" "+movieTime;
-
-			for(counter=0; counter < movieListingArray.length; counter++){
-				if(movieListingArray[counter].indexOf(movieNameClass) > -1){
-					movieListingArray[counter] = movieListingArray[counter].replace("movie-item", "movie-item "+tempItemClass);
-				}
-			}
-		  
-		});
-	}).done(function( data ) {	
-	  	// console.log("Cinemas completed");
-	}).fail(function( data ) {
-	  	// console.log("Cinemas failed");
-	});
-}
-
-// Set date filter for all movie for show time page
-function loadAllMovieDateFilter(){
-	
-  	var movieName, movieDate, movieDateValue, targetItem, movieDates, counter, itemClass;
-  	var tempMovieName = movieName;  	
-  	// tempMovieName = findAndReplace(tempMovieName, "%20", " ");
-  	movieDates = "";
-  	targetItem = $('.js-date-time');
-  	var weekName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  	var monthName = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  	var tempMovieDateList = [];  	
-	targetItem = $('.js-date-time').removeClass('slick-initialized');
-	targetItem = $('.js-date-time').removeClass('slick-slider');
-
-  	targetItem.empty();
-  	counter=0;
-
-	$.getJSON('Sessions.json', function (data) {
-		$.each( data, function( i, item ) {
-			
-			movieDate = item.SessionDate;	
-			itemClass = "";
-			var currentDate = new Date();
-			var tempMovieDate = new Date(movieDate);		
-			var movieDateValue = new Date(movieDate);
-			var movieMonthValue = new Date(movieDate);
-			var movieDayValue = new Date(movieDate);
-
-			movieDateValue = movieDateValue.getDate();
-			movieMonthValue = monthName[movieMonthValue.getMonth()];
-			movieDayValue = weekName[movieDayValue.getDay()];
-			itemClass = movieDateValue+"-"+movieMonthValue+"-"+movieDayValue;
-
-			if(counter==0){
-				movieSearchDate = itemClass;
+			if(argMovieName == movieName || argMovieName == "all"){
+				showMovie = 1;
 			}
 
-			movieDates = '<div class="d-box js-movieDateFilter" attr-movie-date="js-'+itemClass+'">\
-	                  <div class="dboxelement" >\
-	                     <div class="month">'+movieMonthValue+'</div>\
-	                     <div class="date">'+movieDateValue+'</div>\
-	                     <div class="day">'+movieDayValue+'</div>\
-	                  </div>\
-	               </div>';
-	        
-	        tempMovieDateList[counter] = movieDates;
-	        counter++;
-						
-		});
-	  
-	}).done(function( data ) {	 
-
-		tempMovieDateList = unique(tempMovieDateList);
-		targetItem.html(tempMovieDateList);
-		targetItem.slick({
-			dots: false,
-			infinite: false,
-			speed: 300,
-			slidesToShow: 7,
-			slidesToScroll: 1,
-			responsive: [
-			    {
-			      breakpoint: 1024,
-			      settings: {
-			        slidesToShow: 5,
-			        dots: false
-			      }
-			    },
-			    {
-			      breakpoint: 767,
-			      settings: {
-			      	arrows: false,
-			        slidesToShow: 5,
-			      }
-			    },
-		  	]
-		});
-
-		$('.js-movieDateFilter').click(function () {
-			var movieDateFilter = $(this).attr('attr-movie-date');
-			$('.dboxelement').removeClass('active');
-			$(this).find('.dboxelement').addClass('active');
-
-			if($('.showtime-page').length > 0){
-				filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
-			}		
-		});
-
-		console.log("Movies dates completed");
-	}).fail(function( data ) {
-	    console.log("Movies dates failed");
-	});
-}
-
-function resetPagination(currentPageNumber){
-    var currentPage = currentPageNumber;
-	var nextPage = (currentPage+1);
-	
-	for(var counter= currentPage*moviesPerPage; counter <= nextPage*moviesPerPage ; counter++){
-		if($('.list-wrap-page--'+counter).length == 0 ){
-			$('.js-load-play-movies-listing').fadeOut('fast');
-		}else{
-			$('.list-wrap-page--'+counter).fadeIn('slow');	
-		}
-	}
-	pageNumber++;	
-	if($('.list-wrap-page--'+counter).length == 0 ){
-		$('.js-load-play-movies-listing').fadeOut('fast');
-	}
-}
-
-// Check movie filter functionality for combine with Movie Cinema and Experience
-function filterShowtimeMovieBlock(movieIDs, cinemaIDs, experienceIDs, genreIDs, movieDates){
-
-	var movieItems = [];
-	var tempArray = [];
-	var movieCounter=0;	
-	var playMoviesListing = $('.js-play-movies-listing');	
-	moreMoviesListing.fadeOut('fast');
-	playMoviesListing.addClass('is--loading');
-	playMoviesListing.empty(); 
-	pageNumber = 0;
-
-	movieItems = movieListingArray;
-
-	console.log(movieIDs + "-"+ cinemaIDs+ "-"+ experienceIDs+ "-"+ genreIDs+ "-"+ movieDates);
-
-	for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-		var findItem = movieDates;
-		if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-			tempArray[movieCounter] = movieItems[innerCounter];
-			movieCounter++;
-		}	
-	}
-
-	movieItems = tempArray;
-
-	tempArray = [];	
-	movieCounter = 0;		
-	if(movieIDs.length == 0 && cinemaIDs.length == 0 && experienceIDs.length == 0 && genreIDs.length == 0  ){
-		for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){		
-			tempArray[movieCounter] = movieItems[innerCounter];
-			movieCounter++;			
-		}
-		movieItems = tempArray;
-
-	}else{		
-		
-		if(cinemaIDs.length > 0 ){
-			movieCounter=0;
-			for(counter=0; counter < cinemaIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = cinemaIDs[counter];
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-
-		if(experienceIDs.length > 0 ){	
-			movieCounter = 0;	
-			tempArray = [];		
-			for(counter=0; counter < experienceIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = experienceIDs[counter];						
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-
-		if(genreIDs.length > 0 ){	
-			movieCounter = 0;	
-			tempArray = [];				
-			for(counter=0; counter < genreIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = genreIDs[counter];						
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-
-		if(movieIDs.length > 0 ){	
-			movieCounter = 0;
-			tempArray = [];					
-			for(counter=0; counter < movieIDs.length; counter++){				
-				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = movieIDs[counter];						
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
-						tempArray[movieCounter] = movieItems[innerCounter];
-						movieCounter++;
-					}	
-				}
-			}
-			movieItems = tempArray;
-		}
-	}
-
-	movieItems = unique(movieItems);
-
-	for(counter=0; counter < movieItems.length; counter++){
-		playMoviesListing.append(movieItems[counter]);	
-	}
-
-	movieListSetHTML();
-	movieList();
-
-	$('.js-play-movies-listing .list-wrap').fadeOut('fast');
-	movieGridPagination('.js-play-movies-listing .list-wrap-page--','.js-load-play-movies-listing',pageNumber);
-
-	playMoviesListing.removeClass('is--loading');
-	playMoviesListing.removeClass('empty--record');
-	if(movieItems.length == 0){
-		playMoviesListing.addClass('empty--record');
-	}	
-
-	movieItems = [];
-	tempArray = [];
-	$('.is--loading').removeClass('is--loading');
-}
-
-function loadMovieAllDates(){
-	
-  	var movieName, movieDate, movieDateValue, targetItem, movieDates, counter, itemClass;  	
-  	movieDates = "";
-  	targetItem = $('.js-date-time');
-  	
-  	var tempMovieDateList = [];  	
-	targetItem = $('.js-date-time').removeClass('slick-initialized');
-	targetItem = $('.js-date-time').removeClass('slick-slider');
-
-  	targetItem.empty();
-  	counter=0;
-
-	$.getJSON('Sessions.json', function (data) {
-		$.each( data, function( i, item ) {
-
-			movieName = item.MovieName;	
-			movieDate = item.SessionDate;	
-
-			// if(movieName == tempMovieName){
-
-				itemClass = "";
-				var currentDate = new Date();
-				var tempMovieDate = new Date(movieDate);		
+			if(showMovie == 1){
 				var movieDateValue = new Date(movieDate);
 				var movieMonthValue = new Date(movieDate);
 				var movieDayValue = new Date(movieDate);
@@ -2126,7 +1127,7 @@ function loadMovieAllDates(){
 		        
 		        tempMovieDateList[counter] = movieDates;
 		        counter++;
-			// }			
+			}
 		});
 	  
 	}).done(function( data ) {	 
@@ -2158,80 +1159,553 @@ function loadMovieAllDates(){
 		});
 
 		$('.js-movieDateFilter').click(function () {			
-
+			$('.js-loadCinamaListing').empty();
 			var movieDateFilter = $(this).attr('attr-movie-date');
 			searchDateValue = movieDateFilter;
 			$('.dboxelement').removeClass('active');
 			$(this).find('.dboxelement').addClass('active');
-			movieTilesListing = [];			
-			pageNumber=0;  	
-			if($('.movie-detail-page').length>0){				
-				loadCinamaListing(searchMovieName);
-			}else{
-				
+			if (currentPageName == 'movie detail'){
+				initMovieListing(searchMovieName);
+			}else if (currentPageName == 'showtime tile'){				
 				for(counter=0; counter < movieListingTempArray.length; counter++ ){				
-					loadCinamaListing(movieListingTempArray[counter]);
+					initMovieListing(movieListingTempArray[counter]);
 				}
+			}else if (currentPageName == 'showtime grid'){			
+				initMovieSessions(searchDateValue);				
 			}
-						
-			setTimeout(function() {				
-			    resetShowTimePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-			}, 5000);		
-		});
+		});		
 		console.log("Movies dates completed");
+		// initMovieSessions();
 	}).fail(function( data ) {
 	    console.log("Movies dates failed");
 	});
 }
 
-function resetShowTimePagination(parentItem, loadMoreItem, currentPageNumber){
-
-	var currentPage = currentPageNumber;	
-	var startItem = (currentPage*moviesPerPage)-moviesPerPage;
-	var endItem = (currentPage+1)*moviesPerPage;
-	var counter;
-
-	for(counter= startItem; counter <= endItem ; counter++){
-		$(parentItem+':nth-child('+counter+')').fadeIn('slow');
+function loadMovieDetail(argMovieName){
+	
+  	var movieName, movieImage, movieGenre, movieTrailer, movieDuration, moviePG,
+  	movieLanguage, movieSubtitle, movieSynopsis, strLen, strposition, movieNameClass,
+  	movieExperienceClass, movieCinemaClass, movieCinema, movieGenreClass,
+  	bookNowClass, movieTrailerHref;  	
+	if(argMovieName.indexOf("%20") > -1){
+		argMovieName = findAndReplace(argMovieName, "%20", " ");	
 	}
+  	
+  	
+	$.getJSON('MoviesSession.json', function (data) {
+		$.each( data, function( i, item ) {
 
-	if($(parentItem+':nth-child(1)').length == 0 || $(parentItem+':nth-child('+counter+')').length == 0 ){
-		$(loadMoreItem).fadeOut('fast');
-	}else if(movieCount < counter){
-    	$(loadMoreItem).fadeOut('fast');
-    }else if(movieCount > 4){
-    	$(loadMoreItem).fadeIn('slow');
-    }
+			movieName = item.MovieName;			
+			if(movieName == argMovieName){
+								
+				movieImage = moviePostURL+item.MovieImage;
+				movieGenre = item.Genre;
+				movieTrailer = moviePostURL+item.MovieTrailer;
+				movieTrailerHref = "clickedMovie('movie-inner.html?param1='"+movieName+"');";
+				movieDuration = item.Duration;
+				moviePG = item.Rating; // PG <br> 13			
+				movieLanguage = item.MovieLanguage;		
+				movieExperienceTemp = item.Experience;
+				movieCinema = item.CinemaName;
+				movieSynopsis = item.Synopsis;
 
-    pageNumber = ++currentPageNumber;
+				moviePG = moviePG.replace(/PG/g, "PG <br>");
+				moviePG = moviePG.replace(/-/g, "<br>");			
+				movieGenreDetail = movieGenre.replace(/,/g, "</span><span>");
+
+				var tempMovieLanguage = movieLanguage.split('\n');
+			 	var tempVal = "";
+			 	var tempLanguage, tempSubtile;
+
+			 	for(var counter=0; counter < tempMovieLanguage.length; counter++){
+			 		if (tempMovieLanguage[counter].indexOf('Language') > -1) {
+			 			strLen = tempMovieLanguage[counter].length;
+			  			strposition = tempMovieLanguage[counter].indexOf('Language: ');
+			  			tempLanguage = tempMovieLanguage[counter].substring(strposition+10,strLen);
+			  			movieLanguage = '<i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempLanguage+'</span>';
+		            }            
+		            if (tempMovieLanguage[counter].indexOf('Subtitle') > -1) {	                
+		                strLen = tempMovieLanguage[counter].length;
+			  			strposition = tempMovieLanguage[counter].indexOf('Subtitle: ');
+			  			tempSubtile = tempMovieLanguage[counter].substring(strposition+10,strLen);
+			  			movieSubtitle =  '<i class="icon medium"><picture><source srcset="assets/img/icons/subtitles.svg" media="(max-width: 767px)"><img src="assets/img/icons/subtitles-white.svg" alt="FB" class=""></picture></i><span>'+tempSubtile+'</span>'			  			
+		            }
+			 	}
+			
+				movieExperience = "";
+				movieExperienceTemp = movieExperienceTemp.toLowerCase();		
+
+				var tempMovieSynopsis = movieSynopsis.split('\n');
+			 	tempVal = "";
+			 	var tempSynopsis, tempDirector, tempCast;
+
+			 	for(var counter=0; counter < tempMovieSynopsis.length; counter++){
+			 		if (tempMovieSynopsis[counter].indexOf('Synopsis') > -1) {
+			 			strLen = tempMovieSynopsis[counter].length;
+			  			strposition = tempMovieSynopsis[counter].indexOf('Synopsis: ');
+			  			tempSynopsis = "<strong>About: </strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
+			  			if (tempMovieSynopsis[counter].substring(strposition+10,strLen).indexOf(':') > -1) {
+			  				tempSynopsis = "<strong>About: </strong>" + tempMovieSynopsis[counter].substring(strposition+11,strLen);
+			  			}			  			
+		            }            
+		            if (tempMovieSynopsis[counter].indexOf('Director') > -1) {	                
+		                strLen = tempMovieSynopsis[counter].length;
+			  			strposition = tempMovieSynopsis[counter].indexOf('Director: ');
+			  			tempDirector = "<strong>Director: </strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
+		            }
+		            if (tempMovieSynopsis[counter].indexOf('Cast') > -1) {
+		            	strLen = tempMovieSynopsis[counter].length;
+			  			strposition = tempMovieSynopsis[counter].indexOf('Cast: ');
+			  			tempCast = "<strong>Cast: </strong>" + tempMovieSynopsis[counter].substring(strposition+6,strLen);
+		            }	            
+			 	}
+
+				movieSynopsis =  tempDirector + tempCast + tempSynopsis;
+
+				$('.js-movieImage').attr('src',movieImage);
+				$('.js-movieTitle').html(movieName);
+				$('.js-movieGenere').html(movieGenre);
+				$('.js-movieDuration').html(movieDuration);
+				$('.js-movieLanguage').html(movieLanguage);
+				$('.js-movieSubtitle').html(movieSubtitle);
+				$('.js-movieDirector').html(tempDirector);
+				$('.js-movieDirector').html(tempDirector);
+				$('.js-movieCast').html(tempCast);
+				$('.js-movieAbout').html(tempSynopsis);
+				movieNameClass = movieName.replace(/\s+/g, "-");
+				movieNameClass = movieNameClass.replace(" ", "-");
+				movieNameClass = movieNameClass.replace(".", "-");
+				movieNameClass = movieNameClass.toLowerCase();				
+				$('.js-popup-link').attr('href',movieTrailerHref);
+				$('.js-popup-link').attr('data-link-to',movieTrailer);
+
+				return false;
+			}			
+		});
+	  
+	}).done(function( data ) {		
+		bindPopupEve();  
+		toSVG(); 
+		console.log("Movies detail completed");
+	}).fail(function( data ) {
+	    console.log("Movies detail failed");
+	});
 }
 
-// Check movie filter functionality for combine with Movie Cinema and Experience
-function filterMoviesListing(cinemaIDs, experienceIDs, showTimeIDs, movieIDs){
+function initMovieSessions(){
+	
+	movieSessionListing = [];
 
-	var movieItems = [];
-	var tempArray = [];
-	var movieCounter=0;	
-	var playMoviesListing = $('.js-loadCinamaListing');	
-	moreMoviesListing.fadeOut('fast');
+	$.getJSON('Sessions.json', function (data) {
+		$.each( data, function( i, item ) {
+
+			var movieDate = item.SessionDate;
+			var movieDateValue = new Date(movieDate);
+			var movieMonthValue = new Date(movieDate);
+			var movieDayValue = new Date(movieDate);
+
+			movieDateValue = movieDateValue.getDate();
+			movieMonthValue = monthName[movieMonthValue.getMonth()];
+			movieDayValue = weekName[movieDayValue.getDay()];
+
+			movieDate = movieDateValue+"-"+movieMonthValue+"-"+movieDayValue;
+
+			movieSessionListing.push(
+				[					
+					item.MovieName,
+					item.CinemaName,
+					movieDate,
+					item.SessionTime,
+					item.Experience,
+					item.SessionDate
+				]
+			);
+		});
+	  
+	}).done(function( data ) {	 		
+		$('.js-loadCinamaListing').empty();
+		if (currentPageName == 'movie detail'){
+			initMovieListing(searchMovieName);
+		}else if (currentPageName == 'showtime tile'){			
+			for(counter=0; counter < movieListingTempArray.length; counter++ ){
+				initMovieListing(movieListingTempArray[counter]);
+			}
+		}else if (currentPageName == "showtime grid"){
+			initShowtimeMoviesByDate(searchDateValue);
+		}			
+		console.log("Movie sessions completed");
+		
+	}).fail(function( data ) {
+	    console.log("Movie sessions failed");
+	});
+}
+
+function initMovieListing(argMovieName){
+	
+  	var movieDate, movieDateValue, targetItem, movieResult, counter, itemClass,
+  	movieCinema, movieExperienceTemp;  
+  	if(currentPageName == 'movie detail'){
+  		if(argMovieName.indexOf("%20") > -1){
+	  		argMovieName = findAndReplace(argMovieName, "%20", " ");
+	  	}
+  	}
+
+  	movieResult = "";   
+  	var tempCinemaListing = [];
+  	var movieExperience;
+  	targetItem = $('.js-loadCinamaListing');  	
+  	tempCounter = 0;
+
+  	tempCinemaListing = movieCinamaListing;
+  	movieCount = 1;
+  	pageNumber=0;
+  	// movieTilesListingArray = [];  	
+
+  	for(counter=0; counter< tempCinemaListing.length; counter++){				
+  		tempValue1 = tempCinemaListing[counter];
+  		for(innercounter=0; innercounter < experienceMovieListing.length; innercounter++){
+  			loadMovieListing(argMovieName, tempCinemaListing[counter], searchDateValue, experienceMovieListing[innercounter]);
+  		}
+	}
+	// console.log(movieTilesListingArray);
+}
+
+function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExprience){
+
+	var movieDate, targetItem, movieResult, counter, itemClass, movieNameValue,
+	movieCinema, movieExperience, listCount, tempArray = [], result='';
+  	
+  	if(currentPageName == 'movie detail'){
+  		if(argMovieName.indexOf("%20") > -1){
+	  		argMovieName = findAndReplace(argMovieName, "%20", " ");
+	  	}
+  	}
+
+  	movieResult = "";
+  	targetItem = $('.js-loadCinamaListing');  	
+
+  	var tempMovieDateList = [], tempCinemaListing = [];
+  	var movieExperienceValue, movieImage, movieTime, movieAvailability, showTime, movieExperienceTemp;  	
+  	var movieExperienceClass, movieCinemaClass, tempDateClass, movieExprience; 	
+
+  	counter = 0;
+  	movieExperience = "";
+ 	showTime = ""; 
+ 	var speratorLabel = "";
+ 	movieImage = "";
+ 	var movieCountClass= "js-movie-list-";
+
+ 	var tempMovieDate, movieDateValue, movieMonthValue, movieDayValue;
+
+	for (listCount = 0; listCount < movieSessionListing.length; listCount++) {
+		tempArray = movieSessionListing[listCount];
+
+		movieNameValue = tempArray[0];		
+		movieCinema = tempArray[1];
+		movieDate = new Date(tempArray[5]);
+		movieExperienceClass = tempArray[4];
+		movieExperience = tempArray[4];	
+		movieTime = tempArray[3];
+
+		movieDate = movieDate.getDate()+"-"+monthName[movieDate.getMonth()]+"-"+weekName[movieDate.getDay()];		
+	
+		movieExperience = movieExperience.toLowerCase();
+		argMovieExprience = argMovieExprience.toLowerCase();	
+
+		if(movieNameValue == argMovieName 
+			&& movieCinema == argCinemaName
+			&& movieDate == argMovieDate
+			&& movieExperience.indexOf(argMovieExprience) > -1 ){
+			
+			var currentDate = new Date();				
+			var tempBaseURL;
+
+			if(argMovieName.indexOf(' ') > -1){
+				argMovieName = findAndReplace(argMovieName, " ", "-");	
+			}
+			
+			movieImage = moviePostURL+movieNameValue+'.jpg';				
+						
+			speratorLabel = ",";
+			if(counter ==0){
+				speratorLabel = "";
+			}
+
+			for (arrayIndex = 0; arrayIndex < movieExperienceArray.length; arrayIndex++) {
+				temp = movieExperienceArray[arrayIndex];				
+				if(movieExperience.indexOf(temp[0]) > -1  ){
+					movieExperienceValue = 'logo-reel-'+temp[1]+'.png';
+				}				
+			}
+
+			showTime += speratorLabel+movieTime;
+			counter++;
+		}
+	}
+				
+	if(showTime){
+
+		if(showTime.indexOf(',') > -1 ){				
+			var showTimeValue = [];
+			showTimeValue = showTime.split(',');
+		}else{				
+			var showTimeValue = [showTime];	
+		}
+
+		var showtimeClass = [];
+		
+		showTimeResult = "";
+		for(counter=0; counter < showTimeValue.length; counter++){
+			itemClass = getShowTime(showTimeValue[counter]);
+			showtimeClass.push(itemClass);
+			showTimeResult += '<li class='+itemClass+'><div class="showtime">'+showTimeValue[counter]+'</div></li>';
+		}
+
+		if($('.movie-detail-page').length>0){
+			var tempMovieImage = $('.js-movieImage').attr('src');
+		}
+
+		if(movieImage.indexOf(' ') > -1){
+			movieImage = findAndReplace(movieImage," ", "-");
+		}
+
+		itemClass = "";
+		showtimeClass = unique(showtimeClass);
+		for(counter=0; counter < showtimeClass.length; counter++){
+			itemClass += " "+showtimeClass[counter];
+		}
+
+		showtimeClass = [];
+
+		movieCinemaClass = argCinemaName;			
+		movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
+		movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
+		movieCinemaClass = movieCinemaClass.toLowerCase();
+		movieExperienceClass = argMovieExprience.toLowerCase();
+		movieCountClass += movieCount;	
+		argMovieName = argMovieName.toLowerCase();
+		argMovieName = findAndReplace(argMovieName,"-", " ");
+		var movieLabel = "";
+		var hideMovieClass = 'tileview-movies-list--sty1';
+
+		if($('.showtime-tile-page').length > 0 ){
+			movieLabel = '<div class="img">\
+		                        <img src="'+movieImage+'" alt="'+argMovieName+'">\
+		                     </div>\
+		                     <div class="moviename">'+argMovieName+'</div>\
+		                     <div class="locationmobile">'+argCinemaName+'</div>';
+		                     hideMovieClass= "";
+		}
+
+		result = '<div class="tileview-movies-list'+itemClass+' '+hideMovieClass+' '+argMovieName+' '+movieExperienceClass+' '+movieCinemaClass+'">\
+	                     <div class="item">\
+	                        <div class="movielocation">\
+	                           '+argCinemaName+'\
+	                        </div>\
+	                     </div>\
+	                     <div class="item">'+movieLabel+'</div>\
+	                     <div class="item">\
+	                        <div class="logoimg">\
+	                           <img src="assets/img/logos/'+movieExperienceValue+'" alt="'+movieExperienceClass+'">\
+	                        </div>\
+	                     </div>\
+	                     <div class="item">\
+	                        <div class="showtimewrap">\
+		                        <ul>\
+		                           '+showTimeResult+'\
+		                        </ul>\
+		                     </div>\
+	                     </div>\
+	                  </div>';
+
+	    if(result){
+	    	movieTilesListingArray.push(result);
+	    	$('.js-loadCinamaListing').append(result);
+	    	movieCount++;
+	    }	    
+	    
+	}	
+	
+}
+
+function loadPopularMovies(){
+	
+  	var playMoviesListing = $('.js-play-popular-listing');  	
+  	var movieName, movieImage, movieGenre, movieTrailer, movieDuration, moviePG, movieLanguage;
+  	var movieExPlatinum, movieExPremier, movieExStandard, movieExDineIn, movieExBoutique;
+  	var movieExMX4D, movieExJunior, movieExDobly, movieExperience, movieExperienceTemp;
+  	var movieSynopsis, strLen, strposition, movieNameClass, movieExperienceClass;
+  	var movieCinemaClass, movieCinema, movieGenreClass, bookNowClass, movieCounter, movieURL;
+
+  	playMoviesListing.addClass('is--loading');
+	playMoviesListing.empty();
+	movieCounter =1;
+
+	$.getJSON('MoviesSession.json', function (data) {
+		$.each( data, function( i, item ) {
+
+			if(movieCounter == 7){
+				return false;
+			}
+				movieName = item.MovieName;
+				movieImage = moviePostURL+item.MovieImage;
+				movieGenre = item.Genre;
+				movieTrailer = moviePostURL+item.MovieTrailer;
+				movieDuration = item.Duration;
+				moviePG = item.Rating; // PG <br> 13			
+				movieLanguage = item.MovieLanguage;		
+				movieExperienceTemp = item.Experience;
+				movieCinema = item.CinemaName;
+				movieSynopsis = item.Synopsis;
+				movieURL = 'movie-inner.html?param1='+movieName;
+
+				moviePG = moviePG.replace(/PG/g, "PG <br>");
+				moviePG = moviePG.replace(/-/g, "<br>");			
+				movieGenreDetail = movieGenre.replace(/,/g, "</span><span>");
+				movieLanguage = movieLanguage.replace(/Language /g, "");
+				movieLanguage = movieLanguage.replace(/Language: /g, "");
+				movieLanguage = movieLanguage.replace(/Language:/g, "");
+				movieLanguage = movieLanguage.replace(/ Language:/g, "");
+				movieLanguage = movieLanguage.replace(/ Language: /g, "");
+				movieLanguage = movieLanguage.replace(/ Language/g, "");
+				movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+				movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+			
+				movieExperience = "";
+				movieExperienceTemp = movieExperienceTemp.toLowerCase();		
+
+				var tempMovieSynopsis = movieSynopsis.split('\n');
+			 	var tempVal = "";
+			 	var tempSynopsis, tempDirector, tempCast;
+
+			 	for(var counter=0; counter < tempMovieSynopsis.length; counter++){
+			 		if (tempMovieSynopsis[counter].indexOf('Synopsis') > -1) {
+			 			strLen = tempMovieSynopsis[counter].length;
+			  			strposition = tempMovieSynopsis[counter].indexOf('Synopsis: ');
+			  			tempSynopsis = tempMovieSynopsis[counter].substring(strposition+10,strLen);
+		            }            
+		            if (tempMovieSynopsis[counter].indexOf('Director') > -1) {	                
+		                strLen = tempMovieSynopsis[counter].length;
+			  			strposition = tempMovieSynopsis[counter].indexOf('Director: ');
+			  			tempDirector = "<br><br><strong>Director:</strong>" + tempMovieSynopsis[counter].substring(strposition+10,strLen);
+		            }
+		            if (tempMovieSynopsis[counter].indexOf('Cast') > -1) {
+		            	strLen = tempMovieSynopsis[counter].length;
+			  			strposition = tempMovieSynopsis[counter].indexOf('Cast: ');
+			  			tempCast = "<br><br><strong>Cast:</strong>" + tempMovieSynopsis[counter].substring(strposition+6,strLen);	                
+		            }	            
+			 	}
+			 	    		 	
+				movieSynopsis =  tempSynopsis + tempDirector + tempCast;
+
+			  	movieCinemaClass = "";
+			  	movieGenreClass = "";
+
+				movieExperienceClass = movieExperienceTemp.replace(/,/g, " ");
+				movieNameClass = movieName.replace(/\s+/g, "-");
+				movieNameClass = movieNameClass.replace(" ", "-");
+				movieNameClass = movieNameClass.replace(".", "-");
+				movieNameClass = movieNameClass.toLowerCase();
+
+				movieCinemaClass = movieCinema;			
+				movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
+				movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
+				movieCinemaClass = movieCinemaClass.toLowerCase();
+
+				movieGenreClass = "genre-"+movieGenre;
+				movieGenreClass = movieGenreClass.replace(/\s+/g, "");
+				movieGenreClass = movieGenreClass.replace(/,/g, " genre-");
+				movieGenreClass = movieGenreClass.toLowerCase();
+				bookNowClass = "";
+
+				if(item.movieType == 'coming'){
+					bookNowClass = '<div class="booknow-tag"><span>BOOK NOW</span></div>';
+				}	
+
+				movieURL =  "window.location='"+movieURL+"'";
+
+				playMoviesListing.append('<div onclick="'+movieURL+'" class="movie-item"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap">'+movieGenre+' | '+movieDuration+'</div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+movieExperience+'</ul></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+movieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="'+movieImage+'" alt="'+movieName+'"></div></section> </div>');
+				movieCounter++;
+		});
+	  
+	}).done(function( data ) {
+	    movieListSetHTML();
+	    movieList();
+
+	    scrollCustomSelect();
+		refreshAOS('refresh');
+	    toSVG();
+		movieListCarousel();
+		filterSearch();
+
+	    // resetPagination(1);
+	    playMoviesListing.removeClass('is--loading');
+	    console.log("Play movies completed");
+
+	    if(winWidth > 1024 && isIE == false){
+		    // $('.c-movies-list .list-wrap').attr('data-aos', 'fade-up');
+			$('.c-movies-list .list-wrap').each(function () {
+				$(this).find('.movie-item').each(function (i) {
+			    	$(this).attr('data-aos', 'fade-up');
+			    	$(this).attr('data-aos-delay', (50*i));
+				});
+			});
+		}
+	}).fail(function( data ) {
+	    console.log("Play movies failed");
+	});
+}
+
+function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs, argShowTimeIDs, argSourceObj){
+
+	console.log(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs, argShowTimeIDs, argSourceObj);
+
+	var movieItems = [], tempArray = [], tempMovieArrayList = [], movieCounter, playMoviesListing;
+	movieCounter=0;	
+	pageNumber = 0;
+
+	if(argSourceObj == 'now'){
+		pageNumber = 0;
+		tempMovieArrayList = movieListingArray;
+		playMoviesListing = $('.js-play-movies-listing');		
+	}else if(argSourceObj == 'coming'){
+		comingPageNumber =0;
+		tempMovieArrayList = comingMovieListingArray;
+		playMoviesListing = $('.js-coming-movies-listing');		
+	}
+
+	if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){		
+		tempMovieArrayList = movieTilesListingArray;
+		playMoviesListing = $('.js-loadCinamaListing');			
+	}
+
 	playMoviesListing.addClass('is--loading');
 	playMoviesListing.empty(); 
-	pageNumber = 0;
-	
-	if(cinemaIDs.length == 0 && experienceIDs.length == 0 && showTimeIDs.length == 0 && movieIDs.length == 0 ){
-		for(innerCounter=0; innerCounter < movieTilesListing.length; innerCounter++){		
-			movieItems[movieCounter] = movieTilesListing[innerCounter];
+
+	tempArray = [];	
+	movieCounter = 0;		
+	if( argMoviesIDs.length == 0 
+		&& argCinemaIDs.length == 0 
+		&& argExperienceIDs.length == 0 
+		&& argGenreIDs.length == 0 
+		&& argShowTimeIDs.length == 0 ){
+
+		for(innerCounter=0; innerCounter < tempMovieArrayList.length; innerCounter++){		
+			tempArray[movieCounter] = tempMovieArrayList[innerCounter];
 			movieCounter++;			
 		}
-	}else{
+		movieItems = tempArray;
 
-		movieItems = movieTilesListing;
+	}else{	
+
+		movieItems = tempMovieArrayList;	
 		
-		if(cinemaIDs.length > 0 ){
+		if(argCinemaIDs.length > 0 ){
 			movieCounter=0;
-			for(counter=0; counter < cinemaIDs.length; counter++){				
+			for(counter=0; counter < argCinemaIDs.length; counter++){				
 				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = cinemaIDs[counter];
+					var findItem = argCinemaIDs[counter];
+					console.log(findItem, movieItems[innerCounter]);
 					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 						tempArray[movieCounter] = movieItems[innerCounter];
 						movieCounter++;
@@ -2241,12 +1715,12 @@ function filterMoviesListing(cinemaIDs, experienceIDs, showTimeIDs, movieIDs){
 			movieItems = tempArray;
 		}
 
-		if(experienceIDs.length > 0 ){	
+		if(argExperienceIDs.length > 0 ){	
 			movieCounter = 0;	
 			tempArray = [];		
-			for(counter=0; counter < experienceIDs.length; counter++){				
+			for(counter=0; counter < argExperienceIDs.length; counter++){				
 				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = experienceIDs[counter];						
+					var findItem = argExperienceIDs[counter];						
 					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 						tempArray[movieCounter] = movieItems[innerCounter];
 						movieCounter++;
@@ -2256,12 +1730,27 @@ function filterMoviesListing(cinemaIDs, experienceIDs, showTimeIDs, movieIDs){
 			movieItems = tempArray;
 		}
 
-		if(showTimeIDs.length > 0 ){	
+		if(argGenreIDs.length > 0 ){	
 			movieCounter = 0;	
 			tempArray = [];				
-			for(counter=0; counter < showTimeIDs.length; counter++){				
+			for(counter=0; counter < argGenreIDs.length; counter++){				
 				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = showTimeIDs[counter];						
+					var findItem = argGenreIDs[counter];						
+					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
+						tempArray[movieCounter] = movieItems[innerCounter];
+						movieCounter++;
+					}	
+				}
+			}
+			movieItems = tempArray;
+		}
+
+		if(argShowTimeIDs.length > 0 ){	
+			movieCounter = 0;	
+			tempArray = [];				
+			for(counter=0; counter < argShowTimeIDs.length; counter++){				
+				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
+					var findItem = argShowTimeIDs[counter];						
 					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 						tempArray[movieCounter] = movieItems[innerCounter];
 						movieCounter++;						
@@ -2271,54 +1760,50 @@ function filterMoviesListing(cinemaIDs, experienceIDs, showTimeIDs, movieIDs){
 			movieItems = tempArray;
 		}
 
-		if(movieIDs.length > 0 ){	
-			movieCounter = 0;	
-			tempArray = [];				
-			for(counter=0; counter < movieIDs.length; counter++){				
+		if(argMoviesIDs.length > 0 ){	
+			movieCounter = 0;
+			tempArray = [];					
+			for(counter=0; counter < argMoviesIDs.length; counter++){				
 				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = movieIDs[counter];						
+					var findItem = argMoviesIDs[counter];						
 					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 						tempArray[movieCounter] = movieItems[innerCounter];
 						movieCounter++;
-					}
+					}	
 				}
 			}
 			movieItems = tempArray;
-		}		
+		}
 	}
 
 	movieItems = unique(movieItems);
-	
+
 	for(counter=0; counter < movieItems.length; counter++){
 		playMoviesListing.append(movieItems[counter]);	
 	}
 
-	if(showTimeIDs.length > 0 ){		
+	if(argShowTimeIDs.length > 0 ){		
 		$('.showtimewrap ul li').fadeOut('fast');
-		for(counter=0; counter < showTimeIDs.length; counter++){				
+		for(counter=0; counter < argShowTimeIDs.length; counter++){				
 			for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-				var findItem = "."+showTimeIDs[counter];						
+				var findItem = "."+argShowTimeIDs[counter];						
 				$(findItem).fadeIn('slow');
 			}
 		}
 	}
-    
+
+	movieListSetHTML();
+	movieList();
+
+	
+
 	playMoviesListing.removeClass('is--loading');
 	playMoviesListing.removeClass('empty--record');
 	if(movieItems.length == 0){
 		playMoviesListing.addClass('empty--record');
-		playMoviesListing.append('Record not found...');
-	}
+	}	
 
-	
+	movieItems = [];
+	tempArray = [];
 
-	// resetShowTimePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-	
-	setTimeout(function() {				
-	    movieTilePagination('.js-loadCinamaListing .tileview-movies-list','.js-load-movie-listing',pageNumber);
-	}, 5000);
 }
-
-
-
-

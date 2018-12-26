@@ -9,6 +9,9 @@
 	  <link rel="manifest" href="manifest.json">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	  <link rel="stylesheet" href="assets/css/style.min.css">
+	  <style type="text/css">
+	  	/*.c-movies-list .list-wrap-page{display: none;}*/
+	  </style>
 	</head>
 	
 	<body class="home-page">
@@ -485,7 +488,7 @@
 		                </div>
 	            	
 	                <div class="list-main-action">
-	                    <a href="javascript:void(0);" class="c-btn-outline btn--sm js-load-play-movies-listing"><span>Load More</span></a>
+	                    <a href="javascript:void(0);" class="c-btn-outline btn--sm js-load-play-movies-listing" attr-current-page="1"><span>Load More</span></a>
 	                </div>
 	            </div>
 	            <div id="whats-coming" class="is-tab" data-tab-name="movie-list">
@@ -860,8 +863,9 @@
 	    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	    <script>window.jQuery || document.write('<script src="assets/js/script/jquery-3.3.1.min.js"><\/script>')</script>
 
-	    <script src="movies-script.js"></script>
+	    
 	    <script src="assets/js/script.min.js"></script>
+	    <script src="movies-script.js"></script>
 
 	    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 	    <script>
