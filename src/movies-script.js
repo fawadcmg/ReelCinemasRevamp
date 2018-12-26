@@ -25,47 +25,17 @@ cinemaFilter = new Array(),
 experienceFilter = new Array(),
 genreFilter = new Array(),
 showTimeFilter = new Array(),
-
 comingMovieFilter = new Array(),
 comingCinemaFilter = new Array(),
 comingExperienceFilter = new Array(),
 comingGenreFilter = new Array(),
-
 cienmasFilterListing = new Array(),
 comingCienmasFilterListing = new Array(),
 tempExperienceFilter = new Array(),
 movieListingTempArray = new Array(),
-experienceMovieListing = new Array();
-
-
-/*
-var pageNumber = 0;
-var movieCount=1;
-var comingMovieFilter = new Array();
-var comingCinemaFilter = new Array();
-var comingExperienceFilter = new Array();
-var comingGenreFilter = new Array();
-var comingmovieListingArray = new Array();
-var comingCienmasFilterListing = new Array();
-var comingmovieListingArray = new Array();
-var comingPageNumber = 0;
-var comingMovieCount=1;
-
-var playMoviesListing = $('.js-play-movies-listing');
-var moreMoviesListing = $('.js-load-play-movies-listing');
-
-
-var movieTilesListingArray = new Array();
-var movieShowTime = new Array();
-var movieSearchDate;
-var searchDateValue;
-var movieCinamaListing = new Array();
-var tempExperienceFilter = new Array();
-var showTimeFilter = new Array();*/
-
-/*loadCinemasDropdown();
-loadMoviesDropdown();
-loadExperiencesDropdown();*/
+experienceMovieListing = new Array(),
+showtimeMoviesByDate = new Array(),
+showtimeMovieClass = new Array();
 
 if($('.home-page').length > 0 ){
 	currentPageName = 'home';
@@ -118,12 +88,24 @@ $(document).ready(function () {
 	if(currentPageName == 'movie detail' 
 		|| currentPageName == 'showtime grid'
 		|| currentPageName == 'showtime tile'){
-		setTimeout(function() {
-		    $(".slick-current > div > .js-movieDateFilter").trigger('click');
+		setTimeout(function() {			
+			// $(".slick-current > div > .js-movieDateFilter").trigger('click');			
 		    $(".slick-current > div > .js-movieDateFilter > dboxelement").addClass('active');
 		}, 1000);
 	}
 
+	
+	
+	if(currentPageName == 'home'){
+		$('.list-wrap-page').hide();
+		moviePagination(1,'now');
+		moviePagination(1,'coming');		
+	}else if(currentPageName == 'showtime grid'){
+		$('.js-play-movies-listing .list-wrap-page').hide();
+		moviePagination(1,'now');
+		$('.list-wrap-page').hide();
+	}
+	
 	scrollCustomSelect();
 	refreshAOS('refresh');
 
@@ -180,16 +162,6 @@ function loadCinemasDropdown(){
 				cinemaFilter.splice($.inArray(cinemaNames, cinemaFilter),1);
 			}
 			cinemaFilter = startFromZero(cinemaFilter);
-			/*if( currentPageName == 'movie detail'){
-				filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);				
-			}else if ( currentPageName == 'showtime grid' ){
-				movieDateFilter = movieSearchDate;
-				filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter);				
-			}else if ( currentPageName == 'home' ){
-				filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');				
-			}else if ( currentPageName == 'showtime tile' ){				
-				filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);				
-			}*/			
 			filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 		});
 
@@ -214,9 +186,8 @@ function loadCinemasDropdown(){
 				}else{				
 					comingCinemaFilter.splice($.inArray(cinemaNames, comingCinemaFilter),1);
 				}
-				comingCinemaFilter = startFromZero(comingCinemaFilter);							
-				// filterMovieBlock(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, 'coming');
-				filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "coming");
+				comingCinemaFilter = startFromZero(comingCinemaFilter);
+				filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
 			});
 
 			$('#select-all-locations-coming').click(function () {
@@ -294,18 +265,7 @@ function loadMoviesDropdown(){
 			}else{				
 				moviewFilter.splice($.inArray(movieNames, moviewFilter),1);
 			}
-			moviewFilter = startFromZero(moviewFilter);	
-			/*if($('.movie-detail-page').length > 0){
-				filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
-			}else if ($('.showtime-page').length >0 ){
-				movieDateFilter = movieSearchDate;
-				filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
-			}else if ($('.home-page').length >0 ){
-				filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');
-			}else if ($('.showtime-tile-page').length >0 ){
-				movieDateFilter = movieSearchDate;
-				filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);
-			}*/
+			moviewFilter = startFromZero(moviewFilter);			
 			filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 
 		});
@@ -314,8 +274,6 @@ function loadMoviesDropdown(){
 			var obj =$(this).parent().parent().find(".scroll-area .item");
 			dropdownSelectAll(obj, "movieFilter", moviewFilter, cinemaFilter, experienceFilter, genreFilter);
 		});
-
-		// movieGridPagination('.js-play-movies-listing .list-wrap-page--','.js-load-play-movies-listing',pageNumber);
 
 		if( $('.home-page').length > 0 ){
 
@@ -340,24 +298,19 @@ function loadMoviesDropdown(){
 					comingMovieFilter.splice($.inArray(movieNames, comingMovieFilter),1);
 				}
 
-				comingMovieFilter = startFromZero(comingMovieFilter);			
-				// filterMovieBlock(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, 'coming');
+				comingMovieFilter = startFromZero(comingMovieFilter);				
 				filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
 			});
 
 			$('select-all-movies-coming').click(function () {
 				var obj =$(this).parent().parent().find(".scroll-area .item");
 				dropdownSelectAll(obj, "comingMovieFilter", comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter);
-			});		
-
-			// movieGridPagination('.js-coming-movies-listing .list-wrap-page--','.js-load-coming-movies-listing',comingPageNumber);	
+			});
 		}
 
 		scrollCustomSelect();
 		refreshAOS('refresh');
 
-		
-	    // resetPagination(1);
 	    playMoviesListing.removeClass('is--loading');
 	    selectAllEvent();
 	  	console.log("Movies completed");
@@ -497,11 +450,13 @@ function dropdownSelectAll(targetObj, filterName, tempMovieArray, tempCinemaArra
 	genreFilter = tempGenreArray;
 	filterObject = [];
 
-	if($('.movie-detail-page').length > 0){
-		filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
-	}else{
-		filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');
-	}	
+	// if($('.movie-detail-page').length > 0){
+	// 	filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
+	// }else{
+	// 	filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');
+	// }
+
+	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 }
 
 function startFromZero(arr) {
@@ -550,156 +505,6 @@ function getShowTime(movieTimeValue){
 
 	return result;    
 }
-
-$('#select-all-exp').click(function () {
-	var obj =$(this).parent().parent().find(".scroll-area .item");
-	dropdownSelectAll(obj, "experienceFilter", moviewFilter, cinemaFilter, experienceFilter, genreFilter);
-});
-
-$('.js-experienceItem').click(function () {
-
-	var experienceNames = $(this).val();
-	// var tempArray = [];
-/*
-	if($('.movie-detail-page').length > 0 || $('.showtime-tile-page').length > 0){
-		tempArray = tempExperienceFilter;
-	}else if($('.home-page').length > 0 || $('.showtime-page').length > 0 ){
-		tempArray = experienceFilter;
-	}
-
-	if($(this).prop('checked') == true){
-		tempArray[tempArray.length] = experienceNames;		
-	}else{				
-		tempArray.splice($.inArray(experienceNames, tempArray),1);
-	}
-	tempArray = startFromZero(tempArray);*/
-
-/*	if($(this).prop('checked') == true){
-		tempArray[tempArray.length] = experienceNames;
-	}else{				
-		tempArray.splice($.inArray(experienceNames, tempArray),1);
-	}
-	tempArray = startFromZero(tempArray);*/
-
-	if($(this).prop('checked') == true){
-		experienceFilter[experienceFilter.length] = experienceNames;
-	}else{				
-		experienceFilter.splice($.inArray(experienceNames, experienceFilter),1);
-	}
-	experienceFilter = startFromZero(experienceFilter);
-	
-	/*if($('.movie-detail-page').length > 0){		
-		tempExperienceFilter = tempArray;
-		filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
-	}else if($('.showtime-page').length > 0){		
-		movieDateFilter = movieSearchDate;
-		experienceFilter = tempArray;
-		filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
-	}else if($('.home-page').length > 0){		
-		experienceFilter = tempArray;
-		filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');
-	}else if ($('.showtime-tile-page').length >0 ){		
-		filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);
-	}*/
-
-/*	if($('.movie-detail-page').length > 0){		
-		tempExperienceFilter = tempArray;
-		// filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
-		filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
-	}else if($('.showtime-page').length > 0){		
-		experienceFilter = tempArray;
-		// filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
-		filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
-	}else if($('.home-page').length > 0){		
-		experienceFilter = tempArray;
-		// filterMovieBlock(moviewFilter, cinemaFilter, experienceFilter, genreFilter, 'now');
-		filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
-	}else if ($('.showtime-tile-page').length >0 ){	
-		tempExperienceFilter = tempArray;	
-		// filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);
-		filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
-	}*/
-
-	// filterMovies(moviewFilter, cinemaFilter, tempArray, genreFilter, showTimeFilter, "now");
-
-	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
-
-	// tempArray = [];
-	experienceNames = "";
-});
-
-$('.js-genreItem').click(function () {
-	var genreNames = $(this).val();
-	if($(this).prop('checked') == true){
-		genreFilter[genreFilter.length] = genreNames;
-	}else{				
-		genreFilter.splice($.inArray(genreNames, genreFilter),1);
-	}
-
-	genreFilter = startFromZero(genreFilter);
-	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
-});	
-
-$('#select-all-exp-coming').click(function () {
-	var obj =$(this).parent().parent().find(".scroll-area .item");
-	dropdownSelectAll(obj, "experienceFilter", moviewFilter, cinemaFilter, experienceFilter, genreFilter);
-});
-
-$('.js-genreItem-coming').click(function () {
-	var genreNames = $(this).val();
-	if($(this).prop('checked') == true){
-		comingGenreFilter[comingGenreFilter.length] = genreNames;
-	}else{				
-		comingGenreFilter.splice($.inArray(genreNames, comingGenreFilter),1);
-	}	
-
-	comingGenreFilter = startFromZero(comingGenreFilter);			
-	// filterMovieBlock(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, 'coming');
-	filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
-});	
-
-$('.js-showTime').click(function () {
-	var genreNames = $(this).val();
-	if($(this).prop('checked') == true){
-		showTimeFilter[showTimeFilter.length] = genreNames;
-	}else{				
-		showTimeFilter.splice($.inArray(genreNames, showTimeFilter),1);
-	}
-
-	showTimeFilter = startFromZero(showTimeFilter);	
-	
-/*	if($('.movie-detail-page').length > 0){		
-		filterMoviesTiles(cinemaFilter, tempExperienceFilter, showTimeFilter);
-	}else if($('.showtime-page').length > 0){		
-		movieDateFilter = movieSearchDate;
-		filterShowtimeMovieBlock(moviewFilter, cinemaFilter, experienceFilter, showTimeFilter, movieDateFilter);
-	}else if ($('.showtime-tile-page').length >0 ){		
-		filterMoviesListing(cinemaFilter, tempExperienceFilter, showTimeFilter, moviewFilter);
-	}*/	
-
-	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
-
-});
-
-$('.js-load-play-movies-listing').click(function () {
-	moviePagination('.js-load-play-movies-listing',$(this).attr('attr-current-page'));
-});	
-
-$('.js-load-coming-movies-listing').click(function () {		
-	movieGridPagination('.js-coming-movies-listing .list-wrap-page--','.js-load-coming-movies-listing',comingPageNumber);
-});	
-
-$('.js-tab-link').click(function () {	
-	if($('.home-page').length > 0 ){
-		var sourceObj = $(this).attr('href');
-		var countBlock = $(sourceObj).find('.js-movie-list').find('.list-wrap').length;
-		if(countBlock == 0 && sourceObj == '#whats-coming'){
-			// loadHomeComingMovies();
-		}
-	}
-});	
-
-var showtimeMoviesByDate = new Array();
 
 function initShowtimeMoviesByDate(argMovieDate){	
 	showtimeMoviesByDate = [];
@@ -843,15 +648,40 @@ function initMovieGrid(){
 	});
 }
 
-function loadMovieGridBlocks( argMovie){
+function getMovieShowtime(argMovieName){
 
+	var result = "";
+	showtimeMovieClass = [];
+	for (var listCount = 0; listCount < movieSessionListing.length; listCount++) {
+		tempArray = movieSessionListing[listCount];
+
+		if( tempArray[2] == searchDateValue 
+			&& tempArray[0] == argMovieName){
+			showtimeMovieClass.push(getShowTime(tempArray[3]));
+		}
+	}
+
+	showtimeMovieClass = unique(showtimeMovieClass);
+	result = showtimeMovieClass.toString();	
+	result = findAndReplace(result,","," ");	
+	return result;
+}
+
+function loadMovieGridBlocks(argMovie){
+
+	playMoviesListing = $('.js-play-movies-listing')
   	playMoviesListing.addClass('is--loading');
 	playMoviesListing.empty();
 	
-	var result = "", bookNowClass = "", tempEntry = [], showMovie = 0;
+	var result = "", bookNowClass = "", tempEntry = [], showMovie = 0, showtimeClass;
+
+	movieListingArray = [];
 
 	for(var counter=0; counter < movieGridListing.length; counter++){
 		tempEntry = movieGridListing[counter];
+
+		showMovie = 0;
+		showtimeClass = "";
 
 		if(argMovie == "all"){
 			showMovie = 1;
@@ -859,14 +689,15 @@ function loadMovieGridBlocks( argMovie){
 			showMovie = 1;
 		}
 
-
 		if(showMovie == 1){
+
+		showtimeClass =	getMovieShowtime(tempEntry[4]);
 
 	if(tempEntry[1] == 'coming'){
 		bookNowClass = '<div class="booknow-tag"><span>BOOK NOW</span></div>';
 	}
 
-	result = '<div class="movie-item '+tempEntry[0]+'">\
+	result = '<div class="movie-item '+tempEntry[0]+' '+showtimeClass+'">\
 	<div class="bot-img" style="background-image: url('+tempEntry[5]+');"></div>\
 	<div class="item-wrap"><div class="img"><div class="stamp">'+tempEntry[9]+'</div>'+bookNowClass+'<img src="'+tempEntry[5]+'" alt="'+tempEntry[4]+'"></div>\
 		<div class="info"><div class="name">'+tempEntry[4]+'</div>\
@@ -896,7 +727,6 @@ function loadMovieGridBlocks( argMovie){
 	playMoviesListing.removeClass('is--loading');	
 	movieListSetHTML();
 	movieList();
-	moviePagination('.js-load-play-movies-listing', 1);
 }
 
 function initComingMovieGrid(){
@@ -1000,8 +830,7 @@ function initComingMovieGrid(){
 		});
 	  
 	}).done(function( data ) {
-		loadComingMovieGridBlocks();
-		
+		loadComingMovieGridBlocks();		
 		console.log("Coming movie grid completed");		
 	}).fail(function( data ) {
 	    console.log("Coming movie grid  failed");
@@ -1046,32 +875,6 @@ function loadComingMovieGridBlocks(){
 	$('.is--loading').removeClass('is--loading');	
 	movieListSetHTML();
 	movieList();
-	moviePagination('.js-load-play-movies-listing', 1);
-}
-
-function moviePagination(loadMoreItem, currentPageNumber){	
-
-	var pageNumber = parseInt(currentPageNumber);
-	var startItem = pageNumber;
-	var endItem = ++pageNumber;
-	var counter;
-
-	if(startItem < 0){
-		startItem = 1;
-	}
-
-	for(var counter= startItem; counter <= endItem ; counter++){		
-		$('.c-movies-list .list-wrap-page--'+counter).fadeIn('slow');		
-	}
-	
-	if($('.list-wrap-page--1').length == 0 || $('.movie-lsit-wrap .list-wrap-page--'+counter).length == 0){
-		$(loadMoreItem).fadeOut('fast');   	
-    }else if(endItem > 1){
-    	$(loadMoreItem).fadeIn('slow');
-    }
-    
-    $(loadMoreItem).attr('attr-current-page',pageNumber);
-
 }
 
 function initMovieDates(argMovieName){
@@ -1173,9 +976,10 @@ function initMovieDates(argMovieName){
 			}else if (currentPageName == 'showtime grid'){			
 				initMovieSessions(searchDateValue);				
 			}
+			$('.js-loadCinamaListing .tileview-movies-list').hide();
+			moviePagination(1, 'now');
 		});		
 		console.log("Movies dates completed");
-		// initMovieSessions();
 	}).fail(function( data ) {
 	    console.log("Movies dates failed");
 	});
@@ -1191,7 +995,6 @@ function loadMovieDetail(argMovieName){
 		argMovieName = findAndReplace(argMovieName, "%20", " ");	
 	}
   	
-  	
 	$.getJSON('MoviesSession.json', function (data) {
 		$.each( data, function( i, item ) {
 
@@ -1200,8 +1003,8 @@ function loadMovieDetail(argMovieName){
 								
 				movieImage = moviePostURL+item.MovieImage;
 				movieGenre = item.Genre;
-				movieTrailer = moviePostURL+item.MovieTrailer;
-				movieTrailerHref = "clickedMovie('movie-inner.html?param1='"+movieName+"');";
+				movieTrailer = movieURL+item.MovieTrailer;				
+				movieTrailerHref = "#video-1";
 				movieDuration = item.Duration;
 				moviePG = item.Rating; // PG <br> 13			
 				movieLanguage = item.MovieLanguage;		
@@ -1277,7 +1080,7 @@ function loadMovieDetail(argMovieName){
 				movieNameClass = movieNameClass.replace(".", "-");
 				movieNameClass = movieNameClass.toLowerCase();				
 				$('.js-popup-link').attr('href',movieTrailerHref);
-				$('.js-popup-link').attr('data-link-to',movieTrailer);
+				$('.js-popup-link').attr('data-video',movieTrailer);
 
 				return false;
 			}			
@@ -1337,7 +1140,7 @@ function initMovieSessions(){
 		
 	}).fail(function( data ) {
 	    console.log("Movie sessions failed");
-	});
+	});	
 }
 
 function initMovieListing(argMovieName){
@@ -1367,7 +1170,6 @@ function initMovieListing(argMovieName){
   			loadMovieListing(argMovieName, tempCinemaListing[counter], searchDateValue, experienceMovieListing[innercounter]);
   		}
 	}
-	// console.log(movieTilesListingArray);
 }
 
 function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExprience){
@@ -1522,10 +1324,9 @@ function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExp
 	    	movieTilesListingArray.push(result);
 	    	$('.js-loadCinamaListing').append(result);
 	    	movieCount++;
-	    }	    
-	    
-	}	
-	
+	    }
+	}
+
 }
 
 function loadPopularMovies(){
@@ -1637,8 +1438,7 @@ function loadPopularMovies(){
 	    toSVG();
 		movieListCarousel();
 		filterSearch();
-
-	    // resetPagination(1);
+	    
 	    playMoviesListing.removeClass('is--loading');
 	    console.log("Play movies completed");
 
@@ -1657,9 +1457,7 @@ function loadPopularMovies(){
 }
 
 function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs, argShowTimeIDs, argSourceObj){
-
-	console.log(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs, argShowTimeIDs, argSourceObj);
-
+	
 	var movieItems = [], tempArray = [], tempMovieArrayList = [], movieCounter, playMoviesListing;
 	movieCounter=0;	
 	pageNumber = 0;
@@ -1705,7 +1503,6 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 			for(counter=0; counter < argCinemaIDs.length; counter++){				
 				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
 					var findItem = argCinemaIDs[counter];
-					console.log(findItem, movieItems[innerCounter]);
 					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 						tempArray[movieCounter] = movieItems[innerCounter];
 						movieCounter++;
@@ -1795,8 +1592,6 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 	movieListSetHTML();
 	movieList();
 
-	
-
 	playMoviesListing.removeClass('is--loading');
 	playMoviesListing.removeClass('empty--record');
 	if(movieItems.length == 0){
@@ -1807,3 +1602,129 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 	tempArray = [];
 
 }
+
+function moviePagination(argCurrentPageNumber, argSourceObj){	
+
+	var pageNumber = parseInt(argCurrentPageNumber), targetObj, nextItem;
+
+	targetObj = $('.js-load-play-movies-listing');
+		
+	if(currentPageName == 'home'){
+
+		nextItem = (pageNumber*3)+1;
+		if(argSourceObj == 'now'){
+
+			$('.js-play-movies-listing .list-wrap-page:nth-child(-n+'+(pageNumber*6)+')').show();
+			if($('.js-play-movies-listing .list-wrap-page:nth-child('+nextItem+')').length == 0){
+		 		$(targetObj).hide();
+		 	}
+
+		}else if(argSourceObj == 'coming'){
+
+			targetObj = $('.js-load-coming-movies-listing');
+			$('.js-coming-movies-listing .list-wrap-page:nth-child(-n+'+(pageNumber*6)+')').show();
+			if($('.js-coming-movies-listing .list-wrap-page:nth-child('+nextItem+')').length == 0){
+		 		$(targetObj).hide();
+		 	}
+
+		}
+
+	}else if(currentPageName == 'showtime grid' ){		
+		
+		nextItem = (pageNumber*2)+1;
+		$('.c-movies-list .list-wrap-page:nth-child(-n+'+(pageNumber)+')').show();
+		if($('.c-movies-list .list-wrap:nth-child('+nextItem+')').length == 0){
+	 		$(targetObj).hide();
+	 	}
+
+	}else if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){		
+
+		nextItem = (pageNumber*3)+1;
+		targetObj = $('.js-load-movie-listing');
+		$('.tileview-movies-list:nth-child(-n+'+(pageNumber*3)+')').show();
+		if($('.tileview-movies-list:nth-child('+nextItem+')').length == 0){
+	 		$(targetObj).hide();
+	 	}
+
+	}
+ 	
+ 	pageNumber++;
+ 	$(targetObj).attr('attr-current-page',pageNumber);
+}
+
+$('.js-load-play-movies-listing').click(function () {
+	moviePagination($(this).attr('attr-current-page'),'now');
+});
+
+$('.js-load-movie-listing').click(function () {
+	moviePagination($(this).attr('attr-current-page'),'now');
+});	
+
+$('.js-load-coming-movies-listing').click(function () {		
+	moviePagination($(this).attr('attr-current-page'),'coming');
+});
+
+$('#select-all-exp').click(function () {
+	var obj =$(this).parent().parent().find(".scroll-area .item");
+	dropdownSelectAll(obj, "experienceFilter", moviewFilter, cinemaFilter, experienceFilter, genreFilter);
+});
+
+
+
+$('.js-experienceItem').click(function () {
+
+	var experienceNames = $(this).val();
+	if($(this).prop('checked') == true){
+		experienceFilter[experienceFilter.length] = experienceNames;
+	}else{				
+		experienceFilter.splice($.inArray(experienceNames, experienceFilter),1);
+	}
+	experienceFilter = startFromZero(experienceFilter);
+	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
+
+	experienceNames = "";
+});
+
+$('.js-genreItem').click(function () {
+	var genreNames = $(this).val();
+	if($(this).prop('checked') == true){
+		genreFilter[genreFilter.length] = genreNames;
+	}else{				
+		genreFilter.splice($.inArray(genreNames, genreFilter),1);
+	}
+
+	genreFilter = startFromZero(genreFilter);
+	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
+});	
+
+$('#select-all-exp-coming').click(function () {
+	var obj =$(this).parent().parent().find(".scroll-area .item");
+	dropdownSelectAll(obj, "experienceFilter", moviewFilter, cinemaFilter, experienceFilter, genreFilter);
+});
+
+$('.js-genreItem-coming').click(function () {
+	var genreNames = $(this).val();
+	if($(this).prop('checked') == true){
+		comingGenreFilter[comingGenreFilter.length] = genreNames;
+	}else{				
+		comingGenreFilter.splice($.inArray(genreNames, comingGenreFilter),1);
+	}	
+
+	comingGenreFilter = startFromZero(comingGenreFilter);	
+	filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
+});	
+
+$('.js-showTime').click(function () {
+	var genreNames = $(this).val();
+	if($(this).prop('checked') == true){
+		showTimeFilter[showTimeFilter.length] = genreNames;
+	}else{				
+		showTimeFilter.splice($.inArray(genreNames, showTimeFilter),1);
+	}
+
+	showTimeFilter = startFromZero(showTimeFilter);
+	filterMovies(moviewFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
+
+});
+
+	
