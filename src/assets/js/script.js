@@ -3268,6 +3268,7 @@ function initSlick() {
 		responsive: [{
 			breakpoint: 768,
 			settings: {
+				focusOnSelect: true,
 				slidesToShow: 1
 			}
 		}]
@@ -3296,7 +3297,6 @@ function initSlick() {
 		focusOnSelect: true
 	});
 	$('.js-main-carousel').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-		console.log(slick.slideCount, currentSlide, nextSlide);
 		if (nextSlide == 0 || nextSlide == slick.slideCount - 1) {
 			$('.js-main-carousel-thumb').slick('slickGoTo', nextSlide);
 		}
@@ -3635,8 +3635,16 @@ function tabs() {
 			if (!(winWidth < 768 && $(self).closest('.c-movies-list').get(0))) {
 				var topScroll = $(self).offset().top;
 				var elemTopSpace = parseInt($(self).css('margin-top'));
+				var scrollPos = topScroll - elemTopSpace - headerHeight - filterHeight;
+
+				if ($(self).closest('.c-selection-banner').get(0)) {
+					topScroll = $('.c-maps-sec').offset().top;
+					elemTopSpace = parseInt($('.c-maps-sec').css('margin-top'));
+					scrollPos = topScroll - elemTopSpace - headerHeight - filterHeight;
+				}
+
 				$('html, body').stop().animate({
-					scrollTop: topScroll - elemTopSpace - headerHeight - filterHeight
+					scrollTop: scrollPos
 				}, 500);
 			}
 		}, 200);
@@ -3934,6 +3942,10 @@ $('.js-date-time').slick({
 	}]
 });
 
+$('.js-date-time').on('init', function (slick) {
+	$('.js-date-time .dboxelement').eq(0).addClass('active');
+});
+
 $('.time-itemss').slick({
 	dots: false,
 	infinite: false,
@@ -3960,6 +3972,33 @@ $('.time-itemss').slick({
 			slidesToShow: 4,
 			slidesToScroll: 1,
 			arrows: false
+		}
+	}]
+});
+if (winWidth < 767) {
+	$('.js-mob-center-slider').slick({
+		arrows: false,
+		focusOnSelect: true,
+		swipeToSlide: true,
+		infinite: true
+	});
+	$('.js-mob-center-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+		$('.js-mob-center-slider [data-slick-index="' + nextSlide + '"] a').trigger('click');
+	});
+}
+
+$('.js-exp-carousel-2').slick({
+	arrows: false,
+	focusOnSelect: true,
+	swipeToSlide: true,
+	infinite: true,
+	slidesToShow: 6,
+	touchThreshold: 6,
+	responsive: [{
+		breakpoint: 768,
+		settings: {
+			slidesToShow: 1,
+			touchThreshold: 1
 		}
 	}]
 });
@@ -4148,7 +4187,6 @@ function ChangeToSvg() {
 
 var popupTarget;
 function openPopup(target, videoLink) {
-	console.log('1', videoLink);
 	popupTarget = target;
 
 	if (videoLink) {
@@ -4175,7 +4213,6 @@ function openPopup(target, videoLink) {
 	setTimeout(function () {
 		$(popupTarget).addClass('active');
 		$(popupTarget).closest('.c-popup').addClass('popup--open');
-		console.log($(popupTarget).find('.plyr').length, $(popupTarget).find('.js-video')[0]);
 		if ($(popupTarget).find('.plyr').length) {
 			var videoInstance = $(popupTarget).find('.plyr').attr('data-video-instance');
 			players[videoInstance].play();
@@ -4551,9 +4588,15 @@ function initMap() {
 	markerImageActive = new google.maps.MarkerImage('http://theprojectstagingserver.com/reelcinemas/website1.2/v3/assets/img/locations/loc-marker--selected.png', new google.maps.Size(101, 101), new google.maps.Point(0, 0), new google.maps.Point(50, 50));
 
 	// Initiate Map
+	var hideDefaultUi = false;
+	if (winWidth < 768) {
+		hideDefaultUi = true;
+	}
+
 	locMap = new google.maps.Map($('.js-loc-map')[0], {
 		center: markers[0].position,
 		zoom: 16,
+		disableDefaultUI: hideDefaultUi,
 		mapTypeControlOptions: {
 			mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
 		}
@@ -4564,11 +4607,24 @@ function initMap() {
 	locMap.setMapTypeId('styled_map');
 
 	// Adding Marker
+	var markerImgType = markerImage;
 	for (var i = 0; i < markers.length; i++) {
+
+		if (i == 0) {
+			markerImgType = markerImageActive;
+		} else {
+			markerImgType = markerImage;
+		}
+
 		markersRef[i] = new google.maps.Marker({
 			position: markers[i].position,
-			icon: markerImage,
-			map: locMap
+			icon: markerImgType,
+			map: locMap,
+			selfId: i
+		});
+		markersRef[i].addListener('click', function (e) {
+			var index = this.selfId;
+			$('.c-selection-banner .selectors a').eq(index).trigger('click');
 		});
 	}
 }
