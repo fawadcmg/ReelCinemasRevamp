@@ -1,3 +1,4 @@
+
 .c-tabs{
 	&.tabs--add-space{
 		.is-tab{
@@ -6,35 +7,6 @@
 		}
 	}
 	.tabs-links{
-		font-size: 0;
-		transform: translateY(-100%);
-		position: relative;
-		z-index: 3;
-
-		a{
-			border-radius: 10px 10px 0 0;
-			background: #fff;
-			display: inline-block;
-			font-size: 15px;
-			line-height: 1em;
-			padding: 24px;
-			text-transform: uppercase;
-			background: rgba(255,255,255,.2);
-			transition: background .35s, color .35s;
-			color: #fff;
-			min-width: 220px;
-			text-align: center;
-			margin-top: 20px;
-
-			+ a{
-				margin-left: 2px;
-			}
-
-			&.is--active{
-				background: rgba(255,255,255,1);
-				color: #383041;
-			}
-		}
 	}
 	.action{
 	    margin-top: 20px;
@@ -392,14 +364,6 @@
 	.c-list-1 .list-wrap .movie-item{
 		margin-right: auto;
 		margin-left: auto;
-	}
-	.c-tabs .tabs-links a{
-		font-size: 14px;
-		padding: 22px 15px 19px;
-		min-width: 130px;
-	}
-	.c-tabs .tabs-links{
-		margin-bottom: -60px;
 	}
 	.c-list-1 .movie-details .item-details .content{
 		display: block;
