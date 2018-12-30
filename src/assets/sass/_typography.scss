@@ -94,9 +94,21 @@
 	}
 	.heading-sty-4{
 		font-size: 30px;
+		margin-bottom: 23px;
+		
 		i{
 			font-size: 18px;
 		}
+	}
+}
+@media (max-width: 1200px){
+	.heading-sty-4{
+		margin-bottom: 25px;
+	}
+}
+@media (max-width: 920px){
+	.heading-sty-4{
+		margin-bottom: 22px;
 	}
 }
 @media (max-width: 767px){
@@ -114,7 +126,7 @@
 	    }
 	}
 	.heading-sty-6{
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 	}
 	.heading-sty-3{
 		font-size: 31px;
