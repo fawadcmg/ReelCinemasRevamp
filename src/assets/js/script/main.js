@@ -27,7 +27,9 @@ $(function () {
 	headerAdjust();
 	movieListSetHTML();
 	movieList();
+	layerTabsAdjustment();
 	tabs();
+	js2LayerTabs();
 	activeHashTab();
 	sideNav();
 	animWrapHeight();
@@ -38,7 +40,7 @@ $(function () {
 	scrollTo();
 	bgMobImg();
 	movieListSty1AutoCloseEvent();
-
+	customScrollInit();
 	addingAOSData();
 
 	$('.c-loader').fadeOut('slow', function () {
@@ -107,6 +109,14 @@ $(document).on('click touchstart', function (e) {
 		$('.js-langSelector').find('ul').removeClass('active');
 	}*/
 });
+
+function customScrollInit() {
+	if(winWidth > 1024){
+		$(".js-custom-scroll").mCustomScrollbar({
+			theme: "minimal-dark"
+		});
+	}
+}
 
 function setOnTopClass() {
    if($(window).scrollTop() === 0) {
@@ -533,10 +543,19 @@ function tabs() {
 		e.preventDefault();
 		var tabName = $(this).attr('data-tab-name');
 		$('.js-tab-link[data-tab-name="'+tabName+'"]').removeClass('is--active');
+		var linkParent = $('.js-tab-link[data-tab-name="'+tabName+'"]').parent();
 		$(this).addClass('is--active');
+
+
+		if(linkParent.is('li')){
+			linkParent.removeClass('is--active');
+			$(this).parent().addClass('is--active');
+		}
+
 		$('.is-tab[data-tab-name="'+tabName+'"]').removeClass('is--active');
 		var target = $(this).attr('href');
 		$(target).addClass('is--active');
+
 		if($(target).find('.js-movie-list').get(0)){
 			movieListCarousel();
 		}
@@ -544,6 +563,11 @@ function tabs() {
 		// Maps
 		if($(this).closest('.c-selection-banner').get(0)){
 			setMarkerTo($(this).index());
+		}
+
+		if(winWidth < 767 && $(this).hasClass('js-tab--mob-accord')){
+			$('.is-tab[data-tab-name="'+tabName+'"]').stop().slideUp();
+			$(target).stop().slideDown();
 		}
 
 		var self = this;
@@ -554,7 +578,14 @@ function tabs() {
 			if(winWidth < 768 && $('.c-movie-filters').get(0)){
 				filterHeight = $('.c-movie-filters').height();
 			}
-			if(!(winWidth < 768 && $(self).closest('.c-movies-list').get(0))){
+
+			if(!((winWidth < 768 && $(self).closest('.c-movies-list').get(0)) || (winWidth < 768 && $(self).closest('.c-2-layer-content').get(0)))){
+
+				// For FAQ Page 2 layer tabs.
+				if($(self).closest('.layer-2-links').get(0)){
+					self = $('.layer-1-links a')[0];
+				}
+
 				var topScroll = $(self).offset().top;
 				var elemTopSpace = parseInt($(self).css('margin-top'));
 				var scrollPos = topScroll - elemTopSpace - headerHeight - filterHeight;
@@ -569,8 +600,56 @@ function tabs() {
 					scrollTop: scrollPos
 				}, 500);
 			}
+
 		}, 200);
 	});
+
+	// First tab shown in mobile if its suppose to be accordian.
+	if(winWidth < 767 && $('.js-tab--mob-accord').get(0)){
+		var tabMobAccName = [];
+		$('.js-tab--mob-accord').each(function () {
+			var thisTabName = $(this).attr('data-tab-name');
+			console.log('a');
+			if(!tabMobAccName.includes(thisTabName)){
+				console.log('b');
+				tabMobAccName.push(thisTabName);
+				console.log(tabMobAccName);
+				var thisTarget = $(this).attr('href');
+				$(thisTarget).eq(0).css('display', 'block');
+			}
+		});
+	}
+}
+
+function js2LayerTabs() {
+	$('.js-2-layer-tabs .layer-1-links a').click(function (e) {
+		$(this).closest('.js-2-layer-tabs').addClass('is--active');
+	});
+	$('.js-2lt-back').click(function (e) {
+		e.preventDefault();
+		$(this).closest('.js-2-layer-tabs').removeClass('is--active');
+		var thisTab = $(this).closest('.is-tab');
+
+		setTimeout(function () {
+			thisTab.removeClass('is--active');
+		}, 350);
+	});
+
+	if(winWidth < 768 && $('.js-2lt-back').get(0)){
+		$('.js-2lt-back').closest('.is-tab').removeClass('is--active');
+	}
+}
+
+function layerTabsAdjustment() {
+	if($('.layer-2-links').get(0) && winWidth < 768){
+		$('.layer-2-content').each(function () {
+			var thisContent = this;
+			$('.is-tab', this).each(function (i) {
+				var links = $(thisContent).closest('.is-tab').find('.layer-2-links li:nth-child('+ (i+1) +')')
+				$(this).appendTo(links);
+			});
+		});
+	}
 }
 
 function sideNav() {
@@ -1666,4 +1745,57 @@ function locMapInit() {
 	if($('.js-loc-map').get(0)){
 		$('body').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhXFH3diOrb9h_znP9ndacEZ0FGfDSwas&callback=initMap" async defer></script>');
 	}
+}
+
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+if (!Array.prototype.includes) {
+  Object.defineProperty(Array.prototype, 'includes', {
+    value: function(valueToFind, fromIndex) {
+
+      if (this == null) {
+        throw new TypeError('"this" is null or not defined');
+      }
+
+      // 1. Let O be ? ToObject(this value).
+      var o = Object(this);
+
+      // 2. Let len be ? ToLength(? Get(O, "length")).
+      var len = o.length >>> 0;
+
+      // 3. If len is 0, return false.
+      if (len === 0) {
+        return false;
+      }
+
+      // 4. Let n be ? ToInteger(fromIndex).
+      //    (If fromIndex is undefined, this step produces the value 0.)
+      var n = fromIndex | 0;
+
+      // 5. If n ≥ 0, then
+      //  a. Let k be n.
+      // 6. Else n < 0,
+      //  a. Let k be len + n.
+      //  b. If k < 0, let k be 0.
+      var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+      function sameValueZero(x, y) {
+        return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
+      }
+
+      // 7. Repeat, while k < len
+      while (k < len) {
+        // a. Let elementK be the result of ? Get(O, ! ToString(k)).
+        // b. If SameValueZero(valueToFind, elementK) is true, return true.
+        if (sameValueZero(o[k], valueToFind)) {
+          return true;
+        }
+        // c. Increase k by 1. 
+        k++;
+      }
+
+      // 8. Return false
+      return false;
+    }
+  });
 }

@@ -1,3 +1,13 @@
+.heading-sty-2{
+	font-size: 60px;
+	line-height: 1em;
+	margin: 0 0 20px 0;
+	font-weight: bold;
+
+	&:last-child{
+		margin-bottom: 0;
+	}
+}
 .heading-sty-3{
 	font-size: 50px;
 	line-height: 1.3em;
@@ -58,6 +68,9 @@
 }
 
 @media (max-width: 1700px){
+	.heading-sty-2{
+		font-size: 55px;
+	}
 	.heading-sty-3{
 		font-size: 45px;
 		line-height: 1.2em;
@@ -70,6 +83,9 @@
 	}
 }
 @media (max-width: 1500px){
+	.heading-sty-2{
+		font-size: 45px;
+	}
 	.heading-sty-3{
 		font-size: 40px;
 	}
@@ -87,6 +103,14 @@
 	}
 	.heading-sty-5 span{
 		font-size: 18px;
+	}
+	.heading-sty-2{
+		font-size: 40px;
+		margin-bottom: 17px;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
 	}
 	.heading-sty-3{
 		font-size: 35px;
@@ -128,6 +152,7 @@
 	.heading-sty-6{
 		margin-bottom: 10px;
 	}
+	.heading-sty-2,
 	.heading-sty-3{
 		font-size: 31px;
 		line-height: 1.1em;

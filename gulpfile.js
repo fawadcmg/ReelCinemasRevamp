@@ -26,7 +26,7 @@ const   gulp = require('gulp'),
 gulp.task('scriptJs', function(){
     return gulp.src([
         // 'src/assets/js/script/jquery-3.3.1.min.js',
-        // 'src/assets/js/script/jquery.mCustomScrollbar.js',
+        'src/assets/js/script/jquery.mCustomScrollbar.concat.min.js',
         'src/assets/js/script/slick.js',
         // 'src/assets/js/script/jquery.panzoom.js',
         // 'src/assets/js/script/jquery.validate.js',
