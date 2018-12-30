@@ -55,6 +55,7 @@ if($('.home-page').length > 0 ){
 }
 
 function loadHomePageModules(){	
+	initMovieSessions();
 	initMovieGrid("all");
 	initComingMovieGrid();
 }
@@ -364,7 +365,7 @@ function loadExperiencesDropdown(){
 
 		scrollCustomSelect();
 		refreshAOS('refresh');
-		selectAllEvent();	
+		selectAllEvent();
 	
 	    console.log("Experiences completed");
 	    tempArray = [];
@@ -560,11 +561,11 @@ function findAndReplace(string, target, replacement) {
  	return string; 
 }
 
-function getShowTime(movieTimeValue){	
+function getShowTime(argMovieTimeValue){	
 	var hourValue, minuteValue, result;	
 
-	hourValue = parseInt(movieTimeValue.split(":"));
-	minuteValue = movieTimeValue.split(":");
+	hourValue = parseInt(argMovieTimeValue.split(":"));
+	minuteValue = argMovieTimeValue.split(":");
 
 	if(hourValue == 12 && parseInt(minuteValue[1]) == 0 ){		
 		result = "movie-show-morning";
@@ -594,6 +595,35 @@ function initShowtimeMoviesByDate(argMovieDate){
 	showtimeMoviesByDate = unique(showtimeMoviesByDate);
 	tempArray = [];	
 	loadMovieGridBlocks("moviveGrid");
+	initCinemaExperienceByMovie(argMovieDate, "all");
+}
+
+var initMovieExperienceCinema = new Array();
+function initCinemaExperienceByMovie(argMovieDate, argMovieName){	
+	initMovieExperienceCinema = [];
+	var tempArray = new Array(), tempValue='';
+	for (var listCount = 0; listCount < movieSessionListing.length; listCount++) {
+		tempArray = movieSessionListing[listCount];
+		tempValue = tempArray[0]+"-"+tempArray[1]+"-"+tempArray[4];
+		tempValue = findAndReplace(tempValue," ","-");
+		tempValue = tempValue.toLowerCase();
+		if(argMovieDate == 'all' && argMovieName == 'all'){			
+			initMovieExperienceCinema.push(tempValue);			
+		}else if(argMovieName == 'all'){
+			if(tempArray[2] == argMovieDate){
+				initMovieExperienceCinema.push(tempValue);				
+			}
+		}else{				
+			if(tempArray[2] == argMovieDate && tempArray[0] == argMovieName ){
+				initMovieExperienceCinema.push(tempValue);
+			}	
+		}		
+	}	
+	initMovieExperienceCinema = unique(initMovieExperienceCinema);
+	tempArray = [];
+	console.log(argMovieDate, argMovieName);
+	console.log(initMovieExperienceCinema);
+	console.log(movieSessionListing.length);
 }
 
 function initMovieGrid(){
@@ -714,8 +744,9 @@ function initMovieGrid(){
 	}).done(function( data ) {
 		if(currentPageName == 'home'){
 			loadMovieGridBlocks('all');
-		}else if(currentPageName == 'showtime grid'){
-			initShowtimeMoviesByDate(searchDateValue);
+		}else if(currentPageName == 'showtime grid'){			
+			initShowtimeMoviesByDate(searchDateValue);			
+			// initCinemaExperienceByMovie('all', 'all');
 		}			
 		console.log("Movie grid completed");		
 	}).fail(function( data ) {
@@ -1243,13 +1274,17 @@ function initMovieSessions(){
 		$('.js-loadCinamaListing').empty();
 		if (currentPageName == 'movie detail'){
 			initMovieListing(searchMovieName);
+			initCinemaExperienceByMovie(searchDateValue, searchMovieName);
 		}else if (currentPageName == 'showtime tile'){			
 			for(counter=0; counter < movieListingTempArray.length; counter++ ){
 				initMovieListing(movieListingTempArray[counter]);
 			}
 		}else if (currentPageName == "showtime grid"){
 			initShowtimeMoviesByDate(searchDateValue);
-		}			
+
+		}else if (currentPageName == "home"){
+			initCinemaExperienceByMovie("all", "all");
+		}		
 		console.log("Movie sessions completed");
 		
 	}).fail(function( data ) {
