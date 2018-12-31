@@ -42,6 +42,7 @@ $(function () {
 	movieListSty1AutoCloseEvent();
 	customScrollInit();
 	addingAOSData();
+	initSelect2();
 
 	$('.c-loader').fadeOut('slow', function () {
 	    if(winWidth > 1024){
@@ -177,11 +178,31 @@ function initSlick() {
 		fade: true,
 		asNavFor: '.js-banner-1b',
 	});
+	
+	// for places where txt will act as bullets like food page.
+	var banner1bDots = true;
+	if($('.js-banner-1-txt-controls').get(0)){
+		banner1bDots = false;
+	}
+
 	$('.js-banner-1b').slick({
 		arrows: false,
-		dots: true,
+		dots: banner1bDots,
 		asNavFor: '.js-banner-1a',
 	});
+
+	if($('.js-banner-1-txt-controls').get(0)){
+		$('.js-banner-1b').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+			console.log(nextSlide);
+			$('.js-banner-1-txt-controls li').removeClass('is--active');
+			$('.js-banner-1-txt-controls li:nth-child('+(nextSlide+1)+')').addClass('is--active');
+		});
+		$('.js-banner-1-txt-controls a').click(function (e) {
+			e.preventDefault();
+			var thisIndex = $(this).parent().index();
+			$('.js-banner-1b').slick('slickGoTo', thisIndex);
+		});
+	}
 	
 	$('.js-offer-carousel').slick({
 		slidesToShow: 4,
@@ -430,7 +451,9 @@ function headerAdjust() {
 }
 
 function initSelect2() {
-	$('.js-select2').select2();
+	$('.js-select2').select2({
+		// minimumResultsForSearch: Infinity
+	});
 }
 
 

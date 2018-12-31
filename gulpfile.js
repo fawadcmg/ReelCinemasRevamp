@@ -31,7 +31,7 @@ gulp.task('scriptJs', function(){
         // 'src/assets/js/script/jquery.panzoom.js',
         // 'src/assets/js/script/jquery.validate.js',
         'src/assets/js/script/aos.js',
-        // 'src/assets/js/script/select2.full.js',
+        'src/assets/js/script/select2.full.js',
         'src/assets/js/script/main.js',
     ])
     .pipe(sourcemaps.init())

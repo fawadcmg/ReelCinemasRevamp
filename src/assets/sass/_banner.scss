@@ -8,6 +8,74 @@
 		@extend .height-cover;
 	}
 
+	&.banner-1--a{
+		padding-bottom: 0;
+		.txt-sec .carousel{
+			max-width: 750px;
+		}
+
+		&.banner-1a--z{
+			.txt-wrap{
+				margin-bottom: 30px;
+			}
+		}
+	}
+
+	.carousel-txt-controls{
+		position: relative;
+		padding-top: 30px;
+
+		&:before{
+			content: '';
+			display: block;
+			height: 1px;
+			position: absolute;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.5) 50%,rgba(255,255,255,0) 100%);
+			opacity: 0.2;
+		}
+
+		li{
+			display: inline-block;
+			& + li{
+				padding-left: 60px;
+				position: relative;
+
+				&:before{
+					content: '';
+					display: block;
+					border-radius: 999px;
+					background: #fff;
+					opacity: 0.5;
+					width: 10px;
+					height: 10px;
+					margin-top: -5px;
+					position: absolute;
+					top: 50%;
+					left: 25px;
+				}
+			}
+
+			&.is--active{
+				a{
+					opacity: 1;
+					border-bottom-color: #fff;
+				}
+			}
+		}
+
+		a{
+			font-size: 20px;
+			color: #fff;
+			line-height: 1em;
+			opacity: 0.5;
+			border-bottom: 1px solid transparent;
+			transition: all .35s;
+		}
+	}
+
 	.bgimg-sec{
 		position: absolute;
 		top: 0;
@@ -29,11 +97,11 @@
 
 		@media (max-width: 1660px){
 			transform: translateX(0);
-			left: 5.4217vw;
+			left: 7.4217vw;
 		}
 
 		@media (max-width: 767px){
-			left: 0;
+			left: 15px;
 			padding-left: 17px;
 		}
 
@@ -66,6 +134,7 @@
 			background: transparent;
 			transition: background .35s;
 			cursor: pointer;
+			padding: 0;
 		}
 
 		.slick-active{
@@ -151,7 +220,17 @@
 		margin-bottom: 20px;
 	}
 }
-@media (max-height: 600px){
+@media (max-width: 1200px){
+	.c-banner-1.banner-1--a .txt-sec .carousel {
+	    max-width: 700px;
+	}
+}
+@media (max-width: 920px){
+	.c-banner-1.banner-1--a .txt-sec .carousel {
+	    max-width: 600px;
+	}
+}
+@media (max-width: 600px){
 	.c-banner-1 h1{
 		font-size: 40px;
 		line-height: 1em;
@@ -165,6 +244,27 @@
 }
 
 @media (max-width: 767px){
+	.c-banner-1 .carousel-txt-controls li{
+		display: block;
+	}
+	.c-banner-1 .carousel-txt-controls li+li{
+		padding-left: 0;
+		margin-top: 10px;
+		&:before{
+			display: none;
+		}
+	}
+	.c-banner-1 .carousel-txt-controls a{
+		font-size: 16px;
+	}
+	.c-banner-1.banner-1--a.banner-1a--z .txt-wrap{
+		margin-bottom: 20px;
+	}
+	.c-banner-1 .carousel-txt-controls{
+		position: relative;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
 	.c-banner-1 h1{
 		font-size: 32px;
 	}
@@ -178,6 +278,27 @@
 	}
 	.c-banner-1 .bgimg-sec .item{
 	    background-position: top center;
+	}
+	.c-banner-1{
+		align-items: flex-end;
+	}
+	.c-banner-1 .txt-sec {
+	    width: 100%;
+	    padding: 0 15px;
+	    left: 0;
+	}
+	.c-banner-1 .slick-arrow{
+		display: none !important;
+	}
+
+	@media (max-height: 580px){
+		.c-banner-1{
+			padding-bottom: 40px;
+		}
+		.c-banner-1 h1{
+		    font-size: 28px;
+		    line-height: 0.9em;
+		}
 	}
 }
 

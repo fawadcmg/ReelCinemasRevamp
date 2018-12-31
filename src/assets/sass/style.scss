@@ -1,15 +1,20 @@
 @import "_mixin";
 @import "_reset";
 @import "variable";
+
 @import "_fonts";
 @import "_miscellaneous";
+
 @import "_mCustomScrollbar";
+@import "_select2";
 @import "_plyr";
+@import "slick";
+@import "aos";
+
 @import "_base";
 @import "_layout";
 @import "_typography";
-@import "slick";
-@import "aos";
+
 @import "elements";
 @import "_header";
 @import "_main-banner";

@@ -89,6 +89,25 @@
 			background-image: url(../img/icons/arrow-right.svg);
 		}
 	}
+	@media (max-width: 1650px){
+		.slick-arrow{
+			width: 28px;
+		}
+	}
+	@media (max-width: 1500px){
+		.slick-arrow{
+			width: 23px;
+		}
+	}
+	@media (max-width: 1350px){
+		.slick-arrow{
+			left: 15px;
+			&.slick-next{
+				left: auto;
+				right: 15px;
+			}
+		}
+	}
 }
 
 .c-tabs-links{

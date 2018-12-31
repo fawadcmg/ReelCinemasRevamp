@@ -140,10 +140,280 @@
 		}
 	}
 }
+.c-list-selector{
+	.title{
+		display: inline-block;
+		margin-right: 100px;
+		font-size: 25px;
+		font-weight: bold;
+		line-height: 1em;
+		text-transform: uppercase;
+		color: #222;
+		vertical-align: middle;
+	}
+	.left-nav{
+		display: inline-block;
+		margin: 0 0 0 auto;
+		vertical-align: middle;
+		float: right;
+
+		.btn-back{
+			display: inline-block;
+			i{
+				display: block;
+				width: 16px;
+				height: 20px;
+				background: url('../img/icons/arrow-with-stick-left.png') no-repeat center center;
+			}
+			span{
+				display: none;
+			}
+		}
+	}
+	.selectors{
+		display: inline-block;
+		vertical-align: middle;
+
+		select{
+			min-width: 100px;
+			margin-right: 20px;
+		}
+		.select2{
+			margin-right: 16px;
+
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.c-list-2{
+
+	.list-wrap{
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin: 0 -20px;
+	}
+
+	.item{
+		padding: 0 20px;
+		margin-bottom: 40px;
+
+		@media (max-width: 1470px) and (min-width: 1167px){
+			&:nth-child(9), &:nth-child(10){
+				display: none;
+			}
+		}
+
+		@media (max-width: 1166px) and (min-width: 864px){
+			&:nth-child(10){
+				display: none;
+			}
+		}
+
+		.item-inner{
+			max-width: 230px;
+			margin: 0 auto;
+			border-radius: 7px;
+			overflow: hidden;
+			border: 1px solid #eeeeee;
+		}
+		.img{
+			margin-bottom: 15px;
+			img{
+				display: block;
+			}
+		}
+		.pad{
+			padding: 0 20px 20px;
+		}
+		.info{
+			margin-bottom: 15px;
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+
+			.time{
+				font-size: 14px;
+				line-height: 1em;
+				color: #383041;
+				margin-right: 20px;
+			}
+			.action{
+				text-align: right;
+				a{
+					& + a{
+						margin-left: 15px;
+					}
+					&:hover{
+						svg{
+							fill: #6e3996;
+						}
+					}
+				}
+				svg{
+					width: 100%;
+					max-width: 16px;
+					max-height: 13px;
+					transition: fill .35s;
+				}
+			}
+		}
+		.txt{
+			display: block;
+
+			&, h1, p{
+				transition: color .35s;
+			}
+
+			&:hover{
+				&, h1, p{
+					color: #6e3996;
+				}
+			}
+			h1{
+				font-size: 24px;
+				line-height: 1em;
+				color: #383041;
+				font-weight: bold;
+				margin: 0 0 10px 0;
+			}
+			p{
+				margin-bottom: 0;
+				color: #383041;
+			}
+		}
+	}
+}
+.c-media-center-list{
+	margin-top: 80px;
+	margin-bottom: 50px;
+	.c-page-counter{
+		margin: 30px 0 60px;
+	}
+	.c-list-selector{
+		margin-bottom: 50px;
+	}
+}
+
+.c-page-counter{
+	text-align: right;
+
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.page-numbers{
+		display: inline-block;
+		margin-right: 20px;
+		vertical-align: top;
+
+		li{
+			display: inline-block;
+			& + li{
+				margin-left: 5px;
+			}
+		}
+		a{
+			display: block;
+			text-align: center;
+			border: 1px solid #9b97a0;
+			border-radius: 10px;
+			padding: 10px;
+			color: #383041;
+			font-size: 14px;
+			line-height: 1em;
+		}
+		.is--active a{
+			color: #6e3996;
+			border-color: #b69cca;
+		}
+
+		@media (min-width: 1024px){
+			a:hover{
+				color: #6e3996;
+				border-color: #9b97a0;
+			}
+		}
+	}
+
+	.page-arrows{
+		display: inline-block;
+		margin: 0 0 0 auto;
+		border: 1px solid #9b97a0;
+		border-radius: 10px;
+		font-size: 0;
+		vertical-align: top;
+
+		a{
+			display: inline-block;
+			position: relative;
+			width:  36px;
+			height: 34px;
+			
+			&:after{
+				content: '';
+				display: block;
+				border: 1px solid #57505f;
+				border-right: none;
+				border-bottom: none;
+				width:  8px;
+				height: 8px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -4px;
+				margin-left: -4px;
+				transform: rotateZ(-45deg);
+				transition: all .35s;
+			}
+
+			&.next{
+				&:after{
+					transform: rotateZ(135deg);
+				}
+			}
+
+			@media (min-width: 1024px){
+				&:hover{
+					&:after{
+						border-color: #6e3996;
+					}
+				}
+			}
+
+			& + a{
+				&:before{
+					content: '';
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 0;
+					height: 16px;
+					margin-top: -8px;
+					width: 1px;
+					background: #afacb3;
+				}
+			}
+
+			span{
+				display: none;
+			}
+		}
+	}
+}
 
 .page--faqs{
 	& + .footer-outer-wrap{
 		margin-top: 0;
+	}
+}
+.page--media-inner{
+	.c-content-sty-1{
+		margin: 60px 0;
 	}
 }
 
@@ -151,9 +421,22 @@
 	.c-banner{
 		padding: 80px 0 143px;
 	}
+	.c-list-2 .item{
+		margin-bottom: 30px;
+	}
 }
 
 @media (max-width: 1400px){
+	.c-media-center-list{
+		margin-top: 70px;
+		margin-bottom: 40px;
+		.c-page-counter{
+			margin: 25px 0 50px;
+		}
+		.c-list-selector{
+			margin-bottom: 40px;
+		}
+	}
 	.c-tabs-links a{
 		min-width: 0;
 		padding-right: 40px;
@@ -172,6 +455,19 @@
 		min-width: 0;
 		padding-right: 30px;
 		padding-left:  30px;
+	}
+	.c-media-center-list{
+		margin-top: 50px;
+		margin-bottom: 30px;
+		.c-page-counter{
+			margin: 20px 0 30px;
+		}
+		.c-list-selector{
+			margin-bottom: 30px;
+		}
+	}
+	.page--media-inner .c-content-sty-1{
+		margin: 40px 0;
 	}
 }
 @media (max-width: 1100px){
@@ -196,8 +492,44 @@
 	.c-banner{
 		padding: 70px 0 133px;
 	}
+	.c-list-2 .list-wrap{
+		justify-content: center;
+	}
+	.c-media-center-list{
+		margin-top: 40px;
+	}
 }
 @media (max-width: 767px){
+	.c-media-center-list .c-list-selector{
+		margin-bottom: 20px;
+	}
+	.page--media-inner .c-content-sty-1{
+		margin: 0;
+	}
+	.c-list-selector .left-nav{
+		float: none;
+		margin: 15px 0 0 0;
+	}
+	.c-list-selector .selectors .select2{
+		width: calc(50vw - 26px) !important;
+	}
+	.c-list-selector .title{
+		display: block;
+		margin-bottom: 15px;
+	}
+	.c-media-center-list{
+		margin-top: 30px;
+		margin-bottom: 20px;
+		.c-page-counter{
+			margin: 0px 0 20px;
+		}
+	}
+	.c-list-2 .list-wrap{
+		margin: 0 -10px;
+	}
+	.c-list-2 .item{
+		padding: 0 10px;
+	}
 	.c-banner{
 		padding: 50px 0;
 	}
@@ -349,5 +681,14 @@
 	.c-2-layer-content .layer-2-links li > a{
 		display: block;
 		padding: 30px 45px 30px 15px;
+	}
+}
+@media (max-width: 510px){
+	.c-list-2 .item{
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.c-list-2 .item .item-inner{
+		max-width: 325px;
 	}
 }
