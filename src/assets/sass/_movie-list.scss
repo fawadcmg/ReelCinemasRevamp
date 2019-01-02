@@ -518,14 +518,26 @@
 			    }
 			}
 
+			&:after{
+				content: '';
+				display: block;
+				padding-top: 142.86%;
+			}
+
 			img{
 				display: block;
 				border-radius: 7px;
+				max-height: 329px;
+				object-fit: cover;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				max-height: 100%;
 			}
 		}
 		@media (min-width: 767px){
-		.img:hover + .stamp {
-			animation-name: bounceIn;			
+			.img:hover + .stamp {
+				animation-name: bounceIn;
 			  animation-duration: 300ms;
 			  animation-timing-function: linear;
 			  animation-fill-mode: forwards;
