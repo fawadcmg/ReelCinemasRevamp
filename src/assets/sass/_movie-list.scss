@@ -53,6 +53,60 @@
 	}
 
 	.movie-lsit-wrap{
+		&.empty--record{
+    		text-align: center;
+		    padding-top: 40px;
+		    padding-bottom: 40px;
+		    min-height: 360px;
+		    display: flex;
+		    align-items: center;
+		    width: 100%;
+		    justify-content: center;
+		    @media (max-width: 920px){
+		    	min-height: 320px;
+			}
+		    @media (max-width: 767px){
+		    	min-height: 360px;
+		    }
+
+			p:first-child{
+				font-size: 22px;
+				text-transform: uppercase;
+				opacity: .75;
+
+				@media (max-width: 1800px){
+					font-size: 20px;
+				}
+				@media (max-width: 1400px){
+					font-size: 18px;
+				}
+				@media (max-width: 767px){
+					font-size: 15px;
+				}
+
+				&:before{
+				    content: "";
+				    display: block;
+				    width: 100px;
+				    height: 100px;
+				    background: url(../img/icons/icon-search-fail.svg) no-repeat 50%;
+				    background-size: 100% auto;
+				    opacity: 0.3;
+				    margin: 0 auto 30px;
+
+					@media (max-width: 1400px){
+					    width:  85px;
+					    height: 85px;
+					    margin-bottom: 20px;
+					}
+					@media (max-width: 767px){
+						width: 75px;
+						height: 75px;
+					}
+				}
+			}
+		}
+
 		@media (max-width: 767px){
 			max-width: 270px;
 			padding: 0;
@@ -518,24 +572,29 @@
 			    }
 			}
 
-			&:after{
-				content: '';
-				display: block;
-				padding-top: 142.86%;
-			}
-
 			img{
 				display: block;
 				border-radius: 7px;
-				max-height: 329px;
-				object-fit: cover;
-				width: 100%;
-				position: absolute;
-				top: 0;
-				max-height: 100%;
 			}
 		}
 		@media (min-width: 767px){
+			.img{
+
+				&:after{
+					content: '';
+					display: block;
+					padding-top: 142.86%;
+					position: static;
+				}
+				img{
+					max-height: 329px;
+					object-fit: cover;
+					width: 100%;
+					position: absolute;
+					top: 0;
+					max-height: 100%;
+				}
+			}
 			.img:hover + .stamp {
 				animation-name: bounceIn;
 			  animation-duration: 300ms;
@@ -571,9 +630,12 @@
 		    width: 100%;
 		    transition: all .35s;
 		    border-radius: 0 0 5px 5px;
+		    z-index: 1;
+
 		    > * {
 		    	max-width: 100%;
 		    }
+
 			.duration-language {
 				display: none;
 			}

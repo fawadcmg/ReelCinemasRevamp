@@ -6,6 +6,10 @@
 .c-main-footer{
 	background: #191919 url("../img/misc/grain-dark.jpg") repeat left top;
 	overflow: hidden;
+	margin-top: -1px;
+	&.aos-animate{
+		margin-top: 0;
+	}
 
 	img{
 		display: block;
@@ -202,7 +206,8 @@
 			max-width: 330px;
 
 			li{
-				display: inline-block;
+				display: flex !important;
+				align-items: center;
 				height: 36px;
 				vertical-align: middle;
 				padding: 0 10px;
