@@ -10743,6 +10743,19 @@ function setInView(el) {
 	}
 }
 
+function createMovieListMobileSlider() {
+	var movieListInfinite = false;
+	if ($('.js-movie-list > *').length > 3) {
+		movieListInfinite = true;
+	}
+	$('.js-movie-list').slick({
+		arrows: false,
+		focusOnSelect: true,
+		swipeToSlide: true,
+		infinite: movieListInfinite
+	});
+}
+
 function movieListSetHTML() {
 	var itemsPerRow = 1;
 	if (winWidth < 1024) {
@@ -10769,18 +10782,8 @@ function movieListSetHTML() {
 		if (winWidth >= 768) {
 			movieList();
 		} else {
-			$('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
-
-			var movieListInfinite = false;
-			if ($('.js-movie-list > *').length > 2) {
-				movieListInfinite = true;
-			}
-			$('.js-movie-list').slick({
-				arrows: true,
-				focusOnSelect: true,
-				swipeToSlide: true,
-				infinite: movieListInfinite
-			});
+			// $('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
+			createMovieListMobileSlider();
 		}
 	}
 

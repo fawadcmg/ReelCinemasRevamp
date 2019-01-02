@@ -2093,7 +2093,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 
 	if(winWidth < 768){
 
-    	$('.js-play-movies-listing').slick();
+		createMovieListMobileSlider();
 
     }else{
 
