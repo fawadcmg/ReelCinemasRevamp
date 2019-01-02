@@ -10270,6 +10270,23 @@ function initSlick() {
 			}
 		}]
 	});
+	$('.js-offer-carousel-1').slick({
+		slidesToShow: 5,
+		arrows: false,
+		responsive: [{
+			breakpoint: 1023,
+			settings: {
+				focusOnSelect: true,
+				slidesToShow: 3
+			}
+		}, {
+			breakpoint: 768,
+			settings: {
+				focusOnSelect: true,
+				slidesToShow: 1
+			}
+		}]
+	});
 
 	// Main Carousel
 	$('.js-main-carousel').slick({
@@ -11192,7 +11209,7 @@ function refreshAOS(aosFunc) {
 		if (aosFunc == 'init') {
 			AOS.init({
 				once: true,
-				offset: 10
+				offset: -10
 			});
 		}
 		if (aosFunc == 'refresh') {
