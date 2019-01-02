@@ -1273,7 +1273,9 @@ function openPopup(target, videoLink) {
 	if(videoLink){
 		if(isIE == false){
 			var thisId = $(target).find('[data-video-instance]').attr('data-video-instance');
-			players[thisId].destroy();
+			if(players[thisId]){
+				players[thisId].destroy();
+			}
 			$(target).find('.has--plyr').removeClass('has--plyr');
 		}
 
@@ -1367,9 +1369,11 @@ function jsVideo() {
 		$('.js-video:not(.has--plyr)').each(function(i) {
 			$(this).addClass('has--plyr');
 			var thisParent = $(this).parent();
-			players[playersIndex] = new Plyr(this, {
-				playsinline: true,
-			});
+			if(players[playersIndex]){
+				players[playersIndex] = new Plyr(this, {
+					playsinline: true,
+				});
+			}
 			thisParent.find('.plyr').attr('data-video-instance', playersIndex);
 			playersIndex++;
 		});
