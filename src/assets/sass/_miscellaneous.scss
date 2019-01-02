@@ -173,3 +173,47 @@
 		}
 	}
 }
+.slick-dots-sty-1{
+	.slick-dots{
+		li{
+			display: inline-block;
+			+ li{
+				margin-left: 10px;
+			}
+		}
+		button{
+			display: block;
+			width: 13px;
+			height: 13px;
+			font-size: 0;
+			color: transparent;
+			box-shadow: none;
+			border-radius: 999px;
+			border: 1px solid #fff;
+			background: transparent;
+			transition: background .35s;
+			cursor: pointer;
+			padding: 0;
+		}
+
+		.slick-active{
+			button{
+				background: #fff;
+			}
+		}
+	}
+}
+.slick-dots-sty--black{
+	.slick-dots{
+		li{
+		}
+		button{
+			border-color: #000;
+		}
+		.slick-active{
+			button{
+				background: #000;
+			}
+		}
+	}
+}

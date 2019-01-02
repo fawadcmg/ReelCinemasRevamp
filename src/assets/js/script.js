@@ -10304,6 +10304,11 @@ function initSlick() {
 		arrows: true
 	});
 
+	$('.js-tile-inner-carousel').slick({
+		dots: true,
+		arrows: false
+	});
+
 	// EXP Carousel
 	$('.js-exp-carousel').slick({
 		arrows: false,
