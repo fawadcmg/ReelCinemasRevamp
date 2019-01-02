@@ -2091,16 +2091,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 		}
 	}
 
-	if(winWidth < 768){
-
-		createMovieListMobileSlider();
-
-    }else{
-
-    	movieListSetHTML();
-		movieList();
-
-    }
+	
 
 	// console.log(playMoviesListing);
 
@@ -2109,7 +2100,14 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 	if(movieItems.length == 0){
 		playMoviesListing.addClass('empty--record');
 		playMoviesListing.html("<p>"+noRecordMessage+"</p>"); 
-	}	
+	}else{
+		if(winWidth < 768){
+			createMovieListMobileSlider();
+	    }else{
+	    	movieListSetHTML();
+			movieList();
+	    }
+	}
 
 	movieItems = [];
 	tempArray = [];
