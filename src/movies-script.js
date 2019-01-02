@@ -58,6 +58,8 @@ if($('.home-page').length > 0 ){
 }else if($('.showtime-tile-page').length > 0){
 	initPageModules();
 	currentPageName = 'showtime tile';
+}else if ($('.experience-inner-page').length > 0){
+	currentPageName = 'experience inner';
 }
 
 function loadHomePageModules(){	
@@ -93,24 +95,28 @@ function loadShowtimeTileModules(){
 
 $(document).ready(function () {
 	
-	/*if(currentPageName == 'movie detail' 
+	if(currentPageName == 'movie detail' 
 		|| currentPageName == 'showtime grid'
 		|| currentPageName == 'showtime tile'){
 		setTimeout(function() {			
-			$(".slick-current > div > .js-movieDateFilter").trigger('click');			
+			$(".slick-current > div > .js-movieDateFilter").trigger('click');
 		    $(".slick-current > div > .js-movieDateFilter > dboxelement").addClass('active');
 		}, 1000);
-	}*/
+	}
 	
 	if(currentPageName == 'home'){
 		$('.list-wrap-page').hide();
-		moviePagination(1,'now');
-		moviePagination(1,'coming');		
 	}else if(currentPageName == 'showtime grid'){
-		$('.js-play-movies-listing .list-wrap-page').hide();
 		moviePagination(1,'now');
 		$('.list-wrap-page').hide();
+	}else if(currentPageName == 'experience inner'){
+		loadPopularMovies();
+	}else if(currentPageName == 'movie detail' || currentPageName == 'showtime tile'){
+		setTimeout(function(){
+			moviePagination(1,'now');
+		},500);
 	}
+
 	
 	scrollCustomSelect();
 	refreshAOS('refresh');
@@ -944,6 +950,10 @@ function loadMovieGridBlocks(argMovie){
 	playMoviesListing.removeClass('is--loading');	
 	movieListSetHTML();
 	movieList();
+	refreshAOS('refresh');	
+	
+	// $('.js-play-movies-listing > *').hide();
+	moviePagination(1, 'now');
 }
 
 function initComingMovieGrid(){
@@ -1101,6 +1111,9 @@ function loadComingMovieGridBlocks(){
 	$('.is--loading').removeClass('is--loading');	
 	movieListSetHTML();
 	movieList();
+		
+	moviePagination(1, 'coming');
+	
 }
 
 function initMovieDates(argMovieName){
@@ -1226,7 +1239,11 @@ function initMovieDates(argMovieName){
 			  	]
 			});
 
-			$('.js-movieDateFilter').click(function () {	
+			$('.js-movieDateFilter').click(function () {
+
+				$('.c-movie-filters input[type="checkbox"]').prop('checked', false);
+
+				movieTilesListingArray = [];	
 				$('.list-main-action a').attr('attr-current-page',1);
 				$('.js-loadCinamaListing').empty();
 				var movieDateFilter = $(this).attr('attr-movie-date');
@@ -1241,8 +1258,7 @@ function initMovieDates(argMovieName){
 					}
 				}else if (currentPageName == 'showtime grid'){			
 					initMovieSessions(searchDateValue);				
-				}
-				$('.js-loadCinamaListing .tileview-movies-list').hide();
+				}				
 				moviePagination(1, 'now');
 			});	
 		}else{
@@ -1466,8 +1482,6 @@ function loadMovieDetail(argMovieName){
 		    console.log("Movies detail failed");
 		});
 	}
-  	
-	
 }
 
 function initMovieSessions(){
@@ -1542,7 +1556,7 @@ function initMovieListing(argMovieName){
   	tempCinemaListing = movieCinamaListing;
   	movieCount = 1;
   	pageNumber=0;
-  	movieTilesListingArray = [];  	
+  	 	
 
   	for(counter=0; counter< tempCinemaListing.length; counter++){				
   		tempValue1 = tempCinemaListing[counter];
@@ -1673,13 +1687,13 @@ function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExp
 
 		argMovieName = findAndReplace(argMovieName," ", "-");
 
-		movieExperienceClass = movieExperienceClass.replace("dine-in", "dine");
-		movieExperienceClass = movieExperienceClass.replace("family-dine-in", "dine");
+		movieExperienceClass = movieExperienceClass.replace("dine", "dine-in");
+		movieExperienceClass = movieExperienceClass.replace("family-dine-in", "dine-in");
 
 		itemClass = "";
 		showtimeClass = unique(showtimeClass);
 		for(counter=0; counter < showtimeClass.length; counter++){
-			itemClass += " "+argMovieName+'-'+movieCinemaClass+'-'+movieExperienceClass+"-"+showtimeClass[counter];
+			itemClass += " "+argMovieName+'-'+movieCinemaClass+'-'+movieExperienceClass+"-"+showtimeClass[counter]+"-"+showtimeClass[counter];
 		}
 
 		showtimeClass = [];
@@ -1710,8 +1724,15 @@ function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExp
 	    	$('.js-loadCinamaListing').append(result);
 	    	movieCount++;
 	    }
+	    // console.log(movieTilesListingArray.length);
 	}
 	$('.is--loading').removeClass('is--loading');
+	
+	setTimeout(function() {			
+		refreshAOS('refresh');
+		moviePagination(1, 'coming');
+	}, 1000);
+
 }
 
 function loadPopularMovies(){
@@ -1846,12 +1867,13 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 	var movieItems = [], tempArray = [], tempMovieArrayList = [], playMoviesListing;	
 	var movieStatus=0, cinemaStatus=0, experienceStatus=0, genereStatus=0, showtimeStatus=0;
 
+	/*	
 	console.log(argMoviesIDs);
 	console.log(argCinemaIDs);
 	console.log(argExperienceIDs);
 	console.log(argGenreIDs);
 	console.log(argShowTimeIDs);
-	console.log(argSourceObj);
+	console.log(argSourceObj);	*/
 
 	if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){			
 		tempMovieArrayList = movieTilesListingArray;
@@ -2046,6 +2068,10 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 	movieListSetHTML();
 	movieList();
 
+	
+
+	
+
 	playMoviesListing.removeClass('is--loading');
 	playMoviesListing.removeClass('empty--record');
 	if(movieItems.length == 0){
@@ -2061,56 +2087,62 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 
 function moviePagination(argCurrentPageNumber, argSourceObj){	
 
-	var pageNumber = parseInt(argCurrentPageNumber), targetObj, nextItem;
-
+	var pageNumber = parseInt(argCurrentPageNumber), targetObj, nextItem, showItems;
 	targetObj = $('.js-load-play-movies-listing');
+
+	nextItem = (pageNumber*3);
+	showItems = parseInt(pageNumber*3);//6
+
+	// $('.js-play-movies-listing .list-wrap-page').hide();
+	if(pageNumber === 1){
+		$('.js-play-movies-listing .list-wrap-page').hide();
+		$('.js-play-movies-listing .list-wrap-page').slice(0,3).show();
+		$('.tileview-movies-list').hide();
+		$('.tileview-movies-list').slice(0,3).show();
+		$('.js-coming-movies-listing .list-wrap-page').hide();
+		$('.js-coming-movies-listing .list-wrap-page').slice(0,3).show();
+	}
 		
 	if(currentPageName == 'home'){
-
-		nextItem = (pageNumber*3)+1;
+	
 		if(argSourceObj == 'now'){
-
-			$('.js-play-movies-listing .list-wrap-page:nth-child(-n+'+(pageNumber*6)+')').show();
-			if($('.js-play-movies-listing .list-wrap-page:nth-child('+nextItem+')').length == 0){
+						
+			$('.js-play-movies-listing .list-wrap-page').slice(0,showItems).show();			
+			if($('.js-play-movies-listing .list-wrap-page').eq(nextItem).length == 0){
 		 		$(targetObj).hide();
 		 	}else{
 		 		$(targetObj).show();
 		 	}
-
 		}else if(argSourceObj == 'coming'){
-
 			targetObj = $('.js-load-coming-movies-listing');
-			$('.js-coming-movies-listing .list-wrap-page:nth-child(-n+'+(pageNumber*6)+')').show();
-			if($('.js-coming-movies-listing .list-wrap-page:nth-child('+nextItem+')').length == 0){
+			$('.js-coming-movies-listing .list-wrap-page').slice(0,showItems).show();
+			if($('.js-coming-movies-listing .list-wrap-page').eq(nextItem).length == 0){
 		 		$(targetObj).hide();
 		 	}else{
 		 		$(targetObj).show();
 		 	}
-
 		}
-
-	}else if(currentPageName == 'showtime grid' ){		
-		
-		nextItem = (pageNumber*2)+1;
-		$('.c-movies-list .list-wrap-page:nth-child(-n+'+(pageNumber)+')').show();
-		if($('.c-movies-list .list-wrap:nth-child('+nextItem+')').length == 0){
+	}else if(currentPageName == 'showtime grid' ){	
+			
+		$('.c-movies-list .list-wrap-page').slice(0,showItems).show();
+		if($('.c-movies-list .list-wrap').eq(nextItem).length == 0){
 	 		$(targetObj).hide();
 	 	}else{
 	 		$(targetObj).show();
-	 	}
+	 	}	
 
 	}else if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){		
-
-		nextItem = (pageNumber*3)+1;
+		
 		targetObj = $('.js-load-movie-listing');
-		$('.tileview-movies-list:nth-child(-n+'+(pageNumber*3)+')').show();
-		if($('.tileview-movies-list:nth-child('+nextItem+')').length == 0){
+		$('.tileview-movies-list').slice(0,showItems).show();
+		if($('.tileview-movies-list').eq(nextItem).length == 0){
 	 		$(targetObj).hide();
 	 	}else{
 	 		$(targetObj).show();
 	 	}
 	}
- 	
+
+	console.log(nextItem);
  	pageNumber++;
  	$(targetObj).attr('attr-current-page',pageNumber);
 }
