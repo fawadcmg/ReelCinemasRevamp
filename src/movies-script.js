@@ -929,7 +929,7 @@ function loadMovieGridBlocks(argMovie){
 			<div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[8]+'</span></div>\
 			<div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div></div>\
 			<div class="detail"><div class="detail-inner-wrap">'+tempEntry[11]+' | '+tempEntry[8]+'</div></div></div>\
-		<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[6]+' class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div>\
+		<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[6]+' class="c-btn-white btn--txt-black btn--play btn--sm js-popup-link" tabindex="0">Trailer</a></div></div>\
 	<section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>\
 		<div class="text"> <div class="title-wrap"> <h1 class="title">'+tempEntry[4]+'</h1> <div class="stamp">'+tempEntry[9]+'</div></div>\
 			<div class="info genere"><span>'+tempEntry[11]+'</span></div>\
@@ -952,6 +952,7 @@ function loadMovieGridBlocks(argMovie){
 	movieListSetHTML();
 	movieList();
 	refreshAOS('refresh');	
+	bindPopupEve()
 	
 	// $('.js-play-movies-listing > *').hide();
 	moviePagination(1, 'now');
@@ -1094,7 +1095,7 @@ function loadComingMovieGridBlocks(){
 			<div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
 			<div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div></div>\
 			<div class="detail"><div class="detail-inner-wrap">'+tempEntry[10]+' | '+tempEntry[7]+'</div></div></div>\
-		<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[5]+' class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div>\
+		<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[5]+' class="c-btn-white btn--txt-black btn--play btn--sm js-popup-link" tabindex="0">Trailer</a></div></div>\
 	<section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>\
 		<div class="text"> <div class="title-wrap"> <h1 class="title">'+tempEntry[3]+'</h1> <div class="stamp">'+tempEntry[8]+'</div></div>\
 			<div class="info genere"><span>'+tempEntry[10]+'</span></div>\
@@ -1114,6 +1115,7 @@ function loadComingMovieGridBlocks(){
 	movieList();
 		
 	moviePagination(1, 'coming');
+	bindPopupEve();
 	
 }
 
@@ -1176,9 +1178,9 @@ function initMovieDates(argMovieName){
 
 					movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
 			                  <div class="dboxelement" >\
-			                     <div class="month">'+tempEntry[2]+'</div>\
+			                     <div class="month">'+tempEntry[2].toUpperCase()+'</div>\
 			                     <div class="date">'+tempEntry[1]+'</div>\
-			                     <div class="day">'+tempEntry[3]+'</div>\
+			                     <div class="day">'+tempEntry[3].toUpperCase()+'</div>\
 			                  </div>\
 			               </div>';
 			        
@@ -1199,9 +1201,9 @@ function initMovieDates(argMovieName){
 
 					movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
 			                  <div class="dboxelement" >\
-			                     <div class="month">'+tempEntry[2]+'</div>\
+			                     <div class="month">'+tempEntry[2].toUpperCase()+'</div>\
 			                     <div class="date">'+tempEntry[1]+'</div>\
-			                     <div class="day">'+tempEntry[3]+'</div>\
+			                     <div class="day">'+tempEntry[3].toUpperCase()+'</div>\
 			                  </div>\
 			               </div>';
 			        
@@ -1876,17 +1878,28 @@ function loadPopularMovies(){
 }
 
 function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs, argShowTimeIDs, argSourceObj){
+
+
+	/*if($('#js-movie-list').hasClass('slick-initialized')){
+        $('.js-play-movies-listing').slick('unslick');
+
+    }*/
+
+    if(winWidth < 768){
+    	$('.js-play-movies-listing').slick('unslick');
+    }
 	
+
 	var movieItems = [], tempArray = [], tempMovieArrayList = [], playMoviesListing;	
 	var movieStatus=0, cinemaStatus=0, experienceStatus=0, genereStatus=0, showtimeStatus=0;
 
-	/*	
+		
 	console.log(argMoviesIDs);
 	console.log(argCinemaIDs);
 	console.log(argExperienceIDs);
 	console.log(argGenreIDs);
 	console.log(argShowTimeIDs);
-	console.log(argSourceObj);	*/
+	console.log(argSourceObj);	
 
 	if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){			
 		tempMovieArrayList = movieTilesListingArray;
@@ -2078,12 +2091,18 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 		}
 	}
 
-	movieListSetHTML();
-	movieList();
+	if(winWidth < 768){
 
-	
+    	$('.js-play-movies-listing').slick();
 
-	
+    }else{
+
+    	movieListSetHTML();
+		movieList();
+
+    }
+
+	// console.log(playMoviesListing);
 
 	playMoviesListing.removeClass('is--loading');
 	playMoviesListing.removeClass('empty--record');
