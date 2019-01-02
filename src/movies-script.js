@@ -485,6 +485,7 @@ function loadExperiencesLogos(){
 function dropdownSelectAll(argTargetObj, argFilterName, argTempMovieArray, argTempCinemaArray, argTempExperienceArray, argTempGenreArray , argTempShowtimeArray, argMovieType ){
 	var filterObject = [], argMovieType = 'now';
 
+	/*
 	console.log(argTargetObj);
 	console.log(argFilterName);
 	console.log(argTempMovieArray);
@@ -492,7 +493,7 @@ function dropdownSelectAll(argTargetObj, argFilterName, argTempMovieArray, argTe
 	console.log(argTempExperienceArray);
 	console.log(argTempGenreArray);
 	console.log(argTempShowtimeArray);
-	console.log(argMovieType);
+	console.log(argMovieType);*/
 
 	if(argMovieType == 'now'){
 		if(argFilterName == 'movieFilter'){
@@ -913,7 +914,7 @@ function loadMovieGridBlocks(argMovie){
 			}
 		}
 
-	console.log(initMovieExperienceCinema.length);
+	// console.log(initMovieExperienceCinema.length);
 
 	bookNowClass = "";
 	if(tempEntry[1] == 'coming'){
@@ -1243,7 +1244,17 @@ function initMovieDates(argMovieName){
 
 				$('.c-movie-filters input[type="checkbox"]').prop('checked', false);
 
-				movieTilesListingArray = [];	
+				movieTilesListingArray = [];
+				moviewFilter=[];
+				cinemaFilter=[];
+				experienceFilter=[];
+				genreFilter=[];
+				showTimeFilter=[];
+				comingMovieFilter=[];
+				comingCinemaFilter=[];
+				comingExperienceFilter=[];
+				comingGenreFilter=[];
+				showTimeFilter=[];	
 				$('.list-main-action a').attr('attr-current-page',1);
 				$('.js-loadCinamaListing').empty();
 				var movieDateFilter = $(this).attr('attr-movie-date');
@@ -1564,6 +1575,11 @@ function initMovieListing(argMovieName){
   			loadMovieListing(argMovieName, tempCinemaListing[counter], searchDateValue, experienceMovieListing[innercounter]);
   		}
 	}
+
+	setTimeout(function() {			
+		refreshAOS('refresh');
+		moviePagination(1, 'coming');
+	}, 1000);
 }
 
 function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExprience){
@@ -1728,10 +1744,7 @@ function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExp
 	}
 	$('.is--loading').removeClass('is--loading');
 	
-	setTimeout(function() {			
-		refreshAOS('refresh');
-		moviePagination(1, 'coming');
-	}, 1000);
+	
 
 }
 
@@ -1936,7 +1949,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 							if(movieItems[movieCounter].indexOf(findItem) > -1  ){
 								tempArray.push(movieItems[movieCounter]);						
 							}
-							console.log(findItem, movieItems[movieCounter].indexOf(findItem));
+							// console.log(findItem, movieItems[movieCounter].indexOf(findItem));
 						}						
 					}
 				}		
@@ -2142,7 +2155,7 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 	 	}
 	}
 
-	console.log(nextItem);
+	// console.log(nextItem);
  	pageNumber++;
  	$(targetObj).attr('attr-current-page',pageNumber);
 }
