@@ -178,8 +178,8 @@
 		.c-menu-btn{
 			padding-top:    25px;
 			padding-bottom: 25px;
-			padding-right: 15px;
-			padding-left: 15px;
+			padding-right: 10px;
+			padding-left:  10px;
 		}
 
 		.not-at-top &{
@@ -195,7 +195,7 @@
 				width: 90px;
 			}
 			.c-menu-btn{
-				padding: 20px 15px;
+				padding: 20px 10px;
 			}
 		}
 	}
@@ -788,8 +788,9 @@
     display: block;
     position: fixed;
     top: 15px;
-    left: 20px;
+    left: 40px;
     z-index: 1011;
+
 	@media (max-width: 767px){
 		width: 110px;
 		top: 9px;
