@@ -171,6 +171,7 @@ function loadCinemasDropdown(){
 		cinemasListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
 
 		$('.js-cinemaItem').click(function () {
+
 			var self = this;
 			setTimeout(function () {
 				var cinemaNames = $(self).val();
@@ -1863,6 +1864,13 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 	var movieItems = [], tempArray = [], tempMovieArrayList = [], playMoviesListing;	
 	var movieStatus=0, cinemaStatus=0, experienceStatus=0, genereStatus=0, showtimeStatus=0;
 
+	console.log(argMoviesIDs);
+	console.log(argCinemaIDs)
+	console.log(argExperienceIDs);
+	console.log(argGenreIDs);
+	console.log(argShowTimeIDs);
+	console.log(argSourceObj);
+
 	if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){			
 		tempMovieArrayList = movieTilesListingArray;
 		playMoviesListing = $('.js-loadCinamaListing');			
@@ -1923,8 +1931,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 							var findItem = argMoviesIDs[movieInnerCounter]+"-"+argCinemaIDs[cinemaCounter]+"-"+argExperienceIDs[experienceCounter];
 							if(movieItems[movieCounter].indexOf(findItem) > -1  ){
 								tempArray.push(movieItems[movieCounter]);						
-							}
-							// console.log(findItem, movieItems[movieCounter].indexOf(findItem));
+							}							
 						}						
 					}
 				}		
@@ -1947,7 +1954,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 				tempArray = [];					
 				for(counter=0; counter < argMoviesIDs.length; counter++){				
 					for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-						var findItem = argMoviesIDs[counter];						
+						var findItem = argMoviesIDs[counter]+"-";						
 						if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 							tempArray.push(movieItems[innerCounter]);
 						}	
@@ -1961,7 +1968,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 				tempArray = [];		
 				for(counter=0; counter < argExperienceIDs.length; counter++){				
 					for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-						var findItem = argExperienceIDs[counter];						
+						var findItem = argExperienceIDs[counter]+"-";						
 						if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 							tempArray.push(movieItems[innerCounter]);						
 						}	
