@@ -900,7 +900,7 @@ function loadMovieGridBlocks(argMovie){
 					movieCinemaExperienceClass += initMovieExperienceCinema[innerCounter]+"-genre-"+tempMovieGenreArray[genreCount].trim()+" ";
 				}				
 			}
-		}	
+		}
 
 	bookNowClass = "";
 	if(tempEntry[1] == 'coming'){
