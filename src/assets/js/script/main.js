@@ -106,11 +106,11 @@ $(document).keyup(function(e) {
 });
 
 //CLick on body
-$(document).on('click touchstart', function (e) {
+// $(document).on('click touchstart', function (e) {
 	/*if ($(e.target).closest('.js-langSelector').length === 0) {
 		$('.js-langSelector').find('ul').removeClass('active');
 	}*/
-});
+// });
 
 function customScrollInit() {
 	if(winWidth > 1024){
@@ -484,51 +484,39 @@ function initSelect2() {
 
 
 function movieList() {
-	$('.js-movie-list .movie-item .item-wrap').click(function (e) {
-		e.preventDefault();
-		
-		if($(e.target).closest('.js-close-movie-list-detail').length || movieListAnimating){
-			return;
-		}
-
-		movieListAnimating = true;
-
-		var _self = this;
-		$(this).closest('.js-movie-list').removeClass('panel--closed');
-		$(this).closest('.js-movie-list').addClass('has--open-panel');
-		if(!$(this).closest('.js-movie-list').hasClass('js-movie-list--not-open')){
-
-			// Check if some other movie is already open and if its on another row
-			// then make sure we keep scroll jerk off the bay
-			if(!$(this).closest('.list-wrap').next().find('.item-details').get(0) && $(this).closest('.js-movie-list').find('.movie-details .item-details').get(0)){
-
-				var openOnOtherRowDetail = $(this).closest('.js-movie-list').find('.movie-details .item-details');
-
-				// START -  Make sure there is enough space
-				/*if($(this).closest('.js-movie-list').hasClass('js-movie-list--sty-1')){
-					openOnOtherRowDetail.parent().css('display', 'block');
-					var thisHeight = openOnOtherRowDetail.height();
-					openOnOtherRowDetail.parent().css('display', 'none');
-
-					var innerTab = $(this).closest('.is-tab').height() + $(this).closest('.is-tab');
-
-					var botValue = thisHeight + openOnOtherRowDetail.parent().offset().top;
-				}*/
-				// END
-
-				openOnOtherRowDetail.parent().slideUp();
-
-				setTimeout(function () {
-					openOnOtherRowDetail.closest('.movie-details').prev().find('.movie-item').removeClass('is--active');
-					openOnOtherRowDetail.remove();
-
-					slideDownMovieDetails(_self);
-				}, 400);
-			}else{
-				slideDownMovieDetails(_self);
+	if(winWidth >= 768){
+		$('.js-movie-list .movie-item .item-wrap').click(function (e) {
+			e.preventDefault();
+			
+			if($(e.target).closest('.js-close-movie-list-detail').length || movieListAnimating){
+				return;
 			}
-		}
-	});
+
+			movieListAnimating = true;
+
+			var _self = this;
+			$(this).closest('.js-movie-list').removeClass('panel--closed');
+			$(this).closest('.js-movie-list').addClass('has--open-panel');
+			if(!$(this).closest('.js-movie-list').hasClass('js-movie-list--not-open')){
+
+				if(!$(this).closest('.list-wrap').next().find('.item-details').get(0) && $(this).closest('.js-movie-list').find('.movie-details .item-details').get(0)){
+
+					var openOnOtherRowDetail = $(this).closest('.js-movie-list').find('.movie-details .item-details');
+
+					openOnOtherRowDetail.parent().slideUp();
+
+					setTimeout(function () {
+						openOnOtherRowDetail.closest('.movie-details').prev().find('.movie-item').removeClass('is--active');
+						openOnOtherRowDetail.remove();
+
+						slideDownMovieDetails(_self);
+					}, 400);
+				}else{
+					slideDownMovieDetails(_self);
+				}
+			}
+		});
+	}
 }
 
 function slideDownMovieDetails(thisSelf) {
@@ -813,7 +801,6 @@ function sideNav() {
 
 function selectAllEvent() {
 	$('.js-select-all:not(.has-select-all-event)').click(function () {
-		$(this).addClass('has-select-all-event');
 		if($(this).find('input').is(":checked")){
 			$(this).closest('.js-custom-select').find('input[type="checkbox"]').prop( "checked", false );
 		}else{
@@ -821,6 +808,7 @@ function selectAllEvent() {
 			
 		}
 	});
+	$('.js-select-all').addClass('has-select-all-event');
 }
 
 function customSelectBox() {
@@ -1273,7 +1261,9 @@ function openPopup(target, videoLink) {
 	if(videoLink){
 		if(isIE == false){
 			var thisId = $(target).find('[data-video-instance]').attr('data-video-instance');
-			players[thisId].destroy();
+			if(players[thisId]){
+				players[thisId].destroy();
+			}
 			$(target).find('.has--plyr').removeClass('has--plyr');
 		}
 
@@ -1367,9 +1357,11 @@ function jsVideo() {
 		$('.js-video:not(.has--plyr)').each(function(i) {
 			$(this).addClass('has--plyr');
 			var thisParent = $(this).parent();
-			players[playersIndex] = new Plyr(this, {
-				playsinline: true,
-			});
+			if(players[playersIndex]){
+				players[playersIndex] = new Plyr(this, {
+					playsinline: true,
+				});
+			}
 			thisParent.find('.plyr').attr('data-video-instance', playersIndex);
 			playersIndex++;
 		});

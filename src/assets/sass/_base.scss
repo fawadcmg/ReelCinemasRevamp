@@ -262,6 +262,7 @@ label{
 	position: relative; 
 	border: 1px solid #909090;
 	position: relative;
+	overflow: hidden;
 
 	&:after{
 		content: " ";
@@ -311,12 +312,12 @@ label{
 	}
 }
 .c-btn-glow{
-	background: #552879; /* Old browsers */
-	background: -moz-linear-gradient(-45deg, #552879 0%, #311758 25%, #170a3f 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(-45deg, #552879 0%,#311758 25%,#170a3f 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(135deg, #552879 0%,#311758 25%,#170a3f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552879', endColorstr='#170a3f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: #552879;
+	background: linear-gradient(135deg, #552879 0%,#311758 25%,#170a3f 100%);
 	transition: none;
+	overflow: hidden;
+	position: relative;
+	transform: translateZ(0);
 
 	&:after{
 		content: '';
@@ -344,12 +345,13 @@ label{
 		}
 	}
 	&:active{
-		box-shadow: 2.5px p0x 5px 0px rgba(0, 0, 0, 0.3), inset 0px -4px 9px 1px rgba(226, 190, 255, 0.15);
-		background: #521766;
+		/* box-shadow: 2.5px p0x 5px 0px rgba(0, 0, 0, 0.3), inset 0px -4px 9px 1px rgba(226, 190, 255, 0.15);
+		background: #521766; */
 		&:hover{
 			&:after{
-				display: none;
-				transition: none;
+				background: #170a3f;
+				/* display: none;
+				transition: none; */
 			}
 		}
 	}
@@ -373,10 +375,13 @@ label{
 		color: #000;
 		border: 1px solid #000;
 		transition: all .35s;
+		transform: translateZ(0);
+
 		&:after{
 			background: linear-gradient(135deg, #552879 0%,#311758 25%,#170a3f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 			-webkit-mix-blend-mode: unset;
 			mix-blend-mode: unset;
+			transform: translateZ(0);
 		}
 		&:hover{
 			color: #fff;
@@ -394,6 +399,8 @@ label{
 .c-btn-white{
 	background: rgba(255,255,255,0.15);
 	box-shadow: 2.457px 1.721px 5px 0px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	position: relative;
 
 	&:hover{
 		background: rgba(255,255,255,0.3);
@@ -815,6 +822,7 @@ label{
     -o-transition: all 0.35s ease-in-out;
     -ms-transition: all 0.35s ease-in-out;
     transition: all 0.35s ease-in-out;
+    overflow: hidden;
 }
 .c-btn-video + .c-btn-video {
     margin-top: 100px;
@@ -1164,6 +1172,8 @@ label{
 	background: rgba(248,249,249,0.60) url('../img/icons/play-black--thin.svg') no-repeat 56% center;
 	background-size: 35% auto;
 	border-radius: 999px;
+	overflow: hidden;
+	position: relative;
 
 	&:hover{
 		background-color: rgba(248,249,249,0.86);
