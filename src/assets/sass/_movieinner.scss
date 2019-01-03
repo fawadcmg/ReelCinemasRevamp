@@ -1,4 +1,4 @@
-.page-movie-inner{
+.page--movie-inner{
 	.movieheader {
 	    position: relative;
 	    min-height: 630px;
@@ -65,6 +65,7 @@
 			.movie-poster-detail{
 				float: left;
 				padding: 90px 0 0 0;
+				max-width: 62%;
 
 				@media (max-width: 767px){
 					padding: 0px 0 0 0;

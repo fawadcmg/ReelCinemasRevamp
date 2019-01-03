@@ -31,6 +31,7 @@
 		background: rgba(255,255,255,0);
 		transition: background .35s;
 		z-index: 1;
+		pointer-events: none;
 	}
 	&.panel--closed{
 		&:before{
