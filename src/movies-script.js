@@ -447,14 +447,17 @@ function loadMoviesDropdown(){
 }
 
 function loadMoviesComingDropdown(){	
-	var comingMoviesListing = $('.js-movies-listing-coming');	
+	var comingMoviesListing = $('.js-movies-listing-coming');
+	var genreListing = $('.js-coming-genre-listing');	
 	var itemValue, itemClass;	
 	var comingTempArray = [];
+	var tempGenreArray = [];
 	var tempEntry = [];	
 	var count=0;
 	var movieCounter = 0;
 	
 	comingMoviesListing.empty();
+	genreListing.empty();
 
 	$.getJSON('ComingSoon.json', function (data) {
 	
@@ -467,21 +470,37 @@ function loadMoviesComingDropdown(){
 			itemClass = itemClass.toLowerCase();
 			comingTempArray.push( [itemValue, itemClass] );
 
+
+			itemValue = item.Genre;
+			tempArrayValue = itemValue.split(',');			
+			
+			for(var tempIndex =0; tempIndex < tempArrayValue.length; tempIndex++){				
+				tempGenreArray.push( tempArrayValue[tempIndex].trim() );
+			}
+
 		});
 	}).done(function( data ) {  
 
+		tempGenreArray = unique(tempGenreArray);
+
 		comingMoviesListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-movies-coming"><label for="select-all-movies-coming"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
 		comingMoviesListing.append('<div class="scroll-area"></div>');
-		/*comingTempArray.sort(function(a, b){
-		    if(a[0] < b[0]) { return -1; }
-		    if(a[0] > b[0]) { return 1; }
-		    return 0;
-		});*/
 		for (arrayIndex = 0; arrayIndex < comingTempArray.length; arrayIndex++) {
 			tempEntry = comingTempArray[arrayIndex];				
-			comingMoviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem-coming" id="'+tempEntry[1]+"-1"+'"><label for="'+tempEntry[1]+"-1"+'">'+tempEntry[0]+'</label></div>');
+			comingMoviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem-coming" id="'+tempEntry[1]+"-coming"+'"><label for="'+tempEntry[1]+"-coming"+'">'+tempEntry[0]+'</label></div>');
 		}
 		comingMoviesListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
+
+
+		genreListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-genre-coming"><label for="select-all-genre-coming"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
+		genreListing.append('<div class="scroll-area"></div>');		
+		for (arrayIndex = 0; arrayIndex < tempGenreArray.length; arrayIndex++) {			
+			itemValue = tempGenreArray[arrayIndex];
+			itemClass =  findAndReplace(itemValue," ","-");			
+			itemClass = itemClass.toLowerCase();
+			genreListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+itemClass+'" class="js-genreItem-coming" id="'+itemClass+'-coming"><label for="'+itemClass+'-coming">'+itemValue+'</label></div>');
+		}
+		genreListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
 
 		$('.js-movieItem-coming').click(function () {
 			var self = this;
@@ -501,6 +520,26 @@ function loadMoviesComingDropdown(){
 		$('#select-all-movies-coming').click(function () {
 			var obj =$(this).parent().parent().find(".scroll-area .item");
 			dropdownSelectAll(obj, "movieFilter", comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
+		});
+
+		$('.js-genreItem-coming').click(function () {
+			var self = this;
+			setTimeout(function () {
+				var genreNames = $(self).val();
+				if($(self).prop('checked') == true){
+					comingGenreFilter[comingGenreFilter.length] = genreNames;
+				}else{				
+					comingGenreFilter.splice($.inArray(genreNames, comingGenreFilter),1);
+				}	
+
+				comingGenreFilter = startFromZero(comingGenreFilter);	
+				filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
+			}, 100);
+		});	
+
+		$('#select-all-genere-coming').click(function () {
+			var obj =$(this).parent().parent().find(".scroll-area .item");
+			dropdownSelectAll(obj, "genreFilter", comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
 		});
 		
 
@@ -2244,22 +2283,6 @@ $('.js-load-coming-movies-listing').click(function () {
 
 
 
-
-$('.js-genreItem-coming').click(function () {
-	var self = this;
-	setTimeout(function () {
-		var genreNames = $(self).val();
-		if($(self).prop('checked') == true){
-			comingGenreFilter[comingGenreFilter.length] = genreNames;
-		}else{				
-			comingGenreFilter.splice($.inArray(genreNames, comingGenreFilter),1);
-		}	
-
-		comingGenreFilter = startFromZero(comingGenreFilter);	
-		filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
-	}, 100);
-});	
-
 $('.js-showTime').click(function () {
 	var self = this;
 	setTimeout(function () {
@@ -2273,13 +2296,6 @@ $('.js-showTime').click(function () {
 		showTimeFilter = startFromZero(showTimeFilter);
 		filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 	}, 100);
-});
-
-
-
-$('#select-all-genere-coming').click(function () {
-	var obj =$(this).parent().parent().find(".scroll-area .item");
-	dropdownSelectAll(obj, "genreFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'coming');
 });
 
 
