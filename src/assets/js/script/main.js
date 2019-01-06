@@ -1124,6 +1124,19 @@ function detectIE() {
     return false;
 }
 
+var isChrome = false,
+	isSafari = false;
+var ua = navigator.userAgent.toLowerCase(); 
+if (ua.indexOf('safari') != -1) { 
+  if (ua.indexOf('chrome') > -1) {
+    isChrome = true;
+    $('html').addClass('is--chrome');
+  } else {
+    isSafari = true;
+    $('html').addClass('is--safari');
+  }
+}
+
 if(isIE){
     $('html').addClass('is--ie');
     $('html').addClass('is--ie-'+isIE);
