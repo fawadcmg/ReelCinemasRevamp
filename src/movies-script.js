@@ -94,6 +94,8 @@ function loadShowtimeTileModules(){
 	loadPopularMovies();
 }
 
+$('.js-custom-select').find('input[type="checkbox"]').prop( "checked", false );
+
 $(document).ready(function () {
 	
 	if(currentPageName == 'movie detail' 
@@ -239,47 +241,94 @@ function loadCinemasDropdown(){
 // Load Movie Listing
 function loadMoviesDropdown(){
 	var moviesListing = $('.js-movies-listing');
-	var comingMoviesListing = $('.js-movies-listing-coming');	
+	var comingMoviesListing = $('.js-movies-listing-coming');
+	var experienceListing = $('.js-experience-listing');
+	var genreListing = $('.js-genre-listing');
 	var itemValue, itemClass;
 	var tempArray = [];
+	var tempExpArray = [];
 	var comingTempArray = [];
 	var tempEntry = [];	
 	var count=0;
 	var movieCounter = 0;
+	var tempExpericeListing = [];
+	var tempArrayValue = [];
+	var tempGenreListing = [];
+	var tempGenreArray = [];
+
 
 	moviesListing.empty();
 	comingMoviesListing.empty();
+	experienceListing.empty();
+	genreListing.empty();
 
 	$.getJSON('MoviesSession.json', function (data) {
 	
 		$.each( data, function( i, item ) {  
 
+			tempArrayValue = [];
+
 			itemValue = item.MovieName;	
 			itemClass = itemValue;
-			itemClass = itemClass.replace(/\s+/g, "-");
+			// itemClass = itemClass.replace(/\s+/g, "-");
+			itemClass =  findAndReplace(itemClass," ","-");
 			itemClass = itemClass.replace(".", "-");
 			itemClass = itemClass.toLowerCase();
 			tempArray.push( [itemValue, itemClass] );
 			comingTempArray.push( [itemValue, itemClass] );
-			movieListingTempArray.push(itemValue);	
+			movieListingTempArray.push(itemValue);
+
+			itemValue = item.Experience;
+			tempArrayValue = itemValue.split(',');			
+			
+			for(var tempIndex =0; tempIndex < tempArrayValue.length; tempIndex++){				
+				tempExpArray.push( tempArrayValue[tempIndex] );
+			}
+
+			itemValue = item.Genre;
+			tempArrayValue = itemValue.split(',');			
+			
+			for(var tempIndex =0; tempIndex < tempArrayValue.length; tempIndex++){				
+				tempGenreArray.push( tempArrayValue[tempIndex].trim() );
+			}			
 			movieCounter++;
 			count++;
 
 		});
 	}).done(function( data ) {  
 
+		tempExpArray = unique(tempExpArray);
+		tempGenreArray = unique(tempGenreArray);		
+
 		moviesListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-movies"><label for="select-all-movies"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
-		moviesListing.append('<div class="scroll-area"></div>');
-		/*tempArray.sort(function(a, b){
-		    if(a[0] < b[0]) { return -1; }
-		    if(a[0] > b[0]) { return 1; }
-		    return 0;
-		});*/
+		moviesListing.append('<div class="scroll-area"></div>');		
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];				
 			moviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem" id="'+tempEntry[1]+'"><label for="'+tempEntry[1]+'">'+tempEntry[0]+'</label></div>');
 		}
 		moviesListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
+
+
+		experienceListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp"><label for="select-all-exp"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
+		experienceListing.append('<div class="scroll-area"></div>');		
+		for (arrayIndex = 0; arrayIndex < tempExpArray.length; arrayIndex++) {			
+			itemValue = tempExpArray[arrayIndex];
+			itemClass =  findAndReplace(itemValue," ","-");			
+			itemClass = itemClass.toLowerCase();
+			experienceListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+itemClass+'" class="js-experienceItem" id="'+itemClass+'"><label for="'+itemClass+'">'+itemValue+'</label></div>');
+		}
+		experienceListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
+
+		genreListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-genre"><label for="select-all-genre"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
+		genreListing.append('<div class="scroll-area"></div>');		
+		for (arrayIndex = 0; arrayIndex < tempGenreArray.length; arrayIndex++) {			
+			itemValue = tempGenreArray[arrayIndex];
+			itemClass =  findAndReplace(itemValue," ","-");			
+			itemClass = itemClass.toLowerCase();
+			genreListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+itemClass+'" class="js-genreItem" id="'+itemClass+'"><label for="'+itemClass+'">'+itemValue+'</label></div>');
+		}
+		genreListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
+
 
 		$('.js-movieItem').click(function () {
 			var self = this;
@@ -296,10 +345,54 @@ function loadMoviesDropdown(){
 			}, 100);
 		});
 
+		$('.js-experienceItem').click(function () {
+			var self = this;
+			setTimeout(function () {
+
+				var experienceNames = $(self).val();
+				if($(self).prop('checked') == true){
+					experienceFilter[experienceFilter.length] = experienceNames;
+				}else{				
+					experienceFilter.splice($.inArray(experienceNames, experienceFilter),1);
+				}
+				experienceFilter = startFromZero(experienceFilter);
+				filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
+
+				experienceNames = "";
+			}, 100);
+		});
+
+		$('.js-genreItem').click(function () {
+			var self = this;
+			setTimeout(function () {
+				var genreNames = $(self).val();
+				if($(self).prop('checked') == true){
+					genreFilter[genreFilter.length] = genreNames;
+				}else{				
+					genreFilter.splice($.inArray(genreNames, genreFilter),1);
+				}
+
+				genreFilter = startFromZero(genreFilter);
+				filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
+			}, 100);
+		});	
+
+		$('#select-all-genre').click(function () {
+			var obj =$(this).parent().parent().find(".scroll-area .item");
+			dropdownSelectAll(obj, "genreFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
+		});
+
+		$('#select-all-exp').click(function () {	
+			var obj =$(this).parent().parent().find(".scroll-area .item");
+			dropdownSelectAll(obj, "experienceFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
+		});
+
 		$('#select-all-movies').click(function () {
 			var obj =$(this).parent().parent().find(".scroll-area .item");
 			dropdownSelectAll(obj, "movieFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 		});
+
+
 
 		if( $('.home-page').length > 0 && 1 == 2){
 
@@ -506,14 +599,14 @@ function dropdownSelectAll(argTargetObj, argFilterName, argTempMovieArray, argTe
 	setTimeout(function () {
 		var filterObject = [];
 		
-		console.log(argTargetObj);
+		/*console.log(argTargetObj);
 		console.log(argFilterName);
 		console.log(argTempMovieArray);
 		console.log(argTempCinemaArray);
 		console.log(argTempExperienceArray);
 		console.log(argTempGenreArray);
 		console.log(argTempShowtimeArray);
-		console.log(argMovieType);
+		console.log(argMovieType);*/
 
 		if(argMovieType == 'now'){
 			if(argFilterName == 'movieFilter'){
@@ -530,7 +623,7 @@ function dropdownSelectAll(argTargetObj, argFilterName, argTempMovieArray, argTe
 				argTargetObj.each(function (i) {
 					if($(this).css('display') == 'block' 
 					 	&& $(this).find('.js-cinemaItem').prop('checked') == true ){
-						console.log($(this).find('.js-cinemaItem').val());
+						// console.log($(this).find('.js-cinemaItem').val());
 						filterObject.push(	$(this).find('.js-cinemaItem').val() );
 
 					 }		
@@ -615,12 +708,12 @@ function dropdownSelectAll(argTargetObj, argFilterName, argTempMovieArray, argTe
 				comingGenreFilter = filterObject;
 			}
 
-			console.log("Movie : ", comingMovieFilter);
+			/*console.log("Movie : ", comingMovieFilter);
 			console.log("Cinema : ",comingCinemaFilter);
 			console.log("Experience : ",comingExperienceFilter);
 			console.log("Genre : ",comingGenreFilter);
 			console.log("Showtime : ",showTimeFilter);
-			console.log("Filter Type ",argMovieType);
+			console.log("Filter Type ",argMovieType);*/
 			
 			filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, argMovieType);
 		}
@@ -655,6 +748,15 @@ function findAndReplace(string, target, replacement) {
  	return string; 
 }
 
+
+function SortByDate(a, b){
+   var amyDate = a.split("/");
+   var aNewDate=new Date(amyDate[1]+","+amyDate[0]+","+amyDate[2]).getTime();
+   var bmyDate = b.split("/");
+   var bNewDate=new Date(bmyDate[1]+","+bmyDate[0]+","+bmyDate[2]).getTime();
+   return ((aNewDate < bNewDate) ? -1 : ((aNewDate > bNewDate) ? 1 : 0));
+}
+
 function getShowTime(movieTimeValue){	
 	var hourValue, minuteValue, result;	
 
@@ -667,7 +769,7 @@ function getShowTime(movieTimeValue){
 		result = "movie-show-morning";
 	}else if(hourValue == 18 && parseInt(minuteValue[1]) == 0){
 		result = "movie-show-afternoon";
-	}else if(hourValue > 12 && hourValue <= 18){
+	}else if(hourValue > 12 && hourValue < 18){
 		result = "movie-show-afternoon";
 	}else{
 		result = "movie-show-evening";
@@ -1132,75 +1234,36 @@ function initMovieDates(argMovieName){
 			}
 
 			if(showMovie == 1){
-				var movieDateValue = new Date(movieDate);
-				tempArray.push(
-					[
-						movieDateValue.getFullYear(),
-						movieDateValue.getDate(),
-						monthName[movieDateValue.getMonth()],
-						weekName[movieDateValue.getDay()]
-					]
-				);
+				
+				tempArray.push(	movieDate );
 			}
 		});
 	  
 	}).done(function( data ) {	
 
+		tempArray = unique (tempArray);
+		tempArray.sort(SortByDate);
+
 		if(tempArray.length > 0){
 
 			var currentDate = new Date(), activeClass;
 			for(var counter=0;counter < tempArray.length; counter++){
-				tempEntry = tempArray[counter];
+				var movieDateValue = new Date(tempArray[counter]);
 
-				if(monthName[currentDate.getMonth()] == tempEntry[2]){
-					itemClass = tempEntry[1]+"-"+tempEntry[2]+"-"+tempEntry[3];
-
-					if(counter==0){
-						movieSearchDate = itemClass;
-						activeClass = 'active';
-					}
-
-					movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
+				itemClass = movieDateValue.getDate()+"-"+monthName[movieDateValue.getMonth()]+"-"+weekName[movieDateValue.getDay()];
+				movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
 			                  <div class="dboxelement" >\
-			                     <div class="month">'+tempEntry[2].toUpperCase()+'</div>\
-			                     <div class="date">'+tempEntry[1]+'</div>\
-			                     <div class="day">'+tempEntry[3].toUpperCase()+'</div>\
+			                     <div class="month">'+monthName[movieDateValue.getMonth()].toUpperCase()+'</div>\
+			                     <div class="date">'+movieDateValue.getDate()+'</div>\
+			                     <div class="day">'+weekName[movieDateValue.getDay()].toUpperCase()+'</div>\
 			                  </div>\
 			               </div>';
 			        
-			        tempMovieDateList.push(movieDates);
-				}			
+					tempMovieDateList.push(movieDates);		
 			}
-
-			for(var counter=0;counter < tempArray.length; counter++){
-				tempEntry = tempArray[counter];
-
-				if(currentDate.getMonth() != tempEntry[2]){
-					itemClass = tempEntry[1]+"-"+tempEntry[2]+"-"+tempEntry[3];
-
-					if(counter==0){
-						movieSearchDate = itemClass;
-						activeClass = 'active';
-					}
-
-					movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
-			                  <div class="dboxelement" >\
-			                     <div class="month">'+tempEntry[2].toUpperCase()+'</div>\
-			                     <div class="date">'+tempEntry[1]+'</div>\
-			                     <div class="day">'+tempEntry[3].toUpperCase()+'</div>\
-			                  </div>\
-			               </div>';
-			        
-			        tempMovieDateList.push(movieDates);
-				}			
-			}
-		
-			for(var counter=0;counter < 1; counter++){
-				tempEntry = tempMovieDateList[counter];
-				searchDateValue =tempEntry[1]+"-"+tempEntry[2]+"-"+tempEntry[3];			
-			}	
 
 			tempMovieDateList = unique(tempMovieDateList);
+
 			targetItem.html(tempMovieDateList);
 			targetItem.slick({
 				dots: false,
@@ -1226,8 +1289,6 @@ function initMovieDates(argMovieName){
 			  	]
 			});
 
-			
-
 			$('.js-movieDateFilter').click(function () {
 
 				$('.dboxelement').removeClass('active');
@@ -1237,17 +1298,31 @@ function initMovieDates(argMovieName){
 				var movieDateFilter = $(this).attr('attr-movie-date');
 				searchDateValue = movieDateFilter;
 				
-				if (currentPageName == 'movie detail'){
-					initMovieListing(searchMovieName);
+				if (currentPageName == 'movie detail'){					
+					$('.js-loadCinamaListing').hide();
+					$('.js-loadCinamaListing').empty();
+					setTimeout(function() {																	
+						initMovieListing(searchMovieName);
+					}, 5);
+					$('.js-loadCinamaListing').show();
+					
 				}else if (currentPageName == 'showtime tile'){				
-					for(counter=0; counter < movieListingTempArray.length; counter++ ){				
-						initMovieListing(movieListingTempArray[counter]);
-					}
+					$('.js-loadCinamaListing').hide();
+					$('.js-loadCinamaListing').empty();
+					setTimeout(function() {
+						for(counter=0; counter < movieListingTempArray.length; counter++ ){				
+							initMovieListing(movieListingTempArray[counter]);
+						}						
+					},5);
+					$('.js-loadCinamaListing').show();
 				}else if (currentPageName == 'showtime grid'){			
 					initMovieSessions(searchDateValue);				
 				}
 				
-				filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
+				setTimeout(function() {
+					filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
+				},50);
+				
 				moviePagination(1, 'now');
 			});	
 		}else{
@@ -1544,6 +1619,7 @@ function initMovieListing(argMovieName){
   	tempCinemaListing = movieCinamaListing;
   	movieCount = 1;
   	pageNumber=0;
+  	targetItem.empty();
   	 	
 
   	for(counter=0; counter< tempCinemaListing.length; counter++){				
@@ -1637,6 +1713,8 @@ function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExp
 			showTime += speratorLabel+movieTime;
 			counter++;
 		}
+
+
 	}
 				
 	if(showTime){
@@ -1864,16 +1942,16 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 	var movieItems = [], tempArray = [], tempMovieArrayList = [], playMoviesListing;	
 	var movieStatus=0, cinemaStatus=0, experienceStatus=0, genereStatus=0, showtimeStatus=0;
 
-	console.log(argMoviesIDs);
+	/*console.log(argMoviesIDs);
 	console.log(argCinemaIDs)
 	console.log(argExperienceIDs);
 	console.log(argGenreIDs);
 	console.log(argShowTimeIDs);
-	console.log(argSourceObj);
+	console.log(argSourceObj);*/
 
 	if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){			
 		tempMovieArrayList = movieTilesListingArray;
-		playMoviesListing = $('.js-loadCinamaListing');			
+		playMoviesListing = $('.js-loadCinamaListing');		
 	}else if(argSourceObj == 'now'){			
 		tempMovieArrayList = movieListingArray;
 		playMoviesListing = $('.js-play-movies-listing');		
@@ -2163,37 +2241,9 @@ $('.js-load-coming-movies-listing').click(function () {
 	moviePagination($(this).attr('attr-current-page'),'coming');
 });
 
-$('.js-experienceItem').click(function () {
-	var self = this;
-	setTimeout(function () {
 
-		var experienceNames = $(self).val();
-		if($(self).prop('checked') == true){
-			experienceFilter[experienceFilter.length] = experienceNames;
-		}else{				
-			experienceFilter.splice($.inArray(experienceNames, experienceFilter),1);
-		}
-		experienceFilter = startFromZero(experienceFilter);
-		filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 
-		experienceNames = "";
-	}, 100);
-});
 
-$('.js-genreItem').click(function () {
-	var self = this;
-	setTimeout(function () {
-		var genreNames = $(self).val();
-		if($(self).prop('checked') == true){
-			genreFilter[genreFilter.length] = genreNames;
-		}else{				
-			genreFilter.splice($.inArray(genreNames, genreFilter),1);
-		}
-
-		genreFilter = startFromZero(genreFilter);
-		filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
-	}, 100);
-});	
 
 $('.js-genreItem-coming').click(function () {
 	var self = this;
@@ -2225,20 +2275,14 @@ $('.js-showTime').click(function () {
 	}, 100);
 });
 
-$('#select-all-genere').click(function () {
-	var obj =$(this).parent().parent().find(".scroll-area .item");
-	dropdownSelectAll(obj, "genreFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
-});
+
 
 $('#select-all-genere-coming').click(function () {
 	var obj =$(this).parent().parent().find(".scroll-area .item");
 	dropdownSelectAll(obj, "genreFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'coming');
 });
 
-$('#select-all-exp').click(function () {	
-	var obj =$(this).parent().parent().find(".scroll-area .item");
-	dropdownSelectAll(obj, "experienceFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
-});
+
 
 $('#select-all-exp-coming').click(function () {
 	var obj =$(this).parent().parent().find(".scroll-area .item");
@@ -2249,4 +2293,26 @@ $('#select-all-showtime').click(function () {
 	var obj =$(this).parent().parent().find(".scroll-area .item");
 	dropdownSelectAll(obj, "showtimeFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
 });
-	
+
+
+function typedInFilterSearch(target){
+	if($(target).find('#select-all-showtime').get(0)){
+		showTimeFilter = [];
+	}else if($(target).find('#select-all-exp').get(0)){
+		experienceFilter = [];
+	}else if($(target).find('#select-all-movies').get(0)){
+		movieFilter = [];
+	}else if($(target).find('#select-all-locations').get(0)){
+		cinemaFilter= [];
+	}else if($(target).find('#select-all-genere').get(0)){
+		genreFilter = [];
+	}else if($(target).find('#select-all-movies-coming').get(0)){
+		comingMovieFilter = [];
+	}else if($(target).find('#select-all-locations-coming').get(0)){
+		comingCinemaFilter = [];
+	}else if($(target).find('#select-all-genere-coming').get(0)){
+		comingGenreFilter = [];
+	}
+	/*var obj = $(target).find(".scroll-area .item");
+	$(target).find('label[for="select-all-showtime"]')*/
+}
