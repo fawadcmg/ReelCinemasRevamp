@@ -40,7 +40,8 @@ showtimeMoviesByDate = new Array(),
 showtimeMovieClass = new Array(),
 initMovieExperienceCinema = new Array(),
 noRecordMessage = 'No results found';
-genreFilter = [];
+genreFilter = [],
+clickCheck =0;
 
 if($('.home-page').length > 0 ){
 	currentPageName = 'home';
@@ -93,6 +94,8 @@ function loadShowtimeTileModules(){
 	initMovieDates("all");	
 	loadPopularMovies();
 }
+
+$('.js-custom-select').find('input[type="checkbox"]').prop( "checked", false );
 
 $(document).ready(function () {
 	
@@ -171,6 +174,7 @@ function loadCinemasDropdown(){
 		cinemasListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
 
 		$('.js-cinemaItem').click(function () {
+
 			var self = this;
 			setTimeout(function () {
 				var cinemaNames = $(self).val();
@@ -238,47 +242,94 @@ function loadCinemasDropdown(){
 // Load Movie Listing
 function loadMoviesDropdown(){
 	var moviesListing = $('.js-movies-listing');
-	var comingMoviesListing = $('.js-movies-listing-coming');	
+	var comingMoviesListing = $('.js-movies-listing-coming');
+	var experienceListing = $('.js-experience-listing');
+	var genreListing = $('.js-genre-listing');
 	var itemValue, itemClass;
 	var tempArray = [];
+	var tempExpArray = [];
 	var comingTempArray = [];
 	var tempEntry = [];	
 	var count=0;
 	var movieCounter = 0;
+	var tempExpericeListing = [];
+	var tempArrayValue = [];
+	var tempGenreListing = [];
+	var tempGenreArray = [];
+
 
 	moviesListing.empty();
 	comingMoviesListing.empty();
+	experienceListing.empty();
+	genreListing.empty();
 
 	$.getJSON('MoviesSession.json', function (data) {
 	
 		$.each( data, function( i, item ) {  
 
+			tempArrayValue = [];
+
 			itemValue = item.MovieName;	
 			itemClass = itemValue;
-			itemClass = itemClass.replace(/\s+/g, "-");
+			// itemClass = itemClass.replace(/\s+/g, "-");
+			itemClass =  findAndReplace(itemClass," ","-");
 			itemClass = itemClass.replace(".", "-");
 			itemClass = itemClass.toLowerCase();
 			tempArray.push( [itemValue, itemClass] );
 			comingTempArray.push( [itemValue, itemClass] );
-			movieListingTempArray.push(itemValue);	
+			movieListingTempArray.push(itemValue);
+
+			itemValue = item.Experience;
+			tempArrayValue = itemValue.split(',');			
+			
+			for(var tempIndex =0; tempIndex < tempArrayValue.length; tempIndex++){				
+				tempExpArray.push( tempArrayValue[tempIndex] );
+			}
+
+			itemValue = item.Genre;
+			tempArrayValue = itemValue.split(',');			
+			
+			for(var tempIndex =0; tempIndex < tempArrayValue.length; tempIndex++){				
+				tempGenreArray.push( tempArrayValue[tempIndex].trim() );
+			}			
 			movieCounter++;
 			count++;
 
 		});
 	}).done(function( data ) {  
 
+		tempExpArray = unique(tempExpArray);
+		tempGenreArray = unique(tempGenreArray);		
+
 		moviesListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-movies"><label for="select-all-movies"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
-		moviesListing.append('<div class="scroll-area"></div>');
-		/*tempArray.sort(function(a, b){
-		    if(a[0] < b[0]) { return -1; }
-		    if(a[0] > b[0]) { return 1; }
-		    return 0;
-		});*/
+		moviesListing.append('<div class="scroll-area"></div>');		
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];				
-			moviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem" id="'+tempEntry[1]+'"><label for="'+tempEntry[1]+'">'+tempEntry[0]+'</label></div>');
+			moviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="movie-'+tempEntry[1]+'" class="js-movieItem" id="'+tempEntry[1]+'"><label for="'+tempEntry[1]+'">'+tempEntry[0]+'</label></div>');
 		}
 		moviesListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
+
+
+		experienceListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp"><label for="select-all-exp"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
+		experienceListing.append('<div class="scroll-area"></div>');		
+		for (arrayIndex = 0; arrayIndex < tempExpArray.length; arrayIndex++) {			
+			itemValue = tempExpArray[arrayIndex];
+			itemClass =  findAndReplace(itemValue," ","-");			
+			itemClass = itemClass.toLowerCase();
+			experienceListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+itemClass+'" class="js-experienceItem" id="'+itemClass+'"><label for="'+itemClass+'">'+itemValue+'</label></div>');
+		}
+		experienceListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
+
+		genreListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-genre"><label for="select-all-genre"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
+		genreListing.append('<div class="scroll-area"></div>');		
+		for (arrayIndex = 0; arrayIndex < tempGenreArray.length; arrayIndex++) {			
+			itemValue = tempGenreArray[arrayIndex];
+			itemClass =  findAndReplace(itemValue," ","-");			
+			itemClass = itemClass.toLowerCase();
+			genreListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+itemClass+'" class="js-genreItem" id="'+itemClass+'"><label for="'+itemClass+'">'+itemValue+'</label></div>');
+		}
+		genreListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
+
 
 		$('.js-movieItem').click(function () {
 			var self = this;
@@ -295,20 +346,59 @@ function loadMoviesDropdown(){
 			}, 100);
 		});
 
+		$('.js-experienceItem').click(function () {
+			var self = this;
+			setTimeout(function () {
+
+				var experienceNames = $(self).val();
+				if($(self).prop('checked') == true){
+					experienceFilter[experienceFilter.length] = experienceNames;
+				}else{				
+					experienceFilter.splice($.inArray(experienceNames, experienceFilter),1);
+				}
+				experienceFilter = startFromZero(experienceFilter);
+				filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
+
+				experienceNames = "";
+			}, 100);
+		});
+
+		$('.js-genreItem').click(function () {
+			var self = this;
+			setTimeout(function () {
+				var genreNames = $(self).val();
+				if($(self).prop('checked') == true){
+					genreFilter[genreFilter.length] = genreNames;
+				}else{				
+					genreFilter.splice($.inArray(genreNames, genreFilter),1);
+				}
+
+				genreFilter = startFromZero(genreFilter);
+				filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
+			}, 100);
+		});	
+
+		$('#select-all-genre').click(function () {
+			var obj =$(this).parent().parent().find(".scroll-area .item");
+			dropdownSelectAll(obj, "genreFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
+		});
+
+		$('#select-all-exp').click(function () {	
+			var obj =$(this).parent().parent().find(".scroll-area .item");
+			dropdownSelectAll(obj, "experienceFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
+		});
+
 		$('#select-all-movies').click(function () {
 			var obj =$(this).parent().parent().find(".scroll-area .item");
 			dropdownSelectAll(obj, "movieFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
 		});
 
+
+
 		if( $('.home-page').length > 0 && 1 == 2){
 
 			comingMoviesListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-movies-coming"><label for="select-all-movies-coming"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
 			comingMoviesListing.append('<div class="scroll-area"></div>');
-			/*comingTempArray.sort(function(a, b){
-			    if(a[0] < b[0]) { return -1; }
-			    if(a[0] > b[0]) { return 1; }
-			    return 0;
-			});*/
 			for (arrayIndex = 0; arrayIndex < comingTempArray.length; arrayIndex++) {
 				tempEntry = comingTempArray[arrayIndex];				
 				comingMoviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem-coming" id="'+tempEntry[1]+"-1"+'"><label for="'+tempEntry[1]+"-1"+'">'+tempEntry[0]+'</label></div>');
@@ -353,14 +443,18 @@ function loadMoviesDropdown(){
 }
 
 function loadMoviesComingDropdown(){	
-	var comingMoviesListing = $('.js-movies-listing-coming');	
+	var comingMoviesListing = $('.js-movies-listing-coming');
+	var genreListing = $('.js-coming-genre-listing');	
 	var itemValue, itemClass;	
 	var comingTempArray = [];
+	var tempGenreArray = [];
+	var tempArrayValue = [];
 	var tempEntry = [];	
 	var count=0;
 	var movieCounter = 0;
 	
 	comingMoviesListing.empty();
+	genreListing.empty();
 
 	$.getJSON('ComingSoon.json', function (data) {
 	
@@ -373,21 +467,37 @@ function loadMoviesComingDropdown(){
 			itemClass = itemClass.toLowerCase();
 			comingTempArray.push( [itemValue, itemClass] );
 
+
+			itemValue = item.Genre;
+			tempArrayValue = itemValue.split(',');			
+			
+			for(var tempIndex =0; tempIndex < tempArrayValue.length; tempIndex++){				
+				tempGenreArray.push( tempArrayValue[tempIndex].trim() );
+			}
+
 		});
 	}).done(function( data ) {  
 
+		tempGenreArray = unique(tempGenreArray);
+
 		comingMoviesListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-movies-coming"><label for="select-all-movies-coming"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
 		comingMoviesListing.append('<div class="scroll-area"></div>');
-		/*comingTempArray.sort(function(a, b){
-		    if(a[0] < b[0]) { return -1; }
-		    if(a[0] > b[0]) { return 1; }
-		    return 0;
-		});*/
 		for (arrayIndex = 0; arrayIndex < comingTempArray.length; arrayIndex++) {
 			tempEntry = comingTempArray[arrayIndex];				
-			comingMoviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-movieItem-coming" id="'+tempEntry[1]+"-1"+'"><label for="'+tempEntry[1]+"-1"+'">'+tempEntry[0]+'</label></div>');
+			comingMoviesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="movie-'+tempEntry[1]+'" class="js-movieItem-coming" id="'+tempEntry[1]+"-coming"+'"><label for="'+tempEntry[1]+"-coming"+'">'+tempEntry[0]+'</label></div>');
 		}
 		comingMoviesListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
+
+
+		genreListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-genere-coming"><label for="select-all-genere-coming"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
+		genreListing.append('<div class="scroll-area"></div>');		
+		for (arrayIndex = 0; arrayIndex < tempGenreArray.length; arrayIndex++) {			
+			itemValue = tempGenreArray[arrayIndex];
+			itemClass =  findAndReplace(itemValue," ","-");			
+			itemClass = itemClass.toLowerCase();
+			genreListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+itemClass+'" class="js-genreItem-coming" id="'+itemClass+'-coming"><label for="'+itemClass+'-coming">'+itemValue+'</label></div>');
+		}
+		genreListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
 
 		$('.js-movieItem-coming').click(function () {
 			var self = this;
@@ -407,6 +517,26 @@ function loadMoviesComingDropdown(){
 		$('#select-all-movies-coming').click(function () {
 			var obj =$(this).parent().parent().find(".scroll-area .item");
 			dropdownSelectAll(obj, "movieFilter", comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
+		});
+
+		$('.js-genreItem-coming').click(function () {
+			var self = this;
+			setTimeout(function () {
+				var genreNames = $(self).val();
+				if($(self).prop('checked') == true){
+					comingGenreFilter[comingGenreFilter.length] = genreNames;
+				}else{				
+					comingGenreFilter.splice($.inArray(genreNames, comingGenreFilter),1);
+				}	
+
+				comingGenreFilter = startFromZero(comingGenreFilter);	
+				filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
+			}, 100);
+		});	
+
+		$('#select-all-genere-coming').click(function () {
+			var obj =$(this).parent().parent().find(".scroll-area .item");
+			dropdownSelectAll(obj, "genreFilter", comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
 		});
 		
 
@@ -452,11 +582,6 @@ function loadExperiencesDropdown(){
 	}).done(function( data ) {
 		experiencesListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp"><label for="select-all-exp"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
 		experiencesListing.append('<div class="scroll-area"></div>');
-		/*tempArray.sort(function(a, b){
-		    if(a[0] < b[0]) { return -1; }
-		    if(a[0] > b[0]) { return 1; }
-		    return 0;
-		});*/
 		for (arrayIndex = 0; arrayIndex < tempArray.length; arrayIndex++) {
 			tempEntry = tempArray[arrayIndex];			
 			experiencesListing.find('.scroll-area').append('<div class="item"><input type="checkbox" value="'+tempEntry[1]+'" class="js-experienceItem" id="'+tempEntry[0]+'"><label for="'+tempEntry[0]+'">'+tempEntry[0]+'</label></div>');
@@ -505,14 +630,14 @@ function dropdownSelectAll(argTargetObj, argFilterName, argTempMovieArray, argTe
 	setTimeout(function () {
 		var filterObject = [];
 		
-		console.log(argTargetObj);
+		/*console.log(argTargetObj);
 		console.log(argFilterName);
 		console.log(argTempMovieArray);
 		console.log(argTempCinemaArray);
 		console.log(argTempExperienceArray);
 		console.log(argTempGenreArray);
 		console.log(argTempShowtimeArray);
-		console.log(argMovieType);
+		console.log(argMovieType);*/
 
 		if(argMovieType == 'now'){
 			if(argFilterName == 'movieFilter'){
@@ -529,7 +654,7 @@ function dropdownSelectAll(argTargetObj, argFilterName, argTempMovieArray, argTe
 				argTargetObj.each(function (i) {
 					if($(this).css('display') == 'block' 
 					 	&& $(this).find('.js-cinemaItem').prop('checked') == true ){
-						console.log($(this).find('.js-cinemaItem').val());
+
 						filterObject.push(	$(this).find('.js-cinemaItem').val() );
 
 					 }		
@@ -614,12 +739,12 @@ function dropdownSelectAll(argTargetObj, argFilterName, argTempMovieArray, argTe
 				comingGenreFilter = filterObject;
 			}
 
-			console.log("Movie : ", comingMovieFilter);
+			/*console.log("Movie : ", comingMovieFilter);
 			console.log("Cinema : ",comingCinemaFilter);
 			console.log("Experience : ",comingExperienceFilter);
 			console.log("Genre : ",comingGenreFilter);
 			console.log("Showtime : ",showTimeFilter);
-			console.log("Filter Type ",argMovieType);
+			console.log("Filter Type ",argMovieType);*/
 			
 			filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, argMovieType);
 		}
@@ -654,6 +779,15 @@ function findAndReplace(string, target, replacement) {
  	return string; 
 }
 
+
+function SortByDate(a, b){
+   var amyDate = a.split("/");
+   var aNewDate=new Date(amyDate[1]+","+amyDate[0]+","+amyDate[2]).getTime();
+   var bmyDate = b.split("/");
+   var bNewDate=new Date(bmyDate[1]+","+bmyDate[0]+","+bmyDate[2]).getTime();
+   return ((aNewDate < bNewDate) ? -1 : ((aNewDate > bNewDate) ? 1 : 0));
+}
+
 function getShowTime(movieTimeValue){	
 	var hourValue, minuteValue, result;	
 
@@ -666,7 +800,7 @@ function getShowTime(movieTimeValue){
 		result = "movie-show-morning";
 	}else if(hourValue == 18 && parseInt(minuteValue[1]) == 0){
 		result = "movie-show-afternoon";
-	}else if(hourValue > 12 && hourValue <= 18){
+	}else if(hourValue > 12 && hourValue < 18){
 		result = "movie-show-afternoon";
 	}else{
 		result = "movie-show-evening";
@@ -897,7 +1031,7 @@ function loadMovieGridBlocks(argMovie){
 			tempCinameExperience = findAndReplace(tempCinameExperience," ","-");			
 			if(initMovieExperienceCinema[innerCounter].indexOf(tempCinameExperience) > -1 ){
 				for(genreCount=0; genreCount < tempMovieGenreArray.length; genreCount++){
-					movieCinemaExperienceClass += initMovieExperienceCinema[innerCounter]+"-genre-"+tempMovieGenreArray[genreCount].trim()+" ";
+					movieCinemaExperienceClass += "movie-"+initMovieExperienceCinema[innerCounter]+"-genre-"+tempMovieGenreArray[genreCount].trim()+" ";
 				}				
 			}
 		}
@@ -1013,9 +1147,10 @@ function initComingMovieGrid(){
 			movieNameClass = movieNameClass.toLowerCase();
 
 			movieCinemaClass = movieCinema;			
-			movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
-			movieCinemaClass = movieCinemaClass.replace(/,/g, " ");
+			/*movieCinemaClass = movieCinemaClass.replace(/\s+/g, "-");
+			movieCinemaClass = movieCinemaClass.replace(/,/g, " ");*/
 			movieCinemaClass = movieCinemaClass.toLowerCase();
+			var tempCinemaClass = movieCinemaClass.split(",");
 
 			tempGenre = movieGenre.split(',');
 			movieGenre = "";
@@ -1027,10 +1162,13 @@ function initComingMovieGrid(){
 				}
 		 		movieGenre += spaceLabel+  $.trim(tempGenre[counter]);
 		 	}
-		 	
-			for(var counter=0; counter < movieGenreClassArray.length; counter++){
-				movieItemClass += movieNameClass + "-" +movieCinemaClass + "-genre-" +movieGenreClassArray[counter].trim().toLowerCase()+" ";
-		 	}		 	
+
+			for(var cinemaCount=0; cinemaCount < tempCinemaClass.length; cinemaCount++){
+				tempCinemaClass[cinemaCount] = findAndReplace(tempCinemaClass[cinemaCount]," ","-");
+				for(var counter=0; counter < movieGenreClassArray.length; counter++){
+					movieItemClass += "movie-"+movieNameClass + "-" + tempCinemaClass[cinemaCount].toLowerCase() + "-genre-" +movieGenreClassArray[counter].trim().toLowerCase()+" ";
+			 	}
+			}
 
 			comingMovieGridListing.push(
 				[					
@@ -1101,7 +1239,7 @@ function loadComingMovieGridBlocks(){
 	bindPopupEve();
 	
 }
-var clickCheck =0;
+
 function initMovieDates(argMovieName){
 	
   	var movieDate, movieDateValue, targetItem, movieDates, counter, itemClass,
@@ -1124,82 +1262,46 @@ function initMovieDates(argMovieName){
 		$.each( data, function( i, item ) {
 
 			showMovie = 0;			
-			movieDate = item.SessionDate;
+			movieDate = new Date (item.SessionDate);
 			movieName = item.MovieName;
 			if(argMovieName == movieName || argMovieName == "all"){
 				showMovie = 1;
 			}
+			
+			var movieDateValue = movieDate;
+			movieDate = movieDateValue.getDate()+"/"+(movieDateValue.getMonth()+1)+"/"+movieDateValue.getFullYear();
 
 			if(showMovie == 1){
-				var movieDateValue = new Date(movieDate);
-				tempArray.push(
-					[
-						movieDateValue.getFullYear(),
-						movieDateValue.getDate(),
-						monthName[movieDateValue.getMonth()],
-						weekName[movieDateValue.getDay()]
-					]
-				);
+				
+				tempArray.push(	movieDate );
 			}
 		});
 	  
 	}).done(function( data ) {	
 
+		tempArray = unique (tempArray);
+		tempArray.sort(SortByDate);
+
 		if(tempArray.length > 0){
 
 			var currentDate = new Date(), activeClass;
 			for(var counter=0;counter < tempArray.length; counter++){
-				tempEntry = tempArray[counter];
 
-				if(monthName[currentDate.getMonth()] == tempEntry[2]){
-					itemClass = tempEntry[1]+"-"+tempEntry[2]+"-"+tempEntry[3];
+				var tempDate = tempArray[counter].split("/");
+				var movieDateValue = new Date(tempDate[1]+"-"+tempDate[0]+"-"+tempDate[2]);
 
-					if(counter==0){
-						movieSearchDate = itemClass;
-						activeClass = 'active';
-					}
-
-					movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
+				itemClass = movieDateValue.getDate()+"-"+monthName[movieDateValue.getMonth()]+"-"+weekName[movieDateValue.getDay()];
+				movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
 			                  <div class="dboxelement" >\
-			                     <div class="month">'+tempEntry[2].toUpperCase()+'</div>\
-			                     <div class="date">'+tempEntry[1]+'</div>\
-			                     <div class="day">'+tempEntry[3].toUpperCase()+'</div>\
+			                     <div class="month">'+monthName[movieDateValue.getMonth()].toUpperCase()+'</div>\
+			                     <div class="date">'+movieDateValue.getDate()+'</div>\
+			                     <div class="day">'+weekName[movieDateValue.getDay()].toUpperCase()+'</div>\
 			                  </div>\
 			               </div>';
 			        
-			        tempMovieDateList.push(movieDates);
-				}			
+					tempMovieDateList.push(movieDates);		
 			}
 
-			for(var counter=0;counter < tempArray.length; counter++){
-				tempEntry = tempArray[counter];
-
-				if(currentDate.getMonth() != tempEntry[2]){
-					itemClass = tempEntry[1]+"-"+tempEntry[2]+"-"+tempEntry[3];
-
-					if(counter==0){
-						movieSearchDate = itemClass;
-						activeClass = 'active';
-					}
-
-					movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
-			                  <div class="dboxelement" >\
-			                     <div class="month">'+tempEntry[2].toUpperCase()+'</div>\
-			                     <div class="date">'+tempEntry[1]+'</div>\
-			                     <div class="day">'+tempEntry[3].toUpperCase()+'</div>\
-			                  </div>\
-			               </div>';
-			        
-			        tempMovieDateList.push(movieDates);
-				}			
-			}
-		
-			for(var counter=0;counter < 1; counter++){
-				tempEntry = tempMovieDateList[counter];
-				searchDateValue =tempEntry[1]+"-"+tempEntry[2]+"-"+tempEntry[3];			
-			}	
-
-			tempMovieDateList = unique(tempMovieDateList);
 			targetItem.html(tempMovieDateList);
 			targetItem.slick({
 				dots: false,
@@ -1225,8 +1327,6 @@ function initMovieDates(argMovieName){
 			  	]
 			});
 
-			
-
 			$('.js-movieDateFilter').click(function () {
 
 				$('.dboxelement').removeClass('active');
@@ -1236,17 +1336,31 @@ function initMovieDates(argMovieName){
 				var movieDateFilter = $(this).attr('attr-movie-date');
 				searchDateValue = movieDateFilter;
 				
-				if (currentPageName == 'movie detail'){
-					initMovieListing(searchMovieName);
+				if (currentPageName == 'movie detail'){					
+					$('.js-loadCinamaListing').hide();
+					$('.js-loadCinamaListing').empty();
+					setTimeout(function() {																	
+						initMovieListing(searchMovieName);
+					}, 5);
+					$('.js-loadCinamaListing').show();
+					
 				}else if (currentPageName == 'showtime tile'){				
-					for(counter=0; counter < movieListingTempArray.length; counter++ ){				
-						initMovieListing(movieListingTempArray[counter]);
-					}
+					$('.js-loadCinamaListing').hide();
+					$('.js-loadCinamaListing').empty();
+					setTimeout(function() {
+						for(counter=0; counter < movieListingTempArray.length; counter++ ){				
+							initMovieListing(movieListingTempArray[counter]);
+						}						
+					},5);
+					$('.js-loadCinamaListing').show();
 				}else if (currentPageName == 'showtime grid'){			
 					initMovieSessions(searchDateValue);				
 				}
 				
-				filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
+				setTimeout(function() {
+					filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
+				},50);
+				
 				moviePagination(1, 'now');
 			});	
 		}else{
@@ -1543,6 +1657,7 @@ function initMovieListing(argMovieName){
   	tempCinemaListing = movieCinamaListing;
   	movieCount = 1;
   	pageNumber=0;
+  	targetItem.empty();
   	 	
 
   	for(counter=0; counter< tempCinemaListing.length; counter++){				
@@ -1636,6 +1751,8 @@ function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExp
 			showTime += speratorLabel+movieTime;
 			counter++;
 		}
+
+
 	}
 				
 	if(showTime){
@@ -1692,12 +1809,12 @@ function loadMovieListing(argMovieName, argCinemaName, argMovieDate, argMovieExp
 		itemClass = "";
 		showtimeClass = unique(showtimeClass);
 		for(counter=0; counter < showtimeClass.length; counter++){
-			itemClass += " "+argMovieName+'-'+movieCinemaClass+'-'+movieExperienceClass+"-"+showtimeClass[counter]+"-"+showtimeClass[counter];
+			itemClass += " movie-"+argMovieName+'-'+movieCinemaClass+'-'+movieExperienceClass+"-"+showtimeClass[counter]+"-"+showtimeClass[counter];
 		}
 
 		showtimeClass = [];
 
-		result = '<div class="tileview-movies-list'+itemClass+' '+hideMovieClass+'">\
+		result = '<div class="tileview-movies-list '+itemClass+' '+hideMovieClass+'">\
 	                     <div class="item">\
 	                        <div class="movielocation">\
 	                           '+argCinemaName+'\
@@ -1863,9 +1980,16 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 	var movieItems = [], tempArray = [], tempMovieArrayList = [], playMoviesListing;	
 	var movieStatus=0, cinemaStatus=0, experienceStatus=0, genereStatus=0, showtimeStatus=0;
 
+	// console.log(argMoviesIDs);
+	// console.log(argCinemaIDs)
+	// console.log(argExperienceIDs);
+	// console.log(argGenreIDs);
+	// console.log(argShowTimeIDs);
+	// console.log(argSourceObj);
+
 	if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){			
 		tempMovieArrayList = movieTilesListingArray;
-		playMoviesListing = $('.js-loadCinamaListing');			
+		playMoviesListing = $('.js-loadCinamaListing');		
 	}else if(argSourceObj == 'now'){			
 		tempMovieArrayList = movieListingArray;
 		playMoviesListing = $('.js-play-movies-listing');		
@@ -1923,8 +2047,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 							var findItem = argMoviesIDs[movieInnerCounter]+"-"+argCinemaIDs[cinemaCounter]+"-"+argExperienceIDs[experienceCounter];
 							if(movieItems[movieCounter].indexOf(findItem) > -1  ){
 								tempArray.push(movieItems[movieCounter]);						
-							}
-							// console.log(findItem, movieItems[movieCounter].indexOf(findItem));
+							}							
 						}						
 					}
 				}		
@@ -1947,7 +2070,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 				tempArray = [];					
 				for(counter=0; counter < argMoviesIDs.length; counter++){				
 					for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-						var findItem = argMoviesIDs[counter];						
+						var findItem = argMoviesIDs[counter]+"-";						
 						if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 							tempArray.push(movieItems[innerCounter]);
 						}	
@@ -1961,7 +2084,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 				tempArray = [];		
 				for(counter=0; counter < argExperienceIDs.length; counter++){				
 					for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-						var findItem = argExperienceIDs[counter];						
+						var findItem = argExperienceIDs[counter]+"-";						
 						if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 							tempArray.push(movieItems[innerCounter]);						
 						}	
@@ -1974,7 +2097,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 				tempArray = [];	
 				for(counter=0; counter < argCinemaIDs.length; counter++){				
 					for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-						var findItem = argCinemaIDs[counter];
+						var findItem = argCinemaIDs[counter]+"-";
 						if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 							tempArray.push(movieItems[innerCounter]);						
 						}	
@@ -1987,7 +2110,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 				tempArray = [];					
 				for(counter=0; counter < argMoviesIDs.length; counter++){				
 					for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-						var findItem = argMoviesIDs[counter];						
+						var findItem = argMoviesIDs[counter]+"-";						
 						if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 							tempArray.push(movieItems[innerCounter]);
 						}	
@@ -2001,8 +2124,8 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 			tempArray = [];				
 			for(counter=0; counter < argGenreIDs.length; counter++){				
 				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = argGenreIDs[counter];						
-					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
+					var findItem = "-genre-"+argGenreIDs[counter];					
+					if( movieItems[innerCounter].indexOf(findItem) > -1 ){
 						tempArray.push(movieItems[innerCounter]);
 					}	
 				}
@@ -2014,7 +2137,7 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 			tempArray = [];				
 			for(counter=0; counter < argShowTimeIDs.length; counter++){				
 				for(innerCounter=0; innerCounter < movieItems.length; innerCounter++){
-					var findItem = argShowTimeIDs[counter];						
+					var findItem = "-"+argShowTimeIDs[counter];						
 					if(movieItems[innerCounter].indexOf(findItem) > -1  ){
 						tempArray.push(movieItems[innerCounter]);
 					}
@@ -2073,7 +2196,7 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 		$('.js-play-movies-listing .list-wrap-page').hide();
 		$('.js-play-movies-listing .list-wrap-page').slice(0,3).show();
 		$('.tileview-movies-list').hide();
-		$('.tileview-movies-list').slice(0,3).show();
+		$('.tileview-movies-list').slice(0,6).show();
 		$('.js-coming-movies-listing .list-wrap-page').hide();
 		$('.js-coming-movies-listing .list-wrap-page').slice(0,3).show();
 	}
@@ -2108,6 +2231,9 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 
 	}else if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){		
 		
+		nextItem = (pageNumber*6);
+		showItems = parseInt(pageNumber*6);//6
+
 		targetObj = $('.js-load-movie-listing');
 		$('.tileview-movies-list').slice(0,showItems).show();
 		if($('.tileview-movies-list').eq(nextItem).length == 0){
@@ -2122,28 +2248,6 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
  	$(targetObj).attr('attr-current-page',pageNumber);
 }
 
-
-function find_duplicate_in_array(argSourceObj) {
-
-    var object = {};
-    var result = [];
-
-    argSourceObj.forEach(function (item) {
-      if(!object[item])
-          object[item] = 0;
-        object[item] += 1;
-    });
-
-    for (var prop in object) {
-       if(object[prop] >= 2) {
-           result.push(prop);
-       }
-    }
-
-    return result;
-}
-
-
 $('.js-load-play-movies-listing').click(function () {
 	moviePagination($(this).attr('attr-current-page'),'now');
 });
@@ -2155,53 +2259,6 @@ $('.js-load-movie-listing').click(function () {
 $('.js-load-coming-movies-listing').click(function () {		
 	moviePagination($(this).attr('attr-current-page'),'coming');
 });
-
-$('.js-experienceItem').click(function () {
-	var self = this;
-	setTimeout(function () {
-
-		var experienceNames = $(self).val();
-		if($(self).prop('checked') == true){
-			experienceFilter[experienceFilter.length] = experienceNames;
-		}else{				
-			experienceFilter.splice($.inArray(experienceNames, experienceFilter),1);
-		}
-		experienceFilter = startFromZero(experienceFilter);
-		filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
-
-		experienceNames = "";
-	}, 100);
-});
-
-$('.js-genreItem').click(function () {
-	var self = this;
-	setTimeout(function () {
-		var genreNames = $(self).val();
-		if($(self).prop('checked') == true){
-			genreFilter[genreFilter.length] = genreNames;
-		}else{				
-			genreFilter.splice($.inArray(genreNames, genreFilter),1);
-		}
-
-		genreFilter = startFromZero(genreFilter);
-		filterMovies(movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, "now");
-	}, 100);
-});	
-
-$('.js-genreItem-coming').click(function () {
-	var self = this;
-	setTimeout(function () {
-		var genreNames = $(self).val();
-		if($(self).prop('checked') == true){
-			comingGenreFilter[comingGenreFilter.length] = genreNames;
-		}else{				
-			comingGenreFilter.splice($.inArray(genreNames, comingGenreFilter),1);
-		}	
-
-		comingGenreFilter = startFromZero(comingGenreFilter);	
-		filterMovies(comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, "coming");
-	}, 100);
-});	
 
 $('.js-showTime').click(function () {
 	var self = this;
@@ -2218,21 +2275,6 @@ $('.js-showTime').click(function () {
 	}, 100);
 });
 
-$('#select-all-genere').click(function () {
-	var obj =$(this).parent().parent().find(".scroll-area .item");
-	dropdownSelectAll(obj, "genreFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
-});
-
-$('#select-all-genere-coming').click(function () {
-	var obj =$(this).parent().parent().find(".scroll-area .item");
-	dropdownSelectAll(obj, "genreFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'coming');
-});
-
-$('#select-all-exp').click(function () {	
-	var obj =$(this).parent().parent().find(".scroll-area .item");
-	dropdownSelectAll(obj, "experienceFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
-});
-
 $('#select-all-exp-coming').click(function () {
 	var obj =$(this).parent().parent().find(".scroll-area .item");
 	dropdownSelectAll(obj, "experienceFilter", comingMovieFilter, comingCinemaFilter, comingExperienceFilter, comingGenreFilter, showTimeFilter, 'coming');
@@ -2242,4 +2284,23 @@ $('#select-all-showtime').click(function () {
 	var obj =$(this).parent().parent().find(".scroll-area .item");
 	dropdownSelectAll(obj, "showtimeFilter", movieFilter, cinemaFilter, experienceFilter, genreFilter, showTimeFilter, 'now');
 });
-	
+
+function typedInFilterSearch(target){
+	if($(target).find('#select-all-showtime').get(0)){
+		showTimeFilter = [];
+	}else if($(target).find('#select-all-exp').get(0)){
+		experienceFilter = [];
+	}else if($(target).find('#select-all-movies').get(0)){
+		movieFilter = [];
+	}else if($(target).find('#select-all-locations').get(0)){
+		cinemaFilter= [];
+	}else if($(target).find('#select-all-genere').get(0)){
+		genreFilter = [];
+	}else if($(target).find('#select-all-movies-coming').get(0)){
+		comingMovieFilter = [];
+	}else if($(target).find('#select-all-locations-coming').get(0)){
+		comingCinemaFilter = [];
+	}else if($(target).find('#select-all-genere-coming').get(0)){
+		comingGenreFilter = [];
+	}
+}

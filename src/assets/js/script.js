@@ -11585,6 +11585,8 @@ function filterSearch() {
 
 			scrollAreaScrolled($(this).closest('.js-custom-select').find('.scroll-area')[0]);
 		}
+
+		typedInFilterSearch($(this).closest('.field-dropdown'));
 	});
 	$('.js-custom-select .field-dropdown .js-field').addClass('has--filter-func');
 }
