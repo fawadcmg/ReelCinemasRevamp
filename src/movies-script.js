@@ -452,6 +452,7 @@ function loadMoviesComingDropdown(){
 	var itemValue, itemClass;	
 	var comingTempArray = [];
 	var tempGenreArray = [];
+	var tempArrayValue = [];
 	var tempEntry = [];	
 	var count=0;
 	var movieCounter = 0;
@@ -492,7 +493,7 @@ function loadMoviesComingDropdown(){
 		comingMoviesListing.append('<div class="item item--close"><a href="javascript:void(0);" class="js-close-custom-select">Close</a></div>');
 
 
-		genreListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-genre-coming"><label for="select-all-genre-coming"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
+		genreListing.append('<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-genere-coming"><label for="select-all-genere-coming"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>');
 		genreListing.append('<div class="scroll-area"></div>');		
 		for (arrayIndex = 0; arrayIndex < tempGenreArray.length; arrayIndex++) {			
 			itemValue = tempGenreArray[arrayIndex];
@@ -662,7 +663,7 @@ function dropdownSelectAll(argTargetObj, argFilterName, argTempMovieArray, argTe
 				argTargetObj.each(function (i) {
 					if($(this).css('display') == 'block' 
 					 	&& $(this).find('.js-cinemaItem').prop('checked') == true ){
-						// console.log($(this).find('.js-cinemaItem').val());
+					 							
 						filterObject.push(	$(this).find('.js-cinemaItem').val() );
 
 					 }		
@@ -1981,12 +1982,12 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 	var movieItems = [], tempArray = [], tempMovieArrayList = [], playMoviesListing;	
 	var movieStatus=0, cinemaStatus=0, experienceStatus=0, genereStatus=0, showtimeStatus=0;
 
-	/*console.log(argMoviesIDs);
+	console.log(argMoviesIDs);
 	console.log(argCinemaIDs)
 	console.log(argExperienceIDs);
 	console.log(argGenreIDs);
 	console.log(argShowTimeIDs);
-	console.log(argSourceObj);*/
+	console.log(argSourceObj);
 
 	if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){			
 		tempMovieArrayList = movieTilesListingArray;
