@@ -2196,7 +2196,7 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 		$('.js-play-movies-listing .list-wrap-page').hide();
 		$('.js-play-movies-listing .list-wrap-page').slice(0,3).show();
 		$('.tileview-movies-list').hide();
-		$('.tileview-movies-list').slice(0,3).show();
+		$('.tileview-movies-list').slice(0,6).show();
 		$('.js-coming-movies-listing .list-wrap-page').hide();
 		$('.js-coming-movies-listing .list-wrap-page').slice(0,3).show();
 	}
@@ -2231,6 +2231,9 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 
 	}else if(currentPageName == 'showtime tile' || currentPageName == 'movie detail' ){		
 		
+		nextItem = (pageNumber*6);
+		showItems = parseInt(pageNumber*6);//6
+
 		targetObj = $('.js-load-movie-listing');
 		$('.tileview-movies-list').slice(0,showItems).show();
 		if($('.tileview-movies-list').eq(nextItem).length == 0){
