@@ -245,7 +245,7 @@ function initSlick() {
 		infinite: true,
 		fade: true,
 		speed: 600,
-		autoplay: true,
+		// autoplay: true,
 		autoplaySpeed: 5000,
 		slidesToShow: 1,
 		slidesToScroll: 1,
@@ -1122,6 +1122,19 @@ function detectIE() {
 
     // other browser
     return false;
+}
+
+var isChrome = false,
+	isSafari = false;
+var ua = navigator.userAgent.toLowerCase(); 
+if (ua.indexOf('safari') != -1) { 
+  if (ua.indexOf('chrome') > -1) {
+    isChrome = true;
+    $('html').addClass('is--chrome');
+  } else {
+    isSafari = true;
+    $('html').addClass('is--safari');
+  }
 }
 
 if(isIE){

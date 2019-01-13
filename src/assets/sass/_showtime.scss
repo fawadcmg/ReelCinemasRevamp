@@ -92,9 +92,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99eaecee', e
 			font-weight: 700;
 			color: #383041;
 		    transition: all .35s;
+		    line-height: 0.6em;
+    		margin: 2px 0 4px;
 
 			@media (max-width: 1300px){
 				font-size: 30px;
+				margin: 1px 0 2px;
 			}
 			@media (max-width: 767px){
 				font-size: 30px;
@@ -1590,6 +1593,39 @@ border-radius: 5px;
 		}
 		
 		
+		.moviename, .movielocation{
+			span, strong{
+				transition: all .35s;
+			}
+			span{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 1;
+				display: block;
+			}
+			strong{
+				opacity: 0;
+				font-weight: 700;
+			}
+
+			.txt-hover-wrap{
+				position: relative;
+			}
+		}
+
+		&:hover{
+			.moviename, .movielocation{
+				span{
+					opacity: 0;
+				}
+				strong{
+					opacity: 1;
+				}
+			}
+		}
 		
 		.moviename{
 			color: #000;
@@ -1603,7 +1639,7 @@ border-radius: 5px;
 				float: none;
 				font-size: 17px;
 				font-weight: bold;
-				margin: 20px 0px 10px;
+				margin: 20px 0px 10px 65px;
 				display: block;
     			vertical-align: top;
 			}
@@ -1708,7 +1744,7 @@ border-radius: 5px;
 			border: 1px solid #6e3996;
 			/*display: inline-block;*/
 			margin: 0px;
-			padding: 10px 15px;
+			padding: 5px 10px;
 			-webkit-border-radius: 100px;
 			-moz-border-radius: 100px;
 			border-radius: 100px;
@@ -1843,6 +1879,10 @@ box-shadow: 0px 10px 23px -11px rgba(0,0,0,0.26);
 	.c-movie-filters{
 		margin-top: 50px;
 		margin-bottom: 40px;
+		@media (max-width: 767px){
+			margin-top: 0;
+			margin-bottom: 0;
+		}
 	}
 	.c-movie-filters .c-select-box .field input{
 	    padding-top: 6px;
@@ -1854,6 +1894,10 @@ box-shadow: 0px 10px 23px -11px rgba(0,0,0,0.26);
 		}
 	}
 	@media (max-width: 1200px){
+		
+		.c-movie-filters .c-select-box .field-dropdown .field input{
+			padding-right: 50px;
+		}
 		.c-movie-filters .c-select-box .field input{
 			padding-right: 20px;
 		}
@@ -1861,7 +1905,10 @@ box-shadow: 0px 10px 23px -11px rgba(0,0,0,0.26);
 			width: 160px;
 		}
 		.c-movie-filters .c-select-box .field input{
-			width: 175px;
+			width: 195px;
+		}
+		.c-movie-filters .c-select-box .field-dropdown .field input[placeholder="What to watch"]{
+			width: 215px;
 		}
 		.c-movie-filters .wrap>*{
 			margin-right: 15px;
@@ -1912,6 +1959,14 @@ box-shadow: 0px 10px 23px -11px rgba(0,0,0,0.26);
 		}
 		.slick-list{
 			overflow: visible;
+		}
+	}
+}
+
+.page--showtime-tileview{
+	+ .footer-outer-wrap{
+		@media (max-width: 767px){
+			margin-top: 0;
 		}
 	}
 }

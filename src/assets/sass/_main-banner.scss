@@ -297,6 +297,7 @@
 				overflow: hidden;
 				border-radius: 7px;
 				position: relative;
+				
 				&:after{
 					content: '';
 					display: block;
@@ -389,18 +390,14 @@
 			.slick-list{
 				.slick-slide{
 					.wrap{
-						background: #fff;
-						&:before{
-							content: '';
-							display: block;
-							width: 100%;
-							height: 100%;
-							position: absolute;
-							top: 0;
-							left: 0;
-							border: 0px solid #fff;
-							z-index: 1;
-							border-radius: 7px;
+						border: 2px solid rgba(255,255,255,0);
+						border-radius: 7px;
+						overflow: hidden;
+						position: relative;
+						transition: all .35s;
+
+						.inner-wrap{
+							background: #fff;
 						}
 						&:after{
 							opacity: 0.1;
@@ -416,9 +413,7 @@
 					@media (min-width: 1025px){
 						&:hover{
 							.wrap{
-								&:before{
-									border-width: 2px;
-								}
+								border-color: rgba(255,255,255,1);
 							}
 							img{
 								opacity: 1;
@@ -437,9 +432,7 @@
 					&.slick-active{
 						&.slick-current{
 							.wrap{
-								&:before{
-									border-width: 2px;
-								}
+								border-color: rgba(255,255,255,1);
 							}
 							img{
 								opacity: 1;
@@ -512,5 +505,10 @@
 	.c-main-banner .main-carousel .item .item-inner {
 		min-height: 400px;
 		height: calc(100vh - 140px);
+	}
+}
+@media (max-height: 1200px){
+	.c-main-banner .main-carousel .txt .o-container{
+		padding: 0;
 	}
 }

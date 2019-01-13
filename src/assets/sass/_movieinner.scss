@@ -60,6 +60,10 @@
 					float: none;
 					margin: 0 auto;	
 				}
+
+				img{
+					max-width: 350px;
+				}
 			}
 
 			.movie-poster-detail{
@@ -110,7 +114,7 @@
 					}
 				}
 				span:after {
-		    		// content: "|";
+		    		content: "|";
 		    		margin-left: 10px;
 				}
 					
@@ -188,6 +192,10 @@
 				
 					span{
 						font-weight: 600;
+					}
+					strong{
+						margin-right: 5px;
+						font-weight: bold;
 					}
 
 					@media (max-width: 767px){

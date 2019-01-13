@@ -4,20 +4,25 @@
 		top: 50%;
 		transform: translate(0, -50%) !important;
 	}
+
 	.c-main-banner .main-carousel .item .item-inner{
 		/* min-height: 530px; */
 	}
+
 	.c-movie-filters .c-select-box .field{
 		/* height: 42px; */
 	}
+
 	.c-subs-box input{
 		line-height: 1em;
 		height: 46px;
 	}
+
 	.c-movie-filters .c-select-box .field input{
 		line-height: 1em;
 		height: 52px;
 	}
+
 	.c-movies-list .movie-item{
 	}
 
@@ -30,5 +35,13 @@
 				}
 			}
 		}
+	}
+	.c-list-1 .movie-details .item-details:after{
+		display: none;
+	}
+}
+.is--safari{
+	.c-list-1 .movie-details .item-details:after{
+		display: none;
 	}
 }
