@@ -282,7 +282,7 @@
 		}
 	}
 	@media (max-width: 767px){
-		padding-top: 25px;
+		padding-top: 40px;
 		background: #191919 url("../img/misc/grain-dark.jpg") repeat left top;
 		color: #000000;
 
@@ -347,11 +347,35 @@
 					fill: #898989;
 				}
 			}
-			
 		}
 		.col{
-			padding: 15px 0;
+			padding: 0 15px 35px 15px;
 			border: none;
+			border-bottom: 1px solid hsla(0, 0%, 21%, 1) !important;
+			margin: 0 -15px 35px !important;
+			width: 100%;
+			box-sizing: content-box;
+
+			&.col-2{
+				padding-bottom: 0;
+				margin-bottom: 25px !important;
+				border-bottom: none !important;
+			}
+			
+			&.col-6{
+				padding-bottom: 0;
+				border-bottom: none !important;
+				margin-bottom: 20px !important;
+
+				.links-1{
+					display: block;
+					margin: 0 -15px;
+					width: 100%;
+					padding: 0 15px 30px;
+					box-sizing: content-box;
+					border-bottom: 1px solid #363636;
+				}
+			}
 		}
 		.col-1,
 		.col-2{
@@ -368,7 +392,7 @@
 			width: calc(100% + 30px);
 		}
 		.col-4{
-			margin-top: 15px;
+			// margin-top: 15px;
 			border-bottom: 1px solid #cbcbcb;
 		}
 		.col-6{
@@ -435,8 +459,8 @@
 			font-size: 11px;
 			line-height: 1.2em;
 			color: #FFF;
-			padding:  0 20px;
-			margin: 40px 0 0px 0px;
+			padding:  0;
+			margin: 30px 0 0;
 
 			span {
 				text-align: left;
@@ -451,5 +475,20 @@
 			}
 		}
 		
+	}
+	
+	@media (max-width: 358px){
+		.copyright{
+			font-size: 9px;
+			padding: 0;
+			margin-top: 30px;
+
+			span{
+				margin-bottom: 14px;
+			}
+		}
+		.copyright span a{
+			font-size: 12px;
+		}
 	}
 }

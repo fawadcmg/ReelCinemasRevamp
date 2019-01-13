@@ -245,7 +245,7 @@ function initSlick() {
 		infinite: true,
 		fade: true,
 		speed: 600,
-		autoplay: true,
+		// autoplay: true,
 		autoplaySpeed: 5000,
 		slidesToShow: 1,
 		slidesToScroll: 1,

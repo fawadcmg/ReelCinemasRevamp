@@ -114,7 +114,7 @@
 					}
 				}
 				span:after {
-		    		// content: "|";
+		    		content: "|";
 		    		margin-left: 10px;
 				}
 					
@@ -192,6 +192,10 @@
 				
 					span{
 						font-weight: 600;
+					}
+					strong{
+						margin-right: 5px;
+						font-weight: bold;
 					}
 
 					@media (max-width: 767px){

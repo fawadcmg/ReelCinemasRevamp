@@ -64,7 +64,7 @@
 		padding-bottom: 0;
 		display: flex;
 		border-radius: 8px;
-		background: rgba(126,156,190,0.10);
+		background: rgba(126,156,190,0.2);
 		//border-top: 1px solid #e5e5e5;
 		//border-bottom: 1px solid #e5e5e5; 
 		.item{
@@ -193,6 +193,11 @@
 					background: none;
 				}
 			}
+			input{
+				&.medium, &.small{
+					// padding-right: 15px;
+				}
+			}
 			input.medium {
 				width: 200px;
 				@media (max-width: 1300px){
@@ -251,6 +256,11 @@
 			padding-bottom: 0;
 			z-index: 99;
 			opacity: 0;
+			.field{
+				input{
+					padding-right: 60px;
+				}
+			}
 
 			.scroll{
 				display: none;
@@ -370,7 +380,7 @@
 					display: block;
 					width: 100%;
 					font-size: 16px;
-					line-height: 0.9em;
+					line-height: 1em;
 					color: #000;
 					padding: 15px 20px 15px 43px;
 					transition: all .35s;
@@ -584,7 +594,7 @@
 					display: none;
 				}
 				.scroll-area{
-					height: 186px;
+					height: 137px;
 				    // height: calc(65vh - 169px);
 				    @media (max-height: 650px){
 				    	// height: calc(65vh - 147px);

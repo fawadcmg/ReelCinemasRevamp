@@ -65,6 +65,9 @@ input{
 	outline: 0;
     -webkit-appearance: none;
 }
+input::-ms-clear {
+    display: none;
+}
 label{
 	cursor: pointer;
 }
