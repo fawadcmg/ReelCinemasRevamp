@@ -182,11 +182,11 @@
 			    			</div>
 			    		</div>
 		    		</div>
-	    			<nav class="carousel-txt-controls js-banner-1-txt-controls">
+	    			<nav class="carousel-txt-controls">
 	    				<ul>
-	    					<li class="is--active"><a href="#">Jebel Ali Recreation Club</a></li>
-	    					<li><a href="#">The Dubai Mall</a></li>
-	    					<li><a href="#">The Pointe</a></li>
+	    					<li><a href="food-docs/dummy-food.pdf" download>Jebel Ali Recreation Club</a></li>
+	    					<li><a href="food-docs/dummy-food.pdf" download>The Dubai Mall</a></li>
+	    					<li><a href="food-docs/dummy-food.pdf" download>The Pointe</a></li>
 	    				</ul>
 	    			</nav>
 	    		</div>
@@ -372,13 +372,20 @@
 		    				</ul>
 		    			</section>
 		    			<section class="col col-3">
-		    				<h4>Keep in Touch</h4>
-		    				<div class="c-subs-box">
-		    					<i class="icon"></i>
-		    					<input type="email" placeholder="Your Email">
-								<a href="#" class="c-btn-glow btn--sm"><span>Join Now</span></a>
-		    				</div>
+		    				<div class="js-get-email">
+			    				<h4>Keep in Touch</h4>
+			    				<div class="c-subs-box">
+			    					<i class="icon"></i>
+			    					<input type="email" placeholder="Your Email" id="email-keep-in-touch">
+									<a href="#" class="c-btn-glow btn--sm js-dummy-result"><span>Join Now</span></a>
+			    				</div>
+								<div class="c-msg-wrap">
+									<div class="msg msg--error">Please enter a valid email address.</div>
+									<div class="msg msg--success">Email submitted successfully!</div>
+								</div>
+							</div>
 		    			</section>
+
 		    			<section class="col col-4">
 		    				<h4>Technology Partners</h4>
 		    				<ul class="links-1 js-footer-logos-carousel">

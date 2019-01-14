@@ -282,7 +282,7 @@
 		}
 	}
 	@media (max-width: 767px){
-		padding-top: 40px;
+		padding-top: 60px;
 		background: #191919 url("../img/misc/grain-dark.jpg") repeat left top;
 		color: #000000;
 
@@ -490,5 +490,27 @@
 		.copyright span a{
 			font-size: 12px;
 		}
+	}
+}
+
+@media (max-width: 1200px){
+	.c-main-footer .c-msg-wrap{
+		text-align: center;
+	}
+}
+@media (max-width: 767px){
+	.c-main-footer .c-subs-box{
+		&:after{
+			content: "";
+			clear: both;
+			display: table;
+		}
+	}
+	.c-main-footer .c-msg-wrap{
+	    display: block;
+	    margin-top: 0;
+	    .msg{
+	    	margin-top: 70px;
+	    }
 	}
 }

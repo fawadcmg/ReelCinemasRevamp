@@ -58,12 +58,12 @@
 				}
 			}
 
-			&.is--active{
-				a{
+			// &.is--active{
+				a:hover{
 					opacity: 1;
 					border-bottom-color: #fff;
 				}
-			}
+			// }
 		}
 
 		a{
@@ -257,7 +257,7 @@
 	}
 	.c-banner-1 .txt-sec {
 	    width: 100%;
-	    padding: 0 15px;
+	    padding: 0 15px 20px;
 	    left: 0;
 	}
 	.c-banner-1 .slick-arrow{

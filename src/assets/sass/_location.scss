@@ -130,6 +130,12 @@
 					&.venu{
 						width: 17px;
 						background-image: url('../img/icons/icon-venue.svg');
+						background-size: 17px 26px;
+
+						+ .txt{
+							position: relative;
+							top: 6px;
+						}
 					}
 				}
 			}

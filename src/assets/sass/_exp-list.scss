@@ -69,7 +69,11 @@
 			}
 		}
 		.wrap-col{
-			align-items: flex-start;
+			align-items: center;
+			@media (min-width: 768px){
+				padding-top: 20px;
+				padding-bottom: 20vh;
+			}
 		}
 	}
 
@@ -268,6 +272,16 @@
 		position: relative;
 		img{
 			display: block;
+			transition: transform .35s;
+			transform: scale(1);
+		}
+		.item{
+			overflow: hidden;
+			&:hover{
+				img{
+					transform: scale(1.1) rotateZ(1.5deg);
+				}
+			}
 		}
 	}
 	.action{

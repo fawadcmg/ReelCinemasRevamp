@@ -235,7 +235,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="c-bar-1">
+			<section class="c-bar-1" id="gift-cards">
 				<div class="container-wrap">
 					<div class="o-container">
 						<div class="o-row">
@@ -246,9 +246,15 @@
 								</div>
 							</div>
 							<div class="o-col col--55 col--xl--50 col--lg--45 col--md--100">
-								<div class="c-subs-box-1">
-									<input type="text" placeholder="Enter Gift Card Number" id="gift-card-number">
-									<a href="#" class="c-btn-glow">submit</a>
+								<div class="js-gift-card">
+									<div class="c-subs-box-1">
+										<input maxlength="16" type="number" onkeypress="return isNumberKey(event)" placeholder="Enter Gift Card Number" id="gift-card-number">
+										<a href="#" class="c-btn-glow js-dummy-input-result">submit</a>
+									</div>
+									<div class="c-msg-wrap">
+										<div class="msg msg--error">Please enter a valid gift card number</div>
+										<div class="msg msg--success">Your available balance is: <strong>XXXX</strong></div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -311,12 +317,18 @@
 		    				</ul>
 		    			</section>
 		    			<section class="col col-3">
-		    				<h4>Keep in Touch</h4>
-		    				<div class="c-subs-box">
-		    					<i class="icon"></i>
-		    					<input type="email" placeholder="Your Email">
-								<a href="#" class="c-btn-glow btn--sm"><span>Join Now</span></a>
-		    				</div>
+		    				<div class="js-get-email">
+			    				<h4>Keep in Touch</h4>
+			    				<div class="c-subs-box">
+			    					<i class="icon"></i>
+			    					<input type="email" placeholder="Your Email" id="email-keep-in-touch">
+									<a href="#" class="c-btn-glow btn--sm js-dummy-result"><span>Join Now</span></a>
+			    				</div>
+								<div class="c-msg-wrap">
+									<div class="msg msg--error">Please enter a valid email address.</div>
+									<div class="msg msg--success">Email submitted successfully!</div>
+								</div>
+							</div>
 		    			</section>
 		    			<section class="col col-4">
 		    				<h4>Technology Partners</h4>
