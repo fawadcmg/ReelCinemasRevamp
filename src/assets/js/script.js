@@ -10220,7 +10220,7 @@ $(function () {
 	customScrollInit();
 	addingAOSData();
 	initSelect2();
-	mainNavClicksForMap();
+	// mainNavClicksForMap();
 
 	$('.c-loader').fadeOut('slow', function () {
 		if (winWidth > 1024) {
@@ -10619,7 +10619,25 @@ function initSlick() {
 			breakpoint: 768,
 			settings: {
 				slidesToShow: 1,
-				touchThreshold: 1
+				swipeToSlide: true,
+				touchThreshold: 5
+			}
+		}]
+	});
+
+	$('.js-exp-carousel-2-test').slick({
+		arrows: false,
+		focusOnSelect: true,
+		swipeToSlide: true,
+		infinite: true,
+		slidesToShow: 6,
+		touchThreshold: 6,
+		responsive: [{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 1,
+				swipeToSlide: true,
+				touchThreshold: 5
 			}
 		}]
 	});
@@ -11835,12 +11853,14 @@ function initMap() {
 
 	// Initiate Map
 	var hideDefaultUi = false;
+	var activeLinkIndex = $('.c-selection-banner .selectors a.is--active').index();
+
 	if (winWidth < 768) {
 		hideDefaultUi = true;
 	}
 
 	locMap = new google.maps.Map($('.js-loc-map')[0], {
-		center: markers[0].position,
+		center: markers[activeLinkIndex].position,
 		zoom: 16,
 		disableDefaultUI: hideDefaultUi,
 		mapTypeControlOptions: {
@@ -11856,7 +11876,7 @@ function initMap() {
 	var markerImgType = markerImage;
 	for (var i = 0; i < markers.length; i++) {
 
-		if (i == 0) {
+		if (i == activeLinkIndex) {
 			markerImgType = markerImageActive;
 		} else {
 			markerImgType = markerImage;
@@ -11962,11 +11982,12 @@ $(window).on('click', function () {
 function mainNavClicksForMap() {
 	if ($('.c-maps-sec').get(0)) {
 		$('.header-links a').click(function (e) {
-			var newHash = '#' + $(this).attr('href').split('#')[1];
+			var newHash = $(this).attr('href').split('#')[1];
 			if (newHash) {
-				e.preventDefault();
+				newHash = '#' + newHash;
 				var tabDiv = $('.js-tab-link[href="' + newHash + '"]');
 				if (tabDiv.get(0)) {
+					e.preventDefault();
 					if (history.pushState) {
 						history.pushState(null, null, newHash);
 					} else {
@@ -12018,10 +12039,15 @@ function errorGiftCard() {
 	$('.js-gift-card .msg--error').show();
 }
 
-function successGiftCard() {
+function successGiftCard(amount) {
 	removeGiftCardMsg();
 	$('.js-gift-card .msg').hide();
 	$('.js-gift-card .msg--success').show();
+	if (amount) {
+		$('.js-gift-card .msg--success strong').html(amount);
+	} else {
+		$('.js-gift-card .msg--success strong').html('XXXX');
+	}
 }
 
 // Validate Email Address
@@ -12041,14 +12067,19 @@ $('#email-keep-in-touch').on('input', function (e) {
 
 $('.js-get-email .js-dummy-result').click(function (e) {
 	e.preventDefault();
-	validateKIT();
+	var status = validateKIT();
+
+	if (status) {
+		successKIT();
+	}
 });
 
 function validateKIT() {
 	if (isEmail($('#email-keep-in-touch').val())) {
-		successKIT();
+		return true;
 	} else {
 		errorKIT();
+		return false;
 	}
 }
 

@@ -263,7 +263,9 @@
 			}
 			.action{
 				text-align: right;
+				white-space: nowrap;
 				a{
+					display: inline-block;
 					& + a{
 						margin-left: 15px;
 					}
@@ -319,7 +321,8 @@
 		margin-bottom: -30px;
 
 		@media (max-width: 767px){
-			margin-bottom: 0;
+			margin-bottom: 10px;
+			margin-top: 10px;
 		}
 
 		.left-nav{

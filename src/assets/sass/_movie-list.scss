@@ -1012,11 +1012,11 @@
 	    	right: 2vw;
 			top: 2vw;
 	    }
+		.movie-lsit-wrap .movie-item .img{
+			width: 30vh;
+		}
 
 		@media (max-height: 740px){
-			.movie-lsit-wrap .movie-item .img{
-				width: 30vh;
-			}
 			.movie-item .info .duration-language div{
 				margin-top: 8px;
 			}

@@ -1322,8 +1322,9 @@ function initMovieDates(argMovieName){
 			for(var counter=0;counter < tempArray.length; counter++){
 
 				var tempDate = tempArray[counter].split("/");
-				var movieDateValue = new Date(tempDate[1]+"-"+tempDate[0]+"-"+tempDate[2]);
-
+				var movieDateValue = new Date(tempDate[2]+"-"+tempDate[1]+"-"+tempDate[0]);
+				/*movieDateValue =  new Date();
+				console.log(tempDate[1]+"-"+tempDate[0]+"-"+tempDate[2]);*/
 				itemClass = movieDateValue.getDate()+"-"+monthName[movieDateValue.getMonth()]+"-"+weekName[movieDateValue.getDay()];
 				movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
 			                  <div class="dboxelement" >\
@@ -1335,7 +1336,7 @@ function initMovieDates(argMovieName){
 			        
 					tempMovieDateList.push(movieDates);		
 			}
-
+			console.log(targetItem, tempMovieDateList);
 			targetItem.html(tempMovieDateList);
 			targetItem.slick({
 				dots: false,
@@ -2028,7 +2029,9 @@ function loadPopularMovies(){
 function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs, argShowTimeIDs, argSourceObj){
 
     if(winWidth < 768){
-    	$('.js-play-movies-listing').slick('unslick');
+    	if($('.js-play-movies-listing').hasClass('slick-initialized')){
+    		$('.js-play-movies-listing').slick('unslick');
+    	}
     }
 	
 	var movieItems = [], tempArray = [], tempMovieArrayList = [], playMoviesListing;	

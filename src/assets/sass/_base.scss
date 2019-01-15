@@ -755,6 +755,9 @@ label{
 	    margin-top: 45px;
 	    margin-bottom: 50px;
 	}
+    .c-movies-list .movie-lsit-wrap{
+        min-height: 0;
+    }
 	.action{
 		margin-top: 30px;
 		text-align: center;
@@ -1083,6 +1086,9 @@ label{
 /* Some responsive css for close button and popup */
 
 @media (max-width: 767px) {
+    .c-movies-list .movie-item[onclick] .item-wrap .action .c-btn-white.btn--play{
+        display: none;
+    }
 	.c-close{
 		width: 45px;
 	    height: 45px;
@@ -1231,4 +1237,42 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type='number'] {
     -moz-appearance:textfield !important;
+}
+
+.slick-slide{
+    > *{
+        pointer-events: none;
+    }
+    &.slick-current, &.slick-active{
+        > *{
+            pointer-events: auto;
+        }   
+    }
+}
+
+
+
+.quick-test-carousel{
+    .item{
+        font-size: 20px;
+        color: #000;
+        font-weight: bold;
+        padding: 20px;
+        text-align: center;
+
+        .img{
+            border-radius: 10px;
+            display: block;
+            padding-top: 170%;
+            width: 100%;
+            background: #000 no-repeat 50%;
+            background-size: cover;
+            -webkit-transform: scale(1) rotate(0deg);
+            -ms-transform: scale(1) rotate(0deg);
+            transform: scale(1) rotate(0deg);
+            -webkit-transition: all .35s ease-in-out;
+            -o-transition: all .35s ease-in-out;
+            transition: all .35s ease-in-out;
+        }
+    }
 }

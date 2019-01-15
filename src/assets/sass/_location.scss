@@ -1,3 +1,8 @@
+.page--locations{
+	+ .footer-outer-wrap{
+		margin-top: 0;
+	}
+}
 .c-selection-banner{
 	background: url('../img/locations/bg-banner-img--cinema.jpg') no-repeat center center;
 	background-size: cover;
@@ -69,9 +74,12 @@
 					}
 				}
 			}
-			&.is--active{
-				.label{
-					opacity: 1;
+
+			@media (min-width: 768px){
+				&.is--active{
+					.label{
+						opacity: 1;
+					}
 				}
 			}
 			@media (min-width: 1025px){
@@ -184,6 +192,12 @@
 	.c-maps-sec .txt-wrap{
 		padding: 65px 0 65px 65px;
 	}
+	.c-selection-banner .selectors a .img img{
+		width: 195px;
+	}
+	.c-selection-banner .selectors a .label{
+		margin: 0 -21px;
+	}
 }
 @media (max-width: 1400px){
 	.c-exp-highlight .exp-list .item .this-logo{
@@ -196,6 +210,9 @@
 	}
 	.c-exp-highlight .exp-list .item .wrap{
 		margin: 0 5px;
+	}
+	.c-selection-banner .selectors a .img img{
+		width: 180px;
 	}
 }
 @media (max-width: 1300px){
@@ -214,9 +231,6 @@
 	.c-selection-banner{
 		padding: 40px 0;
 	}
-	.c-selection-banner .selectors a .label{
-		margin: 0 -21px;
-	}
 	.c-selection-banner .selectors a .img img{
 		width: 175px;
 	}
@@ -224,9 +238,34 @@
 		margin-top: 20px;
 	}
 }
+@media (max-width: 1200px){
+	.c-selection-banner .selectors a .img img{
+		width: 160px;
+	}
+	.c-selection-banner .selectors a .label{
+		margin: 0 -30px;
+	}
+	.c-selection-banner .selectors a{
+		.label{
+			font-size: 12px;
+		}
+		&.is--active{
+			.label{
+				font-size: 14px;
+			}
+		}
+	} 
+}
 @media (max-width: 1150px){
 	.c-maps-sec .txt-wrap{
 		padding: 50px 0 50px 50px;
+	}
+	.c-selection-banner .selectors{
+		margin: 0 -5px;
+	}
+	.c-selection-banner .selectors a{
+		margin-right: 5px;
+		margin-left: 5px;
 	}
 }
 @media (max-width: 1023px){
@@ -234,7 +273,7 @@
 		margin: 15px 5px 0;
 	}
 	.c-selection-banner .selectors a .img img{
-		width: 150px;
+		width: 130px;
 		margin-right: -12px;
 		margin-left: -12px;
 	}
@@ -253,7 +292,16 @@
 	    min-height: 0;
     }
 }
+@media (max-width: 920px){
+	.c-selection-banner .selectors a .img img{
+		width: 122px;
+	}
+}
 @media (max-width: 767px){
+	.c-selection-banner .selectors a .img{
+	    margin-top: 0;
+	    margin-bottom: 10px;
+	}
 	.c-exp-highlight{
 		padding: 40px 0 50px;
 	}
@@ -319,6 +367,7 @@
 	}
 	.c-selection-banner .selectors a .label{
 		margin: 0;
+		font-size: 15px;
 	}
 	.c-selection-banner{
 		background-image: url('../img/locations/bg-banner-img--stars.jpg');
@@ -366,6 +415,6 @@
 }
 @media (max-width: 360px){
 	.c-selection-banner .selectors a .label{
-		font-size: 13px;
+		font-size: 14px;
 	}
 }

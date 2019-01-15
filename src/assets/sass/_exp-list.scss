@@ -277,9 +277,11 @@
 		}
 		.item{
 			overflow: hidden;
-			&:hover{
-				img{
-					transform: scale(1.1) rotateZ(1.5deg);
+			@media (min-width: 768px){
+				&:hover{
+					img{
+						transform: scale(1.1) rotateZ(1.5deg);
+					}
 				}
 			}
 		}
