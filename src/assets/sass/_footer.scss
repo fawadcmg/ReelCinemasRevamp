@@ -499,6 +499,9 @@
 	}
 }
 @media (max-width: 767px){
+	.c-main-footer .col-6>*{
+		max-width: none;
+	}
 	.c-main-footer .c-subs-box{
 		&:after{
 			content: "";

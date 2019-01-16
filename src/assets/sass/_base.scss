@@ -751,6 +751,7 @@ label{
 .c-whats-popular{
 	margin-top: 75px;
 	margin-bottom: 60px;
+    
 	@media (max-width: 767px){
 	    margin-top: 45px;
 	    margin-bottom: 50px;
@@ -777,7 +778,7 @@ label{
 			font-size: 23px;
 		}
 		@media (max-width: 767px){
-			font-size: 21px;
+			font-size: 20px;
 			line-height: 1em;
 			text-align: center;
 		}
@@ -1157,6 +1158,16 @@ label{
 		font-size: 14px;
 		line-height: 1.5em;
 	}
+}
+@media (max-width: 922px){
+    .only-above-tablet{
+        display: none !important;
+    }
+}
+@media (min-width: 923px){
+    .only-below-tablet{
+        display: none !important;
+    }
 }
 @media (max-width: 767px){
 	ul, p{

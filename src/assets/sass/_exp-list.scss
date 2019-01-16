@@ -297,10 +297,18 @@
 
 .c-content-block{
 	margin-bottom: 100px;
+    .img-txt-block{
+        clear: both;
+        &:after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+    }
 	&:after{
 		content: '';
 		display: block;
-		clear: b oth;
+		clear: both;
 	}
 	h1{
 		font-size: 25px;
