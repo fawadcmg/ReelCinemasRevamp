@@ -1273,7 +1273,7 @@ function loadComingMovieGridBlocks(){
 	bindPopupEve();
 	
 }
-
+var globalDate = '';
 function initMovieDates(argMovieName){
 	
   	var movieDate, movieDateValue, targetItem, movieDates, counter, itemClass,
@@ -1322,9 +1322,11 @@ function initMovieDates(argMovieName){
 			for(var counter=0;counter < tempArray.length; counter++){
 
 				var tempDate = tempArray[counter].split("/");
-				var movieDateValue = new Date(tempDate[2]+"-"+tempDate[1]+"-"+tempDate[0]);
-				/*movieDateValue =  new Date();
-				console.log(tempDate[1]+"-"+tempDate[0]+"-"+tempDate[2]);*/
+				
+				var dateString = tempDate[2]+"-"+tempDate[1]+"-"+tempDate[0];
+				var movieDateValue = new Date(dateString.replace(/-/g, "/"));
+
+				globalDate =movieDateValue;
 				itemClass = movieDateValue.getDate()+"-"+monthName[movieDateValue.getMonth()]+"-"+weekName[movieDateValue.getDay()];
 				movieDates = '<div class="d-box js-movieDateFilter " attr-movie-date="'+itemClass+'">\
 			                  <div class="dboxelement" >\

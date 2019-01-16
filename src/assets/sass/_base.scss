@@ -335,6 +335,8 @@ label{
 		left: 0;
 		mix-blend-mode: color-dodge;
 		z-index: 1;
+        border-radius: 999px;
+        overflow: hidden;
 	}
 
 	span{

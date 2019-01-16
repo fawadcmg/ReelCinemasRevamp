@@ -568,6 +568,10 @@
 					font-weight: bold;
 					text-align: right;
 					margin: 0 0 0 auto;
+
+					&:first-child{
+						margin: 0;
+					}
 				}
 				strong{
 					font-weight: bold;
