@@ -1,11 +1,12 @@
 var isRTL = ($('html').attr('dir') == "rtl") ? true : false,
-	winWidth = $(window).width(),
-	winHeight = $(window).height(),
+	winWidth = viewport().width,
+	winHeight = viewport().height,
 	headerHeight = $('.c-main-header').outerHeight(),
 	footerHeight = $('.c-main-footer').outerHeight(),
 	bodyHeight,
 	bodyTopPos,
 	isIE = detectIE(),
+	scrollHeight = 0,
 	movieListAnimating = false;
 
 // loadPlayMovies();
@@ -44,6 +45,7 @@ $(function () {
 	addingAOSData();
 	initSelect2();
 	// mainNavClicksForMap();
+	calcScrollHeightDOM();
 
 	$('.c-loader').fadeOut('slow', function () {
 	    if(winWidth > 1024){
@@ -64,13 +66,14 @@ $(window).on('load', function () {
 		AOS.refresh();
 		fixMobileCarouselWrongDisplay();
 		movieListSetDropDownPos();
+		calcScrollHeightDOM();
 	}, 200);
 });
 
 //On Window Resize
 var resizeTimer;
 $(window).on('resize orientationchange', function () {
-	if(winWidth != $(window).width()){
+	if(winWidth != viewport().width){
 		winDimensions();
 		setOnTopClass();
 		// calcBodyarea();
@@ -82,8 +85,26 @@ $(window).on('resize orientationchange', function () {
 		resizeTimer = setTimeout(function() {
 			winDimensions();
 			movieListSetHTML();
+			calcScrollHeightDOM();
 		}, 250);
 		movieListCarousel();
+		calcScrollHeightDOM();
+	}
+});
+
+function calcScrollHeightDOM() {
+	var body = document.body,
+	    html = document.documentElement;
+
+	scrollHeight = Math.max( body.scrollHeight, body.offsetHeight, 
+	                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+}
+
+$(window).on('scroll', function () {
+	var currentScroll = $(window).scrollTop();
+	if((currentScroll + winHeight) >= scrollHeight){
+		console.log((currentScroll + winHeight) >= scrollHeight);
+		refreshAOS('refresh');
 	}
 });
 
@@ -132,10 +153,17 @@ function setOnTopClass() {
    		$('html').addClass('not-at-top');
    }
 }
-
+function viewport() {
+    var e = window, a = 'inner';
+    if (!('innerWidth' in window )) {
+        a = 'client';
+        e = document.documentElement || document.body;
+    }
+    return { width : e[ a+'Width' ] , height : e[ a+'Height' ] };
+}
 function winDimensions() {
-	winWidth = $(window).width(),
-	winHeight = $(window).height(),
+	winWidth = viewport().width,
+	winHeight = viewport().height,
 	headerHeight = $('.c-main-header').outerHeight(),
 	footerHeight = $('.c-main-footer').outerHeight();
 }
@@ -612,15 +640,17 @@ function setInView(el) {
 }
 
 function createMovieListMobileSlider(){
-	var movieListInfinite = false;
-	if($('.js-movie-list > *').length > 3){
-		movieListInfinite = true;
-	}
-	$('.js-movie-list').slick({
-		arrows: false,
-		focusOnSelect: true,
-		swipeToSlide: true,
-		infinite: movieListInfinite,
+	$('.js-movie-list').each(function () {
+		var movieListInfinite = false;
+		if($(' > *', this).length > 3){
+			movieListInfinite = true;
+		}
+		$(this).slick({
+			arrows: false,
+			focusOnSelect: true,
+			swipeToSlide: true,
+			infinite: movieListInfinite,
+		});
 	});
 }
 
@@ -645,15 +675,16 @@ function movieListSetHTML() {
 		}
 	}
 
-	if($('.js-movie-list').hasClass('slick-initialized')){
-		$('.js-movie-list').slick('unslick');
-		if(winWidth >=768){
-			movieList();
-		}else{
-			// $('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
-			createMovieListMobileSlider();
+	// $('.js-movie-list').each(function () {
+		if($('.js-movie-list').hasClass('slick-initialized')){
+			$('.js-movie-list').slick('unslick');
+			if(winWidth >=768){
+				movieList();
+			}else{
+				createMovieListMobileSlider();
+			}
 		}
-	}
+	// });
 	
 	// Normalize First
 	$('.js-movie-list .movie-item.is--active').removeClass('is--active');
@@ -1020,20 +1051,21 @@ function movieListRemoveCarousel(){
 	}
 }
 function movieListStartCarousel(){
-	if($(window).width() < 768 && $('.js-movie-list:not(.js-movie-list--sty-1)').get(0)){
-		$('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
-
-		var movieListInfinite = false;
-		if($('.js-movie-list > *').length > 2){
-			movieListInfinite = true;
+	$('.js-movie-list').each(function () {
+		if(viewport().width < 768 && !$(this).hasClass('js-movie-list--sty-1')){
+			$('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
+			var movieListInfinite = false;
+			if($('.js-movie-list > *').length > 2){
+				movieListInfinite = true;
+			}
+			$(this).slick({
+				arrows: false,
+				focusOnSelect: true,
+				swipeToSlide: true,
+				infinite: movieListInfinite,
+			});
 		}
-		$('.js-movie-list').slick({
-			arrows: false,
-			focusOnSelect: true,
-			swipeToSlide: true,
-			infinite: movieListInfinite,
-		});
-	}
+	});
 }
 function movieListCarousel() {
 	movieListRemoveCarousel();
@@ -1042,24 +1074,25 @@ function movieListCarousel() {
 var jsMovieCarouselTimmer;
 function fixMobileCarouselWrongDisplay() {
 	setTimeout(function () {
-		if($(window).width() < 768 && $('.js-movie-list:not(.js-movie-list--sty-1)').get(0)){
-			jsMovieCarouselTimmer = setInterval(function () {
-				if(!$('.js-movie-list').hasClass('slick-initialized')){
-					$('.js-movie-list .movie-item:nth-child(10) ~ .movie-item').remove();
-
-					var movieListInfinite = false;
-					if($('.js-movie-list > *').length > 2){
-						movieListInfinite = true;
+		$('.js-movie-list').each(function () {
+			if(viewport().width < 768 && !$(this).hasClass('js-movie-list--sty-1')){
+				jsMovieCarouselTimmer = setInterval(function () {
+					if(!$(this).hasClass('slick-initialized')){
+						$(' .movie-item:nth-child(10) ~ .movie-item', this).remove();
+						var movieListInfinite = false;
+						if($(' > *', this).length > 2){
+							movieListInfinite = true;
+						}
+						$(this).slick({
+							arrows: false,
+							focusOnSelect: true,
+							swipeToSlide: true,
+							infinite: movieListInfinite,
+						});
 					}
-					$('.js-movie-list').slick({
-						arrows: false,
-						focusOnSelect: true,
-						swipeToSlide: true,
-						infinite: movieListInfinite,
-					});
-				}
-			}, 1000);
-		}
+				}, 1000);
+			}
+		});
 	}, 1000);
 }
 

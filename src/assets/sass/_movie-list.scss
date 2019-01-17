@@ -178,6 +178,7 @@
 			display: inline-block;
 			.txt-wrap{
 				position: relative;
+				white-space: nowrap;
 			}
 
 			@media (min-width: 1025px){
@@ -290,7 +291,8 @@
 		display: block;
 		width: 40px;
 		height: 40px;
-		font-size: 13px;
+		padding-top: 2px;
+		font-size: 12px;
 		line-height: 0.9em;
 		color: #fff;
 		text-align: center;
