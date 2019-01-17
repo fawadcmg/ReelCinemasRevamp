@@ -1145,13 +1145,15 @@ function initComingMovieGrid(){
 			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
 
 			tempMovieSynopsis = movieSynopsis.split('\n');
-		 	
+		 	var releaseDate = new Date(item.OpenDate.split('T')[0].replace(/-/g, "/"));
+		 	releaseDate = releaseDate.getDate()+" "+(monthName[releaseDate.getMonth()+1])+" "+releaseDate.getFullYear();
+
 		 	for(var counter=0; counter < tempMovieSynopsis.length; counter++){
 		 		if (tempMovieSynopsis[counter].indexOf('Synopsis') > -1) {
 		 			strLen = tempMovieSynopsis[counter].length;
 		  			strposition = tempMovieSynopsis[counter].indexOf('Synopsis: ');
 		  			tempSynopsis = tempMovieSynopsis[counter].substring(strposition+10,strLen);
-	            }            
+	            }
 	            if (tempMovieSynopsis[counter].indexOf('Director') > -1) {	                
 	                strLen = tempMovieSynopsis[counter].length;
 		  			strposition = tempMovieSynopsis[counter].indexOf('Director: ');
@@ -1164,7 +1166,7 @@ function initComingMovieGrid(){
 	            }	            
 		 	}
 
-		 	movieSynopsis =  tempSynopsis + tempDirector + tempCast;
+		 	movieSynopsis = tempSynopsis +'<br><br><strong>Release Date:</strong>' + releaseDate + tempDirector + tempCast;
 		 	
 			movieNameClass = movieName.replace(/\s+/g, "-");
 			movieNameClass = movieNameClass.replace(" ", "-");
