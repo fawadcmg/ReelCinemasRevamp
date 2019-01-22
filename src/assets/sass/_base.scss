@@ -362,9 +362,17 @@ label{
 	}
 	
 	@media (max-width: 767px){
-		&:after{
-			display: none;
+		&:hover{
+			&.sty--a{
+				color: #000;
+				border: 1px solid #000;
+
+				&:after{
+					display: none;
+				}
+			}
 		}
+
 		&.btn--m-change-to-green{
 			background: #000;
 			background: linear-gradient(to right, #529297 0%,#0a676f 30%,#203250 100%) no-repeat center center / 100% 100%;
@@ -1288,4 +1296,37 @@ input[type='number'] {
             transition: all .35s ease-in-out;
         }
     }
+}
+
+.c-landscape-msg{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background: #000;
+	color: #fff;
+	z-index: 1020;
+
+	.msg-inner{
+		display: flex;
+	    width: 100%;
+	    height: 100%;
+	    justify-content: center;
+	    align-items: center;
+	    font-size: 20px;
+	    padding: 20px;
+	    text-align: center;
+	}
+}
+
+.slick-list{
+	clear: both;
+	// overflow: auto;
+	&:after{
+		content: "";
+		clear: both;
+		display: table;
+	}
 }

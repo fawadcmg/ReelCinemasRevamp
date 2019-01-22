@@ -465,12 +465,16 @@
 			bottom: 0;
 			position: absolute;
 			left: 0;
-			transform: translateY(0);
+			transform: translateY(100%);
 			height: auto;
 			width: 100%;
-			z-index: -1;
+			z-index: 100;
 
-			@media (max-height: 650px){
+			.filter-open &{
+				transform: translateY(0%);
+			}
+
+			.hl-650 &{
 				padding-top: 12px;
 				padding-bottom: 12px;
 			}
@@ -596,7 +600,7 @@
 				.scroll-area{
 					height: 137px;
 				    // height: calc(65vh - 169px);
-				    @media (max-height: 650px){
+				    .hl-650 &{
 				    	// height: calc(65vh - 147px);
 				    }
 				}
@@ -661,7 +665,7 @@
 				    top: 66px;
 				    // height: calc(65vh - 119px);
 				    height: 232px;
-				    @media (max-height: 650px){
+				    .hl-650 &{
 				    	top: 58px;
 				    	// height: calc(65vh - 97px);
 				    }
@@ -679,7 +683,7 @@
 			}
 		}
 		
-		@media (max-height: 650px){
+		.hl-650 &{
 			transform: translateY(56px);
 			height: 58px;
 			.c-select-box > .field{
@@ -721,7 +725,7 @@
 	    }
 		.c-movie-filters{
 			height: 357px;
-			@media (max-height: 650px){
+			.hl-650 &{
 				height: 334px;
 			}
 			.c-select-box .field-dropdown,
@@ -735,7 +739,7 @@
 .filter-space{
 	@media (max-width: 767px){
 		// height: 66px;
-		@media (max-height: 650px){
+		.hl-650 &{
 			// height: 58px;
 		}
 	}

@@ -76,7 +76,10 @@
 	.c-btn-glow{
 		width: 35%;
 		white-space: nowrap;
-		border-radius: 0 999px 999px 0;
 		min-width: 130px;
+
+		&, &:after{
+			border-radius: 0 999px 999px 0;
+		}
 	}
 }

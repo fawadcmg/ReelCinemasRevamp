@@ -239,8 +239,8 @@
 
 	@media (max-width: 767px){
 		.img img{
-			max-width: initial;
-			height: 347px;
+			// max-width: initial;
+			// height: 347px;
 		}
 	}
 
@@ -1864,7 +1864,7 @@
 		.c-show-list-page .c-movie-filters{
 			margin: 0 !important;
 		}
-		@media (max-height: 700px){
+		.hl-700 &{
 			.movieheader .txt{
 				padding-top: 60px;
 			}

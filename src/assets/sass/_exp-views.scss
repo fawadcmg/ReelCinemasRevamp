@@ -315,14 +315,14 @@
 	    	font-size: 13px;
 	    	margin-bottom: 15px;
 	    }
-		@media (max-height: 760px){
+		.hl-760 &{
 		    .carousel .img img{
 			    height: 150px;
 			    object-fit: cover;
 			    width: 100%;
 		    }
 		}
-		@media (max-height: 650px){
+		.hl-650 &{
 	    	height: calc(100vh - 115px);
 	    	.carousel .img img{
 				height: 130px;
@@ -334,7 +334,7 @@
 	    		min-height: 0;
 	    	}
 		}
-		@media (max-height: 600px){
+		.hl-600 &{
 			.carousel .img img{
 				height: 100px;
 			}
@@ -346,7 +346,7 @@
 				margin-bottom: 15px;
 			}
 		}
-		@media (max-height: 550px){
+		.hl-550 &{
 			.carousel .txt h2{
 				font-size: 22px;
 			}

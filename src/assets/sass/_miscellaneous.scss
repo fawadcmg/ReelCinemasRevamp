@@ -17,7 +17,7 @@
 	@media (max-width: 767px){
 		min-height: calc(100vh - 67px);
 
-		@media (max-height: 650px){
+		.hl-650 &{
 			min-height: calc(100vh - 57px);
 		}
 	}
@@ -36,7 +36,7 @@
 	@media (max-width: 767px){
 		height: calc(100vh - 67px);
 
-		@media (max-height: 650px){
+		.hl-650 &{
 			height: calc(100vh - 57px);
 		}
 	}
@@ -55,7 +55,7 @@
 	@media (max-width: 767px){
 		height: calc(100vh - 67px);
 
-		@media (max-height: 650px){
+		.hl-650 &{
 			height: calc(100vh - 57px);
 		}
 	}

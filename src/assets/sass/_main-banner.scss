@@ -1,7 +1,7 @@
 .header-space{
 	@media (max-width: 767px){
 		height: 67px;
-		@media (max-height: 650px){
+		.hl-650 &{
 			height: 57px;
 		}
 	}
@@ -79,11 +79,11 @@
 				@media (max-width: 1600px){
 					// height: calc(100vh - 80px);
 				}
-				@media (max-height: 820px){
+				.hl-820 &{
 					padding-bottom: 200px;
 					padding-top: 10px;
 				}
-				@media (max-height: 750px){
+				.hl-750 &{
 					padding-bottom: 140px;
 					height: calc(100vh - 82px);
 				}
@@ -125,7 +125,7 @@
 				background: url('../img/movie-posters/bottom-overlay.png') repeat-x center bottom;
 				z-index: 2;
 
-				@media (max-height: 820px){
+				.hl-820 &{
 					background-size: 100% 130px;
 				}
 			}
@@ -154,7 +154,7 @@
 				font-size: 65px;
 				line-height: 1em;
 				margin-bottom:15px;
-				@media (max-height: 750px){
+				.hl-750 &{
 					font-size: 55px;
 				}
 				@media (max-width: 1600px){
@@ -248,11 +248,11 @@
 		width: 100%;
 		bottom: 20px;
 
-		@media (max-height: 820px){
+		.hl-820 &{
 			// margin-top: -215px;
 			bottom: -5px;
 		}
-		@media (max-height: 750px){
+		.hl-750 &{
 			bottom: -35px;
 		}
 
@@ -460,54 +460,60 @@
 	}
 }
 
-@media (min-width: 1025px) and (max-height: 780px){
-	.c-main-banner .main-carousel .txt h1{
-		font-size: 50px;
-	}
-	.c-main-banner .main-carousel .txt .details, .c-main-banner .main-carousel .txt p{
-		margin-bottom: 15px;
-	}
-	.c-main-banner .main-carousel .txt .det-1{
-		margin-bottom: 10px;
-	}
-	.c-main-banner .main-carousel .item .item-inner{
-		min-height: 440px;
-	}
-}
-@media (min-width: 1025px) and (max-height: 660px){
-	.c-main-banner .main-carousel .txt h1{
-		font-size: 40px;
-		margin-bottom: 13px;
-	}
-	.c-main-banner .main-carousel .txt .details, .c-main-banner .main-carousel .txt p{
-		margin-bottom: 13px;
-	}
-	.c-main-banner .main-carousel .txt .det-1{
-		margin-bottom: 5px;
-	}
-	.c-main-banner .main-carousel .action{
-		margin-top: 20px;
-	}
-	.c-main-banner .main-carousel .item .item-inner {
-		min-height: 400px;
-		padding-bottom: 180px;
-		padding-top: 20px;
-		height: calc(100vh - 80px);
-	}
-	.c-main-banner .main-carousel-thumb {
-	    bottom: -55px;
+.hl-780{
+	@media (min-width: 1025px){
+		.c-main-banner .main-carousel .txt h1{
+			font-size: 50px;
+		}
+		.c-main-banner .main-carousel .txt .details, .c-main-banner .main-carousel .txt p{
+			margin-bottom: 15px;
+		}
+		.c-main-banner .main-carousel .txt .det-1{
+			margin-bottom: 10px;
+		}
+		.c-main-banner .main-carousel .item .item-inner{
+			min-height: 440px;
+		}
 	}
 }
-@media (min-width: 1025px) and (max-height: 575px){
-	.c-main-banner .main-carousel-thumb .item .wrap{
-		height: 100px;
-	}
-	.c-main-banner .main-carousel .item .item-inner {
-		min-height: 400px;
-		height: calc(100vh - 140px);
+.hl-660{
+	@media (min-width: 1025px){
+		.c-main-banner .main-carousel .txt h1{
+			font-size: 40px;
+			margin-bottom: 13px;
+		}
+		.c-main-banner .main-carousel .txt .details, .c-main-banner .main-carousel .txt p{
+			margin-bottom: 13px;
+		}
+		.c-main-banner .main-carousel .txt .det-1{
+			margin-bottom: 5px;
+		}
+		.c-main-banner .main-carousel .action{
+			margin-top: 20px;
+		}
+		.c-main-banner .main-carousel .item .item-inner {
+			min-height: 400px;
+			padding-bottom: 180px;
+			padding-top: 20px;
+			height: calc(100vh - 80px);
+		}
+		.c-main-banner .main-carousel-thumb {
+		    bottom: -55px;
+		}
 	}
 }
-@media (max-height: 1200px){
+.hl-575{
+	@media (min-width: 1025px){
+		.c-main-banner .main-carousel-thumb .item .wrap{
+			height: 100px;
+		}
+		.c-main-banner .main-carousel .item .item-inner {
+			min-height: 400px;
+			height: calc(100vh - 140px);
+		}
+	}
+}
+.hl-1200{
 	.c-main-banner .main-carousel .txt .o-container{
 		padding: 0;
 	}
