@@ -249,6 +249,10 @@ function initSlick() {
 			$('.js-banner-1b').slick('slickGoTo', thisIndex);
 		});
 	}
+
+	$('.js-banner-2').slick({
+		arrows: true,
+	});
 	
 	$('.js-offer-carousel').slick({
 		slidesToShow: 4,

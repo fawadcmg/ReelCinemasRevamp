@@ -10422,6 +10422,10 @@ function initSlick() {
 		});
 	}
 
+	$('.js-banner-2').slick({
+		arrows: true
+	});
+
 	$('.js-offer-carousel').slick({
 		slidesToShow: 4,
 		arrows: false,
