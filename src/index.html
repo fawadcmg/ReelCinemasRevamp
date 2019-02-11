@@ -5,2294 +5,889 @@
 	  <meta http-equiv="x-ua-compatible" content="ie=edge">
 	  <title>Reel Cinemas</title>
 	  <meta name="description" content="">
-	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  <meta name="apple-itunes-app" content="app-id=432316358">
+	  <link rel="manifest" href="manifest.json">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	  <link rel="stylesheet" href="assets/css/style.min.css">
+	  <style type="text/css">
+	  	/*.c-movies-list .list-wrap-page{display: none;}*/
+	  </style>
 	</head>
-	<body>
+	
+	<body class="home-page">
 	    <!--[if lte IE 9]>
 	        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 	    <![endif]-->
-
-	    <div class="c-overlay js-close-side-nav"></div>
+		<div class="c-landscape-msg"><div class="msg-inner">For best experince view the site in portrait mode.</div></div>
+		<div class="c-loader"></div><div class="c-overlay js-close-side-nav"></div>
+	    <div class="c-overlay-white js-close-filter-m"></div>
 		<div class="header-space"></div>
-	    <header class="c-main-header">
-	    	<a href="#" class="logo">
-				<picture>
-					<source srcset="assets/img/brand/logo-colored.png" media="(max-width: 767px)">
-					<img src="assets/img/brand/logo.png" alt="Reel Cinemas">
-				</picture>
-			</a>
-	    	<nav class="header-links js-header-links">
-	    		<ul>
-	    			<li><a href="#">Showtimes</a></li>
-	    			<li>
-	    				<a href="#">Experiences</a>
-	    				<ul>
-	    					<li><a href="#">Standard</a></li>
-	    					<li><a href="#">Dolby Cinema</a></li>
-	    					<li><a href="#">Reel Dine-In Cinema</a></li>
-	    					<li><a href="#">Reel Boutique</a></li>
-	    					<li><a href="#">ScreenX</a></li>
-	    					<li><a href="#">Platinum</a></li>
-	    					<li><a href="#">MX4D</a></li>
-	    					<li><a href="#">Reel Junior</a></li>
-	    				</ul>
-	    			</li>
-	    			<li><a href="#">Offers</a></li>
-	    			<li class=""> <!-- is-current -->
-	    				<a href="#">Locations</a>
-	    				<ul>
-	    					<li><a href="#">The Dubai Mall</a></li>
-	    					<li><a href="#">Dubai Marina Mall</a></li>   
-	    					<li><a href="#">Jabel Ali Recreation Club</a></li> <!-- class="is-current" -->
-	    					<li><a href="#">Rove Downtown</a></li>
-	    					<li><a href="#">The Spring Souk</a></li>
-	    				</ul>
-	    			</li>
-	    		</ul>
-	    	</nav>
-	    	<a href="#" class="c-menu-btn js-open-side-nav">
-	    		<span class="icon-wrap"><i></i><i></i><i></i><span class="txt">Menu</span></span>
-	    	</a>
-	    </header>
-
-	    <aside class="c-side-nav">
-	    	<a href="#" class="logo js-close-side-nav"><img src="assets/img/brand/logo-colored.png" alt="Reel Cinemas"></a>
-			<div class="container-nav">
-	    	<div class="nav-wrap">
-				<div class="nav-offer">
-				  <img src="/assets/img/misc/nav-offer.png" alt=""/>
-<h4>Upgrade your trip!<br>
-				<strong>Bring a friend for free!</strong></h4>
-					<p>Enjoy buy one get one free tickets, plus complimentary popcorn and drinks with <strong>Emirates NBD</strong> and <strong>U By Emaar</strong>.					
-					
-					<a href="#" class="c-btn-glow">GET OFFER</a>
-					</p>
-				</div>
-		    	<nav class="nav">
-		    		<ul>
-						<li><a href="#">Showtimes</a></li>
-						<li><a href="#">Experiences</a></li>
-						<li><a href="#">offers</a></li>
-						<li><a href="#">food</a></li>
-						<li><a href="#">locations</a></li>
-		    		</ul>
-		    		<ul>
-						<li><a href="#">About Reel</a></li>
-						<li><a href="#">Services</a></li>
-						<li><a href="#">Gift Cards</a></li>
-						<li><a href="#">FAQs</a></li>
-						<li><a href="#">Blog</a></li>
-		    		</ul>
-		    	</nav>
-				<ul class="c-social">
+		<a href="index.html" class="logo">
+			<picture>
+				<!-- <source srcset="assets/img/brand/logo-colored.png" media="(max-width: 767px)"> -->
+				<img src="assets/img/brand/reel-logo.svg" alt="Reel Cinemas" class="svg js-inline-svg">
+			</picture>
+		</a>
+		<header class="c-main-header">
+			<nav class="header-links js-header-links">
+				<ul>
+					<li><a href="showtime.html">Showtimes</a></li>
 					<li>
-						<a href="#" target="_blank"><img src="assets/img/social/fb.svg" alt="FB" class="svg fb"></a>
+						<a href="experience.html">Experiences</a>
+						<ul>
+							<li><a href="experience-inner.html">Standard</a></li>
+							<li><a href="experience-inner.html">Dolby Cinema</a></li>
+							<li><a href="experience-inner.html">Reel Dine-In Cinema</a></li>
+							<li><a href="experience-inner.html">Reel Boutique</a></li>
+							<li><a href="experience-inner.html">ScreenX</a></li>
+							<li><a href="experience-inner.html">Platinum</a></li>
+							<li><a href="experience-inner.html">MX4D</a></li>
+							<li><a href="experience-inner.html">Reel Junior</a></li>
+						</ul>
 					</li>
 					<li>
-						<a href="#" target="_blank"><img src="assets/img/social/insta.svg" alt="Insta" class="svg insta"></a>
+						<a href="offers.html">Offers</a>
+						<ul>
+							<li><a href="offers.html#bank">Bank</a></li>
+							<li><a href="offers.html#others">Others</a></li>
+						</ul>
 					</li>
-					<li>
-						<a href="#" target="_blank"><img src="assets/img/social/snap.svg" alt="Snap" class="svg snap"></a>
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="assets/img/social/twitter.svg" alt="Twitter" class="svg twitter"></a>
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="assets/img/social/youtube.svg" alt="Youtube" class="svg youtube"></a>
+					<li><a href="food.html">Food</a></li>
+					<li class=""> <!-- is-current -->
+						<a href="locations.html">Locations</a>
+						<ul>
+							<li><a href="loc_the-dubai-mall.html">The Dubai Mall</a></li>
+							<li><a href="loc_dubai-marina-mall.html">Dubai Marina Mall</a></li>
+							<li><a href="loc_jabel-ali-recreation-club.html">Jabel Ali Recreation Club</a></li> <!-- class="is-current" -->
+							<li><a href="loc_rove-downtown.html">Rove Downtown</a></li>
+							<li><a href="loc_the-spring-souk.html">The Spring Souk</a></li>
+							<li><a href="loc_the-pointe.html">The Pointe</a></li>
+						</ul>
 					</li>
 				</ul>
+			</nav>
+			<a href="#" class="c-menu-btn js-open-side-nav">
+				<span class="icon-wrap"><i></i><i></i><i></i><span class="txt">Menu</span></span>
+			</a>
+		</header>
+		
+	    <aside class="c-side-nav">
+	    	<div class="action-row">
+	    		<a href="#" class="close js-close-side-nav"><i></i></a>
+	    	</div>
+			<div class="container-nav">
+		    	<div class="nav-wrap">
+					<div class="nav-offer js-nav-carousel">
+						<div class="nav-offer-item">
+						  	<img src="assets/img/misc/nav-offer.png" alt=""/>
+							<h4>
+								Upgrade your trip - 1!<br>
+								<strong>Bring a friend for free!</strong>
+							</h4>
+							<p>
+								Enjoy buy one get one free tickets, plus complimentary popcorn and drinks with <strong>Emirates NBD</strong> and <strong>U By Emaar</strong>.
+								<a href="offers.html" class="c-btn-glow">GET OFFER</a>
+							</p>
+						</div>
+						<div class="nav-offer-item">
+						  	<img src="assets/img/misc/nav-offer.png" alt=""/>
+							<h4>
+								Upgrade your trip - 2!<br>
+								<strong>Bring a friend for free!</strong>
+							</h4>
+							<p>
+								Enjoy buy one get one free tickets, plus complimentary popcorn and drinks with <strong>Emirates NBD</strong> and <strong>U By Emaar</strong>.
+								<a href="offers.html" class="c-btn-glow">GET OFFER</a>
+							</p>
+						</div>
+						<div class="nav-offer-item">
+						  	<img src="assets/img/misc/nav-offer.png" alt=""/>
+							<h4>
+								Upgrade your trip - 3!<br>
+								<strong>Bring a friend for free!</strong>
+							</h4>
+							<p>
+								Enjoy buy one get one free tickets, plus complimentary popcorn and drinks with <strong>Emirates NBD</strong> and <strong>U By Emaar</strong>.
+								<a href="offers.html" class="c-btn-glow">GET OFFER</a>
+							</p>
+						</div>
+					</div>
+					<nav class="nav">
+						<ul>
+							<li><a href="showtime.html">Showtimes</a></li>
+							<li><a href="experience.html">Experiences</a></li>
+							<li><a href="offers.html">Offers</a></li>
+							<li><a href="food.html">Food</a></li>
+							<li><a href="locations.html">Locations</a></li>
+						</ul>
+						<ul>
+							<li><a href="about.html">About Reel</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Gift Cards</a></li>
+							<li><a href="faqs.html">FAQs</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="media-centre.html">Media</a></li>
+						</ul>
+					</nav>
+					<ul class="c-social">
+						<li>
+							<a href="#" target="_blank"><img src="assets/img/social/fb.svg" alt="FB" class="svg fb"></a>
+						</li>
+						<li>
+							<a href="#" target="_blank"><img src="assets/img/social/insta.svg" alt="Insta" class="svg insta"></a>
+						</li>
+						<li>
+							<a href="#" target="_blank"><img src="assets/img/social/snap.svg" alt="Snap" class="svg snap"></a>
+						</li>
+						<li>
+							<a href="#" target="_blank"><img src="assets/img/social/twitter.svg" alt="Twitter" class="svg twitter"></a>
+						</li>
+						<li>
+							<a href="#" target="_blank"><img src="assets/img/social/youtube.svg" alt="Youtube" class="svg youtube"></a>
+						</li>
+					</ul>
+				</div>
 			</div>
 	    </aside>
+		
+		<main class="page--home">
 
-	    <section class="c-main-banner">
-	    	<div class="main-carousel js-main-carousel">
-	    		<article class="item">
-	    			<div class="img">
-	    				<img src="assets/img/movie-posters/poster-venom-full.jpg" alt="Reprisal">
-	    			</div>
-	    			<div class="txt">
-	    				<div class="o-container">
-		    				<h1>Venom</h1>
-		    				<div class="details">
-		    					<div class="det-1"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-		    					<div class="det-2"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div>
-		    				</div>
-							<p>When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life.</p>
-							<div class="action">
-								<a href="#" class="c-btn-glow"><span>Book Now</span></a>
-								<a href="#" class="play-trailor"></a>
-							</div>
-						</div>
-	    			</div>
-	    		</article>
-	    		<article class="item">
-	    			<div class="img">
-	    				<img src="assets/img/movie-posters/poster-venom-full.jpg" alt="Reprisal">
-	    			</div>
-	    			<div class="txt">
-	    				<div class="o-container">
-		    				<h1>Venom</h1>
-		    				<div class="details">
-		    					<div class="det-1"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-		    					<div class="det-2"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div>
-		    				</div>
-							<p>When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life.</p>
-							<div class="action">
-								<a href="#" class="c-btn-glow"><span>Book Now</span></a>
-								<a href="#" class="play-trailor"></a>
-							</div>
-						</div>
-	    			</div>
-	    		</article>
-	    		<article class="item">
-	    			<div class="img">
-	    				<img src="assets/img/movie-posters/poster-venom-full.jpg" alt="Reprisal">
-	    			</div>
-	    			<div class="txt">
-	    				<div class="o-container">
-		    				<h1>Venom</h1>
-		    				<div class="details">
-		    					<div class="det-1"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-		    					<div class="det-2"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div>
-		    				</div>
-							<p>When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life.</p>
-							<div class="action">
-								<a href="#" class="c-btn-glow"><span>Book Now</span></a>
-								<a href="#" class="play-trailor"></a>
-							</div>
-						</div>
-	    			</div>
-	    		</article>
-	    		<article class="item">
-	    			<div class="img">
-	    				<img src="assets/img/movie-posters/poster-venom-full.jpg" alt="Reprisal">
-	    			</div>
-	    			<div class="txt">
-	    				<div class="o-container">
-		    				<h1>Venom</h1>
-		    				<div class="details">
-		    					<div class="det-1"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-		    					<div class="det-2"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div>
-		    				</div>
-							<p>When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life.</p>
-							<div class="action">
-								<a href="#" class="c-btn-glow"><span>Book Now</span></a>
-								<a href="#" class="play-trailor"></a>
-							</div>
-						</div>
-	    			</div>
-	    		</article>
-	    		<article class="item">
-	    			<div class="img">
-	    				<img src="assets/img/movie-posters/poster-venom-full.jpg" alt="Reprisal">
-	    			</div>
-	    			<div class="txt">
-	    				<div class="o-container">
-		    				<h1>Venom</h1>
-		    				<div class="details">
-		    					<div class="det-1"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-		    					<div class="det-2"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div>
-		    				</div>
-							<p>When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life.</p>
-							<div class="action">
-								<a href="#" class="c-btn-glow"><span>Book Now</span></a>
-								<a href="#" class="play-trailor"></a>
-							</div>
-						</div>
-	    			</div>
-	    		</article>
-	    		<article class="item">
-	    			<div class="img">
-	    				<img src="assets/img/movie-posters/poster-venom-full.jpg" alt="Reprisal">
-	    			</div>
-	    			<div class="txt">
-	    				<div class="o-container">
-		    				<h1>Venom</h1>
-		    				<div class="details">
-		    					<div class="det-1"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-		    					<div class="det-2"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div>
-		    				</div>
-							<p>When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life.</p>
-							<div class="action">
-								<a href="#" class="c-btn-glow"><span>Book Now</span></a>
-								<a href="#" class="play-trailor"></a>
-							</div>
-						</div>
-	    			</div>
-	    		</article>
-	    	</div>
-	    	<div class="main-carousel-thumb">
-	    		<div class="o-container">
-			    	<div class="js-main-carousel-thumb">
-			    		<div class="item">
-			    			<div class="wrap"><img src="assets\img\movie-posters\poster-reprisal--small.jpg" alt="Reprisal"></div>
+		    <section class="c-main-banner">
+		    	<div class="main-carousel js-main-carousel">
+		    		<article class="item">
+		    			<div class="item-inner">
+			    			<div class="img">
+			    				<img src="assets/img/movie-posters/banner001.jpg" alt="Reprisal">
+			    			</div>
+			    			<div class="txt">
+			    				<div class="o-container" data-maxlength="120">
+				    				<h1><div class="anim-wrap"><div class="anim-inner">Aquaman</div></div></h1>
+				    				<div class="details">
+				    					<div class="det-1"><div class="anim-wrap"><div class="anim-inner"><span>Action</span><span>Crime</span><span>Thriller</span></div></div></div>
+				    					<div class="det-2"><div class="anim-wrap"><div class="anim-inner"><i class="icon-duration"></i><span>2hr</span> <span>40min</span></div></div></div>
+				    				</div>
+									<p><span class="anim-wrap"><span class="anim-inner">Arthur Curry learns that he is the heir to the underwater kingdom of Atlantis, and must step forward...</span></span></p>
+									<div class="action">
+										<div class="anim-wrap">
+											<div class="anim-inner">
+												<a href="#" class="c-btn-glow"><span>Book Now</span></a>
+												<a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>
+											</div>
+										</div>
+									</div>
+								</div>
+			    			</div>
+		    			</div>
+		    		</article>
+		    		<article class="item">
+		    			<div class="item-inner">
+			    			<div class="img">
+			    				<img src="assets/img/movie-posters/banner002.jpg" alt="Reprisal">
+			    			</div>
+			    			<div class="txt">
+			    				<div class="o-container" data-maxlength="122">
+				    				<h1><div class="anim-wrap"><div class="anim-inner">Reel Cinemas,<br>The Pointe</div></div></h1>
+				    				<!--<div class="details">
+				    					<div class="det-1"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+				    					<div class="det-2"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div>
+				    				</div>-->
+									<p><span class="anim-wrap"><span class="anim-inner">The five screen Cineplex at The Pointe includes a mix of Standard & Dine-in Cinemas as well as a third Guy Fieri’s Kitchen, synonymous with American-style cuisine, the menu will reflect his signature style, taking inspiration from his most renowned dishes.</span></span></p>
+									<div class="action">
+										<div class="anim-wrap"><div class="anim-inner">
+										<a href="#" class="c-btn-glow"><span>Know More</span></a>
+										</div></div>
+										<!--<a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>-->
+									</div>
+								</div>
+			    			</div>
+		    			</div>
+		    		</article>
+		    		<article class="item">
+		    			<div class="item-inner">
+			    			<div class="img">
+			    				<img src="assets/img/movie-posters/banner003.jpg" alt="Reprisal">
+			    			</div>
+			    			<div class="txt">
+			    				<div class="o-container" data-maxlength="122">
+				    				<h1><div class="anim-wrap"><div class="anim-inner">Venom</div></div></h1>
+				    				<div class="details">
+				    					<div class="det-1"><div class="anim-wrap"><div class="anim-inner"><span>Action</span><span>Crime</span><span>Thriller</span></div></div></div>
+				    					<div class="det-2"><div class="anim-wrap"><div class="anim-inner"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div></div></div>
+				    				</div>
+									<p><span class="anim-wrap"><span class="anim-inner">When Eddie Brock acquires the powers of a symbiote, he will have to release his alter-ego Venom to save his life. Director: Ruben Fleischer Cast: Tom Hardy, Michelle Williams, Woody Harrelson</span></span></p>
+									<div class="action">
+										<div class="anim-wrap"><div class="anim-inner">
+										<a href="#" class="c-btn-glow"><span>Book Now</span></a>
+										<a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>
+										</div></div>
+									</div>
+								</div>
+			    			</div>
+		    			</div>
+		    		</article>
+		    		<article class="item">
+		    			<div class="item-inner">
+			    			<div class="img">
+			    				<img src="assets/img/movie-posters/banner004.jpg" alt="Reprisal">
+			    			</div>
+			    			<div class="txt">
+			    				<div class="o-container" data-maxlength="121">
+				    				<h1><div class="anim-wrap"><div class="anim-inner">VR PARK</div></div></h1>
+				    				<!--<div class="details">
+				    					<div class="det-1"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+				    					<div class="det-2"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div>
+				    				</div>-->
+									<p><span class="anim-wrap"><span class="anim-inner">50% off VR Park Unlimited Day Pass. Turn your world upside down in the ultimate virtual reality and augmented reality theme park.</span></span></p>
+									<div class="action">
+										<div class="anim-wrap"><div class="anim-inner">
+											<a href="#" class="c-btn-glow"><span>Know more</span></a>
+										</div></div>
+										<!--<a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>-->
+									</div>
+								</div>
+			    			</div>
 			    		</div>
-			    		<div class="item">
-			    			<div class="wrap"><img src="assets\img\movie-posters\poster-meg--small.jpg" alt="Reprisal"></div>
+		    		</article>
+		    		<article class="item">
+		    			<div class="item-inner">
+			    			<div class="img">
+			    				<img src="assets/img/movie-posters/banner005.jpg" alt="Reprisal">
+			    			</div>
+			    			<div class="txt">
+			    				<div class="o-container" data-maxlength="115">
+				    				<h1><div class="anim-wrap"><div class="anim-inner">The Nutcracker And<br>The Four Realms</div></div></h1>
+				    				<div class="details">
+				    					<div class="det-1"><div class="anim-wrap"><div class="anim-inner"><span>Action</span><span>Crime</span><span>Thriller</span></div></div></div>
+				    					<div class="det-2"><div class="anim-wrap"><div class="anim-inner"><i class="icon-duration"></i><span>1hr</span> <span>55min</span></div></div></div>
+				    				</div>
+									<p><span class="anim-wrap"><span class="anim-inner">A young girl is transported into a magical world of gingerbread soldiers and an army of mice. Director: Lasse Hallstrm, Joe Johnston Cast: Keira Knightley, Mackenzie Foy, Morgan Freeman</span></span></p>
+									<div class="action">
+										<div class="anim-wrap"><div class="anim-inner">
+											<a href="#" class="c-btn-glow"><span>Book Now</span></a>
+											<a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>
+										</div></div>
+									</div>
+								</div>
+			    			</div>
 			    		</div>
-			    		<div class="item">
-			    			<div class="wrap"><img src="assets\img\movie-posters\poster-fallout--small.jpg" alt="Reprisal"></div>
+		    		</article>
+		    		<article class="item">
+		    			<div class="item-inner">
+			    			<div class="img">
+			    				<img src="assets/img/movie-posters/banner006.jpg" alt="Reprisal">
+			    			</div>
+			    			<div class="txt">
+			    				<div class="o-container" data-maxlength="122">
+				    				<h1><div class="anim-wrap"><div class="anim-inner">Venom</div></div></h1>
+				    				<div class="details">
+				    					<div class="det-1"><div class="anim-wrap"><div class="anim-inner"><span>Action</span><span>Crime</span><span>Thriller</span></div></div></div>
+				    					<div class="det-2"><div class="anim-wrap"><div class="anim-inner"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div></div></div>
+				    				</div>
+									<p><span class="anim-wrap"><span class="anim-inner">When Eddie Brock acquires the powers of a symbiote, he will have to release his alter-ego Venom to save his life. Director: Ruben Fleischer Cast: Tom Hardy, Michelle Williams, Woody Harrelson</span></span></p>
+									<div class="action">
+										<div class="anim-wrap"><div class="anim-inner">
+											<a href="#" class="c-btn-glow"><span>Book Now</span></a>
+											<a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>
+										</div></div>
+									</div>
+								</div>
+			    			</div>
 			    		</div>
-			    		<div class="item">
-			    			<div class="wrap"><img src="assets\img\movie-posters\poster-ad-vr--small.jpg" alt="Reprisal"></div>
+		    		</article>
+		    		<article class="item">
+		    			<div class="item-inner">
+			    			<div class="img">
+			    				<img src="assets/img/movie-posters/banner004.jpg" alt="Reprisal">
+			    			</div>
+			    			<div class="txt">
+			    				<div class="o-container" data-maxlength="120">
+				    				<h1><div class="anim-wrap"><div class="anim-inner">VR PARK</div></div></h1>
+				    				<!--<div class="details">
+				    					<div class="det-1"><span>Action</span><span>Crime</span><span>Thriller</span></div>
+				    					<div class="det-2"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div>
+				    				</div>-->
+									<p><span class="anim-wrap"><span class="anim-inner">50% off VR Park Unlimited Day Pass. Turn your world upside down in the ultimate virtual reality and augmented reality theme park.</span></span></p>
+									<div class="action">
+										<div class="anim-wrap"><div class="anim-inner">
+											<a href="#" class="c-btn-glow"><span>Know more</span></a>
+										</div></div>
+										<!--<a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>-->
+									</div>
+								</div>
+			    			</div>
 			    		</div>
-			    		<div class="item">
-			    			<div class="wrap"><img src="assets\img\movie-posters\poster-equalizer2--small.jpg" alt="Reprisal"></div>
+		    		</article>
+		    		<article class="item">
+		    			<div class="item-inner">
+			    			<div class="img">
+			    				<img src="assets/img/movie-posters/banner006.jpg" alt="Reprisal">
+			    			</div>
+			    			<div class="txt">
+			    				<div class="o-container" data-maxlength="120">
+				    				<h1><div class="anim-wrap"><div class="anim-inner">Venom</div></div></h1>
+				    				<div class="details">
+				    					<div class="det-1"><div class="anim-wrap"><div class="anim-inner"><span>Action</span><span>Crime</span><span>Thriller</span></div></div></div>
+				    					<div class="det-2"><div class="anim-wrap"><div class="anim-inner"><i class="icon-duration"></i><span>2hr</span> <span>5min</span></div></div></div>
+				    				</div>
+									<p><span class="anim-wrap"><span class="anim-inner">When Eddie Brock acquires the powers of a symbiote, he will have to release his alter-ego Venom to save his life. Director: Ruben Fleischer Cast: Tom Hardy, Michelle Williams, Woody Harrelson</span></span></p>
+									<div class="action">
+										<div class="anim-wrap"><div class="anim-inner">
+											<a href="#" class="c-btn-glow"><span>Book Now</span></a>
+											<a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a>
+										</div></div>
+									</div>
+								</div>
+			    			</div>
 			    		</div>
-			    		<div class="item">
-			    			<div class="wrap"><img src="assets\img\movie-posters\poster-ad-save40--small.jpg" alt="Reprisal"></div>
-			    		</div>
+		    		</article>
+		    	</div>
+		    	<div class="main-carousel-thumb no--hover">
+		    		<div class="o-container">
+				    	<div class="js-main-carousel-thumb">
+				    		<div class="item">
+				    			<div class="wrap"><div class="inner-wrap"><img src="assets\img\movie-posters\banner001--small.jpg" alt=""></div></div>
+				    		</div>
+				    		<div class="item">
+				    			<div class="wrap"><div class="inner-wrap"><img src="assets\img\movie-posters\banner002--small.jpg" alt=""></div></div>
+				    		</div>
+				    		<div class="item">
+				    			<div class="wrap"><div class="inner-wrap"><img src="assets\img\movie-posters\banner003--small.jpg" alt=""></div></div>
+				    		</div>
+				    		<div class="item">
+				    			<div class="wrap"><div class="inner-wrap"><img src="assets\img\movie-posters\banner004--small.jpg" alt=""></div></div>
+				    		</div>
+				    		<div class="item">
+				    			<div class="wrap"><div class="inner-wrap"><img src="assets\img\movie-posters\banner005--small.jpg" alt=""></div></div>
+				    		</div>
+				    		<div class="item">
+				    			<div class="wrap"><div class="inner-wrap"><img src="assets\img\movie-posters\banner006--small.jpg" alt=""></div></div>
+				    		</div>
+				    		<div class="item">
+				    			<div class="wrap"><div class="inner-wrap"><img src="assets\img\movie-posters\banner004--small.jpg" alt=""></div></div>
+				    		</div>
+				    		<div class="item">
+				    			<div class="wrap"><div class="inner-wrap"><img src="assets\img\movie-posters\banner006--small.jpg" alt=""></div></div>
+				    		</div>
+				    	</div>
 			    	</div>
 		    	</div>
-	    	</div>
-	    </section>
+		    </section>
 
-	    <section class="c-movies-list">
-	    	<div class="o-container">
-		    	<div class="list-tabs">
-		    		<a href="#whats-on" class="tab-link is--active js-tab-link" data-tab-name="movie-list"><span>WHAT’S ON</span></a>
-		    		<a href="#whats-coming" class="tab-link js-tab-link" data-tab-name="movie-list"><span>WHAT’S COMING</span></a>
-		    	</div>
-	    	</div>
-	    	<div id="whats-on" class="is-tab is--active" data-tab-name="movie-list">
-				
-				<div class="fader"></div>
-				<section class="c-movie-filters">
-	    	<a href="#" class="close-btn-m js-close-filter-m"><span class="txt">close</span></a>
-	    	<div class="o-container">
-	    		<div class="wrap">
-	    			<div class="item">
-			    		<div class="c-select-box js-custom-select">
-			    			<div class="field">
-			    				<i class="icon icon--movie"></i>
-			    				<div class="field-title">What's on</div>
-			    				<input type="text" placeholder="What to watch" class="js-field ">
-			    			</div>
-			    			<div class="field-dropdown">
-			    			<div class="field">
-			    				<i class="icon icon--movie"></i>
-			    				<div class="field-title">What's on</div>
-			    				<input type="text" placeholder="What to watch" class="js-field">
-			    			</div>
-			    				<div class="scroll">
-				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-movies"><label for="select-all-movies"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-			    					<div class="item"><input type="checkbox" id="ant"><label for="ant">Ant-Man & The Wasp</label></div>
-			    					<div class="item"><input type="checkbox" id="bad"><label for="bad">Bad Cat</label></div>
-			    					<div class="item"><input type="checkbox" id="billionaire"><label for="billionaire">Billionaire Boys Club</label></div>
-			    					<div class="item"><input type="checkbox" id="blindspotting"><label for="blindspotting">Blindspotting</label></div>
-			    					<div class="item"><input type="checkbox" id="tagalog"><label for="tagalog">(Tagalog) Buy Bust</label></div>
-			    					<div class="item"><input type="checkbox" id="christopher"><label for="christopher">Christopher Robin</label></div>
-			    					<div class="item"><input type="checkbox" id="escape"><label for="escape">Escape Plan 2</label></div>
-		    					</div>
-			    			</div>
-			    		</div>
-		    		</div>
-		    		<div class="item">
-			    		<div class="c-select-box js-custom-select">
-			    			<div class="field">
-			    				<i class="icon icon--location"></i>
-			    				<div class="field-title">Location</div>
-			    				<input type="text" placeholder="Location" class="js-field medium">
-			    			</div>
-			    			<div class="field-dropdown">
-			    			<div class="field">
-			    				<i class="icon icon--location"></i>
-			    				<div class="field-title">Location</div>
-			    				<input type="text" placeholder="Location" class="js-field">
-			    			</div>
-			    				<div class="scroll">
-				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-locations"><label for="select-all-locations"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-									<div class="item"><input type="checkbox" id="the-dubai-mall"><label for="the-dubai-mall">The Dubai Mall</label></div>
-									<div class="item"><input type="checkbox" id="dubai-marina-mall"><label for="dubai-marina-mall">Dubai Marina Mall</label></div>
-									<div class="item"><input type="checkbox" id="jabel-ali-recreation-club"><label for="jabel-ali-recreation-club">Jabel Ali Recreation Club</label></div>
-									<div class="item"><input type="checkbox" id="rove-downtown"><label for="rove-downtown">Rove Downtown</label></div>
-		    					</div>
-			    			</div>
-			    		</div>
-		    		</div>
-		    		<div class="item">
-			    		<div class="c-select-box js-custom-select">
-			    			<div class="field">
-			    				<i class="icon icon--exp"></i>
-			    				<div class="field-title">Experience</div>
-			    				<input type="text" placeholder="Experience" class="js-field medium">
-			    			</div>
-			    			<div class="field-dropdown">
-			    			<div class="field">
-			    				<i class="icon icon--exp"></i>
-			    				<div class="field-title">Experience</div>
-			    				<input type="text" placeholder="Experience" class="js-field">
-			    			</div>
-			    				<div class="scroll">
-				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp"><label for="select-all-exp"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-									<div class="item"><input type="checkbox" id="standard"><label for="standard">Standard</label></div>
-									<div class="item"><input type="checkbox" id="dolby-cinema"><label for="dolby-cinema">Dolby Cinema</label></div>
-									<div class="item"><input type="checkbox" id="reel-dine-in-cinema"><label for="reel-dine-in-cinema">Reel Dine-In Cinema</label></div>
-									<div class="item"><input type="checkbox" id="reel-boutique"><label for="reel-boutique">Reel Boutique</label></div>
-									<div class="item"><input type="checkbox" id="screenx"><label for="screenx">ScreenX</label></div>
-									<div class="item"><input type="checkbox" id="platinum"><label for="platinum">Platinum</label></div>
-									<div class="item"><input type="checkbox" id="mx4d"><label for="mx4d">MX4D</label></div>
-									<div class="item"><input type="checkbox" id="reel-junior"><label for="reel-junior">Reel Junior</label></div>
-		    					</div>
-			    			</div>
-			    		</div>
-		    		</div>
-					<div class="item">
-			    		<div class="c-select-box js-custom-select">
-			    			<div class="field">
-			    				<i class="icon icon--genere"></i>
-			    				<div class="field-title">GENRE</div>
-			    				<input type="text" placeholder="GENRE" class="js-field small">
-			    			</div>
-			    			<div class="field-dropdown">
-			    			<div class="field">
-			    				<i class="icon icon--genere"></i>
-			    				<div class="field-title">GENRE</div>
-			    				<input type="text" placeholder="GENRE" class="js-field">
-			    			</div>
-			    				<div class="scroll">
-				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-genere"><label for="select-all-genere"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-									<div class="item"><input type="checkbox" id="action"><label for="action">Action</label></div>
-									<div class="item"><input type="checkbox" id="comedy"><label for="comedy">Comedy</label></div>
-									<div class="item"><input type="checkbox" id="horror"><label for="horror">Horror</label></div>
-									<div class="item"><input type="checkbox" id="romance"><label for="romance">Romance</label></div>
-									<div class="item"><input type="checkbox" id="animation"><label for="animation">Animation</label></div>
-									<div class="item"><input type="checkbox" id="family"><label for="family">Family</label></div>
-									<div class="item"><input type="checkbox" id="Thriller"><label for="Thriller">Thriller</label></div>
-		    					</div>
-			    			</div>
-			    		</div>
-		    		</div>
-		    		<!--<div class="item">
-	    				<a href="#" class="c-btn-glow js-filter-search" tabindex="0"><span>Book Now</span></a>
-	    			</div>-->
-    			</div>
-	    	</div>
-	    </section>
-		    	<div class="o-container js-movie-list movie-lsit-wrap">
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">Mission Impossible</div>
-								<div class="duration-language">
-									<div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-									<div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-							<div class="booknow-tag"><span>BOOK NOW</span></div>
-			    				<img src="assets\img\movie-posters\poster-listing_meg-small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div> 
-			    			<div class="info">
-			    				<div class="name">The MEG</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_fanny--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">Fanny Khan</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_karwan--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">Karwaan</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_spy--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">The Spy<br>
-								who dumped me</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-							<div class="booknow-tag"><span>BOOK NOW</span></div>
-			    				<img src="assets\img\movie-posters\poster-listing_skyscrapper-small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">SKYCRAPER</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mamamia-small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MAMA MIA</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_ocians--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">OCEAN’s 8</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_teentitans--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">Teen Titans Go To<br>
-								The Movies</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_hoteltransylyania--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">Hotel Transylvania 3<br>
-								A Monster Vacation</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_antman--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">Ant Man And The Wasp</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-					<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_jurrassicworld-small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">Jurassic World<br>
-								Fallen Kingdom</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info genere"><span>Action</span><span>Crime</span><span>Thriller</span></div>
-								<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>2hr</span> <span class="margin-right">5min</span></div>
-								<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>English</span></div>
-								<div class="info language"><i class="icon medium"><img src="assets/img/icons/subtitles.svg" alt="FB" class="svg"></i><span>Arabic</span></div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in--white.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique--white.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>About:</strong>   When Eddie Brock acquires the powers of a symbiote, he will have to 
-release his alter-ego Venom to save his life. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="play-trailor"></a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    	</div>
-		    	<div class="list-main-action">
-		    		<a href="#" class="c-btn-outline btn--sm"><span>Load More</span></a>
-		    	</div>
-	    	</div>
-	    	<div id="whats-coming" class="is-tab" data-tab-name="movie-list">
-				<section class="c-movie-filters">
-	    	<a href="#" class="close-btn-m js-close-filter-m"><span class="txt">close</span></a>
-	    	<div class="o-container">
-	    		<div class="wrap">
-	    			<div class="item">
-			    		<div class="c-select-box js-custom-select">
-			    			<div class="field">
-			    				<i class="icon icon--movie"></i>
-			    				<div class="field-title">What's on</div>
-			    				<input type="text" placeholder="What to watch" class="js-field ">
-			    			</div>
-			    			<div class="field-dropdown">
-			    			<div class="field">
-			    				<i class="icon icon--movie"></i>
-			    				<div class="field-title">What's on</div>
-			    				<input type="text" placeholder="What to watch" class="js-field">
-			    			</div>
-			    				<div class="scroll">
-				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-movies"><label for="select-all-movies"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-			    					<div class="item"><input type="checkbox" id="ant"><label for="ant">Ant-Man & The Wasp</label></div>
-			    					<div class="item"><input type="checkbox" id="bad"><label for="bad">Bad Cat</label></div>
-			    					<div class="item"><input type="checkbox" id="billionaire"><label for="billionaire">Billionaire Boys Club</label></div>
-			    					<div class="item"><input type="checkbox" id="blindspotting"><label for="blindspotting">Blindspotting</label></div>
-			    					<div class="item"><input type="checkbox" id="tagalog"><label for="tagalog">(Tagalog) Buy Bust</label></div>
-			    					<div class="item"><input type="checkbox" id="christopher"><label for="christopher">Christopher Robin</label></div>
-			    					<div class="item"><input type="checkbox" id="escape"><label for="escape">Escape Plan 2</label></div>
-		    					</div>
-			    			</div>
-			    		</div>
-		    		</div>
-		    		<div class="item">
-			    		<div class="c-select-box js-custom-select">
-			    			<div class="field">
-			    				<i class="icon icon--location"></i>
-			    				<div class="field-title">Location</div>
-			    				<input type="text" placeholder="Location" class="js-field medium">
-			    			</div>
-			    			<div class="field-dropdown">
-			    			<div class="field">
-			    				<i class="icon icon--location"></i>
-			    				<div class="field-title">Location</div>
-			    				<input type="text" placeholder="Location" class="js-field">
-			    			</div>
-			    				<div class="scroll">
-				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-locations"><label for="select-all-locations"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-									<div class="item"><input type="checkbox" id="the-dubai-mall"><label for="the-dubai-mall">The Dubai Mall</label></div>
-									<div class="item"><input type="checkbox" id="dubai-marina-mall"><label for="dubai-marina-mall">Dubai Marina Mall</label></div>
-									<div class="item"><input type="checkbox" id="jabel-ali-recreation-club"><label for="jabel-ali-recreation-club">Jabel Ali Recreation Club</label></div>
-									<div class="item"><input type="checkbox" id="rove-downtown"><label for="rove-downtown">Rove Downtown</label></div>
-		    					</div>
-			    			</div>
-			    		</div>
-		    		</div>
-		    		<div class="item">
-			    		<div class="c-select-box js-custom-select">
-			    			<div class="field">
-			    				<i class="icon icon--exp"></i>
-			    				<div class="field-title">Experience</div>
-			    				<input type="text" placeholder="Experience" class="js-field medium">
-			    			</div>
-			    			<div class="field-dropdown">
-			    			<div class="field">
-			    				<i class="icon icon--exp"></i>
-			    				<div class="field-title">Experience</div>
-			    				<input type="text" placeholder="Experience" class="js-field">
-			    			</div>
-			    				<div class="scroll">
-				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp"><label for="select-all-exp"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-									<div class="item"><input type="checkbox" id="standard"><label for="standard">Standard</label></div>
-									<div class="item"><input type="checkbox" id="dolby-cinema"><label for="dolby-cinema">Dolby Cinema</label></div>
-									<div class="item"><input type="checkbox" id="reel-dine-in-cinema"><label for="reel-dine-in-cinema">Reel Dine-In Cinema</label></div>
-									<div class="item"><input type="checkbox" id="reel-boutique"><label for="reel-boutique">Reel Boutique</label></div>
-									<div class="item"><input type="checkbox" id="screenx"><label for="screenx">ScreenX</label></div>
-									<div class="item"><input type="checkbox" id="platinum"><label for="platinum">Platinum</label></div>
-									<div class="item"><input type="checkbox" id="mx4d"><label for="mx4d">MX4D</label></div>
-									<div class="item"><input type="checkbox" id="reel-junior"><label for="reel-junior">Reel Junior</label></div>
-		    					</div>
-			    			</div>
-			    		</div>
-		    		</div>
-					<div class="item">
-			    		<div class="c-select-box js-custom-select">
-			    			<div class="field">
-			    				<i class="icon icon--genere-black"></i>
-			    				<div class="field-title">GENRE</div>
-			    				<input type="text" placeholder="GENRE" class="js-field small">
-			    			</div>
-			    			<div class="field-dropdown">
-			    			<div class="field">
-			    				<i class="icon icon--genere"></i>
-			    				<div class="field-title">GENRE</div>
-			    				<input type="text" placeholder="GENRE" class="js-field">
-			    			</div>
-			    				<div class="scroll">
-				    				<div class="item custom-action js-select-all"><input type="checkbox" id="select-all-genere"><label for="select-all-genere"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
-									<div class="item"><input type="checkbox" id="action"><label for="action">Action</label></div>
-									<div class="item"><input type="checkbox" id="comedy"><label for="comedy">Comedy</label></div>
-									<div class="item"><input type="checkbox" id="horror"><label for="horror">Horror</label></div>
-									<div class="item"><input type="checkbox" id="romance"><label for="romance">Romance</label></div>
-									<div class="item"><input type="checkbox" id="animation"><label for="animation">Animation</label></div>
-									<div class="item"><input type="checkbox" id="family"><label for="family">Family</label></div>
-									<div class="item"><input type="checkbox" id="Thriller"><label for="Thriller">Thriller</label></div>
-		    					</div>
-			    			</div>
-			    		</div>
-		    		</div>
-		    		<!--<div class="item">
-	    				<a href="#" class="c-btn-glow js-filter-search" tabindex="0"><span>Book Now</span></a>
-	    			</div>-->
-    			</div>
-	    	</div>
-	    </section>
-		    	<div class="o-container js-movie-list movie-lsit-wrap">
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 15</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    		<div class="movie-item">
-		    			<div class="item-wrap">
-			    			<div class="img">
-			    				<img src="assets\img\movie-posters\poster-listing_mi-fallout--small.jpg" alt="Mission Impossible - Fallout">
-			    			</div>
-			    			<div class="stamp">PG <br> 13</div>
-			    			<div class="info">
-			    				<div class="name">MI - Fallout</div>
-			    				<div class="detail"><div class="detail-inner-wrap">Action,  Adventure |  1 hr 47 min</div></div>
-			    			</div>
-			    			<div class="action">
-								<a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a>
-			    				<a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a>
-			    			</div>
-		    			</div>
-		    			<section class="item-details">
-		    				<a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>
-		    				<div class="text">
-		    					<div class="title-wrap">
-				    				<h1 class="title">Mission Impossible Fallout</h1>
-				    				<div class="stamp">PG <br> 13</div>
-			    				</div>
-								<div class="info">Action | Adventure</div>
-								<div class="info"><strong>Duration:</strong> 1hr 47m</div>
-								<div class="info"><strong>Language:</strong> English</div>
-								<div class="info has-lsit">
-									<strong>Experiences:</strong>
-									<ul class="exp-list">
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-dolby--white-cinema" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-dolby-cinema.png" alt="Dolby Cinema">											
-											</picture>
-										</li>
-										<li>
-											<picture>
-												<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-												<img src="assets/img/logos/logo-reel-mx4d.png" alt="MX4D">											
-											</picture>
-										</li>
-									</ul>
-								</div>
-								<div class="info">
-									<strong>Storyline:</strong> Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong. 
-								</div>
-								<div class="action">
-									<a href="#" class="c-btn-glow" tabindex="0"><span>Book Now</span></a>
-									<a href="#" class="c-btn-white btn--txt-black btn--play" tabindex="0">Watch Trailer</a>
-								</div>
-							</div>
-							<div class="img">
-								<img src="assets\img\movie-posters\poster-listing_mi-fallout--cover.jpg" alt="Mission Impossible - Fallout">
-							</div>
-		    			</section>
-		    		</div>
-		    	</div>
-		    	<div class="list-main-action">
-		    		<a href="#" class="c-btn-glow btn--sm"><span>View All</span></a>
-		    	</div>
-	    	</div>
-	    </section>
+	       <section class="c-movies-list">
+	            <div class="o-container">
+	                <div class="list-tabs">
+	                    <a href="#whats-on" class="tab-link is--active js-tab-link" data-tab-name="movie-list"><div class="txt-wrap"><span>WHAT’S ON</span><strong>WHAT’S ON</strong></div></a>
+	                    <a href="#whats-coming" class="tab-link js-tab-link" data-tab-name="movie-list"><div class="txt-wrap"><span>WHAT’S COMING</span><strong>WHAT’S COMING</strong></div></a>
+	                </div>
+	            </div>
+	            <div id="whats-on" class="is-tab is--active" data-tab-name="movie-list">
+	                <div class="fader"></div>
+	                <section class="c-movie-filters">
+	                    <a href="#" class="close-btn-m js-close-filter-m"><span class="txt">close</span></a>
+	                    <div class="o-container">
+	                        <div class="wrap">
+	                            <div class="item">
+	                                <div class="c-select-box js-custom-select">
+	                                    <div class="field">
+	                                        <i class="icon icon--movie"></i>
+	                                        <div class="field-title">WHAT'S ON</div>
+	                                        <input type="text" placeholder="WHAT TO WATCH" class="js-field">
+	                                    </div>
+	                                    <div class="field-dropdown">
+	                                    <div class="field">
+	                                        <i class="icon icon--movie"></i>
+	                                        <div class="field-title">WHAT'S ON</div>
+	                                        <input type="text" placeholder="WHAT TO WATCH" class="js-field">
+	                                    </div>
+	                                        <div class="scroll js-movies-listing">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="item">
+	                                <div class="c-select-box js-custom-select">
+	                                    <div class="field">
+	                                        <i class="icon icon--location"></i>
+	                                        <div class="field-title c-custom-drop-down js-custom-dropdown">LOCATION</div>
+	                                        
+	                                        <input type="text" placeholder="LOCATION" class="js-field medium">
+	                                    </div>
+	                                    <div class="field-dropdown">
+	                                    <div class="field">
+	                                        <i class="icon icon--location"></i>
+	                                        <div class="field-title">LOCATION</div>
+	                                        <input type="text" placeholder="LOCATION" class="js-field">
+	                                    </div>
+	                                        <div class="scroll js-cimemas-listing">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="item">
+	                                <div class="c-select-box js-custom-select">
+	                                    <div class="field">
+	                                        <i class="icon icon--exp"></i>
+	                                        <div class="field-title">EXPERIENCE</div>
+	                                        <input type="text" placeholder="EXPERIENCE" class="js-field medium">
+	                                    </div>
+	                                    <div class="field-dropdown">
+	                                    <div class="field">
+	                                        <i class="icon icon--exp"></i>
+	                                        <div class="field-title">EXPERIENCE</div>
+	                                        <input type="text" placeholder="EXPERIENCE" class="js-field">
+	                                    </div>
+	                                        <div class="scroll js-experience-listing">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="item">
+	                                <div class="c-select-box js-custom-select">
+	                                    <div class="field">
+	                                        <i class="icon icon--genere"></i>
+	                                        <div class="field-title">GENRE</div>
+	                                        <input type="text" placeholder="GENRE" class="js-field small">
+	                                    </div>
+	                                    <div class="field-dropdown">
+	                                    <div class="field">
+	                                        <i class="icon icon--genere"></i>
+	                                        <div class="field-title">GENRE</div>
+	                                        <input type="text" placeholder="GENRE" class="js-field">
+	                                    </div>
+											<div class="scroll js-genre-listing">
+											</div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </section>
+	                
+		                <div class="o-container js-movie-list movie-lsit-wrap js-play-movies-listing">
+		                	<div class="u-loader"></div>
+		                </div>
+	            	
+	                <div class="list-main-action">
+	                    <a href="javascript:void(0);" class="c-btn-outline btn--sm js-load-play-movies-listing" attr-current-page="1"><span>Load More</span></a>
+	                </div>
+	            </div>
+	            <div id="whats-coming" class="is-tab" data-tab-name="movie-list">
+	                <section class="c-movie-filters">
+	                    <a href="#" class="close-btn-m js-close-filter-m"><span class="txt">close</span></a>
+	                    <div class="o-container">
+	                        <div class="wrap">
+	                            <div class="item">
+	                                <div class="c-select-box js-custom-select">
+	                                    <div class="field">
+	                                        <i class="icon icon--movie"></i>
+	                                        <div class="field-title">WHAT'S ON</div>
+	                                        <input type="text" placeholder="WHAT TO WATCH" class="js-field ">
+	                                    </div>
+	                                    <div class="field-dropdown">
+	                                    <div class="field">
+	                                        <i class="icon icon--movie"></i>
+	                                        <div class="field-title">WHAT'S ON</div>
+	                                        <input type="text" placeholder="WHAT TO WATCH" class="js-field">
+	                                    </div>
+	                                        <div class="scroll js-movies-listing-coming">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="item">
+	                                <div class="c-select-box js-custom-select">
+	                                    <div class="field">
+	                                        <i class="icon icon--location"></i>
+	                                        <div class="field-title">LOCATION</div>
+	                                        <input type="text" placeholder="LOCATION" class="js-field medium">
+	                                    </div>
+	                                    <div class="field-dropdown">
+	                                    <div class="field">
+	                                        <i class="icon icon--location"></i>
+	                                        <div class="field-title">Location</div>
+	                                        <input type="text" placeholder="LOCATION" class="js-field">
+	                                    </div>
+	                                        <div class="scroll js-coming-cimemas-listing">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <!-- <div class="item">
+	                                <div class="c-select-box js-custom-select">
+	                                    <div class="field">
+	                                        <i class="icon icon--exp"></i>
+	                                        <div class="field-title">Experience</div>
+	                                        <input type="text" placeholder="EXPERIENCE" class="js-field medium">
+	                                    </div>
+	                                    <div class="field-dropdown">
+	                                    <div class="field">
+	                                        <i class="icon icon--exp"></i>
+	                                        <div class="field-title">Experience</div>
+	                                        <input type="text" placeholder="Experience" class="js-field">
+	                                    </div>
+	                                        <div class="scroll">
+									           <div class="item custom-action js-select-all"><input type="checkbox" id="select-all-exp-coming"><label for="select-all-exp-coming"><span class="not-selected">Select All</span><span class="selected">Clear All</span></label></div>
+									           <div class="scroll-area">
+										           <div class="item"><input type="checkbox" value="standard" class="js-experienceItem-1" id="standard-1"><label for="standard-1">Standard</label></div>
+										           <div class="item"><input type="checkbox" value="dolby" class="js-experienceItem-1" id="dolby-cinema-1"><label for="dolby-cinema-1">Dolby Cinema</label></div>
+										           <div class="item"><input type="checkbox" value="dine-in" class="js-experienceItem-1" id="reel-dine-in-cinema-1"><label for="reel-dine-in-cinema-1">Reel Dine-In Cinema</label></div>
+										           <div class="item"><input type="checkbox" value="reel-boutique" class="js-experienceItem-1" id="reel-boutique-1"><label for="reel-boutique-1">Reel Boutique</label></div>
+										           <div class="item"><input type="checkbox" value="screenx" class="js-experienceItem-1" id="screenx-1"><label for="screenx-1">ScreenX</label></div>
+										           <div class="item"><input type="checkbox" value="platinum" class="js-experienceItem-1" id="platinum-1"><label for="platinum-1">Platinum</label></div>
+										           <div class="item"><input type="checkbox" value="mx4d" class="js-experienceItem-1" id="mx4d-1"><label for="mx4d-1">MX4D</label></div>
+										           <div class="item"><input type="checkbox" value="reel-junior" class="js-experienceItem-1" id="reel-junior-1"><label for="reel-junior-1">Reel Junior</label></div>                                            
+									           </div>
+									           <div class="item item--close"><a href="#" class="js-close-custom-select">Close</a></div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div> -->
+	                            <div class="item">
+	                                <div class="c-select-box js-custom-select">
+	                                    <div class="field">
+	                                        <i class="icon icon--genere"></i>
+	                                        <div class="field-title">GENRE</div>
+	                                        <input type="text" placeholder="GENRE" class="js-field small">
+	                                    </div>
+	                                    <div class="field-dropdown">
+	                                    <div class="field">
+	                                        <i class="icon icon--genere"></i>
+	                                        <div class="field-title">GENRE</div>
+	                                        <input type="text" placeholder="GENRE" class="js-field">
+	                                    </div>
+	                                        <div class="scroll js-coming-genre-listing">
+												
+											</div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </section>
+	                <div class="is--loading">
+		                <div class="o-container js-movie-list movie-lsit-wrap js-coming-movies-listing">
+		                	<div class="u-loader"></div>
+		                </div>
+	            	</div>
+					<div class="list-main-action">
+	                	<a href="javascript:void(0);" class="c-btn-outline btn--sm js-load-coming-movies-listing" attr-current-page="1"><span>Load More</span></a>
+	                </div>
+	            </div>
+	        </section>
 
-	    <section class="c-exp-views">
-	    	<div class="o-container">
-	    		<h1 class="sec-heading"><span class="txt">EXPERIENCES</span><i></i></h1>
-				<div class="js-exp-carousel carousel">
-					<section class="item">
-						<div class="txt">
-							<h2>Reel Dine-In</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam sapiente qui quo neque omnis ad natus tempora blanditiis. Nemo similique consequatur</p>
-							<a href="#" class="c-btn-glow btn--m-change-to-green"><span>KNOW MORE</span></a>
+		    <section class="c-exp-views">
+		    
+		    		<h1 class="sec-heading"><span class="txt">EXPERIENCES</span><i></i></h1>
+					<div class="js-exp-carousel carousel">
+						<section class="item">
+							<div class="txt">
+								<h2>Reel Dine-In</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam sapiente qui quo neque omnis ad natus tempora blanditiis. Nemo similique consequatur</p>
+								<a href="#" class="c-btn-glow"><span>KNOW MORE</span></a>
+							</div>
+							<div class="img">
+							
+							<!--<img src="assets/img/exp/reel-dine-in.jpg" alt="Reel Boutique">-->
+							<iframe width="875" height="527" src="https://www.youtube.com/embed/0zguddoRPnI?controls=0?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="float:right"></iframe>
+							
+							
+							
+							</div>
+						</section>
+						<section class="item">
+							<div class="txt">
+								<h2>Reel Boutique</h2>
+								<p>Reel Boutique provides a unique and intimate experience for all movie-goers with each location designed distinctively to blend in with its surroundings.</p>
+								<a href="#" class="c-btn-glow"><span>KNOW MORE</span></a>
+							</div>
+							<div class="img">
+							<!--<img src="assets/img/exp/reel-boutique.jpg" alt="Reel Boutique">-->
+							<iframe width="875" height="527" src="https://www.youtube.com/embed/0zguddoRPnI?controls=0?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="float:right"></iframe>
+							</div>
+						</section>
+						<section class="item">
+							<div class="txt">
+								<h2>Reel Junior</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum ut et suscipit, quisquam, quibusdam labore odit amet natus, aut eius error</p>
+								<a href="#" class="c-btn-glow"><span>KNOW MORE</span></a>
+							</div>
+							<div class="img">
+							<!--<img src="assets/img/exp/reel-junior.jpg" alt="Reel Boutique">-->
+							<iframe width="875" height="527" src="https://www.youtube.com/embed/0zguddoRPnI?controls=0?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="float:right"></iframe>
+							</div>
+						</section>
+						<section class="item">
+							<div class="txt">
+								<h2>Reel Platinum Suites</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, assumenda ut dignissimos, nihil corrupti eaque perferendis dolorum reiciendis</p>
+								<a href="#" class="c-btn-glow"><span>KNOW MORE</span></a>
+							</div>
+							<div class="img">
+							
+							<!--<img src="assets/img/exp/reel-platinum.jpg" alt="Reel Boutique">-->
+							<iframe width="875" height="527" src="https://www.youtube.com/embed/0zguddoRPnI?controls=0?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="float:right"></iframe>
+							</div>
+						</section>
+						<section class="item">
+							<div class="txt">
+								<h2>Reel Mx4D</h2>
+								<p>Reel Boutique provides a unique and intimate experience for all movie-goers with each location designed distinctively to blend in with its surroundings.</p>
+								<a href="#" class="c-btn-glow"><span>KNOW MORE</span></a>
+							</div>
+							<div class="img">
+							<!--<img src="assets/img/exp/reel-mx4d.jpg" alt="Reel Boutique">-->
+							<iframe width="875" height="527" src="https://www.youtube.com/embed/0zguddoRPnI?controls=0?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="float:right"></iframe>
+							</div>
+						</section>
+					</div>
+					<div class="js-exp-carousel-thumb carousel-thumb">
+						<div class="item">
+							<div class="img-wrap">
+								<picture>
+									<!-- <source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)"> -->
+									<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
+								</picture>
+							</div>
 						</div>
-						<div class="img"><img src="assets/img/exp/reel-boutique.jpg" alt="Reel Boutique"></div>
-					</section>
-					<section class="item">
-						<div class="txt">
-							<h2>Reel Boutique</h2>
-							<p>Reel Boutique provides a unique and intimate experience for all movie-goers with each location designed distinctively to blend in with its surroundings.</p>
-							<a href="#" class="c-btn-glow btn--m-change-to-green"><span>KNOW MORE</span></a>
+						<div class="item">
+							<div class="img-wrap">
+								<picture>
+									<!-- <source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)"> -->
+									<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">
+								</picture>
+							</div>
 						</div>
-						<div class="img"><img src="assets/img/exp/reel-boutique.jpg" alt="Reel Boutique"></div>
-					</section>
-					<section class="item">
-						<div class="txt">
-							<h2>Reel Junior</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum ut et suscipit, quisquam, quibusdam labore odit amet natus, aut eius error</p>
-							<a href="#" class="c-btn-glow btn--m-change-to-green"><span>KNOW MORE</span></a>
+						<div class="item">
+							<div class="img-wrap">
+								<picture>
+									<!-- <source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)"> -->
+									<img src="assets/img/logos/logo-reel-junior.png" alt="Reel Junior">
+								</picture>
+							</div>
 						</div>
-						<div class="img"><img src="assets/img/exp/reel-boutique.jpg" alt="Reel Boutique"></div>
-					</section>
-					<section class="item">
-						<div class="txt">
-							<h2>Reel Platinum Suites</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, assumenda ut dignissimos, nihil corrupti eaque perferendis dolorum reiciendis</p>
-							<a href="#" class="c-btn-glow btn--m-change-to-green"><span>KNOW MORE</span></a>
+						<div class="item">
+							<div class="img-wrap">
+								<picture>
+									<!-- <source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)"> -->
+									<img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Reel Platinum Suties">
+								</picture>
+							</div>
 						</div>
-						<div class="img"><img src="assets/img/exp/reel-boutique.jpg" alt="Reel Boutique"></div>
-					</section>
-					<section class="item">
-						<div class="txt">
-							<h2>Reel Boutique</h2>
-							<p>Reel Boutique provides a unique and intimate experience for all movie-goers with each location designed distinctively to blend in with its surroundings.</p>
-							<a href="#" class="c-btn-glow btn--m-change-to-green"><span>KNOW MORE</span></a>
-						</div>
-						<div class="img"><img src="assets/img/exp/reel-boutique.jpg" alt="Reel Boutique"></div>
-					</section>
-				</div>
-				<div class="js-exp-carousel-thumb carousel-thumb">
-					<div class="item">
-						<div class="img-wrap">
-							<picture>
-								<source srcset="assets/img/logos/logo-reel-dine-in--white.png" media="(max-width: 767px)">
-								<img src="assets/img/logos/logo-reel-dine-in.png" alt="Reel Dine-In">
-							</picture>
+						<div class="item">
+							<div class="img-wrap">
+								<picture>
+									<!-- <source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)"> -->
+									<img src="assets/img/logos/logo-reel-mx4d.png" alt="Reel Dine-In">
+								</picture>
+							</div>
 						</div>
 					</div>
-					<div class="item">
-						<div class="img-wrap">
-							<picture>
-								<source srcset="assets/img/logos/logo-reel-boutique--white.png" media="(max-width: 767px)">
-								<img src="assets/img/logos/logo-reel-boutique.png" alt="Reel Boutique">
-							</picture>
-						</div>
-					</div>
-					<div class="item">
-						<div class="img-wrap">
-							<picture>
-								<source srcset="assets/img/logos/logo-reel-junior--white.png" media="(max-width: 767px)">
-								<img src="assets/img/logos/logo-reel-junior.png" alt="Reel Junior">
-							</picture>
-						</div>
-					</div>
-					<div class="item">
-						<div class="img-wrap">
-							<picture>
-								<source srcset="assets/img/logos/logo-reel-platinum-suties--white.png" media="(max-width: 767px)">
-								<img src="assets/img/logos/logo-reel-platinum-suties.png" alt="Reel Platinum Suties">
-							</picture>
-						</div>
-					</div>
-					<div class="item">
-						<div class="img-wrap">
-							<picture>
-								<source srcset="assets/img/logos/logo-reel-mx4d--white.png" media="(max-width: 767px)">
-								<img src="assets/img/logos/logo-reel-mx4d.png" alt="Reel Dine-In">
-							</picture>
-						</div>
-					</div>
-				</div>
-	    	</div>
-	    </section>
+		    
+		    </section>
+		</main>
 
-	    <footer class="c-main-footer">
-	    	<div class="o-container">
-	    		<div class="row">
-	    			<section class="col col-1 hidemobile-footer">
-						<div class="half">
-	    				<h4>General Information</h4>
-						<ul>
-						<li><a href="#">Emaar Entertainment</a></li>
-						<li><a href="#">The Dubai Mall</a></li>
-						<li><a href="#">Dubai Marina Mall</a></li>
-						</ul>
-						</div>
-						<div class="half">
-	    				<h4>reel cinemas</h4>
-						<ul>
-						<li><a href="#">About Reel Cinemas</a></li>
-						<li><a href="#">Services</a></li>
-						<li><a href="#">Food &amp; Drinks</a></li>
-						</ul>
-						</div>
-						<div class="half"></div>
-						
-	    			</section>
-	    			<section class="col col-2">
-	    				<h4>&nbsp;&nbsp;&nbsp;FOLLOW US</h4>
-	    				<ul class="c-social">
-	    					<li>
-	    						<a href="#" target="_blank"><img src="assets/img/social/fb.svg" alt="FB" class="svg fb"></a>
-	    					</li>
-	    					<li>
-	    						<a href="#" target="_blank"><img src="assets/img/social/insta.svg" alt="Insta" class="svg insta"></a>
-	    					</li>
-	    					<li>
-	    						<a href="#" target="_blank"><img src="assets/img/social/snap.svg" alt="Snap" class="svg snap"></a>
-	    					</li>
-	    					<li>
-	    						<a href="#" target="_blank"><img src="assets/img/social/twitter.svg" alt="Twitter " class="svg twitter"></a>
-	    					</li>
-	    					<li>
-	    						<a href="#" target="_blank"><img src="assets/img/social/youtube.svg" alt="Youtube " class="svg youtube"></a>
-	    					</li>
-	    				</ul>
-	    			</section>
-	    			<section class="col col-3">
-	    				<h4>Keep in Touch</h4>
-	    				<div class="c-subs-box">
-	    					<i class="icon"></i>
-	    					<input type="email" placeholder="Your Email">
-							<a href="#" class="c-btn-glow btn--sm"><span>Join Now</span></a>
-	    				</div>
-	    			</section>
-	    			<section class="col col-4 hidemobile-footer">
-	    				<h4>Technology Partners</h4>
-	    				<ul class="links-1">
-							<li>
-								<a href="#" target="_blank">
+		<div class="footer-outer-wrap">
+		    <footer class="c-main-footer">
+		    	<div class="o-container">
+		    		<div class="row">
+		    			<section class="col col-1 hidemobile-footer">
+							<div class="half">
+		    				<h4>General Information</h4>
+							<ul>
+							<li><a href="#">Emaar Entertainment</a></li>
+							<li><a href="#">The Dubai Mall</a></li>
+							<li><a href="#">Dubai Marina Mall</a></li>
+							</ul>
+							</div>
+							<div class="half">
+		    				<h4>reel cinemas</h4>
+							<ul>
+							<li><a href="about.html">About Reel Cinemas</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Food &amp; Drinks</a></li>
+							</ul>
+							</div>
+							<div class="half"></div>
+							
+		    			</section>
+		    			<section class="col col-2">
+		    				<h4>&nbsp;&nbsp;&nbsp;FOLLOW US</h4>
+		    				<ul class="c-social">
+		    					<li>
+		    						<a href="#" target="_blank"><img src="assets/img/social/fb.svg" alt="FB" class="svg fb"></a>
+		    					</li>
+		    					<li>
+		    						<a href="#" target="_blank"><img src="assets/img/social/insta.svg" alt="Insta" class="svg insta"></a>
+		    					</li>
+		    					<li>
+		    						<a href="#" target="_blank"><img src="assets/img/social/snap.svg" alt="Snap" class="svg snap"></a>
+		    					</li>
+		    					<li>
+		    						<a href="#" target="_blank"><img src="assets/img/social/twitter.svg" alt="Twitter " class="svg twitter"></a>
+		    					</li>
+		    					<li>
+		    						<a href="#" target="_blank"><img src="assets/img/social/youtube.svg" alt="Youtube " class="svg youtube"></a>
+		    					</li>
+		    				</ul>
+		    			</section>
+		    			<section class="col col-3">
+		    				<div class="js-get-email">
+			    				<h4>Keep in Touch</h4>
+			    				<div class="c-subs-box">
+			    					<i class="icon"></i>
+			    					<input type="email" placeholder="Your Email" id="email-keep-in-touch">
+									<a href="#" class="c-btn-glow btn--sm js-dummy-result"><span>Join Now</span></a>
+			    				</div>
+								<div class="c-msg-wrap">
+									<div class="msg msg--error">Please enter a valid email address.</div>
+									<div class="msg msg--success">Email submitted successfully!</div>
+								</div>
+							</div>
+		    			</section>
+
+		    			<section class="col col-4">
+		    				<h4>Technology Partners</h4>
+		    				<ul class="links-1 js-footer-logos-carousel">
+								<li>
 									<picture>
-										<source srcset="assets/img/misc/tech-partner-dolby-black-blur.png" media="(max-width: 767px)">
 										<img src="assets/img/misc/tech-partner-dolby.png" alt="Dolby">
 									</picture>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
+								</li>
+								<li>
 									<picture>
 										<img src="assets/img/misc/tech-partner-mx4d.png" alt="MX4D">
 									</picture>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
+								</li>
+								<li>
 									<picture>
-										<source srcset="assets/img/misc/tech-partner-laser-black-blur.png" media="(max-width: 767px)">
 										<img src="assets/img/misc/tech-partner-laser.png" alt="Laser">
 									</picture>
-								</a>
-							</li>
-	    				</ul>
-	    			</section>
-	    			<section class="col col-5 hidemobile-footer">
-	    				<h4>Partners</h4>
-	    				<ul class="links-1">
-							<li>
-								<a href="#" target="_blank">
+								</li>
+								<li>
 									<picture>
-										<source srcset="assets/img/misc/partner-fab-black-blur.png" media="(max-width: 767px)">
+										<img src="assets/img/misc/tech-partner-dolby.png" alt="Dolby">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-mx4d.png" alt="MX4D">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-laser.png" alt="Laser">
+									</picture>
+								</li>
+		    				</ul>
+		    			</section>
+		    			<section class="col col-5">
+		    				<h4>Partners</h4>
+		    				<ul class="links-1 js-footer-logos-carousel">
+								<li>
+									<picture>
 										<img src="assets/img/misc/partner-fab.png" alt="FAB">
 									</picture>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
+								</li>
+								<li>
 									<picture>
-										<source srcset="assets/img/misc/partner-omega-black.png" media="(max-width: 767px)">
 										<img src="assets/img/misc/partner-omega.png" alt="Omega">
 									</picture>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
+								</li>
+								<li>
 									<picture>
-										<source srcset="assets/img/misc/partner-pepsi-black-blur.png" media="(max-width: 750px)">
 										<img src="assets/img/misc/partner-pepsi.png" alt="Pepesi">
 									</picture>
-								</a>
-							</li>
-	    				</ul>
-	    			</section>
-	    			<section class="col col-6">
-						
-	    				<ul class="links-1">
-	    					<li><a href="#" target="_blank"><img src="assets/img/misc/store-apple.png" alt="Store Apple"></a></li>
-	    					<li><a href="#" target="_blank"><img src="assets/img/misc/store-android.png" alt="Store Android"></a></li>
-	    				</ul>
-	    				<div class="copyright">
-	    					<img src="assets/img/misc/logo-emaar.png" alt="EMAAR">
-	    					<span>Copyright © Reel Entertainment LLC. All rights reserved.</span>
-<span><a href="#">Terms &amp; Conditions</a>   &nbsp; | &nbsp;   <a href="#">Privacy Policy</a></span>
-	    				</div>
-	    			</section>
-	    		</div>
-	    	</div>
-	    </footer>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-fab.png" alt="FAB">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-omega.png" alt="Omega">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-pepsi.png" alt="Pepesi">
+									</picture>
+								</li>
+		    				</ul>
+		    			</section>
+		    			<section class="col col-6">
+							
+		    				<ul class="links-1">
+		    					<li><a href="#" target="_blank"><img class="store-icons" src="assets/img/misc/applestore.svg" alt="Store Apple"></a></li>
+		    					<li><a href="#" target="_blank"><img class="store-icons" src="assets/img/misc/googlestore.svg" alt="Store Android"></a></li>
+		    				</ul>
+		    				<div class="copyright">
+		    					<img src="assets/img/misc/logo-emaar.png" alt="EMAAR">
+		    					<span>Copyright © Reel Entertainment LLC. All rights reserved.</span>
+								<span><a href="#">Terms &amp; Conditions</a>   &nbsp; | &nbsp;   <a href="#">Privacy Policy</a></span>
+		    				</div>
+		    			</section>
+		    		</div>
+		    	</div>
+		    </footer>
+		</div>
 
 	    <div class="filter-space"></div>
+
+		<div class="c-popup">
+	        <div class="overlay js-close-popup"></div>
+			
+			<!-- Example of normal popup -->
+	        <!-- <section id="dummy-popup" class="popup">
+	            <div class="popup-wrap">
+	                <hr class="deco">
+	                <div class="c-banner" style="background-image: url(img/img-4.jpg);">
+	                    <h1>Lorem Ipsum</h1>
+	                </div>
+	                <div class="txt-wrap">
+	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in.</p>
+	                </div>
+	                <div class="popup-action">
+	                    <a href="#" class="c-close js-close-popup"><span>Close</span></a>
+	                </div>
+	            </div>
+	        </section> -->
+
+	        <!-- Example of video popup -->
+	        <section id="video-1" class="popup popup--full-screen">
+	            <div class="popup-wrap">
+	                
+	                <!-- <div class="js-video" data-type="youtube" data-video-id="Uti2niW2BRA"></div> -->
+	                <!-- <div class="js-video" data-plyr-provider="youtube" data-plyr-embed-id="qupswFhMCxI"></div> -->
+	                
+	                <!-- For HTML5 Video -->
+	                <video class="js-video" poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" id="player" playsinline controls>
+	                    <source src="http://www.reelcinemas.ae/en/KeyArts/Tarilers/Aquaman.mp4" type="video/mp4">
+	                </video>
+
+	                <div class="popup-action">
+	                    <a href="#" class="c-close js-close-popup"><span>Close</span></a>
+	                </div>
+	                
+	            </div>
+	        </section>
+	        <section id="video-2" class="popup popup--full-screen">
+	            <div class="popup-wrap">
+	                <div class="js-video" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
+	                <div class="popup-action">
+	                    <a href="#" class="c-close js-close-popup"><span>Close</span></a>
+	                </div>
+	            </div>
+	        </section>
+	        
+	    </div>
 
 	    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	    <script>window.jQuery || document.write('<script src="assets/js/script/jquery-3.3.1.min.js"><\/script>')</script>
 
+	    
 	    <script src="assets/js/script.min.js"></script>
+	    <script src="movies-script.js"></script>
 
 	    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 	    <script>

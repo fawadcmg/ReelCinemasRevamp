@@ -1,13 +1,14 @@
 .c-exp-views{
-	@media (max-width: 767px){
-		margin-bottom: 60px;
-	}
 	.o-container{
 		position: relative;
 		@media (max-width: 767px){
 			padding: 0;
 		}
 	}
+	
+	
+	
+	
 	.sec-heading{ 
 		font-family: 'arquitecta_mediummedium', arial, sans-serif;
 		display: flex;
@@ -17,9 +18,10 @@
 		width: 100%;
 		text-transform: uppercase;
 		align-items: center;
-		margin-bottom: -11px;
+		margin-bottom: -12px;
 		position: relative;
 		z-index: 5;
+		    margin-left: 15px;
 		@media (max-width: 767px){
 			font-size: 20px;
 			margin-bottom: 30px;
@@ -40,22 +42,25 @@
 				display: none;
 			}
 		}
+		.txt{
+			margin: 0;
+		}
 	}
 
 	.carousel-thumb{
-		position: absolute;
-		bottom: -6px;
+		
+		bottom: 95px;
 		left: 15px;
 		max-width: 900px;
-		height: 113px;
+		height: 0;
 		@media (max-width: 1600px){
-			bottom: -18px;
+			bottom: -23px;
 		}
 		@media (max-width: 1580px){
 			left: 5.4217vw;
 		}
 		@media (max-width: 1023px){
-			bottom: -28px;
+			bottom: -33px;
 		}
 		@media (max-width: 767px){
 			left: 15px;
@@ -69,13 +74,13 @@
 		}
 
 		.item{
-			padding: 5px 1px;
+			padding: 0px 1px;
 			transition: all .35s;
 			cursor: pointer;
 
 			.img-wrap{
 				border-radius: 10px;
-				background: rgba(0,0,0,0.1);
+				background: #f2f5f8;
 				padding: 25px;
 				width:  180px;
 				height: 100px;
@@ -96,14 +101,13 @@
 				@media (max-width: 767px){
 					width: 117px;
 					height: 60px;
-					background: #7f7f7f;
+					// background: #7f7f7f;
 				}
 
 				img{
 					position: absolute;
 					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
+					transform: translateY(-50%);
 					display: block;
 					max-width: 80%;
 				}
@@ -130,28 +134,28 @@
 			&.slick-current{
 				// width: 220px !important;
 				.item{
-					padding-top: 0px;
-					padding-bottom: 0;
+					// padding-top: 0px;
+					// padding-bottom: 0;
 				}
 				.img-wrap{
 					// width: 100%;
-					height: 110px;
+					// height: 110px;
 					@media (max-width: 1600px){
-						height: 100px;
+						// height: 100px;
 					}
 					@media (max-width: 1023px){
-						height: 90px;
+						// height: 90px;
 					}
 					@media (max-width: 767px){
-						height: 67px;
+						// height: 67px;
 					}
 				}
 			}
 			&.slick-current{
 				.img-wrap{
-					background: rgba(0,0,0,.2);
+					background: #fff;
 					@media (max-width: 767px){
-						background: #333333;
+						background: #fff;
 					}
 				}
 			}
@@ -294,6 +298,74 @@
 				padding-left: 35px;
 				
 			}
+		}
+	}
+
+	@media (max-width: 767px){
+		margin-bottom: 60px;
+	    height: calc(100vh - 133px);
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-around;
+	    margin-bottom: 40px;
+
+	    .sec-heading{
+	    	margin-top: 20px;
+	    	margin-bottom: 20px;
+	    }
+	    .carousel .txt h2{
+	    	font-size: 26px;
+	    }
+	    .carousel .txt p{
+	    	font-size: 13px;
+	    	margin-bottom: 15px;
+	    }
+		.hl-760 &{
+		    .carousel .img img{
+			    height: 150px;
+			    object-fit: cover;
+			    width: 100%;
+		    }
+		}
+		.hl-650 &{
+	    	height: calc(100vh - 115px);
+	    	.carousel .img img{
+				height: 130px;
+	    	}
+	    	.carousel .txt{
+	    		min-height: 0;
+	    	}
+	    	.carousel .item{
+	    		min-height: 0;
+	    	}
+		}
+		.hl-600 &{
+			.carousel .img img{
+				height: 100px;
+			}
+			.carousel .txt{
+				padding-top: 15px;
+			}
+			.sec-heading{
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+		}
+		.hl-550 &{
+			.carousel .txt h2{
+				font-size: 22px;
+			}
+			.carousel .txt p{
+				font-size: 12px;
+			}
+			.carousel .txt .c-btn-glow{
+			    padding: 12px 20px;	
+			    font-size: 12px;
+			    line-height: 1em;
+		    }
+		    .carousel .item{
+		    	padding-bottom: 10px;
+		    }
 		}
 	}
 }

@@ -1,9 +1,20 @@
+@import "_mixin";
 @import "_reset";
 @import "variable";
+
 @import "_fonts";
-// @import "select2";
+@import "_miscellaneous";
+
+@import "_mCustomScrollbar";
+@import "_select2";
+@import "_plyr";
+@import "_slick";
+@import "aos";
+
 @import "_base";
-@import "slick";
+@import "_layout";
+@import "_typography";
+
 @import "elements";
 @import "_header";
 @import "_main-banner";
@@ -12,4 +23,13 @@
 @import "_exp-views";
 @import "_movieinner";
 @import "_footer";
-@import "_showtime";  
+@import "_showtime";
+@import "_exp-list";
+@import "_banner";
+@import "_offers";
+@import "_content";
+@import "_bars";
+@import "_subs-box";
+@import "_location";
+@import "_faqs";
+@import "_ie";

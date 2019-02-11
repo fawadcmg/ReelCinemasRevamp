@@ -1,0 +1,32 @@
+[
+  {
+    "CinemaID": "0001",
+    "CinemaName": "The Dubai Mall",
+    "image": "/images/dubai_mall_new.jpg"
+  },
+  {
+    "CinemaID": "0002",
+    "CinemaName": "Dubai Marina Mall",
+    "image": "/images/marina_mall_new.jpg"
+  },
+  {
+    "CinemaID": "0003",
+    "CinemaName": "Jebel Ali Recreation Club",
+    "image": "/images/jabel_ali.jpg"
+  },
+  {
+    "CinemaID": "0005",
+    "CinemaName": "Rove Downtown",
+    "image": "/images/rc-rove.jpg"
+  },
+  {
+    "CinemaID": "0006",
+    "CinemaName": "The Springs Souk",
+    "image": "/images/rc-springs.jpg"
+  },
+  {
+    "CinemaID": "0004",
+    "CinemaName": "The Pointe",
+    "image": "/images/jabel_ali.jpg"
+  }
+]

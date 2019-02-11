@@ -1,0 +1,83 @@
+.o-container{
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1510px;
+	padding-left: 15px;
+	padding-right: 	15px;
+
+	&.container--indent-1{
+		max-width: 1310px;
+	}
+
+	@media (max-width: 1660px){
+		padding: 0 5.4217vw;
+		max-width: 1660px;
+	}
+	
+	@media (max-width: 767px){
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	.o-row{
+		display: flex;
+		margin: 0 -15px;
+		flex-wrap: wrap;
+
+		.o-col{
+			padding: 0 15px;
+		}
+	}
+}
+
+
+$class-slug: col- !default;
+
+@for $i from 0 through 20{
+  .#{$class-slug}-#{$i*5}{
+    width: $i*5%;
+  }
+}
+
+
+@media (max-width: 1700px){
+
+	$class-xl: col--xl- !default;
+
+	@for $i from 0 through 20{
+	  .#{$class-xl}-#{$i*5}{
+	    width: $i*5%;
+	  }
+	}
+
+}
+@media (max-width: 1200px){
+
+	$class-lg: col--lg- !default;
+
+	@for $i from 0 through 20{
+	  .#{$class-lg}-#{$i*5}{
+	    width: $i*5%;
+	  }
+	}
+}
+@media (max-width: 922px){
+
+	$class-md: col--md- !default;
+
+	@for $i from 0 through 20{
+	  .#{$class-md}-#{$i*5}{
+	    width: $i*5%;
+	  }
+	}
+}
+@media (max-width: 767px){
+
+	$class-sm: col--sm- !default;
+
+	@for $i from 0 through 20{
+	  .#{$class-sm}-#{$i*5}{
+	    width: $i*5%;
+	  }
+	}
+}
