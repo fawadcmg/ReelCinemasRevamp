@@ -9,6 +9,29 @@
 	@extend .slick-dots-sty-1;
 	@extend .slick-dots-sty--black;
 	
+	.content-tile-bg-img-carousel{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		z-index: 0;
+
+		*{
+			height: 100%;
+		}
+
+		.img-item,
+		.img{
+			width: 100%;
+			height: 100%;
+		}
+		.img{
+			background: #fff no-repeat center center / cover;
+		}
+	}
+
 	.slick-dots{
 		margin-top: 30px;
 	}
@@ -301,9 +324,11 @@
 			overflow: hidden;
 			@media (min-width: 768px){
 				&:hover{
-					img{
-						transform: scale(1.1) rotateZ(1.5deg);
-					}
+					// a{
+						img{
+							transform: scale(1.1) rotateZ(1.5deg);
+						}
+					// }
 				}
 			}
 		}
@@ -715,28 +740,34 @@
 		display: flex;
 		align-items: center;
 		
-		@media (min-height: 650px){
+		.hg-650 &{
 			padding-top: calc(50vh - 58px);
 			height: calc(100vh - 58px);
 		}
 	}
+
 	.c-content-tiles.tile--highlight .wrap-col{
 		align-items: center;
 	}
+
 	.c-content-tiles:nth-child(2n+1) .wrap-col{
 		padding-left: 0;
 	}
+
 	.c-content-tiles.tile--focus .wrap-col{
 		padding-top: 40px;
 	}
+
 	.c-content-tiles .sec-logo img {
 	    max-height: 50px;
 	    max-width: 240px;
 	}
+
 	.c-content-tiles.tile--highlight .txt-block h1{
 		font-size: 32px;
 		font-weight: bold;
 	}
+
 	.c-offers .heading-sec h1,
 	.c-content-block .img-txt-block .txt h2,
 	.c-content-tiles .txt-block h1{
@@ -744,9 +775,11 @@
 		margin-bottom: 15px;
 		font-weight: normal;
 	}
+
 	.c-offers .heading-sec h1{
 		font-size: 26px;
 	}
+
 	.c-content-tiles .action-block{
 		margin-top: 20px;
 	}
@@ -763,11 +796,11 @@
 			width: auto;
 		}
 	}
-	.c-content-tiles.content-tiles--a{
 
+	.c-content-tiles.content-tiles--a{
 	}
 
-	@media (max-height: 750px){
+	.hl-750{
 		.c-content-tiles .wrap-col{
 			padding-top: calc(50vh - 100px);
 		}
@@ -775,10 +808,11 @@
 			top: 19%;
 		}
 	}
-	@media (max-height: 670px){
+
+	.hl-670{
 	}
 	
-	@media (max-height: 600px){
+	.hl-600{
 		.c-content-tiles .sec-logo{
 			margin-bottom: 20px;
 		}
@@ -786,4 +820,5 @@
 			padding-bottom: 30px;
 		}
 	}
+
 }

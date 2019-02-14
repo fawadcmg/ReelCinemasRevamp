@@ -17,7 +17,7 @@
 	@media (max-width: 767px){
 		min-height: calc(100vh - 67px);
 
-		@media (max-height: 650px){
+		.hl-650 &{
 			min-height: calc(100vh - 57px);
 		}
 	}
@@ -36,7 +36,7 @@
 	@media (max-width: 767px){
 		height: calc(100vh - 67px);
 
-		@media (max-height: 650px){
+		.hl-650 &{
 			height: calc(100vh - 57px);
 		}
 	}
@@ -55,7 +55,7 @@
 	@media (max-width: 767px){
 		height: calc(100vh - 67px);
 
-		@media (max-height: 650px){
+		.hl-650 &{
 			height: calc(100vh - 57px);
 		}
 	}
@@ -82,6 +82,7 @@
 		cursor: pointer;
 		background: transparent url(../img/icons/arrow-left.svg) no-repeat 50%;
 		transform: translateY(-50%);
+		cursor: pointer;
 		
 		&.slick-next{
 			right: 25px;
@@ -106,6 +107,11 @@
 				left: auto;
 				right: 15px;
 			}
+		}
+	}
+	@media (max-width: 767px){
+		.slick-arrow{
+			height: 26px;
 		}
 	}
 }

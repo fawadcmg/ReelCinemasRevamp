@@ -1216,7 +1216,11 @@ function initComingMovieGrid(){
 		});
 	  
 	}).done(function( data ) {
-		loadComingMovieGridBlocks();		
+
+		movieListRemoveCarousel();
+		loadComingMovieGridBlocks();
+		movieListStartCarousel();
+		
 		console.log("Coming movie grid completed");		
 	}).fail(function( data ) {
 	    console.log("Coming movie grid  failed");
