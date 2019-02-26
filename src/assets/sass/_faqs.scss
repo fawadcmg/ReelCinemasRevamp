@@ -12,6 +12,7 @@
 	position: relative;
 
 	.layer-1-links{
+		// padding-right: 1px;
 		a{
 
 		}
@@ -89,8 +90,8 @@
 		padding-right: 20px;
 
 		ul{
-			list-style: none;
-			padding: 0 0 0 20px;
+			list-style: decimal;
+			padding: 0 0 0 30px;
 			margin: 0;
 		}
 
@@ -540,6 +541,20 @@
 	    padding-right: 60px;
 	}
 }
+@media (max-width: 985px){
+	.c-tabs-links a{
+		font-size: 14px;
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+}
+@media (max-width: 875px){
+	.c-tabs-links a {
+	    font-size: 13px;
+	    padding-right: 15px;
+	    padding-left: 15px;
+	}
+}
 @media (max-width: 920px){
 	.c-banner{
 		padding: 70px 0 133px;
@@ -552,6 +567,24 @@
 	}
 }
 @media (max-width: 767px){
+	.c-2-layer-content{
+		&:not(.is--calculating){
+			&.is--active .c-tabs-links.tabs-links--a{
+				height: 0 !important;
+			}
+
+			&.has--transition{
+				&.is--active .c-tabs-links.tabs-links--a{
+					transition: all .75s;
+					transition-delay: .2s;
+				}
+				.c-tabs-links.tabs-links--a{
+					transition: none;
+				}
+			}
+		}
+	}
+
 	.c-2-layer-content .layer-2-links li .is-tab .answer{
 		ul{
 			margin-bottom: 20px;

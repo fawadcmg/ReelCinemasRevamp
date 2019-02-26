@@ -896,8 +896,8 @@ function initMovieGrid(){
 			movieLanguage = movieLanguage.replace(/ Language:/g, "");
 			movieLanguage = movieLanguage.replace(/ Language: /g, "");
 			movieLanguage = movieLanguage.replace(/ Language/g, "");
-			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
-			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><picture><source srcset='assets/img/icons/subtitles.svg' media='(max-width: 767px)''><img src='assets/img/icons/subtitles--white.svg' alt=''></picture></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><picture><source srcset='assets/img/icons/subtitles.svg' media='(max-width: 767px)''><img src='assets/img/icons/subtitles--white.svg' alt=''></picture></i><span>");
 
 			tempMovieSynopsis = movieSynopsis.split('\n');
 		 	
@@ -928,7 +928,7 @@ function initMovieGrid(){
 		 	for (arrayIndex = 0; arrayIndex < movieExperienceArray.length; arrayIndex++) {
 				temp = movieExperienceArray[arrayIndex];			
 				if(movieExperienceTemp.indexOf(temp[0]) > -1  ){					
-					movieExperience += '<li><picture><source srcset="assets/img/logos/logo-reel-'+temp[1]+'--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-'+temp[1]+'.png" alt="Reel '+temp[0]+'"></picture></li>';
+					movieExperience += '<li><picture><source srcset="assets/img/logos/logo-reel-'+temp[1]+'--white.png" media="(max-width: 767px)"><img src="assets/img/logos/logo-reel-'+temp[1]+'--white.png" alt="Reel '+temp[0]+'"></picture></li>';
 				}				
 			}
 
@@ -1070,19 +1070,19 @@ function loadMovieGridBlocks(argMovie){
 	<div class="item-wrap"><div class="img"><div class="stamp">'+tempEntry[9]+'</div>'+bookNowClass+'<img src="'+tempEntry[5]+'" alt="'+tempEntry[4]+'"></div>\
 		<div class="info"><div class="name">'+tempEntry[4]+'</div>\
 			<div class="duration-language">\
-			<div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[8]+'</span></div>\
-			<div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div></div>\
+			<div><i class="icon"><picture><source srcset="assets/img/icons/duration.svg" media="(max-width: 767px)"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></picture></i><span>'+tempEntry[8]+'</span></div>\
+			<div><i class="icon"><picture><source srcset="assets/img/icons/language.svg" media="(max-width: 767px)"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></picture></i><span>'+tempEntry[7]+'</span></div></div>\
 			<div class="detail"><div class="detail-inner-wrap"><span>'+tempEntry[11]+'</span><span>'+tempEntry[8]+'</span></div></div></div>\
 		<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[6]+' class="c-btn-white btn--txt-black btn--play btn--sm js-popup-link" tabindex="0">Trailer</a></div></div>\
 	<section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>\
 		<div class="text"> <div class="title-wrap"> <h1 class="title">'+tempEntry[4]+'</h1> <div class="stamp">'+tempEntry[9]+'</div></div>'+
 			genreDiv
-			+'<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[8]+'</span></div>\
-			<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
+			+'<div class="info duration"><i class="icon"><picture><source srcset="assets/img/icons/duration.svg" media="(max-width: 767px)"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></picture></i><span>'+tempEntry[8]+'</span></div>\
+			<div class="info language"><i class="icon medim"><picture><source srcset="assets/img/icons/language--white.svg" media="(max-width: 767px)"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></picture></i><span>'+tempEntry[7]+'</span></div>\
 			<div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+tempEntry[2]+'</ul></div>\
 			<div class="info"><strong>Storyline:</strong> '+tempEntry[10]+'</div>\
-			<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[6]+' class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div>\
-		<div class="img"><img src="'+tempEntry[5]+'" alt="'+tempEntry[4]+'"></div>\
+			<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[6]+' class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div>\
+			<div class="img"><video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" muted loop playsinline><source src='+tempEntry[6]+' type="video/mp4"></video></div>\
 	</section></div>';
 
 	movieListingArray.push(result);
@@ -1140,8 +1140,8 @@ function initComingMovieGrid(){
 			movieLanguage = movieLanguage.replace(/ Language:/g, "");
 			movieLanguage = movieLanguage.replace(/ Language: /g, "");
 			movieLanguage = movieLanguage.replace(/ Language/g, "");
-			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
-			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles--white.svg' alt='' class=''></i><span>");
+			movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles--white.svg' alt='' class=''></i><span>");
 
 			tempMovieSynopsis = movieSynopsis.split('\n');
 		 	var releaseDate = new Date(item.OpenDate.split('T')[0].replace(/-/g, "/"));
@@ -1252,18 +1252,18 @@ function loadComingMovieGridBlocks(){
 	<div class="item-wrap"><div class="img"><div class="stamp">'+tempEntry[8 ]+'</div>'+bookNowClass+'<img src="'+tempEntry[4 ]+'" alt="'+tempEntry[3 ]+'"></div>\
 		<div class="info"><div class="name">'+tempEntry[3]+'</div>\
 			<div class="duration-language">\
-			<div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
-			<div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div></div>\
+			<div><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
+			<div><i class="icon"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div></div>\
 			<div class="detail"><div class="detail-inner-wrap"><span>'+tempEntry[10]+'</span><span>'+tempEntry[7]+'</span></div></div></div>\
 		<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[5]+' class="c-btn-white btn--txt-black btn--play btn--sm js-popup-link" tabindex="0">Trailer</a></div></div>\
 	<section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>\
 		<div class="text"> <div class="title-wrap"> <h1 class="title">'+tempEntry[3]+'</h1> <div class="stamp">'+tempEntry[8]+'</div></div>\
 			'+genreDiv+'\
-			<div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
-			<div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div>\
+			<div class="info duration"><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
+			<div class="info language"><i class="icon medim"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div>\
 			<div class="info"><strong>Storyline:</strong> '+tempEntry[9]+'</div>\
-			<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[5]+' class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div>\
-		<div class="img"><img src="'+tempEntry[4]+'" alt="'+tempEntry[3]+'"></div>\
+			<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[5]+' class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div>\
+			<div class="img"><video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" loop muted playsinline><source src='+tempEntry[6]+' type="video/mp4"></video></div>\
 	</section></div>';
 
 		comingMovieListingArray.push(result);
@@ -1472,13 +1472,13 @@ function loadMovieDetail(argMovieName){
 				 			strLen = tempMovieLanguage[counter].length;
 				  			strposition = tempMovieLanguage[counter].indexOf('Language: ');
 				  			tempLanguage = tempMovieLanguage[counter].substring(strposition+10,strLen);
-				  			movieLanguage = '<i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempLanguage+'</span>';
+				  			movieLanguage = '<i class="icon medim"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+tempLanguage+'</span>';
 			            }            
 			            if (tempMovieLanguage[counter].indexOf('Subtitle') > -1) {	                
 			                strLen = tempMovieLanguage[counter].length;
 				  			strposition = tempMovieLanguage[counter].indexOf('Subtitle: ');
 				  			tempSubtile = tempMovieLanguage[counter].substring(strposition+10,strLen);
-				  			movieSubtitle =  '<i class="icon medium"><picture><source srcset="assets/img/icons/subtitles.svg" media="(max-width: 767px)"><img src="assets/img/icons/subtitles-white.svg" alt="FB" class=""></picture></i><span>'+tempSubtile+'</span>'			  			
+				  			movieSubtitle =  '<i class="icon medium"><picture><source srcset="assets/img/icons/subtitles--white.svg" media="(max-width: 767px)"><img src="assets/img/icons/subtitles--white.svg" alt="FB" class=""></picture></i><span>'+tempSubtile+'</span>'			  			
 			            }
 				 	}
 				
@@ -1577,13 +1577,13 @@ function loadMovieDetail(argMovieName){
 				 			strLen = tempMovieLanguage[counter].length;
 				  			strposition = tempMovieLanguage[counter].indexOf('Language: ');
 				  			tempLanguage = tempMovieLanguage[counter].substring(strposition+10,strLen);
-				  			movieLanguage = '<i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+tempLanguage+'</span>';
+				  			movieLanguage = '<i class="icon medim"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+tempLanguage+'</span>';
 			            }            
 			            if (tempMovieLanguage[counter].indexOf('Subtitle') > -1) {	                
 			                strLen = tempMovieLanguage[counter].length;
 				  			strposition = tempMovieLanguage[counter].indexOf('Subtitle: ');
 				  			tempSubtile = tempMovieLanguage[counter].substring(strposition+10,strLen);
-				  			movieSubtitle =  '<i class="icon medium"><picture><source srcset="assets/img/icons/subtitles.svg" media="(max-width: 767px)"><img src="assets/img/icons/subtitles-white.svg" alt="FB" class=""></picture></i><span>'+tempSubtile+'</span>'			  			
+				  			movieSubtitle =  '<i class="icon medium"><picture><source srcset="assets/img/icons/subtitles--white.svg" media="(max-width: 767px)"><img src="assets/img/icons/subtitles--white.svg" alt="FB" class=""></picture></i><span>'+tempSubtile+'</span>'			  			
 			            }
 				 	}
 				
@@ -1947,8 +1947,8 @@ function loadPopularMovies(){
 				movieLanguage = movieLanguage.replace(/ Language:/g, "");
 				movieLanguage = movieLanguage.replace(/ Language: /g, "");
 				movieLanguage = movieLanguage.replace(/ Language/g, "");
-				movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
-				movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles.svg' alt='' class=''></i><span>");
+				movieLanguage = movieLanguage.replace(/Subtitle: /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles--white.svg' alt='' class=''></i><span>");
+				movieLanguage = movieLanguage.replace(/Subtitle /g, "</div><div class='info language'><i class='icon medium'><img src='assets/img/icons/subtitles--white.svg' alt='' class=''></i><span>");
 			
 				movieExperience = "";
 				movieExperienceTemp = movieExperienceTemp.toLowerCase();		
@@ -2003,7 +2003,7 @@ function loadPopularMovies(){
 
 				movieURL =  "window.location='"+movieURL+"'";
 
-				playMoviesListing.append('<div onclick="'+movieURL+'" class="movie-item"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap"><span>'+movieGenre+'</span><span>'+movieDuration+'</span></div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+movieExperience+'</ul></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+movieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><i class="icon"></i><span>Play Trailer</span></a></div></div><div class="img"><img src="'+movieImage+'" alt="'+movieName+'"></div></section> </div>');
+				playMoviesListing.append('<div onclick="'+movieURL+'" class="movie-item"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap"><span>'+movieGenre+'</span><span>'+movieDuration+'</span></div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+movieExperience+'</ul></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+movieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div><div class="img"><video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" loop playsinline muted><source src="http://www.reelcinemas.ae/en/KeyArts/Tarilers/Aquaman.mp4" type="video/mp4"></video></div></section> </div>');
 				movieCounter++;
 		});
 	  

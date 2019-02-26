@@ -79,8 +79,23 @@
 			padding-left: 25px;
 		}
 	}
+	.has-multi-col-links{
+		&, ul{
+			width: 100%;
+		}
+		li{
+			width: 50%;
+			float: left;
+			padding-right: 20px;
+
+			&:nth-child(2n){
+				padding-right: 0;
+			}
+		}
+	}
+	.links-list,
 	.half{
-		float: left; 
+		float: left;
 		width: 50%;
 		
 	li {
@@ -98,6 +113,10 @@
 			}
 		}
 	}
+	}
+	.links-list{
+		float: none;
+		width: 100%;
 	}
 	.col-1, .col-2, .col-3{
 		padding-top: 65px;
@@ -223,6 +242,11 @@
 	}
 
 	@media (max-width: 1200px){
+		.links-list{
+			h4{
+				text-align: left;
+			}
+		}
 		h4{
 			text-align: center;
 			margin-bottom: 20px;
@@ -286,12 +310,16 @@
 		background: #191919 url("../img/misc/grain-dark.jpg") repeat left top;
 		color: #000000;
 
+		.social-icons-wrap{
+			margin-top: 20px;
+		}
+
 		.col{
 			width: 100%;
 		}
 		h4{
 			color: #FFF;
-		    font-size: 20px;
+		    font-size: 18px;
 			font-weight: normal;
 		    margin-bottom: 15px;
 		    font-family: Effra;

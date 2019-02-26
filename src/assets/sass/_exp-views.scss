@@ -21,7 +21,9 @@
 		margin-bottom: -12px;
 		position: relative;
 		z-index: 5;
-		    margin-left: 15px;
+		margin-left: 20px;
+		padding-left: 30px;
+
 		@media (max-width: 767px){
 			font-size: 20px;
 			margin-bottom: 30px;
@@ -46,21 +48,21 @@
 			margin: 0;
 		}
 	}
-
 	.carousel-thumb{
-		
-		bottom: 95px;
-		left: 15px;
+		bottom: 100px;
+		left: 50px;
 		max-width: 900px;
 		height: 0;
+
 		@media (max-width: 1600px){
-			bottom: -23px;
+			bottom: 90px;
 		}
 		@media (max-width: 1580px){
 			left: 5.4217vw;
 		}
 		@media (max-width: 1023px){
-			bottom: -33px;
+			bottom: 80px;
+			max-width: 700px;
 		}
 		@media (max-width: 767px){
 			left: 15px;
@@ -184,6 +186,7 @@
 				flex-direction: column;
 			}
 		}
+
 		.img{
 			position: absolute;
 			top: 0;
@@ -191,11 +194,39 @@
 			width: 100%;
 			height: 100%;
 			z-index: 1;
+			overflow: hidden;
+
+			video{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 75%;
+				height: 100%;
+				pointer-events: none;
+				background: #000;
+				object-fit: cover;
+
+				.no-object-fit &,
+				.is--ie &{
+					position: absolute;
+					top: 50%; 
+					left: 50%;
+					transform: translateX(-50%) translateY(-50%);
+					min-width: 75%; 
+					min-height: 100%; 
+					width: auto; 
+					height: auto;
+					z-index: -1000; 
+					overflow: hidden;
+				}
+			}
+
 			@media (max-width: 767px){
 				position: relative;
 				order: -1;
 				height: auto;
 			}
+
 			&:after,
 			&:before{
 			    content: "";
@@ -207,6 +238,7 @@
 			    left: 42%;
 				background: linear-gradient(90deg,#fff 0,#fff 5%,hsla(0,0%,100%,0));
 				z-index: 1;
+
 				@media (max-width: 1600px){ 
 					left: 48%;
 				} 
@@ -217,6 +249,7 @@
 					display: none;
 				}
 			}
+
 			&:after{
 			    width: 42%;
 			    left: 0%;
@@ -229,6 +262,7 @@
 					width: 55%;
 				}
 			}
+
 			img{
 				height: 100%;
 				width: auto;
@@ -321,6 +355,7 @@
 	    	margin-bottom: 15px;
 	    }
 		.hl-760 &{
+			.carousel .img video,
 		    .carousel .img img{
 			    height: 150px;
 			    object-fit: cover;
@@ -329,6 +364,7 @@
 		}
 		.hl-650 &{
 	    	height: calc(100vh - 115px);
+	    	.carousel .img video,
 	    	.carousel .img img{
 				height: 130px;
 	    	}
@@ -340,6 +376,7 @@
 	    	}
 		}
 		.hl-600 &{
+			.carousel .img video,
 			.carousel .img img{
 				height: 100px;
 			}
@@ -367,5 +404,51 @@
 		    	padding-bottom: 10px;
 		    }
 		}
+	}
+}
+
+@media (max-width: 1580px){
+	.c-exp-views .carousel .item{
+		padding-left: 5.4217vw;
+	}
+	.c-exp-views .sec-heading{
+		padding-left: 0;
+		margin-left:  5.4217vw;
+	}
+}
+
+@media (max-width: 1023px){
+	.c-exp-views .carousel .img:after{
+		width: 40%;
+	}
+	.c-exp-views .carousel .img:before{
+		left: 40%;
+	}
+}
+@media (max-width: 767px){
+	.c-exp-views .carousel .item{
+		padding-left: 0;
+	}
+	.c-exp-views .sec-heading{
+		margin-left: 0;
+	}
+	.c-exp-views .carousel .img{
+		position: relative;
+		&:after{
+			content: '';
+			display: block;
+			position: absolute;
+			top: auto;
+			bottom: -1px;
+			left: 0;
+			width: 100%;
+			height: 25%;
+			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); 
+		}
+	}
+	.c-exp-views .carousel .img video{
+		position: static;
+		left: 0;
+		width: 100%;
 	}
 }

@@ -450,6 +450,7 @@ label{
 		padding: 16px 25px 13px;
 		transition: all .35s;
 		width: 50px;
+		white-space: nowrap;
 
 		.icon{
 			display: inline-block;
@@ -486,8 +487,9 @@ label{
 				.icon{
 					// margin: -1px -13px -1px -10px;
 					/*opacity: 0;*/
-					transform: translateX(160px);
-					    margin: -1px 0 -1px -45px;
+					// transform: translateX(160px);
+					margin-left: 15px;
+					margin-right: 0px;
 				}
 			}
 		}
@@ -1330,6 +1332,14 @@ input[type='number'] {
 		content: "";
 		clear: both;
 		display: table;
+	}
+}
+
+
+@media (min-width: 1024px){
+	.c-movies-list .movie-details .action a.c-btn-white.btn--play-1:hover,
+	.c-btn-white.btn--play-1:hover{
+		width: 210px;
 	}
 }
 
