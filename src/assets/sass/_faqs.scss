@@ -571,6 +571,7 @@
 		&:not(.is--calculating){
 			&.is--active .c-tabs-links.tabs-links--a{
 				height: 0 !important;
+				overflow: hidden;
 			}
 
 			&.has--transition{
@@ -789,7 +790,7 @@
 		}
 	}
 	.c-2-layer-content .layer-1-content .this-row{
-		height: auto;
+		height: auto !important;
 	}
 	.c-2-layer-content .layer-2-links ul{
 		padding-left: 0;

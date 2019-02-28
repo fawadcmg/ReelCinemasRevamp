@@ -773,7 +773,6 @@
 			} */
 
 			video{
-
 				position: absolute;
 				top: 0;
 				right: 0;
@@ -782,7 +781,7 @@
 				pointer-events: none;
 				background: #000;
 				object-fit: cover;
-				opacity: 0.5;
+				opacity: 0.6;
 
 				.no-object-fit &,
 				.is--ie &{

@@ -101,7 +101,8 @@
 				width: 320px;
 				border-radius: 0 0 8px 8px;
 				box-shadow: 2px 10px 10px 0px rgba(0,0,0,.2);
-				overflow: hidden;
+				overflow-x: hidden;
+				overflow-y: auto;
 
 				a{
 					font-size: 16px;

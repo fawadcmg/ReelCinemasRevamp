@@ -52,12 +52,13 @@ table {
   font-weight: normal;
   font-style: normal; }
 
-@font-face {
-  font-family: 'effralight';
-  src: url("../fonts/Effra_light-webfont.woff2") format("woff2"), url("../fonts/Effra_light-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal; }
-
+/* @font-face {
+    font-family: 'effralight';
+    src: url('../fonts/Effra_light-webfont.woff2') format('woff2'),
+         url('../fonts/Effra_light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} */
 @font-face {
   font-family: 'Effra';
   src: url("../fonts/Effra-Bold.eot");
@@ -8219,7 +8220,8 @@ input[type='number'] {
         border-radius: 0 0 8px 8px;
         -webkit-box-shadow: 2px 10px 10px 0px rgba(0, 0, 0, 0.2);
                 box-shadow: 2px 10px 10px 0px rgba(0, 0, 0, 0.2);
-        overflow: hidden; }
+        overflow-x: hidden;
+        overflow-y: auto; }
         .c-main-header .header-links > ul ul a {
           font-size: 16px;
           text-transform: none;
@@ -10607,7 +10609,7 @@ input[type='number'] {
         background: #000;
         -o-object-fit: cover;
            object-fit: cover;
-        opacity: 0.5; }
+        opacity: 0.6; }
         .no-object-fit .c-movies-list .movie-details .img video,
         .is--ie .c-movies-list .movie-details .img video {
           position: absolute;
@@ -17527,7 +17529,8 @@ strong {
 
 @media (max-width: 767px) {
   .c-2-layer-content:not(.is--calculating).is--active .c-tabs-links.tabs-links--a {
-    height: 0 !important; }
+    height: 0 !important;
+    overflow: hidden; }
   .c-2-layer-content:not(.is--calculating).has--transition.is--active .c-tabs-links.tabs-links--a {
     -webkit-transition: all .75s;
     -o-transition: all .75s;
@@ -17688,7 +17691,7 @@ strong {
       .c-2-layer-content .layer-2-links li .is-tab .answer p:last-child {
         margin-bottom: 0; }
   .c-2-layer-content .layer-1-content .this-row {
-    height: auto; }
+    height: auto !important; }
   .c-2-layer-content .layer-2-links ul {
     padding-left: 0; }
   .c-2-layer-content .layer-2-links {
