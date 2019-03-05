@@ -107,8 +107,8 @@ $(window).on('resize orientationchange', function () {
 		}, 250);
 		movieListCarousel();
 		calcScrollHeightDOM();
-		navDropDownHeight();
 	}
+	navDropDownHeight();
 });
 
 function onlyPortrait() {
@@ -1646,6 +1646,8 @@ function bgMobImg() {
 	});
 }
 
+window.onhashchange = activeHashTab;
+
 function activeHashTab(){
 	var winHashVal = window.location.hash.substr(1);
 	if(winHashVal){
@@ -1991,7 +1993,7 @@ function setMarkerTo(targetIndex) {
 
 function locMapInit() {
 	if($('.js-loc-map').get(0)){
-		$('body').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhXFH3diOrb9h_znP9ndacEZ0FGfDSwas&callback=initMap" async defer></script>');
+		$('body').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNsXun56tRLQoR7hHVKI9V9XnC0xLmqrA&callback=initMap" async defer></script>');
 	}
 }
 
@@ -2252,7 +2254,7 @@ function heightMediaQuery() {
 		}
 	}
 	if(winWidth<=767){
-		calcFAQHeight();
+		// calcFAQHeight();
 		minHeightSelctor1.css('min-height', winHeight-67);
 		$('.c-maps-sec .txt-wrap').css('min-height', 0);
 		// heightSelector2.css('height', winHeight - 67);
@@ -2324,7 +2326,7 @@ function calcFAQHeight() {
 	if($('.c-2-layer-content').get(0)){
 		$('.c-2-layer-content').addClass('is--calculating');
 		var links1 = $('.c-2-layer-content .layer-1-links');
-		links1.height('auto');
+		links1.css('height', '');
 		links1.height(links1.height());
 		$('.c-2-layer-content').removeClass('is--calculating');
 		setTimeout(function () {
@@ -2458,6 +2460,12 @@ function navDropDownHeight() {
 			axis:"y",
 			theme: "minimal-dark"
 		});
+	}else{
+		if(winWidth > 1024){
+			$('.c-main-header .header-links > ul > li > ul').mCustomScrollbar('update');
+		}else{
+			$('.c-main-header .header-links > ul > li > ul').mCustomScrollbar('destroy');
+		}
 	}
 }
 

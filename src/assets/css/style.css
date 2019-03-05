@@ -16877,6 +16877,9 @@ strong {
 .page--locations + .footer-outer-wrap {
   margin-top: 0; }
 
+.page--locations .c-selection-banner {
+  margin-bottom: 0; }
+
 .c-selection-banner {
   background: url("../img/locations/bg-banner-img--cinema.jpg") no-repeat center center;
   background-size: cover;
