@@ -18,8 +18,8 @@ setOnTopClass();
 initSlick();
 headerSpace();
 adjustContentList2();
-onlyPortrait();
 removeLoaderInMob();
+onlyPortrait();
 
 
 $(function () {
@@ -68,7 +68,7 @@ $(window).on('load', function () {
 	 // calcBodyarea();
     footerLogosCarousel(true);
 	setTimeout(function () {
-		addVideoPlugin();
+		// addVideoPlugin();
 		AOS.refresh();
 		fixMobileCarouselWrongDisplay();
 		movieListSetDropDownPos();
@@ -81,6 +81,10 @@ $(window).on('load', function () {
 //On Window Resize
 var resizeTimer;
 $(window).on('resize orientationchange', function () {
+	onlyPortrait();
+	setTimeout(function() {
+		onlyPortrait();
+	}, 250);
 	if(winWidth != viewport().width){
 		mobilecheck();
 		winDimensions();
@@ -100,20 +104,24 @@ $(window).on('resize orientationchange', function () {
 			heightMediaQuery();
 			movieListSetHTML();
 			calcScrollHeightDOM();
-			onlyPortrait();
 		}, 250);
 		movieListCarousel();
 		calcScrollHeightDOM();
-		onlyPortrait();
 		navDropDownHeight();
 	}
 });
 
 function onlyPortrait() {
+	// console.log('winWidth: ', winWidth);
+	// console.log('winHeight: ', winHeight);
+	// console.log('isMobile: ', isMobile);
+	// console.log('winWidth < 768: ', winWidth < 768);
 	if(winWidth > winHeight && isMobile){
+		// console.log('Showing Message lol');
 		$('.c-landscape-msg').show();
 	}else{
 		$('.c-landscape-msg').hide();
+		// console.log('Not going to show message.');
 	}
 }
 
@@ -392,6 +400,7 @@ function initSlick() {
 					      breakpoint: 768,
 					      settings: {
 							fade: false,
+					        infinite: true,
 					      }
 					    },
 				   	],
@@ -663,7 +672,7 @@ function slideDownMovieDetails(thisSelf) {
 		$(thisSelf).closest('.movie-item').addClass('is--active');
 		$(thisSelf).closest('.list-wrap').next().append(detailsHTML);
 		$(thisSelf).closest('.list-wrap').next().slideDown();
-		$(thisSelf).closest('.list-wrap').next().find('.popup--even-binded').removeClass('popup--even-binded');
+		$(thisSelf).closest('.list-wrap').next().find('.popup--event-binded').removeClass('popup--event-binded');
 		bindPopupEve();
 
 		var thisVideo = $(thisSelf).closest('.list-wrap').next().find('video');
@@ -1432,10 +1441,11 @@ function openPopup(target, videoLink) {
 
 	if(videoLink){
 		if(isIE == false){
-			var thisId = $(target).find('[data-video-instance]').attr('data-video-instance');
+			// Destroy Plyr if there.
+			/*var thisId = $(target).find('[data-video-instance]').attr('data-video-instance');
 			if(players[thisId]){
 				players[thisId].destroy();
-			}
+			}*/
 			$(target).find('.has--plyr').removeClass('has--plyr');
 		}
 
@@ -1552,18 +1562,18 @@ function jsVideoDirect() {
 
 function bindPopupEve() {
 	// Popup Open
-	$('.js-popup-link:not(.popup--even-binded)').click(function (e) {
+	$('.js-popup-link:not(.popup--event-binded)').click(function (e) {
 		e.preventDefault();
 		var target = $(this).attr('href');
 		var videoLink = $(this).attr('data-video');
 		openPopup(target, videoLink);
-	}).addClass('popup--even-binded');
+	}).addClass('popup--event-binded');
 
 	// Popup Close
-	$('.js-close-popup:not(.js-close-even-binded)').click(function (e) {
+	$('.js-close-popup:not(.js-close-event-binded)').click(function (e) {
 		e.preventDefault();
 		closePopup();
-	}).addClass('js-close-even-binded');
+	}).addClass('js-close-event-binded');
 }
 
 function animWrapHeight() {

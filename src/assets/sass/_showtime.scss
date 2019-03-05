@@ -1500,7 +1500,7 @@ border-bottom-right-radius: 10px;
 		}
 
 		> *{
-			margin-right: 20px;
+			padding-right: 20px;
 			width: 100%;
 			display: table;
 			min-height: 75px;
@@ -1508,7 +1508,7 @@ border-bottom-right-radius: 10px;
 				min-height: 0;
 			}
 			&:last-child{
-				margin-right: 0;
+				padding-right: 0;
 				width: 1800px;
 				
 			}
@@ -1525,7 +1525,20 @@ border-bottom-right-radius: 10px;
 			&:nth-child(4){
 				width: 40%;
 			}
-			
+			@media (max-width: 1100px){
+				&:nth-child(1){
+					width: 20%;
+				}
+				&:nth-child(2){
+					width: 25%;
+				}
+				&:nth-child(3){
+					width: 15%;
+				}
+				&:nth-child(4){
+					width: 40%;
+				}
+			}
 		}
 		
 		
@@ -1845,17 +1858,14 @@ border-radius: 5px;
 @media (max-width: 767px){
 	.logoimg{
 		img{float:right;}
-		
 	}
-		}
+}
 		
-		.movielocation{
-			display: table-cell;
-			vertical-align: middle;
-			padding-left: 25px;
-		}
-		
-	
+.movielocation{
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 25px;
+}	
 
 .tileview-movies-list:hover{
 			background-color:#fff;

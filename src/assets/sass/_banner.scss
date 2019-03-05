@@ -1,8 +1,10 @@
 .c-banner-3,
 .c-banner-1{
+	@extend .height-cover--solid;
 	position: relative;
 	display: flex;
-	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 	padding-bottom: 63px;
 
 	&, .bgimg-sec .item{
@@ -169,6 +171,13 @@
 		&.slick-next{
 			background-image: url(../img/icons/arrow-right--white.svg);
 		}
+	}
+}
+.c-banner-1 .bgimg-sec{
+	z-index: auto;
+	
+	.slick-arrow{
+		z-index: 3;
 	}
 }
 

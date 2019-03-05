@@ -249,9 +249,9 @@ function loadCinemasDropdown(){
 	  	tempArray = [];
 		comingTempArray = [];
 		tempEntry = [];	
-		console.log("Cinemas completed");
+		// console.log("Cinemas completed");
 	}).fail(function( data ) {
-	  	console.log("Cinemas failed");
+	  	// console.log("Cinemas failed");
 	});
 }
 
@@ -446,13 +446,13 @@ function loadMoviesDropdown(){
 		scrollCustomSelect();
 		refreshAOS('refresh');
 	    selectAllEvent();
-	  	console.log("Movies completed");
+	  	// console.log("Movies completed");
 	  	tempArray = [];
 		comingTempArray = [];
 		tempEntry = [];
 
 	}).fail(function( data ) {
-	  	console.log("Movies failed");
+	  	// console.log("Movies failed");
 	});
 
 }
@@ -559,12 +559,12 @@ function loadMoviesComingDropdown(){
 		refreshAOS('refresh');
 	    
 	    selectAllEvent();
-	  	console.log("Movies completed");	  	
+	  	// console.log("Movies completed");	  	
 		comingTempArray = [];
 		tempEntry = [];
 
 	}).fail(function( data ) {
-	  	console.log("Movies failed");
+	  	// console.log("Movies failed");
 	});
 
 }
@@ -607,7 +607,7 @@ function loadExperiencesDropdown(){
 		refreshAOS('refresh');
 		selectAllEvent();	
 	
-	    console.log("Experiences completed");
+	    // console.log("Experiences completed");
 	    tempArray = [];
 		tempEntry = [];
 		loadExperiencesLogos()
@@ -618,7 +618,7 @@ function loadExperiencesDropdown(){
 		}
 		
 	}).fail(function( data ) {
-	    console.log("Experiences failed");
+	    // console.log("Experiences failed");
 	});
 
 }
@@ -980,9 +980,9 @@ function initMovieGrid(){
 			initShowtimeMoviesByDate(searchDateValue);
 		}			
 
-		console.log("Movie grid completed");		
+		// console.log("Movie grid completed");		
 	}).fail(function( data ) {
-	    console.log("Movie grid  failed");
+	    // console.log("Movie grid  failed");
 	});
 }
 
@@ -1220,9 +1220,9 @@ function initComingMovieGrid(){
 		loadComingMovieGridBlocks();
 		movieListStartCarousel();
 		
-		console.log("Coming movie grid completed");		
+		// console.log("Coming movie grid completed");		
 	}).fail(function( data ) {
-	    console.log("Coming movie grid  failed");
+	    // console.log("Coming movie grid  failed");
 	});
 }
 
@@ -1263,7 +1263,7 @@ function loadComingMovieGridBlocks(){
 			<div class="info language"><i class="icon medim"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div>\
 			<div class="info"><strong>Storyline:</strong> '+tempEntry[9]+'</div>\
 			<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[5]+' class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div>\
-			<div class="img"><video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" loop muted playsinline><source src='+tempEntry[6]+' type="video/mp4"></video></div>\
+			<div class="img"><video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" loop muted playsinline><source src='+tempEntry[5]+' type="video/mp4"></video></div>\
 	</section></div>';
 
 		comingMovieListingArray.push(result);
@@ -1343,7 +1343,7 @@ function initMovieDates(argMovieName){
 			        
 					tempMovieDateList.push(movieDates);		
 			}
-			console.log(targetItem, tempMovieDateList);
+			// console.log(targetItem, tempMovieDateList);
 			targetItem.html(tempMovieDateList);
 			targetItem.slick({
 				dots: false,
@@ -1422,10 +1422,10 @@ function initMovieDates(argMovieName){
 		}else{
 			$('.movies-list--1').fadeOut('fast');
 		}	
-		console.log("Movies dates completed");
+		// console.log("Movies dates completed");
 		
 	}).fail(function( data ) {
-	    console.log("Movies dates failed");
+	    // console.log("Movies dates failed");
 	});
 }
 
@@ -1536,9 +1536,9 @@ function loadMovieDetail(argMovieName){
 		}).done(function( data ) {		
 			bindPopupEve();  
 			toSVG(); 
-			console.log("Movies detail completed");
+			// console.log("Movies detail completed");
 		}).fail(function( data ) {
-		    console.log("Movies detail failed");
+		    // console.log("Movies detail failed");
 		});
 	}else{
 		$.getJSON('MoviesSession.json', function (data) {
@@ -1641,9 +1641,9 @@ function loadMovieDetail(argMovieName){
 		}).done(function( data ) {		
 			bindPopupEve();  
 			toSVG(); 
-			console.log("Movies detail completed");
+			// console.log("Movies detail completed");
 		}).fail(function( data ) {
-		    console.log("Movies detail failed");
+		    // console.log("Movies detail failed");
 		});
 	}
 }
@@ -1693,10 +1693,10 @@ function initMovieSessions(){
 			initMovieGrid("all");
 			initComingMovieGrid();
 		}			
-		console.log("Movie sessions completed");
+		// console.log("Movie sessions completed");
 		
 	}).fail(function( data ) {
-	    console.log("Movie sessions failed");
+	    // console.log("Movie sessions failed");
 	});	
 }
 
@@ -2018,7 +2018,7 @@ function loadPopularMovies(){
 		filterSearch();
 	    
 	    playMoviesListing.removeClass('is--loading');
-	    console.log("Play movies completed");
+	    // console.log("Play movies completed");
 
 	    if(winWidth > 1024 && isIE == false){		    
 			$('.c-movies-list .list-wrap').each(function () {
@@ -2029,7 +2029,7 @@ function loadPopularMovies(){
 			});
 		}
 	}).fail(function( data ) {
-	    console.log("Play movies failed");
+	    // console.log("Play movies failed");
 	});
 }
 
