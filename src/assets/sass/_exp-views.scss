@@ -49,19 +49,19 @@
 		}
 	}
 	.carousel-thumb{
-		bottom: 100px;
+		bottom: 135px;
 		left: 50px;
 		max-width: 900px;
 		height: 0;
 
 		@media (max-width: 1600px){
-			bottom: 90px;
+			bottom: 125px;
 		}
 		@media (max-width: 1580px){
 			left: 5.4217vw;
 		}
 		@media (max-width: 1023px){
-			bottom: 80px;
+			bottom: 100px;
 			max-width: 700px;
 		}
 		@media (max-width: 767px){
@@ -166,23 +166,23 @@
 
 	.carousel{
 		.item{
-			min-height: 525px;
+			min-height: 560px;
 			display: flex !important;
 			align-items: center;
-			padding: 50px 50px 150px;
+			padding: 50px 50px 185px;
 			position: relative;
 
 			@media (max-width: 1600px){
-				padding: 40px 50px 130px;
-				min-height: 450px;
+				padding: 40px 50px 165px;
+				min-height: 485px;
 			}
 
 			@media (max-width: 1023px){
-				padding: 25px 30px 100px;
-				min-height: 360px;
+				padding: 25px 30px 135px;
+				min-height: 395px;
 			}
 			@media (max-width: 767px){
-				padding: 0px 0px 25px;
+				padding: 0px 0px 45px;
 				flex-direction: column;
 			}
 		}

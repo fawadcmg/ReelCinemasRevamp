@@ -891,6 +891,14 @@ label{
     z-index: 9999;
     width: 100%;
     height: 100%;
+
+    .js-video{
+    	iframe{
+    		margin-top: 60px;
+    		height: 90vh;
+    		height: calc(100vh - 60px);
+    	}
+    }
 }
 
 .c-popup .overlay {
@@ -936,6 +944,7 @@ label{
     height: 100%;
     padding: 0;
     max-width: none;
+    background: #000;
 }
 
 .c-popup .popup.popup--full-screen.active {
@@ -955,7 +964,7 @@ label{
 }
 
 .c-popup .popup .popup-wrap {
-    background: #fff;
+    background: #000;
     padding: 20px;
 }
 

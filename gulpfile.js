@@ -34,7 +34,7 @@ gulp.task('scriptJs', function(){
         'src/assets/js/script/modernizr-custom.js',
         'src/assets/js/script/aos.js',
         'src/assets/js/script/select2.full.js',
-        'src/assets/js/script/plyr.min.js',
+        // 'src/assets/js/script/plyr.min.js',
         'src/assets/js/script/main.js',
     ])
     .pipe(sourcemaps.init())

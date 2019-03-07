@@ -1,6 +1,9 @@
 .footer-outer-wrap{
 	overflow: hidden;
 	margin-top: 35px;
+	.page--home + &{
+		margin-top: 0;
+	}
 }
 
 .c-main-footer{

@@ -1756,8 +1756,11 @@
 	.titleview-wrap{
 		
 		.list-main-action{
-		text-align: center;
-		margin: 50px 0;
+			text-align: center;
+			margin: 50px 0;
+			@media (max-width: 767px){
+				margin: 20px 0 50px;
+			}
 		}
 		
 

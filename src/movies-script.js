@@ -1073,7 +1073,7 @@ function loadMovieGridBlocks(argMovie){
 			<div><i class="icon"><picture><source srcset="assets/img/icons/duration.svg" media="(max-width: 767px)"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></picture></i><span>'+tempEntry[8]+'</span></div>\
 			<div><i class="icon"><picture><source srcset="assets/img/icons/language.svg" media="(max-width: 767px)"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></picture></i><span>'+tempEntry[7]+'</span></div></div>\
 			<div class="detail"><div class="detail-inner-wrap"><span>'+tempEntry[11]+'</span><span>'+tempEntry[8]+'</span></div></div></div>\
-		<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[6]+' class="c-btn-white btn--txt-black btn--play btn--sm js-popup-link" tabindex="0">Trailer</a></div></div>\
+		<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video="youtube:0LHxvxdRnYc" class="c-btn-white btn--txt-black btn--play btn--sm js-popup-link" tabindex="0">Trailer</a></div></div>\
 	<section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>\
 		<div class="text"> <div class="title-wrap"> <h1 class="title">'+tempEntry[4]+'</h1> <div class="stamp">'+tempEntry[9]+'</div></div>'+
 			genreDiv
@@ -1081,8 +1081,8 @@ function loadMovieGridBlocks(argMovie){
 			<div class="info language"><i class="icon medim"><picture><source srcset="assets/img/icons/language--white.svg" media="(max-width: 767px)"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></picture></i><span>'+tempEntry[7]+'</span></div>\
 			<div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+tempEntry[2]+'</ul></div>\
 			<div class="info"><strong>Storyline:</strong> '+tempEntry[10]+'</div>\
-			<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[6]+' class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div>\
-			<div class="img"><video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" muted loop playsinline><source src='+tempEntry[6]+' type="video/mp4"></video></div>\
+			<div class="action"><a href="'+tempEntry[12]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video="youtube:0LHxvxdRnYc" class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div>\
+			<div class="img"><div class="bg-video-wrap"><div class="js-bg-video" data-bg-video="youtube:rlR4PJn8b8I"></div></div></div>\
 	</section></div>';
 
 	movieListingArray.push(result);
@@ -1218,7 +1218,7 @@ function initComingMovieGrid(){
 
 		movieListRemoveCarousel();
 		loadComingMovieGridBlocks();
-		movieListStartCarousel();
+		// movieListStartCarousel();
 		
 		// console.log("Coming movie grid completed");		
 	}).fail(function( data ) {
@@ -1252,18 +1252,18 @@ function loadComingMovieGridBlocks(){
 	<div class="item-wrap"><div class="img"><div class="stamp">'+tempEntry[8 ]+'</div>'+bookNowClass+'<img src="'+tempEntry[4 ]+'" alt="'+tempEntry[3 ]+'"></div>\
 		<div class="info"><div class="name">'+tempEntry[3]+'</div>\
 			<div class="duration-language">\
-			<div><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
+			<div><i class="icon"><picture><source srcset="assets/img/icons/duration.svg" media="(max-width: 767px)"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></picture></i><span>'+tempEntry[7]+'</span></div>\
 			<div><i class="icon"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div></div>\
 			<div class="detail"><div class="detail-inner-wrap"><span>'+tempEntry[10]+'</span><span>'+tempEntry[7]+'</span></div></div></div>\
-		<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[5]+' class="c-btn-white btn--txt-black btn--play btn--sm js-popup-link" tabindex="0">Trailer</a></div></div>\
+		<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video="youtube:0LHxvxdRnYc" class="c-btn-white btn--txt-black btn--play btn--sm js-popup-link" tabindex="0">Trailer</a></div></div>\
 	<section class="item-details"> <a href="javascript:void(0);" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a>\
 		<div class="text"> <div class="title-wrap"> <h1 class="title">'+tempEntry[3]+'</h1> <div class="stamp">'+tempEntry[8]+'</div></div>\
 			'+genreDiv+'\
 			<div class="info duration"><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+tempEntry[7]+'</span></div>\
 			<div class="info language"><i class="icon medim"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+tempEntry[6]+'</span></div>\
 			<div class="info"><strong>Storyline:</strong> '+tempEntry[9]+'</div>\
-			<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video='+tempEntry[5]+' class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div>\
-			<div class="img"><video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" loop muted playsinline><source src='+tempEntry[5]+' type="video/mp4"></video></div>\
+			<div class="action"><a href="'+tempEntry[11]+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" data-video="youtube:0LHxvxdRnYc" class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div>\
+			<div class="img"><div class="bg-video-wrap"><div class="js-bg-video" data-bg-video="youtube:rlR4PJn8b8I"></div></div></div>\
 	</section></div>';
 
 		comingMovieListingArray.push(result);
@@ -1420,8 +1420,9 @@ function initMovieDates(argMovieName){
 				moviePagination(1, 'now');
 			});	
 		}else{
-			$('.movies-list--1').fadeOut('fast');
-		}	
+			$('.movies-list--1').hide();
+			headerSpace();
+		}
 		// console.log("Movies dates completed");
 		
 	}).fail(function( data ) {
@@ -2003,7 +2004,7 @@ function loadPopularMovies(){
 
 				movieURL =  "window.location='"+movieURL+"'";
 
-				playMoviesListing.append('<div onclick="'+movieURL+'" class="movie-item"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap"><span>'+movieGenre+'</span><span>'+movieDuration+'</span></div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+movieExperience+'</ul></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+movieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div><div class="img"><video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" loop playsinline muted><source src="http://www.reelcinemas.ae/en/KeyArts/Tarilers/Aquaman.mp4" type="video/mp4"></video></div></section> </div>');
+				playMoviesListing.append('<div onclick="'+movieURL+'" class="movie-item"><div class="bot-img" style="background-image: url('+movieImage+');"></div><div class="item-wrap"><div class="img"><div class="stamp">'+moviePG+'</div>'+bookNowClass+'<img src="'+movieImage+'" alt="'+movieName+'"></div><div class="info"><div class="name">'+movieName+'</div><div class="duration-language"><div><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div><i class="icon"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div></div><div class="detail"><div class="detail-inner-wrap"><span>'+movieGenre+'</span><span>'+movieDuration+'</span></div></div></div><div class="action"><a href="#" class="c-btn-glow btn--sm" tabindex="0"><span>Book Now</span></a><a href="#" class="c-btn-white btn--txt-black btn--play btn--sm" tabindex="0">Trailer</a></div></div><section class="item-details"> <a href="#" class="btn-close js-close-movie-list-detail"><i></i><i></i><span class="txt">close</span></a> <div class="text"> <div class="title-wrap"> <h1 class="title">'+movieName+'</h1> <div class="stamp">'+moviePG+'</div></div><div class="info genere"><span>'+movieGenreDetail+'</span></div><div class="info duration"><i class="icon"><img src="assets/img/icons/duration--white.svg" alt="FB" class="svg"></i><span>'+movieDuration+'</span></div><div class="info language"><i class="icon medim"><img src="assets/img/icons/language--white.svg" alt="FB" class="svg"></i><span>'+movieLanguage+'</span></div><div class="info has-lsit"><strong>Experiences:</strong><ul class="exp-list">'+movieExperience+'</ul></div><div class="info"><strong>Storyline:</strong> '+movieSynopsis+'</div><div class="action"><a href="'+movieURL+'" class="c-btn-glow" tabindex="0"><span>Book Now</span></a><a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><span>Play Trailer</span><i class="icon"></i></a></div></div><div class="img"><div class="bg-video-wrap"><div class="js-bg-video" data-bg-video="youtube:rlR4PJn8b8I"></div></div></div></section> </div>');
 				movieCounter++;
 		});
 	  
@@ -2020,7 +2021,7 @@ function loadPopularMovies(){
 	    playMoviesListing.removeClass('is--loading');
 	    // console.log("Play movies completed");
 
-	    if(winWidth > 1024 && isIE == false){		    
+	    if(winWidth > 1024 && isIE == false){
 			$('.c-movies-list .list-wrap').each(function () {
 				$(this).find('.movie-item').each(function (i) {
 			    	$(this).attr('data-aos', 'fade-up');
@@ -2035,11 +2036,11 @@ function loadPopularMovies(){
 
 function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs, argShowTimeIDs, argSourceObj){
 
-    if(winWidth < 768){
+    /*if(winWidth < 768){
     	if($('.js-play-movies-listing').hasClass('slick-initialized')){
     		$('.js-play-movies-listing').slick('unslick');
     	}
-    }
+    }*/
 	
 	var movieItems = [], tempArray = [], tempMovieArrayList = [], playMoviesListing;	
 	var movieStatus=0, cinemaStatus=0, experienceStatus=0, genereStatus=0, showtimeStatus=0;
@@ -2233,12 +2234,12 @@ function filterMovies(argMoviesIDs, argCinemaIDs, argExperienceIDs, argGenreIDs,
 		playMoviesListing.addClass('empty--record');
 		playMoviesListing.html("<p>"+noRecordMessage+"</p>"); 
 	}else{
-		if(winWidth < 768){
-			createMovieListMobileSlider();
-	    }else{
+		// if(winWidth < 768){
+		// 	createMovieListMobileSlider();
+	    // }else{
 	    	movieListSetHTML();
 			movieList();
-	    }
+	    // }
 	}
 
 	movieItems = [];
@@ -2253,22 +2254,32 @@ function moviePagination(argCurrentPageNumber, argSourceObj){
 	targetObj = $('.js-load-play-movies-listing');
 
 	nextItem = (pageNumber*3);
-	showItems = parseInt(pageNumber*3);//6
+	if(winWidth > 767){
+		showItems = parseInt(pageNumber*3);
+	}else{
+		showItems = parseInt(pageNumber*2);
+	}
 
 	// $('.js-play-movies-listing .list-wrap-page').hide();
 	if(pageNumber === 1){
 		$('.js-play-movies-listing .list-wrap-page').hide();
-		$('.js-play-movies-listing .list-wrap-page').slice(0,3).show();
+		if(winWidth > 767){
+			$('.js-play-movies-listing .list-wrap-page').slice(0,3).show();
+		}else{
+			$('.js-play-movies-listing .list-wrap-page').slice(0,2).show();
+		}
 		$('.tileview-movies-list').hide();
 		$('.tileview-movies-list').slice(0,6).show();
 		$('.js-coming-movies-listing .list-wrap-page').hide();
-		$('.js-coming-movies-listing .list-wrap-page').slice(0,3).show();
+		if(winWidth > 767){
+			$('.js-coming-movies-listing .list-wrap-page').slice(0,3).show();
+		}else{
+			$('.js-coming-movies-listing .list-wrap-page').slice(0,2).show();
+		}
 	}
 		
 	if(currentPageName == 'home'){
-	
 		if(argSourceObj == 'now'){
-						
 			$('.js-play-movies-listing .list-wrap-page').slice(0,showItems).show();			
 			if($('.js-play-movies-listing .list-wrap-page').eq(nextItem).length == 0){
 		 		$(targetObj).hide();
