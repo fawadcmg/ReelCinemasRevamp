@@ -101,21 +101,23 @@
 		float: left;
 		width: 50%;
 		
-	li {
-		font-size: 12px; 
-		color: #FFF;
-		font-weight: 300;
-		line-height: 25px;
-		font-family: 'effralight', arial, sans-serif;
-		a {
+		li {
+			font-size: 12px; 
 			color: #FFF;
-			transition: all .20s ease-in-out;
-			&:hover{
-				margin-left:3px; 
+			font-weight: 300;
+			line-height: 25px;
+			font-family: 'effralight', arial, sans-serif;
+			a {
+				color: #FFF;
+				transition: all .20s ease-in-out;
+				&:hover{
+					margin-left:3px;
+				}
+			}
+			a:hover, &.is-current a{
 				color: #9358c0;
 			}
 		}
-	}
 	}
 	.links-list{
 		float: none;

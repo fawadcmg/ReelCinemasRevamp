@@ -226,3 +226,15 @@
 .js-exp-carousel-thumb .slick-slide{
 	cursor: pointer;
 }
+.page--locations + .c-movies-list{
+	margin-top: 60px;
+	@media (max-width: 1800px){
+		margin-top: 40px;
+	}
+	@media (max-width: 920px){
+		margin-top: 30px;
+	}
+	@media (max-width: 767px){
+		margin-top: 25px;
+	}
+}

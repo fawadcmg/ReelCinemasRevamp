@@ -68,9 +68,8 @@
 
 				&:hover{
 					a {
-					color: #6e3996;
-					border-bottom: 3px solid #6e3996;
-						
+						color: #6e3996;
+						border-bottom: 3px solid #6e3996;
 					}
 					li a {
 						border:none;
@@ -88,7 +87,8 @@
 
 				&.is-current{
 					> a{
-						background: url('../img/pattern/black-noise.png');
+						color: #6e3996;
+						border-bottom: 3px solid #6e3996;
 					}
 				}
 			}
@@ -404,22 +404,22 @@
 					margin-top: -3px;
 					opacity: 0;
 				}
-				&:hover {
-					color: #6e3996;
-					&:after {
-						width: 36px;
-						display: block;
-						opacity: 1;
-						transition: all .20s ease-in-out;
-
-						@media (max-width: 1400px){
-							width: 26px;
-						}
-					}
-				}
 				@media (max-width: 767px){
 					font-size: 24px;
 					padding: 15px 0 15px 50px;
+				}
+    		}
+    		a:hover, .is-current a{
+				color: #6e3996;
+				&:after {
+					width: 36px;
+					display: block;
+					opacity: 1;
+					transition: all .20s ease-in-out;
+
+					@media (max-width: 1400px){
+						width: 26px;
+					}
 				}
     		}
 		}

@@ -249,6 +249,9 @@
 		    .content{
 		    	display: flex;
 		    }
+		    .action-inner{
+		    	margin-top: 20px;
+		    }
 		    .left{
 		    	max-width: 35%;
 		    	padding-right: 20px;
@@ -361,6 +364,22 @@
 		font-size: 36px;
 		font-weight: 700;
 		color: #fff;
+	}
+}
+.c-txt-banner{
+	min-height: 50vh;
+	padding: 30px 0;
+	background: #000 no-repeat center center;
+	background-size: cover;
+	color: #fff;
+	display: flex;
+	align-items: center;
+
+	.txt{
+		max-width: 800px;
+	}
+	h1{
+		@extend .heading-sty-3;	
 	}
 }
 
