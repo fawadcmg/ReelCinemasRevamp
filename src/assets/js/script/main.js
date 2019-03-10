@@ -23,10 +23,6 @@ removeLoaderInMob();
 onlyPortrait();
 addVideoPlugin();
 
-	$('html, body').stop().animate({
-		scrollTop: 1000
-	}, 500);
-
 $(function () {
 	locMapInit();
 	winDimensions();
