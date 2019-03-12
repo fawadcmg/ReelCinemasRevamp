@@ -44,9 +44,12 @@ a{
 	transition: all .35s;
 }
 
+.c-list-1 .movie-details .item-details .right,
 ul, p{
 	font-size: 15px;
 	line-height: 1.5em;
+}
+ul, p{
 	margin: 0 0 20px 0;
 	
 	@media (max-width: 767px){
@@ -1172,11 +1175,13 @@ label{
 }
 
 @media (max-width: 1500px){
+	.c-list-1 .movie-details .item-details .right,
 	ul, p{
 		font-size: 15px;
 	}
 }
 @media (max-width: 1200px){
+	.c-list-1 .movie-details .item-details .right,
 	ul, p{
 		font-size: 14px;
 		line-height: 1.5em;
@@ -1193,6 +1198,7 @@ label{
     }
 }
 @media (max-width: 767px){
+	.c-list-1 .movie-details .item-details .right,
 	ul, p{
 		font-size: 13px;
 		line-height: 1.4em;

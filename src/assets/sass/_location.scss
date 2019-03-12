@@ -57,14 +57,14 @@
 				transition: margin .35s;
 
 				img{
-					margin: -20px -10px;
+					margin: -20px -15px;
 					transition: margin .35s;
 					max-width: none;
 				}
 			}
 
 			.label{
-				font-size: 15px;
+				font-size: 14px;
 				line-height: 1em;
 				text-transform: uppercase;
 				text-align: center;
@@ -182,6 +182,14 @@
 	}
 }
 @media (max-width: 1660px){
+	.c-selection-banner .selectors{
+		margin-right: -5px;
+		margin-left: -5px;
+	}
+	.c-selection-banner .selectors a{
+		margin-right: 5px;
+		margin-left: 5px;
+	}
 	.c-maps-sec .map-wrap{
 		width: 63.4vw;
 		transform: translateX(13.35vw);
@@ -270,21 +278,38 @@
 		padding: 50px 0 50px 50px;
 	}
 	.c-selection-banner .selectors{
-		margin: 0 -5px;
+		margin: 0 -2px;
 	}
 	.c-selection-banner .selectors a{
-		margin-right: 5px;
-		margin-left: 5px;
+		margin-right: 2px;
+		margin-left: 2px;
+	}
+	.c-selection-banner .selectors a .img img{
+		width: 156px;
+	}
+	.c-selection-banner .selectors a .label{
+		font-size: 11px;
+	}
+	.c-selection-banner .selectors a.is--active .label{
+		font-size: 13px;
+	}
+}
+@media (max-width: 1050px){
+	.c-selection-banner .selectors a .img img {
+	    width: 152px;
 	}
 }
 @media (max-width: 1023px){
 	.c-selection-banner .selectors a{
-		margin: 15px 5px 0;
+		margin: 15px 2px 0;
 	}
 	.c-selection-banner .selectors a .img img{
 		width: 130px;
 		margin-right: -12px;
 		margin-left: -12px;
+	}
+	.c-selection-banner .selectors a .img img{
+		width: 120px;
 	}
 	.c-maps-sec .map-wrap{
 	    width: auto;
@@ -303,7 +328,7 @@
 }
 @media (max-width: 920px){
 	.c-selection-banner .selectors a .img img{
-		width: 122px;
+		width: 115px;
 	}
 }
 @media (max-width: 767px){

@@ -690,7 +690,7 @@ function movieList() {
 
 				var thisId = $(this).closest('.movie-item').attr('data-id');
 
-				// Make sure if its in a tab that tab is active.
+				// Make sure if its in a tab that isn't activen then make it active.
 				if($(this).closest('.is-tab').get(0) && !$(this).closest('.is-tab').hasClass('is--active')){
 					var parentTabId = $(this).closest('.is-tab').attr('data-id');
 					animateTabToScroll = false;
@@ -728,7 +728,7 @@ function slideDownMovieDetails(thisSelf) {
 		$(thisSelf).closest('.movie-item').addClass('is--active');
 		$(thisSelf).closest('.list-wrap').next().append(detailsHTML);
 		initBgVideo();
-		$(thisSelf).closest('.list-wrap').next().slideDown();
+		$(thisSelf).closest('.list-wrap').next().stop().slideDown();
 		$(thisSelf).closest('.list-wrap').next().find('.popup--event-binded').removeClass('popup--event-binded');
 		bindPopupEve();
 
@@ -782,7 +782,7 @@ function initBgVideo(){
 			var youtubeVideoID = videoUrl.split('youtube:')[1];
 
 			if(youtubeVideoID){
-				$(this).append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+youtubeVideoID+'?&controls=0&mute=1&theme=dark&autoplay=1&autohide=1&modestbranding=0&fs=0&playlist='+youtubeVideoID+'&showinfo=0&rel=0&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+				$(this).append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+youtubeVideoID+'?&controls=0&mute=1&theme=dark&autoplay=1&autohide=1&modestbranding=0&fs=0&playlist='+youtubeVideoID+'&showinfo=0&rel=0&iv_load_policy=3&loop=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
 				$(this).parent().find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
 			}else{
 				$(this).append('<video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" playsinline loop autoplay muted><source src="'+videoUrl+'" type="video/mp4"></video>')
@@ -800,15 +800,12 @@ function setInView(el) {
 		el = el.offsetParent;
 		top += el.offsetTop;
 	}
-	console.log(top);
 	var a = top;
 	var b = height;
 	var d = a + b;
 	var e = window.innerHeight + window.pageYOffset;
 	var c = d - e;
 	var scroll = window.pageYOffset - c;
-
-	console.log(initEl, $(initEl).closest('.list-row'));
 
 	if($(initEl).closest('.list-row').get(0)){
 		var newEle = $(initEl).closest('.list-row')[0];
@@ -820,22 +817,25 @@ function setInView(el) {
 		a = newTop;
 	}
 
+	var scrollToPos = 0;
+
 	if(e < d){
 		if(winHeight > 700){
-			$('html, body').stop().animate({
-				scrollTop: a+b+$(initEl).closest('.list-row').find('.item-wrap .img').outerHeight() - window.innerHeight
-			}, 500);
+			var innerImg = $(initEl).closest('.list-row').find('.item-wrap .img').outerHeight();
+			if(!innerImg){ innerImg = 0; }
+			scrollToPos = a + b + innerImg - window.innerHeight;
 		}else{
-			$('html, body').stop().animate({
-				scrollTop: a - $('.c-main-header').outerHeight() - 25
-			}, 500);
+			scrollToPos = a - $('.c-main-header').outerHeight() - 25;
 		}
 	}else if(window.pageYOffset > a && (window.pageYOffset-window.innerHeight) < a){
+		scrollToPos = a - $('.c-main-header').outerHeight() - 50;
+	}
+
+	if(scrollToPos != 0){
 		$('html, body').stop().animate({
-			scrollTop: a - $('.c-main-header').outerHeight() - 50
+			scrollTop: scrollToPos
 		}, 500);
 	}
-	// console.log(window.pageYOffset > a, (window.pageYOffset-window.innerHeight) < a);
 }
 
 function createMovieListMobileSlider(){
@@ -2165,7 +2165,7 @@ function initMap() {
 		});
 		markersRef[i].addListener('click', function(e) {
 			var index = this.selfId;
-			$('.c-selection-banner .selectors a').eq(index).trigger('click');
+			window.location = $('.c-selection-banner .selectors a').eq(index).attr('href');
         });
 	}
 }
