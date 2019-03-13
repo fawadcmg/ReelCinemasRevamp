@@ -11177,6 +11177,9 @@ input[type='number'] {
       margin-top: -7px;
       -webkit-box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3);
               box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); }
+      .c-exp-views .carousel-thumb .slick-arrow.slick-disabled {
+        opacity: 0.3;
+        pointer-events: none; }
       .c-exp-views .carousel-thumb .slick-arrow.slick-prev {
         left: 0;
         border-right: none;

@@ -74,6 +74,11 @@
 			margin-top: -7px;
 			box-shadow: 1px 1px 0px rgba(255,255,255,0.3);
 
+			&.slick-disabled{
+				opacity: 0.3;
+				pointer-events: none;
+			}
+
 			&.slick-prev{
 				left: 0;
 				border-right: none;
