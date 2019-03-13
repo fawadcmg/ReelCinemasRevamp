@@ -778,26 +778,8 @@
 			@media (max-width: 1200px){
 				padding-right: 8.5vw;
 			} */
-			.bg-video-wrap{
-				width: 65%;
-				height: 100%;
-				margin: 0 0 0 auto;
-				position: absolute;
-				top: 0;
-				right: 0;
-
-				.js-bg-video{
-					position: relative; padding-bottom: 56.25%; /* 16:9 */  padding-top: 25px;
-					min-height: 100%;
-
-					iframe{
-						position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-						.is--mobile &{
-							display: none !important;
-						}
-					}
-				}
-			}
+			@extend .c-bg-video-wrap;
+			
 			video{
 				position: absolute;
 				top: 0;

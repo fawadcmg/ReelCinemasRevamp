@@ -7,15 +7,17 @@ var isRTL = ($('html').attr('dir') == "rtl") ? true : false,
 	bodyTopPos,
 	isIE = detectIE(),
 	scrollHeight = 0,
-	isMobil,
+	isMobile,
 	movieListAnimating = false;
 
+changeToListViewInMob();
 hideTabsId();
 mobilecheck();
 // loadPlayMovies();
 charLimitInit();
 ChangeToSvg();
 setOnTopClass();
+initBgVideo();
 initSlick();
 headerSpace();
 adjustContentList2();
@@ -381,7 +383,15 @@ function initSlick() {
 	// EXP Carousel
 	
 	$('.js-exp-carousel').on('init', function(slick){
-		$(slick.currentTarget).find('.slick-current video')[0].play();
+		var innerVideo = $(slick.currentTarget).find('.slick-current video');
+		if(innerVideo.get(0)){
+			innerVideo[0].play();
+		}else{
+			var _self = slick.currentTarget;
+			setTimeout(function() {
+				$(_self).find('.slick-current iframe')[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+			}, 1000);
+		}
 	});
 	$('.js-exp-carousel').slick({
 		arrows: false,
@@ -399,7 +409,7 @@ function initSlick() {
 				   	],
 	});
 	$('.js-exp-carousel-thumb').slick({
-		arrows: false,
+		arrows: true,
 		slidesToShow: 5,
 		slidesToScroll: 1,
 		infinite: false,
@@ -422,11 +432,21 @@ function initSlick() {
 	});
 
 	$('.js-exp-carousel').on('beforeChange', function(slick, currentSlide, nextSlide){
-		$(slick.currentTarget).find('.slick-current video')[0].pause();
+		var videoTag = $(slick.currentTarget).find('.slick-current video');
+		if(videoTag.get(0)){
+			videoTag[0].pause();
+		}else{
+			$(slick.currentTarget).find('.slick-current iframe')[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+		}
 	});
 
 	$('.js-exp-carousel').on('afterChange', function(slick, currentSlide){
-		$(slick.currentTarget).find('.slick-current video')[0].play();
+		var videoTag = $(slick.currentTarget).find('.slick-current video');
+		if(videoTag.get(0)){
+			videoTag[0].play();
+		}else{
+			$(slick.currentTarget).find('.slick-current iframe')[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+		}
 	});
 
 	$('.js-exp-carousel-thumb .item, .js-exp-carousel-thumb .slick-slide').click(function (e) {
@@ -780,12 +800,22 @@ function initBgVideo(){
 			$(this).addClass('js-bg-video-init');
 			var videoUrl = $(this).attr('data-bg-video');
 			var youtubeVideoID = videoUrl.split('youtube:')[1];
+			var autoPlay = 1;
+
+			if($(this).closest('.js-exp-carousel').get(0)){
+				autoPlay = 0;
+			}
 
 			if(youtubeVideoID){
-				$(this).append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+youtubeVideoID+'?&controls=0&mute=1&theme=dark&autoplay=1&autohide=1&modestbranding=0&fs=0&playlist='+youtubeVideoID+'&showinfo=0&rel=0&iv_load_policy=3&loop=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+				$(this).append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+youtubeVideoID+'?&controls=0&enablejsapi=1&mute=1&theme=dark&autoplay='+autoPlay+'&autohide=1&modestbranding=0&fs=0&playlist='+youtubeVideoID+'&showinfo=0&rel=0&iv_load_policy=3&loop=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
 				$(this).parent().find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
 			}else{
-				$(this).append('<video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" playsinline loop autoplay muted><source src="'+videoUrl+'" type="video/mp4"></video>')
+				if(autoPlay == 1){
+					autoPlay = 'autoplay';
+				}else{
+					autoPlay = '';
+				}
+				$(this).append('<video poster="http://www.reelcinemas.ae/en/movies/images/trailerload.png" playsinline loop '+autoPlay+' muted><source src="'+videoUrl+'" type="video/mp4"></video>')
 			}
 		}
 	});
@@ -2652,6 +2682,12 @@ function mobilecheck() {
   if(isMobile){
   	$('html').addClass('is--mobile');
   }
+}
+
+function changeToListViewInMob() {
+	if (typeof viewmode === 'function' && winWidth < 768 && $('.c-movie-filters .viewbar').get(0)) {
+		viewmode();
+	}
 }
 
 
