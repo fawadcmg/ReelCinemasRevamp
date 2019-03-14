@@ -2686,7 +2686,7 @@ function mobilecheck() {
 
 function changeToListViewInMob() {
 	if (typeof viewmode === 'function' && winWidth < 768 && $('.c-movie-filters .viewbar').get(0)) {
-		viewmode();
+		viewmode(1);
 	}
 }
 
