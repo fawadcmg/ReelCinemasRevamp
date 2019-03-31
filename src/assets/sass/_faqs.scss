@@ -24,11 +24,18 @@
 
 			.back{
 				display: inline-block;
+				padding: 10px 5px;
+				margin: 0px 10px 0px 0px;
+				float: left;
+
 				i{
 					display: block;
-					width: 14px;
-					height: 11px;
-					background: url(../img/icons/arrow-with-stick-left.png) no-repeat 50%;
+				    width:  15px;
+				    height: 15px;
+				    border: 2px solid #000;
+				    border-top: none;
+				    border-left: none;
+				    transform: rotateZ(135deg);
 				}
 				span{
 					display: none;
@@ -38,7 +45,7 @@
 				font-size: 20px;
 				line-height: 1em;
 				color: #6e3996;
-				margin: 15px 0 0 0;
+				margin: 8px 0 0;
 			}
 		}
 		.this-row{
@@ -211,16 +218,36 @@
 
 .c-list-2{
 
+
 	.list-wrap{
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
 		margin: 0 -20px;
+		&:after{
+			content: "";
+	  		flex: auto;
+		}
 	}
 
 	.item{
+		width: 20%;
 		padding: 0 20px;
 		margin-bottom: 40px;
+
+		@media (max-width: 1500px){
+			width: 25%;
+		}
+
+		@media (max-width: 920px){
+			width: 33.33%;
+		}
+		@media (max-width: 767px){
+			width: 50%;
+		}
+		@media (max-width: 500px){
+			width: 100%;
+		}
 
 		@media (max-width: 1470px) and (min-width: 1167px){
 			&:nth-child(9), &:nth-child(10){
@@ -270,9 +297,11 @@
 					& + a{
 						margin-left: 15px;
 					}
-					&:hover{
-						svg{
-							fill: #6e3996;
+					@media (min-width: 1025px){
+						&:hover{
+							svg{
+								fill: #6e3996;
+							}
 						}
 					}
 				}
@@ -291,9 +320,11 @@
 				transition: color .35s;
 			}
 
-			&:hover{
-				&, h1, p{
-					color: #6e3996;
+			@media (min-width: 1025px){
+				&:hover{
+					&, h1, p{
+						color: #6e3996;
+					}
 				}
 			}
 			h1{
@@ -376,7 +407,7 @@
 			border-color: #b69cca;
 		}
 
-		@media (min-width: 1024px){
+		@media (min-width: 1025px){
 			a:hover{
 				color: #6e3996;
 				border-color: #9b97a0;
@@ -421,7 +452,7 @@
 				}
 			}
 
-			@media (min-width: 1024px){
+			@media (min-width: 1025px){
 				&:hover{
 					&:after{
 						border-color: #6e3996;
@@ -702,10 +733,13 @@
 				    position: absolute;
 				    right: 15px;
 				    top: 50%;
-				    margin-top: -5px;
-				    width: 14px;
-				    height: 11px;
-				    background: url(../img/icons/arrow-with-stick-right.png) no-repeat 50%;
+				    margin-top: -8px;
+				    width:  15px;
+				    height: 15px;
+				    border: 2px solid #000;
+				    border-top: none;
+				    border-left: none;
+				    transform: rotateZ(-45deg);
 			 	}
 			 }
 		}

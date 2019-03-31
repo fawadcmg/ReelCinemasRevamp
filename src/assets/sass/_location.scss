@@ -13,7 +13,11 @@
 	display: flex;
 	align-items: center;
 	padding: 50px 0;
-	margin-bottom: 50px;
+	margin-bottom: 0px;
+
+	.slick-slider .slick-list{
+		transform: none;
+	}
 	
 	.txt{
 		color: #fff;
@@ -300,6 +304,9 @@
 	}
 }
 @media (max-width: 1023px){
+	.c-maps-sec .txt-wrap{
+		min-height: 0 !important;
+	}
 	.c-selection-banner .selectors a{
 		margin: 15px 2px 0;
 	}

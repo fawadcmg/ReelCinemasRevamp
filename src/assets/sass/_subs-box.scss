@@ -35,6 +35,10 @@
 		position: absolute;
 		top: 0;
 		right: 0;
+		min-height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
 .c-subs-box-1{

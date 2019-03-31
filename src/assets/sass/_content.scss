@@ -29,6 +29,12 @@
 		@extend .heading-sty-4;
 	}
 
+	.highlight + p{
+		img{
+			height: auto !important;
+		}
+	}
+
 	section{
 		+ section{
 			margin-top: 20px;

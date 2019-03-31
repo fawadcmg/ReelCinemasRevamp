@@ -188,6 +188,11 @@
 
 	&, .item-inner{
 		@extend .height-cover--solid;
+		@media (max-width: 767px){
+			max-height: none;
+			min-height: 500px !important;
+			height: auto !important;
+		}
 	}
 
 	.o-container{
@@ -202,6 +207,13 @@
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
+		@media (max-width: 767px){
+			justify-content: flex-end;
+			.txt-wrap{
+				margin-bottom: 70px;
+			}
+		}
+
 	}
 
 	.img{

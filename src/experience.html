@@ -5,7 +5,19 @@
 	  <meta http-equiv="x-ua-compatible" content="ie=edge">
 	  <title>Reel Cinemas</title>
 	  <meta name="description" content="">
-	  <meta name="apple-itunes-app" content="app-id=432316358">
+	  <!-- Start SmartBanner configuration -->
+	  <meta name="smartbanner:title" content="Reel Cinemas">
+	  <meta name="smartbanner:author" content="">
+	  <meta name="smartbanner:price" content="FREE">
+	  <meta name="smartbanner:price-suffix-apple" content=" - On the App Store">
+	  <meta name="smartbanner:price-suffix-google" content=" - In Google Play">
+	  <meta name="smartbanner:icon-google" content="assets/img/fav-icon/android-icon-144x144.png">
+	  <meta name="smartbanner:icon-apple" content="assets/img/fav-icon/apple-icon.png">
+	  <meta name="smartbanner:button" content="VIEW">
+	  <meta name="smartbanner:button-url-apple" content="https://itunes.apple.com/ae/app/reel-cinemas/id432316358">
+	  <meta name="smartbanner:button-url-google" content="https://play.google.com/store/apps/details?id=com.reelCinema.Screens">
+	  <meta name="smartbanner:enabled-platforms" content="android,ios">
+	  <!-- End SmartBanner configuration -->
 	  <link rel="manifest" href="manifest.json">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	  <link rel="stylesheet" href="assets/css/style.min.css">
@@ -150,7 +162,7 @@
 	    </aside>
 
 		<main class="page--experience has-content-tiles">
-		    <section class="c-content-tiles txt--white tile--highlight" data-bgimg-mob="assets/img/tiles-bg/tile-img_reel-exp--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_reel-exp.jpg">
+		    <section class="c-content-tiles txt--white tile--highlight img--cover" data-bgimg-mob="assets/img/tiles-bg/tile-img_reel-exp--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_reel-exp.jpg">
 		    	<div class="o-container">
 		    		<div class="wrap-col">
 				    	<div class="txt-block">
@@ -162,7 +174,8 @@
 		    	</div>
 		    </section>
 
-		    <section class="c-content-tiles bg-m-shade--white" data-bgimg-mob="assets/img/tiles-bg/tile-img_a--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_a.jpg">
+		    <section class="c-content-tiles img--left img-shade--white txt--right" data-bgimg-mob="assets/img/tiles-bg/tile-img_a--mob.jpg">
+		    	<div class="bg-img" style="background-image: url(assets/img/tiles-bg/tile-img_platinum.jpg);"></div>
 		    	<div class="o-container">
 		    		<div class="wrap-col">
 				    	<div class="txt-block">
@@ -171,14 +184,14 @@
 				    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In iaculis mi purus,  id sagittis risus sollicitudin vel. Vestibulum sed turpis imperdiet.</p>
 				    		<div class="action-block">
 								<a href="experience-inner.html" class="c-btn-glow sty--a"><span>Learn more</span></a>
-								<a href="#video-1" class="c-btn-white btn--play-1 js-popup-link"><span>Play Video</span><i class="icon"></i></a>
+								<a href="#video-1" data-video="youtube:0LHxvxdRnYc" class="c-btn-white btn--play-1 js-popup-link"><span>Play Video</span><i class="icon"></i></a>
 				    		</div>
 				    	</div>
 			    	</div>
 		    	</div>
 		    </section>
 
-		    <section class="c-content-tiles tile--focus" data-bgimg-mob="assets/img/tiles-bg/tile-img_b--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_b.jpg">
+		    <section class="c-content-tiles tile--focus img--cover txt--white" data-bgimg-mob="assets/img/tiles-bg/tile-img_b--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_b.jpg">
 		    	<div class="o-container">
 		    		<div class="wrap-col">
 				    	<div class="txt-block">
@@ -187,14 +200,15 @@
 				    		<div class="action-block">
 								<!-- <a href="#" class="c-btn-white sty--a"><span>Learn more</span></a> -->
 								<a href="experience-inner.html" class="c-btn-glow sty--a"><span>Learn more</span></a>
-								<a href="#video-1" class="c-btn-white btn--play-1 btn-play--prom js-popup-link"><span>Play Video</span><i class="icon"></i></a>
+								<a href="#video-1" data-video="youtube:0LHxvxdRnYc" class="c-btn-white btn--play-1 js-popup-link"><span>Play Video</span><i class="icon"></i></a>
 				    		</div>
 				    	</div>
 			    	</div>
 		    	</div>
 		    </section>
 
-		    <section class="c-content-tiles bg-m-shade--white" data-bgimg-mob="assets/img/tiles-bg/tile-img_c--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_c.jpg">
+		    <section class="c-content-tiles txt--right img--left img-shade--white" data-bgimg-mob="assets/img/tiles-bg/tile-img_c--mob.jpg">
+				<div class="bg-img" style="background-image: url(assets/img/tiles-bg/tile-img_junior.jpg);"></div>
 		    	<div class="o-container">
 		    		<div class="wrap-col">
 				    	<div class="txt-block">
@@ -209,11 +223,12 @@
 		    	</div>
 		    </section>
 
-		    <section class="c-content-tiles txt--white  bg-m-shade--red" data-bgimg-mob="assets/img/tiles-bg/tile-img_d--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_d.jpg">
+		    <section class="c-content-tiles txt--white txt--left img--right img-shade--red" data-bgimg-mob="assets/img/tiles-bg/tile-img_d--mob.jpg">
+		    	<div class="bg-img" style="background-image: url(assets/img/tiles-bg/tile-img_dine.jpg);"></div>
 		    	<div class="o-container">
 		    		<div class="wrap-col">
 				    	<div class="txt-block">
-				    		<div class="sec-logo"><img src="assets/img/logos/logo-reel-dine-in--lg.png" alt="Reel Dine-In"></div>
+				    		<div class="sec-logo"><img src="assets/img/logos/logo-reel-dine-in--lg--white--half.png" alt="Reel Dine-In"></div>
 				    		<h1>Freshly prepared meals served direct to your seat</h1>
 				    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In iaculis mi purus, id sagittis risus sollicitudin vel. Vestibulum sed turpis imperdiet, commodo orci et, fermentum ex. Phasellus varius eu sem at sagittis</p>
 				    		<div class="action-block">
@@ -224,7 +239,8 @@
 		    	</div>
 		    </section>
 
-		    <section class="c-content-tiles bg-m-shade--white" data-bgimg-mob="assets/img/tiles-bg/tile-img_e--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_e.jpg">
+		    <section class="c-content-tiles txt--right img--left img-shade--white" data-bgimg-mob="assets/img/tiles-bg/tile-img_e--mob.jpg">
+		    	<div class="bg-img" style="background-image: url(assets/img/tiles-bg/tile-img_screenx.jpg);"></div>
 		    	<div class="o-container">
 		    		<div class="wrap-col">
 				    	<div class="txt-block">
@@ -239,7 +255,8 @@
 		    	</div>
 		    </section>
 
-		    <section class="c-content-tiles bg-m-shade--blue" data-bgimg-mob="assets/img/tiles-bg/tile-img_f--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_f.jpg">
+		    <section class="c-content-tiles txt--left img--right img-shade--green txt--white" data-bgimg-mob="assets/img/tiles-bg/tile-img_f--mob.jpg">
+		    	<div class="bg-img" style="background-image: url(assets/img/tiles-bg/tile-img_boutique.jpg);"></div>
 		    	<div class="o-container">
 		    		<div class="wrap-col">
 				    	<div class="txt-block tb-size-1">
@@ -254,7 +271,8 @@
 		    	</div>
 		    </section>
 
-		    <section class="c-content-tiles bg-m-shade--white" data-bgimg-mob="assets/img/tiles-bg/tile-img_g--mob.jpg" data-bgimg="assets/img/tiles-bg/tile-img_g.jpg">
+		    <section class="c-content-tiles txt--right img--left img-shade--white" data-bgimg-mob="assets/img/tiles-bg/tile-img_g--mob.jpg">
+		    	<div class="bg-img" style="background-image: url(assets/img/tiles-bg/tile-img_mx4d.jpg);"></div>
 		    	<div class="o-container">
 		    		<div class="wrap-col">
 				    	<div class="txt-block">

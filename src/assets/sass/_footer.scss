@@ -1,7 +1,11 @@
 .footer-outer-wrap{
 	overflow: hidden;
 	margin-top: 35px;
-	.page--home + &{
+
+	.page--about + &,
+	.page--home + &,
+	.page--about ~ &,
+	.page--home ~ &{
 		margin-top: 0;
 	}
 }
@@ -437,6 +441,7 @@
 			border: none;
 			position: relative;
 			overflow: hidden;
+			transform: translateZ(0);
 
 			&:before, &:after{
 				content: '';
@@ -546,7 +551,7 @@
 	    display: block;
 	    margin-top: 0;
 	    .msg{
-	    	margin-top: 70px;
+	    	margin-top: 30px;
 	    }
 	}
 }
