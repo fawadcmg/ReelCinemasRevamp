@@ -989,6 +989,107 @@ label{
     top: 40%;
     transition: all .3s 0s;
     overflow-y: auto;
+
+    &.popup--sty-1{
+    	max-width: 540px;
+    	.popup-wrap{
+    		border-radius: 10px;
+    		background: #fff;
+    		padding: 40px;
+    	}
+    	.heading-wrap{
+			display: flex;
+			justify-content: space-between;
+    		margin-bottom: 20px;
+    		.heading{
+    			padding-right: 20px;
+    			> *{
+    				font-size: 20px;
+    				line-height: 1.6em;
+    				font-weight: bold;
+    			}
+    		}
+    		.popup-action{
+    			margin-top: 0;
+    			.c-close{
+    				width:  32px;
+    				height: 32px;
+    				border-radius: 0;
+    				background: transparent;
+    				span{
+    					width:  16px;
+    					height: 16px;
+    					top:  8px;
+    					left: 8px;
+
+    					&:before,
+    					&:after{
+    						background: #000;
+    					}
+    					&:before{
+    						height: 2px;
+    					}
+    					&:after{
+    						width: 2px;
+    					}
+    				}
+    			}
+    		}
+    	}
+    	.txt-wrap{
+    		max-width: none;
+    		margin-bottom: 40px;
+    	}
+    	.action{
+    		text-align: center;
+    		a{
+    			min-width: 198px;
+    			& + a{
+    				margin-left: 20px;
+    			}
+    		}
+    	}
+
+    	@media (max-width: 767px){
+    		.popup-wrap{
+    			padding: 20px;
+    		}
+    		.popup-action{
+    			.c-close{
+    				span{
+    					&:before{
+    						height: 1px;
+    						top: 8px;
+    					}
+    					&:after{
+    						width: 1px;
+    						left: 8px;
+    					}
+    				}
+    			}
+    		}
+    		.action{
+    			a{
+    				min-width: 140px;
+
+    				& + a{
+    					margin-left: 10px;
+    				}
+    			}
+    		}
+    	}
+    	@media (max-width: 374px){
+    		.action{
+    			a{
+    				min-width: 113px;
+
+    				& + a{
+    					margin-left: 10px;
+    				}
+    			}
+    		}
+    	}
+    }
 }
 
 .c-popup .popup.popup--full-screen {

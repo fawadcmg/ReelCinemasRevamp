@@ -1830,8 +1830,8 @@ function ChangeToSvg() {
 var popupTarget;
 function openPopup(target, videoLink) {
 	popupTarget = target;
-	var youtubeVideoID = videoLink.split('youtube:')[1];
 	if(videoLink){
+		var youtubeVideoID = videoLink.split('youtube:')[1];
 		if(!isIE){
 			// Destroy Plyr if there.
 			var thisId = $(target).find('[data-video-instance]').attr('data-video-instance');
