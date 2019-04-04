@@ -13521,7 +13521,9 @@ html:not(.has--smartbanner) {
 
 .footer-outer-wrap {
   overflow: hidden;
-  margin-top: 35px; }
+  margin-top: 35px;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0); }
   .page--about + .footer-outer-wrap,
   .page--home + .footer-outer-wrap,
   .page--about ~ .footer-outer-wrap,
@@ -15488,18 +15490,21 @@ html:not(.has--smartbanner) {
   .showtimewrap ul {
     white-space: nowrap;
     overflow-x: auto;
-    width: 100%; } }
+    width: 100%;
+    overflow-y: hidden; } }
 
 .showtimewrap ul {
   margin-right: -20px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  margin-top: 20px; }
   @media (max-width: 1023px) {
     .showtimewrap ul {
       padding-bottom: 0; } }
 
 .showtimewrap ul li {
   float: left;
-  margin: 20px 20px 0 0;
+  margin: 0px 20px 0 0;
+  min-height: 60px;
   /* @media (min-width: 1471px){
 				&:nth-child(4n){
 					margin-right: 0;
@@ -15509,6 +15514,9 @@ html:not(.has--smartbanner) {
 					clear: left;
 				}
 			} */ }
+  @media (max-width: 767px) {
+    .showtimewrap ul li {
+      min-height: 0; } }
   @media (max-width: 1470px) and (min-width: 1024px) {
     .showtimewrap ul li {
       /* &:nth-child(3n){
@@ -15577,20 +15585,27 @@ html:not(.has--smartbanner) {
 .nearsold span {
   clear: both;
   font-size: 11px;
-  padding: 2px 0;
+  padding: 0px 0;
   text-align: center;
   color: #ec7848;
-  display: block; }
+  display: block;
+  margin-top: -6px; }
   @media (max-width: 767px) {
     .sold-out span,
     .nearsold span {
       display: block;
       opacity: 1 !important;
       position: absolute;
-      bottom: 0;
+      bottom: 2px;
       left: 0;
       width: 100%;
-      font-size: 10px; } }
+      font-size: 10px;
+      margin-top: 0; } }
+
+.sold-out span {
+  margin-top: -3px;
+  margin-bottom: -4px;
+  font-size: 10px; }
 
 .nearsold .showtime {
   color: #ec7848;

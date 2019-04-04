@@ -12105,7 +12105,7 @@ function customSelectBox() {
 function countFilterSelection() {
 	$('.js-custom-select .field input').each(function () {
 		var currentVal = $(this).attr('placeholder');
-		var totalChecked = $(this).closest('.js-custom-select').find('.field-dropdown .scroll input:checked').length;
+		var totalChecked = $(this).closest('.js-custom-select').find('.field-dropdown .scroll .scroll-area input:checked').length;
 		$(this).attr('placeholder', currentVal.split(' (')[0] + ' (' + totalChecked + ')');
 	});
 }
@@ -12934,6 +12934,8 @@ var markerImageActive;
 
 var activeLinkIndex = $('.c-selection-banner .selectors a.is--active').index();
 
+// var setMapStyle = 'hybrid';
+var currentMapStyle = 'styled_map';
 function initMap() {
 	// Styles
 	var styledMapType = new google.maps.StyledMapType([{
@@ -13097,18 +13099,26 @@ function initMap() {
 		hideDefaultUi = true;
 	}
 
+	var mapStyleHolder = "styled_map";
+	if (typeof setMapStyle !== 'undefined') {
+		mapStyleHolder = setMapStyle;
+	}
+
 	locMap = new google.maps.Map($('.js-loc-map')[0], {
 		center: markers[activeLinkIndex].position,
 		zoom: 16,
+		mapTypeId: mapStyleHolder,
 		disableDefaultUI: hideDefaultUi,
 		mapTypeControlOptions: {
 			mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
 		}
 	});
+	locMap.addListener('maptypeid_changed', function () {
+		currentMapStyle = locMap.mapTypeId;
+	});
 
 	// Map Style
 	locMap.mapTypes.set('styled_map', styledMapType);
-	locMap.setMapTypeId('styled_map');
 
 	// Adding Marker
 	var markerImgType = markerImage;

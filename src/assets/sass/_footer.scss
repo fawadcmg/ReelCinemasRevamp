@@ -1,6 +1,7 @@
 .footer-outer-wrap{
 	overflow: hidden;
 	margin-top: 35px;
+	transform: translateZ(0);
 
 	.page--about + &,
 	.page--home + &,
