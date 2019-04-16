@@ -25,17 +25,15 @@ const   gulp = require('gulp'),
 // Minifies & Concat JS
 gulp.task('scriptJs', function(){
     return gulp.src([
-        // 'src/assets/js/script/jquery-3.3.1.min.js',
         'src/assets/js/script/jquery.mCustomScrollbar.concat.min.js',
         'src/assets/js/script/slick.js',
-        // 'src/assets/js/script/jquery.panzoom.js',
-        // 'src/assets/js/script/jquery.validate.js',
         'src/assets/js/script/imagesloaded.pkgd.min.js',
         'src/assets/js/script/modernizr-custom.js',
         'src/assets/js/script/aos.js',
         'src/assets/js/script/select2.full.js',
         'src/assets/js/script/smartbanner.js',
-        // 'src/assets/js/script/plyr.min.js',
+        'src/assets/js/script/intlTelInput.js',
+        'src/assets/js/script/jquery.validate.js',
         'src/assets/js/script/main.js',
     ])
     .pipe(sourcemaps.init())
@@ -77,6 +75,24 @@ gulp.task('sassToCss', function() {
         browsers: ['last 3 versions', 'ie >= 9', 'iOS >= 6', 'Android >= 4']
     }))
     .pipe(rename('style.min.css'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('src/assets/css'))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('booking_sassToCss', function() {
+  return gulp.src("src/assets/sass/booking_style.scss")
+    .pipe(sourcemaps.init())
+    .pipe(sass({ includePaths: ['./node_modules/'] }).on('error', sass.logError))
+    .pipe(autoprefixer({
+        browsers: ['last 3 versions', 'ie >= 9', 'iOS >= 6', 'Android >= 4']
+    }))
+    .pipe(gulp.dest('src/assets/css'))
+    .pipe(postcss([cssnano()]))
+    .pipe(autoprefixer({
+        browsers: ['last 3 versions', 'ie >= 9', 'iOS >= 6', 'Android >= 4']
+    }))
+    .pipe(rename('booking_style.min.css'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('src/assets/css'))
     .pipe(browserSync.stream());
@@ -129,10 +145,10 @@ gulp.task('run', function() {
   browserSync.init({
       server: "./src"
   });
-  gulp.watch("src/assets/sass/**/*.scss", ['sassToCss']);
+  gulp.watch("src/assets/sass/**/*.scss", ['sassToCss', 'booking_sassToCss']);
   gulp.watch("src/assets/js/script/*.js", ['scriptJs']);
   // gulp.watch("src/**/*.html", ['include']);
   gulp.watch("src/assets/img/**/*.*", ['copyImg']);
   gulp.watch("src/**/*.html").on('change', browserSync.reload);
 });
-gulp.task('server', ['createDist', 'sassToCss', 'scriptJs', 'run',]);
+gulp.task('server', ['createDist', 'sassToCss', 'booking_sassToCss', 'scriptJs', 'run',]);

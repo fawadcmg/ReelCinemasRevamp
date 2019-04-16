@@ -1857,6 +1857,15 @@ border-radius: 5px;
 			}
 			@media (max-width: 767px){
 			}
+
+			.type{
+				margin-left: 5px;
+				border-left: 1px solid #6e3896;
+				padding-left: 5px;
+				display: inline-block;
+				transition: border .35s;
+				line-height: 12px;
+			}
 		}
 		
 		.sold-out .showtime{
@@ -1947,6 +1956,9 @@ border-radius: 5px;
 		box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.26);
 		cursor: pointer;
 		top: -5px;
+		.type{
+			border-color: #fff;
+		}
 	}
 	.showtimewrap li.nearsold a:hover .showtime{
 		background: #ec7848;

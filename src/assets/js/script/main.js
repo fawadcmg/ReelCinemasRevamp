@@ -49,6 +49,8 @@ adjustContentList2();
 removeLoaderInMob();
 onlyPortrait(1);
 addVideoPlugin();
+customPhoneInput();
+adjustForm();
 
 $(function () {
 	locMapInit();
@@ -148,6 +150,7 @@ $(window).on('resize orientationchange', function () {
 
 	changeToListViewInMob();
 	navDropDownHeight();
+	adjustForm();
 });
 
 /*function calcScrollHeightDOM() {
@@ -1701,7 +1704,11 @@ if(isIE){
     $('html').addClass('is--ie');
     $('html').addClass('is--ie-'+isIE);
 
-    $('[src*=reel-logo]').attr('src', '/en/assets/img/brand/logo.png');
+	if($('.c-booking-pages').get(0)){
+		$('[src*=reel-logo]').attr('src', 'assets/img/brand/logo.png');
+	}else{
+		$('[src*=reel-logo]').attr('src', '/en/assets/img/brand/logo.png');
+	}
 
     if($('.c-main-banner').get(0)){
     	var itemHeight = $('.c-main-banner .item-inner').height();
@@ -2990,24 +2997,24 @@ function removeLoaderInMob() {
 var firstRunPortrait = true;
 var onRotateRefresh = false;
 function onlyPortrait(){
-	if(viewport().width > viewport().height && isMobile){
-		$('html').addClass('landscape-msg--on');
-		$('.c-landscape-msg').show();
-		if(firstRunPortrait){
-			onRotateRefresh = true;
-		}
-	}else{
-		if(onRotateRefresh){
-			// location.reload();
-		}
-		$('.c-landscape-msg').hide();
-		if($('html').hasClass('landscape-msg--on')){
-			$('html').removeClass('landscape-msg--on');
-			heightMediaQuery();
-			headerSpace();
-		}
-	}
-	firstRunPortrait = false;
+	// if(viewport().width > viewport().height && isMobile){
+	// 	$('html').addClass('landscape-msg--on');
+	// 	$('.c-landscape-msg').show();
+	// 	if(firstRunPortrait){
+	// 		onRotateRefresh = true;
+	// 	}
+	// }else{
+	// 	if(onRotateRefresh){
+	// 		// location.reload();
+	// 	}
+	// 	$('.c-landscape-msg').hide();
+	// 	if($('html').hasClass('landscape-msg--on')){
+	// 		$('html').removeClass('landscape-msg--on');
+	// 		heightMediaQuery();
+	// 		headerSpace();
+	// 	}
+	// }
+	// firstRunPortrait = false;
 }
 
 function isIOS() {
@@ -3079,4 +3086,33 @@ if('objectFit' in document.documentElement.style === false) {
 	$('html').addClass('no--object-fit');
 }else{
 	$('html').addClass('object-fit');
+}
+
+function customPhoneInput() {
+	if($('.js-phone-field').get(0)){
+		$('.js-phone-field').each(function () {
+			window.intlTelInput(this, {
+				separateDialCode: true
+			});
+		});
+	}
+}
+function adjustForm() {
+	$('.js-form input, .js-form-sty-1 input').each(function () {
+		var attr = $(this).attr('placeholder');
+		var dataAttr = $(this).attr('placeholder');
+		if(typeof attr !== typeof undefined && attr !== false){
+			if(winWidth < 768){
+				$(this).attr('placeholder', '');
+				$(this).attr('data-placeholder', attr);
+			}else if(typeof dataAttr !== typeof undefined && dataAttr !== false){
+				$(this).attr('placeholder', dataAttr);
+			}
+		}
+	});	
+}
+if($('input[name="phone"]').get(0)){
+	$('input[name="phone"]').live('keyup', function(key) {
+	    if(key.charCode < 48 || key.charCode > 57) return false;
+	});
 }

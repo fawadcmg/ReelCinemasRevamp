@@ -7083,7 +7083,8 @@ label {
   @media (max-width: 767px) {
     .c-btn-white,
     .c-btn-glow {
-      font-size: 14px; } }
+      font-size: 14px;
+      padding: 15px 24px 12px; } }
   .c-btn-white.btn--sm,
   .c-btn-glow.btn--sm {
     font-size: 16px;
@@ -7236,6 +7237,8 @@ label {
       mix-blend-mode: unset;
       -webkit-transform: translateZ(0);
               transform: translateZ(0); }
+    .c-btn-glow.sty--a:hover:after {
+      opacity: 0; }
     @media (min-width: 1025px) {
       html:not(.is--mobile) .c-btn-glow.sty--a:hover {
         color: #fff;
@@ -9287,6 +9290,7 @@ html:not(.has--smartbanner) {
     transition: opacity .35s;
     /*done*/ }
 
+.c-header-1 .main-logo,
 .logo {
   width: 145px;
   display: block;
@@ -9295,13 +9299,16 @@ html:not(.has--smartbanner) {
   left: 40px;
   z-index: 1011; }
   @media (max-width: 767px) {
+    .c-header-1 .main-logo,
     .logo {
       width: 110px;
       top: 9px;
       left: 10px; }
-      .hg-651 .logo {
+      .hg-651 .c-header-1 .main-logo, .hg-651
+      .logo {
         top: 14px; }
-        .not-at-top .hg-651 .logo {
+        .not-at-top .hg-651 .c-header-1 .main-logo, .not-at-top .hg-651
+        .logo {
           top: 9px; } }
 
 @media (max-width: 767px) {
@@ -10510,8 +10517,9 @@ html:not(.has--smartbanner) {
     .filter-open .c-movie-filters {
       height: 395px; } }
 
-.hl-650.filter-open .c-movie-filters {
-  height: 374px; }
+@media (max-width: 767px) {
+  .hl-650.filter-open .c-movie-filters {
+    height: 374px; } }
 
 @media (max-width: 767px) {
   .not-at-top .c-movie-filters {
@@ -15562,6 +15570,15 @@ html:not(.has--smartbanner) {
       line-height: 1em;
       padding: 8px;
       min-width: 90px; } }
+  .showtime .type {
+    margin-left: 5px;
+    border-left: 1px solid #6e3896;
+    padding-left: 5px;
+    display: inline-block;
+    -webkit-transition: border .35s;
+    -o-transition: border .35s;
+    transition: border .35s;
+    line-height: 12px; }
 
 .sold-out .showtime {
   background-color: transparent;
@@ -15636,6 +15653,8 @@ html:not(.has--smartbanner) {
     box-shadow: 0px 0px 23px -1px rgba(0, 0, 0, 0.26);
     cursor: pointer;
     top: -5px; }
+    .showtimewrap li a:hover .showtime .type {
+      border-color: #fff; }
   .showtimewrap li.nearsold a:hover .showtime {
     background: #ec7848; }
   .showtimewrap li.sold-out a:hover .showtime {

@@ -858,8 +858,10 @@
 		}
 	}
 }
-.hl-650.filter-open .c-movie-filters{
-	height: 374px;
+@media (max-width: 767px){
+	.hl-650.filter-open .c-movie-filters{
+		height: 374px;
+	}
 }
 
 .filter-space{
