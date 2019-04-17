@@ -1,6 +1,5 @@
 .c-banner-3,
 .c-banner-1{
-	@extend .height-cover--solid;
 	position: relative;
 	display: flex;
 	justify-content: center;
@@ -459,4 +458,7 @@
 	.action{
 		margin-top: 45px;
 	}
+}
+.c-banner-1 .bgimg-sec .item{
+	display: block !important;
 }
