@@ -9715,6 +9715,9 @@ html:not(.has--smartbanner) {
         -ms-transform: translateY(-100%);
             transform: translateY(-100%);
     margin-top: -10px; }
+    .c-main-carousel-thumb .js-main-carousel-thumb.has--fixed-width .slick-track {
+      -webkit-transform: translate3d(0px, 0px, 0px) !important;
+              transform: translate3d(0px, 0px, 0px) !important; }
   .c-main-carousel-thumb .item {
     padding: 0 15px; }
     .c-main-carousel-thumb .item .wrap {
