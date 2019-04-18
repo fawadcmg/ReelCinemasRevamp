@@ -9412,6 +9412,14 @@ html:not(.has--smartbanner) {
        object-position: center 0;
     height: 100%;
     width: 100%; }
+    @media (max-width: 1400px) {
+      .c-main-banner .main-carousel .img img {
+        -o-object-position: 65% 0;
+           object-position: 65% 0; } }
+    @media (max-width: 1300px) {
+      .c-main-banner .main-carousel .img img {
+        -o-object-position: 75% 0;
+           object-position: 75% 0; } }
 
 .c-main-banner .main-carousel .txt {
   width: 100%;

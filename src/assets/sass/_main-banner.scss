@@ -136,6 +136,13 @@
 				object-position: center 0;
 				height: 100%;
 				width: 100%;
+
+				@media (max-width: 1400px){
+					object-position: 65% 0;
+				}
+				@media (max-width: 1300px){
+					object-position: 75% 0;
+				}
 			}
 		}
 		.txt{
