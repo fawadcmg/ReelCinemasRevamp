@@ -15626,6 +15626,9 @@ html:not(.has--smartbanner) {
   margin-top: -3px;
   margin-bottom: -4px;
   font-size: 10px; }
+  @media (max-width: 767px) {
+    .sold-out span {
+      margin-bottom: 0; } }
 
 .nearsold .showtime {
   color: #ec7848;

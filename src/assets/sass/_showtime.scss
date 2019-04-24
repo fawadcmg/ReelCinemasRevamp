@@ -1915,6 +1915,10 @@ border-radius: 5px;
 			margin-top: -3px;
 			margin-bottom: -4px;
 			font-size: 10px;
+
+			@media (max-width: 767px){
+				margin-bottom: 0;
+			}
 		}
 		.nearsold{
 			.showtime{
