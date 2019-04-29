@@ -27,6 +27,14 @@
     font-style: normal;
 }
 @font-face {
+    font-family: 'Effra';
+    src: url('../fonts/dalton_maag_-_effra_medium-webfont.woff2') format('woff2'),
+         url('../fonts/dalton_maag_-_effra_medium-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+
+}
+@font-face {
     font-family: 'Effra-bold';
     src: url('../fonts/Effra-Bold.eot');
     src: url('../fonts/Effra-Bold.eot?#iefix') format('embedded-opentype'),

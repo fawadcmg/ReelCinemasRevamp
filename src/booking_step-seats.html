@@ -19,7 +19,7 @@
 		<div class="c-loader"></div><div class="c-overlay js-close-side-nav"></div>
 	    <div class="c-overlay-white js-close-filter-m"></div>
 		
-		<div class="c-booking-pages login-page">
+		<div class="c-booking-pages no--bg">
 			<div class="o-container">
 				<header class="c-header-1">
 					<div class="logo-wrap">
@@ -30,92 +30,161 @@
 							</picture>
 						</a>
 					</div>
+					<nav class="c-steps">
+						<ul>
+							<li class="is--active">
+								<a href="booking_step-offers.html" class="step-offers">
+									<i class="icon"><img src="assets/img/icons/step-offers.svg" class="js-inline-svg"></i>
+									<span class="txt">Offers</span>
+								</a>
+							</li>
+							<li class="is--current">
+								<a href="booking_step-seats.html" class="step-seat">
+									<i class="icon"><img src="assets/img/icons/step-seat.svg" class="js-inline-svg"></i>
+									<span class="txt">Seats</span>
+								</a>
+							</li>
+							<li>
+								<a href="booking_step-seats.html" class="step-food">
+									<i class="icon"><img src="assets/img/icons/step-food.svg" class="js-inline-svg"></i>
+									<span class="txt">Food</span>
+								</a>
+							</li>
+							<li>
+								<a href="booking_step-seats.html" class="step-payment">
+									<i class="icon"><img src="assets/img/icons/step-payment.svg" class="js-inline-svg"></i>
+									<span class="txt">Payment</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="c-user-summary">
+						<a href="#" class="js-user-dropdown action-elem">
+							<div class="user-img"><!-- <img src="assets/img/booking/user-img-thumb.jpg" alt="John Doe"> --></div>
+							<span class="arrow-icon"></span>
+						</a>
+						<nav class="user-actions-dropdown">
+							<a href="#">Your Profile <i class="icon icon--user"></i></a>
+							<a href="#">Sign out <i class="icon icon--signout"></i></a>
+						</nav>
+					</div>
 				</header>
 				<main class="b-page-content">
-					<div class="c-panel-1">
-						<div class="o-row">
-							<div class="o-col col--50 col--md--100">
-								<div class="c-link-list-1">
-									<a href="booking_signin.html" class="link is--active"><span>Login</span></a>
-									<a href="booking_signup.html" class="link"><span>Signup</span></a>
-								</div>
-								<div class="wrap-1">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies tristique tortor, quis viverra odio tristique vitae.</p>
-									<form class="c-form-sty-1 js-form--login js-form">
-										<div class="form-item has--icon">
-											<div class="form-item-wrap">
-												<label for="name" class="field-title only-mobile">Name</label>
-												<input type="text" placeholder="Name" name="name" id="name" required>
-												<i class="icon icon--name"></i>
+					<div class="c-seats-selection">
+						<div class="seats-panel">
+							<section class="c-seat-selection">
+								<h1>Choose Seats</h1>
+								<div class="seats-area">
+									<div class="screen"><div class="screen-txt">SCREEN - 3</div></div>
+									<div class="seats-area">
+										<div class="seat-row">
+											<div class="seat">
+												<input type="checkbox" name="seats" id="seat-a-1">
+												<label for="seat-a-1"><i class="icon"><i></i></i><span class="txt">Seat A 1</span></label>
+												<div class="msg">
+													<div class="label">Row</div><div class="value">A</div>
+													<div class="label">Seat</div><div class="value">1</div>
+												</div>
 											</div>
-											<div class="form-item-error-msg"></div>
-										</div>
-										<div class="form-item has--icon">
-											<div class="form-item-wrap">
-												<label for="password" class="field-title only-mobile">Password</label>
-												<input type="password" placeholder="Password" name="password" id="password" minLength="6" required>
-												<i class="icon icon--password"></i>
-											</div>
-											<div class="form-item-error-msg"></div>
-										</div>
-										<div class="action-items-inline">
-											<div class="action">
-												<a href="#" class="c-btn-glow js-submit-form"><span>Sign In</span></a>
-											</div>
-											<div class="action">
-												<a href="booking_forgot-password.html" class="c-link">Forgot Password?</a>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-							<div class="o-col col--50 col--md--100">
-								<div class="c-guest-msg">
-									<div class="c-separator-msg only-mobile"><span>OR</span></div>
-									<div class="c-link-list-1 only-desktop">
-										<div class="link is--static"><span>Guest?</span></div>
-									</div>
-									<div class="wrap-2">
-										<p>As a guest you will not be able to use our exclusive ticket offer or Reel Cinema Reward</p>
-										<div class="action">
-											<a href="#" class="c-btn-glow sty--a"><span>Continue as Guest</span></a>
 										</div>
 									</div>
 								</div>
-							</div>
+							</section>
 						</div>
-						<div class="o-row">
-							<div class="o-col col--100">
-								<div class="c-signin-options">
-									<div class="panel-msg"><span>OR SIGN IN WITH</span></div>
-									<ul class="signin-list">
-										<li>
-											<a href="booking_sigin-ubyemaar.html" class="is--emaar">
-												<i class="icon"></i>
-												<span class="txt">U BY EMAAR</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="is--fb">
-												<i class="icon"></i>
-												<span class="txt">Facebook</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="is--gmail">
-												<i class="icon"></i>
-												<span class="txt">Gmail</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="is--twitter">
-												<i class="icon"></i>
-												<span class="txt">Twitter</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
+						<div class="details-panel">
+							<section class="c-panel-2 panel--order-summary">
+								<div class="panel-header">
+									<div class="header-row">
+										<h1>Order Summary</h1>
+										<!-- <div class="c-info">
+											<div class="info-cta">
+											 	<div class="info-txt">What’s this</div>
+											 	<i class="icon"></i>
+											</div>
+										</div> -->
+									</div>
+									<!-- <div class="header-row">
+										<p>Lorem ipsum dolor sit amet adipiscing elit.</p>
+									</div> -->
+								 </div>
+								 <div class="panel-body">
+								 	<div class="body-casual">
+									 	<div class="calculation-list">
+										 	<h2>Tickets</h2>
+										 	<ul cavlass="list">
+											 	<li class="item">
+											 		<div class="upper">
+												 		<div class="type">Dolby Standard</div>
+												 		<div class="cost">AED <span class="type-total">140</span></div>
+											 		</div>
+											 		<div class="lower">
+											 			<div class="number">N9,N10</div>
+											 			<div class="breakdown"><span class="amount">2</span> x AED <span class="amount">70</span></div>
+											 		</div>
+											 	</li>
+											 	<li class="item">
+											 		<div class="upper">
+												 		<div class="type">Dolby Plus</div>
+												 		<div class="cost">AED <span class="type-total">120</span></div>
+											 		</div>
+											 		<div class="lower">
+											 			<div class="number">A10,D11</div>
+											 			<div class="breakdown"><span class="numbers">2</span> x AED <span class="amount">60</span></div>
+											 		</div>
+											 	</li>
+										 	</ul>
+									 	</div>
+									 	<div class="highlight-bar-sec">
+									 		<h2>SAVINGS</h2>
+									 		<div class="highlight-bar">
+									 			<div class="txt">
+									 				Standard Chartered <br>Credit Card Offer
+									 			</div>
+									 			<div class="calc">
+									 				SAVED <strong>AED <span class="amount">73</span></strong>
+									 			</div>
+									 		</div>
+									 	</div>
+								 	</div>
+								 	<div class="body-normal">
+								 		<div class="info-list">
+									 		<ul class="list">
+									 			<li><i class="icon icon--movie"></i> <span class="txt">Alita Batatle Angel</span></li>
+									 			<li><i class="icon icon--venue"></i> <span class="txt">Jebel Ali Recreation Club</span></li>
+									 			<li><i class="icon icon--type"></i> <span class="txt">Reel Dine-In Cinema</span></li>
+									 			<li><i class="icon icon--calendar"></i> <span class="txt">26-Mar-2019</span></li>
+									 		</ul>
+								 		</div>
+								 		<div class="info-list-action">
+								 			<select name="showtime" id="showtime" class="js-select2 has--icon-time">
+								 				<option value="1900">19:00</option>
+								 				<option value="2000">20:00</option>
+								 				<option value="2100">21:00</option>
+								 			</select>
+								 		</div>
+								 	</div>
+								 	<div class="body-highlight">
+								 		<div class="total-calculation">
+									 		<div class="calc-row">
+										 		<div class="title">Total Price</div>
+										 		<div class="cost">AED <span class="amount">340.00</span></div>
+									 		</div>
+									 		<div class="calc-row">
+										 		<div class="title">VAT</div>
+										 		<div class="cost">AED <span class="amount">50.00</span></div>
+									 		</div>
+									 		<div class="calc-row is--highlighted">
+										 		<div class="title">Grand Total</div>
+										 		<div class="cost">AED <span class="amount">390.00</span></div>
+									 		</div>
+								 		</div>
+								 		<div class="panel-action">
+								 			<a href="#" class="c-btn-2 btn--outline">Back</a>
+								 			<a href="#" class="c-btn-2 btn--white">Continue</a>
+								 		</div>
+								 	</div>
+								 </div>
+							</section>
 						</div>
 					</div>
 				</main>

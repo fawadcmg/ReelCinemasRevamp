@@ -13909,28 +13909,29 @@ function viewport() {
 function winDimensions() {
 	winWidth = viewport().width, winHeight = viewport().height, headerHeight = $('.c-main-header').outerHeight(), footerHeight = $('.c-main-footer').outerHeight();
 }
-function ChangeToSvg() {
+/*function ChangeToSvg() {
 	$('img.js-inline-svg').each(function () {
-		var $img = $(this);
-		var imgID = $img.attr('id');
-		var imgClass = $img.attr('class');
-		var imgURL = $img.attr('src');
-		$.get(imgURL, function (data) {
-			var $svg = $(data).find('svg');
-			if (typeof imgID !== 'undefined') {
-				$svg = $svg.attr('id', imgID);
-			}
-			if (typeof imgClass !== 'undefined') {
-				$svg = $svg.attr('class', imgClass + ' insvg');
-			}
-			$svg = $svg.removeAttr('xmlns:a');
-			if (!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
-				$svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'));
-			}
-			$img.replaceWith($svg);
-		}, 'xml');
+		console.log('hello');
+	    var $img = $(this);
+	    var imgID = $img.attr('id');
+	    var imgClass = $img.attr('class');
+	    var imgURL = $img.attr('src');
+	    $.get(imgURL, function (data) {
+	      var $svg = $(data).find('svg');
+	      if (typeof imgID !== 'undefined') {
+	        $svg = $svg.attr('id', imgID);
+	      }
+	      if (typeof imgClass !== 'undefined') {
+	        $svg = $svg.attr('class', imgClass + ' insvg');
+	      }
+	      $svg = $svg.removeAttr('xmlns:a');
+	      if (!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+	        $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+	      }
+	      $img.replaceWith($svg);
+	    }, 'xml');
 	});
-}
+}*/
 function loadPath() {
 	var currentLoc = window.location.pathname.split('/')[1];
 	$('.secondary-nav a[href="' + currentLoc + '"]').addClass('active');
@@ -15472,7 +15473,7 @@ function headerSpace() {
 }
 ChangeToSvg();
 function ChangeToSvg() {
-	jQuery('img.tosvg').each(function () {
+	jQuery('img.tosvg, img.js-inline-svg').each(function () {
 		var $img = jQuery(this);
 		var imgID = $img.attr('id');
 		var imgClass = $img.attr('class');
@@ -15629,7 +15630,11 @@ function closePopup() {
 function addVideoPlugin() {
 	if ($('.js-video').get(0) && isIE == false) {
 		var plyrScriptElement = document.createElement("script");
-		plyrScriptElement.setAttribute('src', '/en/assets/js/plyr.min.js');
+		if (window.location.hostname == "localhost") {
+			plyrScriptElement.setAttribute('src', 'assets/js/plyr.min.js');
+		} else {
+			plyrScriptElement.setAttribute('src', '/en/assets/js/plyr.min.js');
+		}
 
 		plyrScriptElement.setAttribute('async', 'true');
 		document.body.appendChild(plyrScriptElement);

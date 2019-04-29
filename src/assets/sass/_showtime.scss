@@ -1859,13 +1859,27 @@ border-radius: 5px;
 			}
 
 			.type{
-				margin-left: 5px;
-				border-left: 1px solid #6e3896;
-				padding-left: 5px;
-				display: inline-block;
-				transition: border .35s;
-				line-height: 12px;
+			    margin-left: 5px;
+			    border-left: 1px solid #6e3896;
+			    padding-left: 5px;
+			    display: inline-block;
+			    transition: border .35s;
+			    line-height: 12px;
+			    position: static;
+			    width: auto;
 			}
+
+			.nearsold &{
+				.type{
+					border-color: #ec7848;
+				}
+			}
+			.sold-out &{
+				.type{
+					border-color: #ccd4df;
+				}
+			}
+
 		}
 		
 		.sold-out .showtime{
@@ -1913,7 +1927,7 @@ border-radius: 5px;
 		}
 		.sold-out span{
 			margin-top: -3px;
-			margin-bottom: -4px;
+			// margin-bottom: -4px;
 			font-size: 10px;
 
 			@media (max-width: 767px){

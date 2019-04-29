@@ -68,6 +68,12 @@ table {
   font-style: normal; }
 
 @font-face {
+  font-family: 'Effra';
+  src: url("../fonts/dalton_maag_-_effra_medium-webfont.woff2") format("woff2"), url("../fonts/dalton_maag_-_effra_medium-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
   font-family: 'Effra-bold';
   src: url("../fonts/Effra-Bold.eot");
   src: url("../fonts/Effra-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Effra-Bold.woff2") format("woff2"), url("../fonts/Effra-Bold.woff") format("woff"), url("../fonts/Effra-Bold.ttf") format("truetype");
@@ -15581,7 +15587,13 @@ html:not(.has--smartbanner) {
     -webkit-transition: border .35s;
     -o-transition: border .35s;
     transition: border .35s;
-    line-height: 12px; }
+    line-height: 12px;
+    position: static;
+    width: auto; }
+  .nearsold .showtime .type {
+    border-color: #ec7848; }
+  .sold-out .showtime .type {
+    border-color: #ccd4df; }
 
 .sold-out .showtime {
   background-color: transparent;
@@ -15624,7 +15636,6 @@ html:not(.has--smartbanner) {
 
 .sold-out span {
   margin-top: -3px;
-  margin-bottom: -4px;
   font-size: 10px; }
   @media (max-width: 767px) {
     .sold-out span {
