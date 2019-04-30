@@ -33,6 +33,7 @@ gulp.task('scriptJs', function(){
         'src/assets/js/script/select2.full.js',
         'src/assets/js/script/smartbanner.js',
         'src/assets/js/script/intlTelInput.js',
+        'src/assets/js/script/jquery-ui.js',
         'src/assets/js/script/jquery.validate.js',
         'src/assets/js/script/main.js',
     ])

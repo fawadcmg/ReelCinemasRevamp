@@ -195,7 +195,6 @@ $(document).keyup(function(e) {
 // });
 
 function customScrollInit() {
-	console.log('yolo');
 	if(winWidth > 1024){
 		$(".js-custom-scroll").mCustomScrollbar({
 			theme: "minimal-dark"
@@ -230,7 +229,6 @@ function winDimensions() {
 }
 /*function ChangeToSvg() {
 	$('img.js-inline-svg').each(function () {
-		console.log('hello');
 	    var $img = $(this);
 	    var imgID = $img.attr('id');
 	    var imgClass = $img.attr('class');
@@ -973,18 +971,10 @@ function setInView(el) {
 
 	var scrollToPos = 0;
 
-	console.log('a: ', a);
-	console.log('b: ', b);
-	console.log('c: ', c);
-	console.log('d: ', d);
-	console.log('e: ', e);
-
 	var warpper = $(initEl).closest('.c-list-1');
 	if(warpper.get(0)) {
 		scrollTopOpenOffset = d - warpper[0].offsetTop + 200;
 		var wrapperHeight = warpper.height();
-		console.log('wrapperHeight: ', wrapperHeight);
-		console.log('d+150: ', scrollTopOpenOffset);
 		if(wrapperHeight <= scrollTopOpenOffset){
 			warpper.css('height', scrollTopOpenOffset);
 		}else{
@@ -994,14 +984,11 @@ function setInView(el) {
 	
 
 	if(e < d){
-		console.log('a');
 		/*if(winWidth > 1024 && winHeight > 700){
-			console.log('a1');
 			var innerImg = $(initEl).closest('.list-row').find('.item-wrap .img').outerHeight();
 			if(!innerImg){ innerImg = 0; }
 			scrollToPos = a + b + innerImg - window.innerHeight;
 		}else{*/
-			console.log('a2', a);
 			if($('.c-main-header').get(0)){
 				scrollToPos = a - $('.c-main-header').outerHeight() - 25;
 			}else{
@@ -1009,17 +996,13 @@ function setInView(el) {
 			}
 		// }
 	}else if(window.pageYOffset > a && (window.pageYOffset-window.innerHeight) < a){
-		console.log('b');
 		if($('.c-main-header').get(0)){
-			console.log('b1');
 			scrollToPos = a - $('.c-main-header').outerHeight() - 50;
 		}else{
-			console.log('b2');
 			scrollToPos = a - 50;
 		}
 	}
 	if(scrollToPos != 0){
-		console.log('c');
 		$('html, body').stop().animate({
 			scrollTop: scrollToPos
 		}, 500);
@@ -3136,3 +3119,155 @@ if($('input[name="phone"]').get(0)){
 	    if(key.charCode < 48 || key.charCode > 57) return false;
 	});
 }
+
+// ==============================================
+// Seat Area JS - START
+// ==============================================
+
+buildSeatArea('.js-seat-area', [
+	{
+		name: 'Dolby Plus',
+		rows: 12
+	},
+	{
+		name: 'Dolby Standard',
+		rows: 2
+	},
+], 22);
+
+$('.seats-area').css({
+	width: $('.seats-area').width(),
+	height: $('.seats-area').height(),
+});
+
+$(".js-draggable").each(function () {
+	setSeatsAreaDim(this);
+});
+
+var seatsZoomLevel = 1;
+$('.js-seats-zoom-in').click(function (e) {
+	e.preventDefault();
+	if(seatsZoomLevel < 3){
+		seatsZoomLevel += 0.1;
+		setZoomLevel(this);
+	}
+});
+
+$('.js-seats-zoom-out').click(function (e) {
+	e.preventDefault();
+	if(seatsZoomLevel > 1){
+		seatsZoomLevel -= 0.1;
+		setZoomLevel(this);
+	}
+});
+
+function setSeatsAreaDim(target) {
+	var thisWidth = $(target).width();
+	var thisHeight = $(target).height();
+	var visibleWidth = $(target).parent().parent().width();
+	var visibleHeight = $(target).parent().parent().height();
+	
+	var offsetWidth = thisWidth - visibleWidth;
+	var offsetHeight = thisHeight - visibleHeight;
+	var parentWidth = (offsetWidth*2) + visibleWidth;
+	var parentHeight = (offsetHeight*2) + visibleHeight;
+
+	if(offsetWidth > 0){
+		var leftPerc = 	(
+							(
+								offsetWidth - parseInt($(target).css('left'))
+							) + (visibleWidth/2)
+						) / thisWidth;
+		var topPerc =  parseInt($(".js-draggable").css('top')) / parentHeight;
+	}else{
+		var leftPerc = 0;
+		var topPerc = 0;
+	}
+
+	if(thisWidth > visibleWidth || thisHeight > visibleHeight){
+		$(target).parent().css({
+			'width': parentWidth,
+			'height': parentHeight,
+			'margin-left': '-'+offsetWidth+'px',
+			'margin-top': '-'+offsetHeight+'px',
+		});
+	}
+
+	if($(".js-draggable").hasClass('ui-draggable')){
+		$(".js-draggable").draggable("destroy");
+	}
+	$(".js-draggable").draggable({
+		containment: "parent",
+	});
+
+	// keep in Center
+	console.log(visibleWidth, leftPerc, thisWidth);
+	var thisWidth = $(target).width();
+	var offsetWidth = thisWidth - visibleWidth;
+	var leftValue = offsetWidth - ((leftPerc * thisWidth) - visibleWidth/2);
+	if(leftPerc <= 0){
+		leftValue = 0;
+	}
+	$(".js-draggable").css({
+		top: $(".js-draggable").parent().height() * topPerc,
+		left: leftValue
+	});
+}
+
+function setZoomLevel(btnClicked) {
+	var fontSize 	= seatsZoomLevel * 10;
+	var setArea = $(btnClicked).closest('.c-seat-selection').find('.seats-area');
+	var scaleArea = $(btnClicked).closest('.c-seat-selection').find('.scale-area');
+	var draggableArea = $(btnClicked).closest('.c-seat-selection').find('.js-draggable');
+
+	scaleArea.css('font-size', fontSize);
+	scaleArea.css('width', setArea.width() * seatsZoomLevel);
+
+	setSeatsAreaDim(draggableArea[0]);
+}
+
+function buildSeatArea(target, sectionsDetails, totalColumns) {
+	var alphaEqu = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+	var injectHtml = '';
+	var seatCounter = 1;
+	var rowCounter = 0;
+	for (var secCount = 0; secCount <= sectionsDetails.length-1; secCount++) {
+		$(target).prepend('<div class="seat-section seat-sec--'+(secCount+1)+'"><h2 class="sec-title">'+sectionsDetails[secCount].name+'</h2><div class="sec-setas-wrap"></div></div>');
+		for (var rowNum = 0; rowNum < sectionsDetails[secCount].rows; rowNum++) {
+			injectHtml = '';
+			injectHtml += '<div class="seat-row">';
+			injectHtml += '<div class="row-legend">'+alphaEqu[rowCounter].toUpperCase()+'</div>';
+			for (var colNum = 0; colNum < totalColumns; colNum++) {
+				injectHtml += seatHtml(alphaEqu[rowCounter], (colNum+1));
+
+				seatCounter++;
+			}
+			injectHtml += '<div class="row-legend">'+alphaEqu[rowCounter].toUpperCase()+'</div>';
+			injectHtml += '</div>';
+			$(' > .seat-section:first-child() .sec-setas-wrap', target).prepend(injectHtml);
+
+			rowCounter++;
+		}
+	}
+}
+
+function seatHtml(seatRow, seatCol) {
+	return '<div class="seat">\
+		<input type="checkbox" name="seats" id="seat-'+seatRow+'-'+seatCol+'">\
+		<label for="seat-'+seatRow+'-'+seatCol+'"><i class="icon"></i><span class="txt">Seat '+seatRow.toUpperCase()+' '+seatCol+'</span></label>\
+		<div class="msg">\
+			<div class="msg-wrap">\
+				<div class="info-item">\
+					<div class="label">Row</div><div class="value">'+seatRow.toUpperCase()+'</div>\
+				</div>\
+				<div class="info-item">\
+					<div class="label">Seat</div><div class="value">'+seatCol+'</div>\
+				</div>\
+			</div>\
+		</div>\
+	</div>'
+}
+
+// ==============================================
+// END - Seat Area JS
+// ==============================================
