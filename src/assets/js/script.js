@@ -18825,13 +18825,107 @@ if ($('input[name="phone"]').get(0)) {
 // Seat Area JS - START
 // ==============================================
 
-buildSeatArea('.js-seat-area', [{
+var seatingAreaStandard = [
+// Target Selector
+'.js-seat-area', [
+// Sections and rows in that section.
+{
+	name: 'Standard Plus',
+	rows: 5
+}, {
+	name: 'Standard',
+	rows: 5
+}],
+// Number of columns
+18,
+// Wheel Chair Seats
+[['n', 21], ['n', 22]],
+// Booked Seats
+[['n', 22], ['g', 12], ['g', 13], ['g', 14], ['g', 16], ['h', 11], ['h', 12]],
+// Seating Area Layout Type.
+'type-e'];
+
+var seatingAreaDolby = [
+// Target Selector
+'.js-seat-area', [
+// Sections and rows in that section.
+{
 	name: 'Dolby Plus',
 	rows: 12
 }, {
 	name: 'Dolby Standard',
 	rows: 2
-}], 22);
+}],
+// Number of columns
+22,
+// Wheel Chair Seats
+[['n', 21], ['n', 22]],
+// Booked Seats
+[['n', 22], ['g', 12], ['g', 13], ['g', 14], ['g', 16], ['h', 11], ['h', 12]],
+// Seating Area Layout Type.
+'type-a'];
+
+var seatingAreaPlatinum = [
+// Target Selector
+'.js-seat-area', [
+// Sections and rows in that section.
+{
+	name: 'Platinum',
+	rows: 4
+}],
+// Number of columns
+6,
+// Wheel Chair Seats
+[
+	// ['a', 1],
+	// ['a', 2],
+],
+// Booked Seats
+[['a', 1], ['b', 2]],
+// Seating Area Layout Type.
+'type-c'];
+
+var seatingAreaRove = [
+// Target Selector
+'.js-seat-area', [
+// Sections and rows in that section.
+{
+	name: 'Reel Boutique',
+	rows: 4
+}],
+// Number of columns
+15,
+// Wheel Chair Seats
+[
+	// ['a', 1],
+	// ['a', 2],
+],
+// Booked Seats
+[['a', 1], ['b', 2]],
+// Seating Area Layout Type.
+'type-d'];
+
+var seatingAreaDineIn = [
+// Target Selector
+'.js-seat-area', [
+// Sections and rows in that section.
+{
+	name: 'Dine In',
+	rows: 5
+}],
+// Number of columns
+10,
+// Wheel Chair Seats
+[
+	// ['a', 2],
+	// ['a', 3],
+],
+// Booked Seats
+[['a', 1], ['a', 2], ['a', 3], ['b', 5], ['b', 6], ['c', 4]],
+// Seating Area Layout Type.
+'type-b'];
+
+buildSeatArea(seatingAreaStandard);
 
 $('.seats-area').css({
 	width: $('.seats-area').width(),
@@ -18859,7 +18953,7 @@ $('.js-seats-zoom-out').click(function (e) {
 	}
 });
 
-function setSeatsAreaDim(target) {
+function setSeatsAreaDim(target, leftPerc, topPerc) {
 	var thisWidth = $(target).width();
 	var thisHeight = $(target).height();
 	var visibleWidth = $(target).parent().parent().width();
@@ -18869,14 +18963,6 @@ function setSeatsAreaDim(target) {
 	var offsetHeight = thisHeight - visibleHeight;
 	var parentWidth = offsetWidth * 2 + visibleWidth;
 	var parentHeight = offsetHeight * 2 + visibleHeight;
-
-	if (offsetWidth > 0) {
-		var leftPerc = (offsetWidth - parseInt($(target).css('left')) + visibleWidth / 2) / thisWidth;
-		var topPerc = parseInt($(".js-draggable").css('top')) / parentHeight;
-	} else {
-		var leftPerc = 0;
-		var topPerc = 0;
-	}
 
 	if (thisWidth > visibleWidth || thisHeight > visibleHeight) {
 		$(target).parent().css({
@@ -18895,20 +18981,53 @@ function setSeatsAreaDim(target) {
 	});
 
 	// keep in Center
-	console.log(visibleWidth, leftPerc, thisWidth);
-	var thisWidth = $(target).width();
-	var offsetWidth = thisWidth - visibleWidth;
-	var leftValue = offsetWidth - (leftPerc * thisWidth - visibleWidth / 2);
-	if (leftPerc <= 0) {
-		leftValue = 0;
+	if (typeof leftPerc != 'undefined') {
+		var thisWidth = $(target).width();
+		var offsetWidth = thisWidth - visibleWidth;
+		var leftValue = offsetWidth - (leftPerc * thisWidth - visibleWidth / 2);
+
+		// dont go out of bounds
+		if (leftValue + thisWidth > thisWidth + offsetWidth) {
+			leftValue = offsetWidth;
+		} else if (leftValue < 0) {
+			leftValue = 0;
+		}
+
+		var thisHeight = $(target).height();
+		var offsetHeight = thisHeight - visibleHeight;
+		var topValue = offsetHeight - (topPerc * thisHeight - visibleHeight / 2);
+		if (topPerc <= 0) {
+			topValue = 0;
+		}
+		// dont go out of bounds
+		if (topValue + thisHeight > thisHeight + offsetHeight) {
+			topValue = offsetHeight;
+		} else if (topValue < 0) {
+			topValue = 0;
+		}
+
+		$(".js-draggable").css({
+			top: topValue,
+			left: leftValue
+		});
 	}
-	$(".js-draggable").css({
-		top: $(".js-draggable").parent().height() * topPerc,
-		left: leftValue
-	});
 }
 
 function setZoomLevel(btnClicked) {
+	var thisWidth = $('.js-draggable').width();
+	var thisHeight = $('.js-draggable').height();
+	var visibleWidth = $('.js-draggable').parent().parent().width();
+	var visibleHeight = $('.js-draggable').parent().parent().height();
+
+	var offsetWidth = thisWidth - visibleWidth;
+	var offsetHeight = thisHeight - visibleHeight;
+	var parentWidth = offsetWidth * 2 + visibleWidth;
+	var parentHeight = offsetHeight * 2 + visibleHeight;
+
+	var leftPerc = (offsetWidth - parseInt($('.js-draggable').css('left')) + visibleWidth / 2) / thisWidth;
+
+	var topPerc = (offsetHeight - parseInt($('.js-draggable').css('top')) + visibleHeight / 2) / thisHeight;
+
 	var fontSize = seatsZoomLevel * 10;
 	var setArea = $(btnClicked).closest('.c-seat-selection').find('.seats-area');
 	var scaleArea = $(btnClicked).closest('.c-seat-selection').find('.scale-area');
@@ -18917,31 +19036,93 @@ function setZoomLevel(btnClicked) {
 	scaleArea.css('font-size', fontSize);
 	scaleArea.css('width', setArea.width() * seatsZoomLevel);
 
-	setSeatsAreaDim(draggableArea[0]);
+	setSeatsAreaDim(draggableArea[0], leftPerc, topPerc);
 }
 
-function buildSeatArea(target, sectionsDetails, totalColumns) {
+function buildSeatArea(hyperpara) {
+	var target = hyperpara[0],
+	    sectionsDetails = hyperpara[1],
+	    totalColumns = hyperpara[2],
+	    wheelChairSeats = hyperpara[3],
+	    bookedSeats = hyperpara[4],
+	    layoutType = hyperpara[5];
+
 	var alphaEqu = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 	var injectHtml = '';
 	var seatCounter = 1;
 	var rowCounter = 0;
+
 	for (var secCount = 0; secCount <= sectionsDetails.length - 1; secCount++) {
 		$(target).prepend('<div class="seat-section seat-sec--' + (secCount + 1) + '"><h2 class="sec-title">' + sectionsDetails[secCount].name + '</h2><div class="sec-setas-wrap"></div></div>');
 		for (var rowNum = 0; rowNum < sectionsDetails[secCount].rows; rowNum++) {
 			injectHtml = '';
 			injectHtml += '<div class="seat-row">';
 			injectHtml += '<div class="row-legend">' + alphaEqu[rowCounter].toUpperCase() + '</div>';
+			injectHtml += '<div class="seat-row-wrap">';
 			for (var colNum = 0; colNum < totalColumns; colNum++) {
-				injectHtml += seatHtml(alphaEqu[rowCounter], colNum + 1);
+
+				// wheelChairSeats
+				var thisRowAlphabate = alphaEqu[rowCounter];
+				var thisColNumb = colNum + 1;
+
+				injectHtml += seatHtml(thisRowAlphabate, thisColNumb);
 
 				seatCounter++;
 			}
+			injectHtml += '</div>';
 			injectHtml += '<div class="row-legend">' + alphaEqu[rowCounter].toUpperCase() + '</div>';
 			injectHtml += '</div>';
 			$(' > .seat-section:first-child() .sec-setas-wrap', target).prepend(injectHtml);
 
 			rowCounter++;
 		}
+	}
+
+	if (layoutType == 'type-a') {
+		$('.js-seat-area').addClass('type-a');
+
+		// Remove 6 seats from last row
+		var lastRowSeats = $('.js-seat-area .seat-section:first-child .sec-setas-wrap .seat-row:first-child .seat');
+		lastRowSeats.slice(lastRowSeats.length - 6, lastRowSeats.length).remove();
+	} else if (layoutType == 'type-b') {
+
+		$('.js-seat-area').addClass('type-b');
+
+		var firstRowSeats = $('.js-seat-area .seat-section:first-child .sec-setas-wrap .seat-row:last-child .seat');
+		firstRowSeats.parent().addClass('row-sty-1');
+		firstRowSeats.slice(firstRowSeats.length - 3, firstRowSeats.length).remove();
+
+		$('.js-seat-area .seat-section:first-child .sec-setas-wrap .seat-row:nth-child(-n+' + parseInt((sectionsDetails[0].rows - 1) / 2) + ')').each(function () {
+			$(this).addClass('row-sty-2');
+			$('.seat', this).slice($('.seat', this).length - 1, $('.seat', this).length).remove();
+		});
+	} else if (layoutType == 'type-c') {
+
+		$('.js-seat-area').addClass('type-c');
+	} else if (layoutType == 'type-d') {
+
+		$('.js-seat-area').addClass('type-d');
+
+		var firstRowSeats = $('.js-seat-area .seat-section:first-child .sec-setas-wrap .seat-row:last-child .seat');
+		firstRowSeats.parent().addClass('row-sty-1');
+		firstRowSeats.slice(firstRowSeats.length - 5, firstRowSeats.length).remove();
+
+		$($('.js-seat-area .seat-section:first-child .sec-setas-wrap .seat-row:not(:last-child)').get().reverse()).each(function (i) {
+			$('.seat', this).slice($('.seat', this).length - (i + 2), $('.seat', this).length).remove();
+		});
+	} else if (layoutType == 'type-e') {
+
+		$('.js-seat-area').addClass('type-e');
+	}
+
+	// check for wheel chair
+	for (var wheelSeat = 0; wheelSeat < wheelChairSeats.length; wheelSeat++) {
+		$('#seat-' + wheelChairSeats[wheelSeat][0] + '-' + wheelChairSeats[wheelSeat][1]).parent().addClass('seat--wheelchair');
+	}
+
+	// Pre Selected Seats
+	for (var bookedSeat = 0; bookedSeat < bookedSeats.length; bookedSeat++) {
+		$('#seat-' + bookedSeats[bookedSeat][0] + '-' + bookedSeats[bookedSeat][1]).parent().addClass('seat--booked');
 	}
 }
 
