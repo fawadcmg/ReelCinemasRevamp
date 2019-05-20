@@ -3757,121 +3757,126 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*! modernizr 3.6.0 (Custom Build) | MIT *
- * https://modernizr.com/download/?-objectfit-setclasses !*/
+ * https://modernizr.com/download/?-cssvhunit-objectfit-setclasses !*/
 !function (e, n, t) {
   function r(e, n) {
     return (typeof e === "undefined" ? "undefined" : _typeof(e)) === n;
-  }function o() {
-    var e, n, t, o, i, s, a;for (var l in C) {
-      if (C.hasOwnProperty(l)) {
-        if (e = [], n = C[l], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length)) for (t = 0; t < n.options.aliases.length; t++) {
+  }function i() {
+    var e, n, t, i, o, s, a;for (var l in S) {
+      if (S.hasOwnProperty(l)) {
+        if (e = [], n = S[l], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length)) for (t = 0; t < n.options.aliases.length; t++) {
           e.push(n.options.aliases[t].toLowerCase());
-        }for (o = r(n.fn, "function") ? n.fn() : n.fn, i = 0; i < e.length; i++) {
-          s = e[i], a = s.split("."), 1 === a.length ? Modernizr[a[0]] = o : (!Modernizr[a[0]] || Modernizr[a[0]] instanceof Boolean || (Modernizr[a[0]] = new Boolean(Modernizr[a[0]])), Modernizr[a[0]][a[1]] = o), h.push((o ? "" : "no-") + a.join("-"));
+        }for (i = r(n.fn, "function") ? n.fn() : n.fn, o = 0; o < e.length; o++) {
+          s = e[o], a = s.split("."), 1 === a.length ? Modernizr[a[0]] = i : (!Modernizr[a[0]] || Modernizr[a[0]] instanceof Boolean || (Modernizr[a[0]] = new Boolean(Modernizr[a[0]])), Modernizr[a[0]][a[1]] = i), C.push((i ? "" : "no-") + a.join("-"));
         }
       }
     }
-  }function i(e) {
-    var n = _.className,
-        t = Modernizr._config.classPrefix || "";if (w && (n = n.baseVal), Modernizr._config.enableJSClass) {
+  }function o(e) {
+    var n = w.className,
+        t = Modernizr._config.classPrefix || "";if (x && (n = n.baseVal), Modernizr._config.enableJSClass) {
       var r = new RegExp("(^|\\s)" + t + "no-js(\\s|$)");n = n.replace(r, "$1" + t + "js$2");
-    }Modernizr._config.enableClasses && (n += " " + t + e.join(" " + t), w ? _.className.baseVal = n : _.className = n);
-  }function s(e) {
+    }Modernizr._config.enableClasses && (n += " " + t + e.join(" " + t), x ? w.className.baseVal = n : w.className = n);
+  }function s(n, t, r) {
+    var i;if ("getComputedStyle" in e) {
+      i = getComputedStyle.call(e, n, t);var o = e.console;if (null !== i) r && (i = i.getPropertyValue(r));else if (o) {
+        var s = o.error ? "error" : "log";o[s].call(o, "getComputedStyle returning null, its possible modernizr test results are inaccurate");
+      }
+    } else i = !t && n.currentStyle && n.currentStyle[r];return i;
+  }function a(e, n) {
+    return e - 1 === n || e === n || e + 1 === n;
+  }function l(e) {
     return e.replace(/([a-z])-([a-z])/g, function (e, n, t) {
       return n + t.toUpperCase();
     }).replace(/^-/, "");
-  }function a(e, n) {
-    return !!~("" + e).indexOf(n);
-  }function l() {
-    return "function" != typeof n.createElement ? n.createElement(arguments[0]) : w ? n.createElementNS.call(n, "http://www.w3.org/2000/svg", arguments[0]) : n.createElement.apply(n, arguments);
-  }function f(e, n) {
+  }function f() {
+    return "function" != typeof n.createElement ? n.createElement(arguments[0]) : x ? n.createElementNS.call(n, "http://www.w3.org/2000/svg", arguments[0]) : n.createElement.apply(n, arguments);
+  }function u() {
+    var e = n.body;return e || (e = f(x ? "svg" : "body"), e.fake = !0), e;
+  }function p(e, t, r, i) {
+    var o,
+        s,
+        a,
+        l,
+        p = "modernizr",
+        c = f("div"),
+        d = u();if (parseInt(r, 10)) for (; r--;) {
+      a = f("div"), a.id = i ? i[r] : p + (r + 1), c.appendChild(a);
+    }return o = f("style"), o.type = "text/css", o.id = "s" + p, (d.fake ? d : c).appendChild(o), d.appendChild(c), o.styleSheet ? o.styleSheet.cssText = e : o.appendChild(n.createTextNode(e)), c.id = p, d.fake && (d.style.background = "", d.style.overflow = "hidden", l = w.style.overflow, w.style.overflow = "hidden", w.appendChild(d)), s = t(c, e), d.fake ? (d.parentNode.removeChild(d), w.style.overflow = l, w.offsetHeight) : c.parentNode.removeChild(c), !!s;
+  }function c(e, n) {
     return function () {
       return e.apply(n, arguments);
     };
-  }function u(e, n, t) {
-    var o;for (var i in e) {
-      if (e[i] in n) return t === !1 ? e[i] : (o = n[e[i]], r(o, "function") ? f(o, t || n) : o);
+  }function d(e, n, t) {
+    var i;for (var o in e) {
+      if (e[o] in n) return t === !1 ? e[o] : (i = n[e[o]], r(i, "function") ? c(i, t || n) : i);
     }return !1;
-  }function p(n, t, r) {
-    var o;if ("getComputedStyle" in e) {
-      o = getComputedStyle.call(e, n, t);var i = e.console;if (null !== o) r && (o = o.getPropertyValue(r));else if (i) {
-        var s = i.error ? "error" : "log";i[s].call(i, "getComputedStyle returning null, its possible modernizr test results are inaccurate");
-      }
-    } else o = !t && n.currentStyle && n.currentStyle[r];return o;
-  }function c(e) {
+  }function m(e, n) {
+    return !!~("" + e).indexOf(n);
+  }function v(e) {
     return e.replace(/([A-Z])/g, function (e, n) {
       return "-" + n.toLowerCase();
     }).replace(/^ms-/, "-ms-");
-  }function d() {
-    var e = n.body;return e || (e = l(w ? "svg" : "body"), e.fake = !0), e;
-  }function m(e, t, r, o) {
-    var i,
-        s,
-        a,
-        f,
-        u = "modernizr",
-        p = l("div"),
-        c = d();if (parseInt(r, 10)) for (; r--;) {
-      a = l("div"), a.id = o ? o[r] : u + (r + 1), p.appendChild(a);
-    }return i = l("style"), i.type = "text/css", i.id = "s" + u, (c.fake ? c : p).appendChild(i), c.appendChild(p), i.styleSheet ? i.styleSheet.cssText = e : i.appendChild(n.createTextNode(e)), p.id = u, c.fake && (c.style.background = "", c.style.overflow = "hidden", f = _.style.overflow, _.style.overflow = "hidden", _.appendChild(c)), s = t(p, e), c.fake ? (c.parentNode.removeChild(c), _.style.overflow = f, _.offsetHeight) : p.parentNode.removeChild(p), !!s;
-  }function v(n, r) {
-    var o = n.length;if ("CSS" in e && "supports" in e.CSS) {
-      for (; o--;) {
-        if (e.CSS.supports(c(n[o]), r)) return !0;
+  }function h(n, r) {
+    var i = n.length;if ("CSS" in e && "supports" in e.CSS) {
+      for (; i--;) {
+        if (e.CSS.supports(v(n[i]), r)) return !0;
       }return !1;
     }if ("CSSSupportsRule" in e) {
-      for (var i = []; o--;) {
-        i.push("(" + c(n[o]) + ":" + r + ")");
-      }return i = i.join(" or "), m("@supports (" + i + ") { #modernizr { position: absolute; } }", function (e) {
-        return "absolute" == p(e, null, "position");
+      for (var o = []; i--;) {
+        o.push("(" + v(n[i]) + ":" + r + ")");
+      }return o = o.join(" or "), p("@supports (" + o + ") { #modernizr { position: absolute; } }", function (e) {
+        return "absolute" == s(e, null, "position");
       });
     }return t;
-  }function y(e, n, o, i) {
-    function f() {
-      p && (delete P.style, delete P.modElem);
-    }if (i = r(i, "undefined") ? !1 : i, !r(o, "undefined")) {
-      var u = v(e, o);if (!r(u, "undefined")) return u;
-    }for (var p, c, d, m, y, g = ["modernizr", "tspan", "samp"]; !P.style && g.length;) {
-      p = !0, P.modElem = l(g.shift()), P.style = P.modElem.style;
-    }for (d = e.length, c = 0; d > c; c++) {
-      if (m = e[c], y = P.style[m], a(m, "-") && (m = s(m)), P.style[m] !== t) {
-        if (i || r(o, "undefined")) return f(), "pfx" == n ? m : !0;try {
-          P.style[m] = o;
-        } catch (h) {}if (P.style[m] != y) return f(), "pfx" == n ? m : !0;
+  }function g(e, n, i, o) {
+    function s() {
+      u && (delete T.style, delete T.modElem);
+    }if (o = r(o, "undefined") ? !1 : o, !r(i, "undefined")) {
+      var a = h(e, i);if (!r(a, "undefined")) return a;
+    }for (var u, p, c, d, v, g = ["modernizr", "tspan", "samp"]; !T.style && g.length;) {
+      u = !0, T.modElem = f(g.shift()), T.style = T.modElem.style;
+    }for (c = e.length, p = 0; c > p; p++) {
+      if (d = e[p], v = T.style[d], m(d, "-") && (d = l(d)), T.style[d] !== t) {
+        if (o || r(i, "undefined")) return s(), "pfx" == n ? d : !0;try {
+          T.style[d] = i;
+        } catch (y) {}if (T.style[d] != v) return s(), "pfx" == n ? d : !0;
       }
-    }return f(), !1;
-  }function g(e, n, t, o, i) {
+    }return s(), !1;
+  }function y(e, n, t, i, o) {
     var s = e.charAt(0).toUpperCase() + e.slice(1),
-        a = (e + " " + b.join(s + " ") + s).split(" ");return r(n, "string") || r(n, "undefined") ? y(a, n, o, i) : (a = (e + " " + j.join(s + " ") + s).split(" "), u(a, n, t));
-  }var h = [],
-      C = [],
-      S = { _version: "3.6.0", _config: { classPrefix: "", enableClasses: !0, enableJSClass: !0, usePrefixes: !0 }, _q: [], on: function on(e, n) {
+        a = (e + " " + E.join(s + " ") + s).split(" ");return r(n, "string") || r(n, "undefined") ? g(a, n, i, o) : (a = (e + " " + P.join(s + " ") + s).split(" "), d(a, n, t));
+  }var C = [],
+      S = [],
+      _ = { _version: "3.6.0", _config: { classPrefix: "", enableClasses: !0, enableJSClass: !0, usePrefixes: !0 }, _q: [], on: function on(e, n) {
       var t = this;setTimeout(function () {
         n(t[e]);
       }, 0);
     }, addTest: function addTest(e, n, t) {
-      C.push({ name: e, fn: n, options: t });
+      S.push({ name: e, fn: n, options: t });
     }, addAsyncTest: function addAsyncTest(e) {
-      C.push({ name: null, fn: e });
+      S.push({ name: null, fn: e });
     } },
-      Modernizr = function Modernizr() {};Modernizr.prototype = S, Modernizr = new Modernizr();var _ = n.documentElement,
-      w = "svg" === _.nodeName.toLowerCase(),
-      x = "Moz O ms Webkit",
-      b = S._config.usePrefixes ? x.split(" ") : [];S._cssomPrefixes = b;var E = function E(n) {
+      Modernizr = function Modernizr() {};Modernizr.prototype = _, Modernizr = new Modernizr();var w = n.documentElement,
+      x = "svg" === w.nodeName.toLowerCase(),
+      b = _.testStyles = p;b("#modernizr { height: 50vh; }", function (n) {
+    var t = parseInt(e.innerHeight / 2, 10),
+        r = parseInt(s(n, null, "height"), 10);Modernizr.addTest("cssvhunit", a(r, t));
+  });var z = "Moz O ms Webkit",
+      E = _._config.usePrefixes ? z.split(" ") : [];_._cssomPrefixes = E;var j = function j(n) {
     var r,
-        o = prefixes.length,
-        i = e.CSSRule;if ("undefined" == typeof i) return t;if (!n) return !1;if (n = n.replace(/^@/, ""), r = n.replace(/-/g, "_").toUpperCase() + "_RULE", r in i) return "@" + n;for (var s = 0; o > s; s++) {
+        i = prefixes.length,
+        o = e.CSSRule;if ("undefined" == typeof o) return t;if (!n) return !1;if (n = n.replace(/^@/, ""), r = n.replace(/-/g, "_").toUpperCase() + "_RULE", r in o) return "@" + n;for (var s = 0; i > s; s++) {
       var a = prefixes[s],
-          l = a.toUpperCase() + "_" + r;if (l in i) return "@-" + a.toLowerCase() + "-" + n;
+          l = a.toUpperCase() + "_" + r;if (l in o) return "@-" + a.toLowerCase() + "-" + n;
     }return !1;
-  };S.atRule = E;var j = S._config.usePrefixes ? x.toLowerCase().split(" ") : [];S._domPrefixes = j;var z = { elem: l("modernizr") };Modernizr._q.push(function () {
-    delete z.elem;
-  });var P = { style: z.elem.style };Modernizr._q.unshift(function () {
-    delete P.style;
-  }), S.testAllProps = g;var N = S.prefixed = function (e, n, t) {
-    return 0 === e.indexOf("@") ? E(e) : (-1 != e.indexOf("-") && (e = s(e)), n ? g(e, n, t) : g(e, "pfx"));
-  };Modernizr.addTest("objectfit", !!N("objectFit"), { aliases: ["object-fit"] }), o(), i(h), delete S.addTest, delete S.addAsyncTest;for (var T = 0; T < Modernizr._q.length; T++) {
-    Modernizr._q[T]();
+  };_.atRule = j;var P = _._config.usePrefixes ? z.toLowerCase().split(" ") : [];_._domPrefixes = P;var N = { elem: f("modernizr") };Modernizr._q.push(function () {
+    delete N.elem;
+  });var T = { style: N.elem.style };Modernizr._q.unshift(function () {
+    delete T.style;
+  }), _.testAllProps = y;var L = _.prefixed = function (e, n, t) {
+    return 0 === e.indexOf("@") ? j(e) : (-1 != e.indexOf("-") && (e = l(e)), n ? y(e, n, t) : y(e, "pfx"));
+  };Modernizr.addTest("objectfit", !!L("objectFit"), { aliases: ["object-fit"] }), i(), o(C), delete _.addTest, delete _.addAsyncTest;for (var k = 0; k < Modernizr._q.length; k++) {
+    Modernizr._q[k]();
   }e.Modernizr = Modernizr;
 }(window, document);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -15859,6 +15864,487 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+/*! Hammer.JS - v2.0.8 - 2016-04-23
+ * http://hammerjs.github.io/
+ *
+ * Copyright (c) 2016 Jorik Tangelder;
+ * Licensed under the MIT license */
+!function (a, b, c, d) {
+  "use strict";
+  function e(a, b, c) {
+    return setTimeout(j(a, c), b);
+  }function f(a, b, c) {
+    return Array.isArray(a) ? (g(a, c[b], c), !0) : !1;
+  }function g(a, b, c) {
+    var e;if (a) if (a.forEach) a.forEach(b, c);else if (a.length !== d) for (e = 0; e < a.length;) {
+      b.call(c, a[e], e, a), e++;
+    } else for (e in a) {
+      a.hasOwnProperty(e) && b.call(c, a[e], e, a);
+    }
+  }function h(b, c, d) {
+    var e = "DEPRECATED METHOD: " + c + "\n" + d + " AT \n";return function () {
+      var c = new Error("get-stack-trace"),
+          d = c && c.stack ? c.stack.replace(/^[^\(]+?[\n$]/gm, "").replace(/^\s+at\s+/gm, "").replace(/^Object.<anonymous>\s*\(/gm, "{anonymous}()@") : "Unknown Stack Trace",
+          f = a.console && (a.console.warn || a.console.log);return f && f.call(a.console, e, d), b.apply(this, arguments);
+    };
+  }function i(a, b, c) {
+    var d,
+        e = b.prototype;d = a.prototype = Object.create(e), d.constructor = a, d._super = e, c && la(d, c);
+  }function j(a, b) {
+    return function () {
+      return a.apply(b, arguments);
+    };
+  }function k(a, b) {
+    return (typeof a === "undefined" ? "undefined" : _typeof(a)) == oa ? a.apply(b ? b[0] || d : d, b) : a;
+  }function l(a, b) {
+    return a === d ? b : a;
+  }function m(a, b, c) {
+    g(q(b), function (b) {
+      a.addEventListener(b, c, !1);
+    });
+  }function n(a, b, c) {
+    g(q(b), function (b) {
+      a.removeEventListener(b, c, !1);
+    });
+  }function o(a, b) {
+    for (; a;) {
+      if (a == b) return !0;a = a.parentNode;
+    }return !1;
+  }function p(a, b) {
+    return a.indexOf(b) > -1;
+  }function q(a) {
+    return a.trim().split(/\s+/g);
+  }function r(a, b, c) {
+    if (a.indexOf && !c) return a.indexOf(b);for (var d = 0; d < a.length;) {
+      if (c && a[d][c] == b || !c && a[d] === b) return d;d++;
+    }return -1;
+  }function s(a) {
+    return Array.prototype.slice.call(a, 0);
+  }function t(a, b, c) {
+    for (var d = [], e = [], f = 0; f < a.length;) {
+      var g = b ? a[f][b] : a[f];r(e, g) < 0 && d.push(a[f]), e[f] = g, f++;
+    }return c && (d = b ? d.sort(function (a, c) {
+      return a[b] > c[b];
+    }) : d.sort()), d;
+  }function u(a, b) {
+    for (var c, e, f = b[0].toUpperCase() + b.slice(1), g = 0; g < ma.length;) {
+      if (c = ma[g], e = c ? c + f : b, e in a) return e;g++;
+    }return d;
+  }function v() {
+    return ua++;
+  }function w(b) {
+    var c = b.ownerDocument || b;return c.defaultView || c.parentWindow || a;
+  }function x(a, b) {
+    var c = this;this.manager = a, this.callback = b, this.element = a.element, this.target = a.options.inputTarget, this.domHandler = function (b) {
+      k(a.options.enable, [a]) && c.handler(b);
+    }, this.init();
+  }function y(a) {
+    var b,
+        c = a.options.inputClass;return new (b = c ? c : xa ? M : ya ? P : wa ? R : L)(a, z);
+  }function z(a, b, c) {
+    var d = c.pointers.length,
+        e = c.changedPointers.length,
+        f = b & Ea && d - e === 0,
+        g = b & (Ga | Ha) && d - e === 0;c.isFirst = !!f, c.isFinal = !!g, f && (a.session = {}), c.eventType = b, A(a, c), a.emit("hammer.input", c), a.recognize(c), a.session.prevInput = c;
+  }function A(a, b) {
+    var c = a.session,
+        d = b.pointers,
+        e = d.length;c.firstInput || (c.firstInput = D(b)), e > 1 && !c.firstMultiple ? c.firstMultiple = D(b) : 1 === e && (c.firstMultiple = !1);var f = c.firstInput,
+        g = c.firstMultiple,
+        h = g ? g.center : f.center,
+        i = b.center = E(d);b.timeStamp = ra(), b.deltaTime = b.timeStamp - f.timeStamp, b.angle = I(h, i), b.distance = H(h, i), B(c, b), b.offsetDirection = G(b.deltaX, b.deltaY);var j = F(b.deltaTime, b.deltaX, b.deltaY);b.overallVelocityX = j.x, b.overallVelocityY = j.y, b.overallVelocity = qa(j.x) > qa(j.y) ? j.x : j.y, b.scale = g ? K(g.pointers, d) : 1, b.rotation = g ? J(g.pointers, d) : 0, b.maxPointers = c.prevInput ? b.pointers.length > c.prevInput.maxPointers ? b.pointers.length : c.prevInput.maxPointers : b.pointers.length, C(c, b);var k = a.element;o(b.srcEvent.target, k) && (k = b.srcEvent.target), b.target = k;
+  }function B(a, b) {
+    var c = b.center,
+        d = a.offsetDelta || {},
+        e = a.prevDelta || {},
+        f = a.prevInput || {};b.eventType !== Ea && f.eventType !== Ga || (e = a.prevDelta = { x: f.deltaX || 0, y: f.deltaY || 0 }, d = a.offsetDelta = { x: c.x, y: c.y }), b.deltaX = e.x + (c.x - d.x), b.deltaY = e.y + (c.y - d.y);
+  }function C(a, b) {
+    var c,
+        e,
+        f,
+        g,
+        h = a.lastInterval || b,
+        i = b.timeStamp - h.timeStamp;if (b.eventType != Ha && (i > Da || h.velocity === d)) {
+      var j = b.deltaX - h.deltaX,
+          k = b.deltaY - h.deltaY,
+          l = F(i, j, k);e = l.x, f = l.y, c = qa(l.x) > qa(l.y) ? l.x : l.y, g = G(j, k), a.lastInterval = b;
+    } else c = h.velocity, e = h.velocityX, f = h.velocityY, g = h.direction;b.velocity = c, b.velocityX = e, b.velocityY = f, b.direction = g;
+  }function D(a) {
+    for (var b = [], c = 0; c < a.pointers.length;) {
+      b[c] = { clientX: pa(a.pointers[c].clientX), clientY: pa(a.pointers[c].clientY) }, c++;
+    }return { timeStamp: ra(), pointers: b, center: E(b), deltaX: a.deltaX, deltaY: a.deltaY };
+  }function E(a) {
+    var b = a.length;if (1 === b) return { x: pa(a[0].clientX), y: pa(a[0].clientY) };for (var c = 0, d = 0, e = 0; b > e;) {
+      c += a[e].clientX, d += a[e].clientY, e++;
+    }return { x: pa(c / b), y: pa(d / b) };
+  }function F(a, b, c) {
+    return { x: b / a || 0, y: c / a || 0 };
+  }function G(a, b) {
+    return a === b ? Ia : qa(a) >= qa(b) ? 0 > a ? Ja : Ka : 0 > b ? La : Ma;
+  }function H(a, b, c) {
+    c || (c = Qa);var d = b[c[0]] - a[c[0]],
+        e = b[c[1]] - a[c[1]];return Math.sqrt(d * d + e * e);
+  }function I(a, b, c) {
+    c || (c = Qa);var d = b[c[0]] - a[c[0]],
+        e = b[c[1]] - a[c[1]];return 180 * Math.atan2(e, d) / Math.PI;
+  }function J(a, b) {
+    return I(b[1], b[0], Ra) + I(a[1], a[0], Ra);
+  }function K(a, b) {
+    return H(b[0], b[1], Ra) / H(a[0], a[1], Ra);
+  }function L() {
+    this.evEl = Ta, this.evWin = Ua, this.pressed = !1, x.apply(this, arguments);
+  }function M() {
+    this.evEl = Xa, this.evWin = Ya, x.apply(this, arguments), this.store = this.manager.session.pointerEvents = [];
+  }function N() {
+    this.evTarget = $a, this.evWin = _a, this.started = !1, x.apply(this, arguments);
+  }function O(a, b) {
+    var c = s(a.touches),
+        d = s(a.changedTouches);return b & (Ga | Ha) && (c = t(c.concat(d), "identifier", !0)), [c, d];
+  }function P() {
+    this.evTarget = bb, this.targetIds = {}, x.apply(this, arguments);
+  }function Q(a, b) {
+    var c = s(a.touches),
+        d = this.targetIds;if (b & (Ea | Fa) && 1 === c.length) return d[c[0].identifier] = !0, [c, c];var e,
+        f,
+        g = s(a.changedTouches),
+        h = [],
+        i = this.target;if (f = c.filter(function (a) {
+      return o(a.target, i);
+    }), b === Ea) for (e = 0; e < f.length;) {
+      d[f[e].identifier] = !0, e++;
+    }for (e = 0; e < g.length;) {
+      d[g[e].identifier] && h.push(g[e]), b & (Ga | Ha) && delete d[g[e].identifier], e++;
+    }return h.length ? [t(f.concat(h), "identifier", !0), h] : void 0;
+  }function R() {
+    x.apply(this, arguments);var a = j(this.handler, this);this.touch = new P(this.manager, a), this.mouse = new L(this.manager, a), this.primaryTouch = null, this.lastTouches = [];
+  }function S(a, b) {
+    a & Ea ? (this.primaryTouch = b.changedPointers[0].identifier, T.call(this, b)) : a & (Ga | Ha) && T.call(this, b);
+  }function T(a) {
+    var b = a.changedPointers[0];if (b.identifier === this.primaryTouch) {
+      var c = { x: b.clientX, y: b.clientY };this.lastTouches.push(c);var d = this.lastTouches,
+          e = function e() {
+        var a = d.indexOf(c);a > -1 && d.splice(a, 1);
+      };setTimeout(e, cb);
+    }
+  }function U(a) {
+    for (var b = a.srcEvent.clientX, c = a.srcEvent.clientY, d = 0; d < this.lastTouches.length; d++) {
+      var e = this.lastTouches[d],
+          f = Math.abs(b - e.x),
+          g = Math.abs(c - e.y);if (db >= f && db >= g) return !0;
+    }return !1;
+  }function V(a, b) {
+    this.manager = a, this.set(b);
+  }function W(a) {
+    if (p(a, jb)) return jb;var b = p(a, kb),
+        c = p(a, lb);return b && c ? jb : b || c ? b ? kb : lb : p(a, ib) ? ib : hb;
+  }function X() {
+    if (!fb) return !1;var b = {},
+        c = a.CSS && a.CSS.supports;return ["auto", "manipulation", "pan-y", "pan-x", "pan-x pan-y", "none"].forEach(function (d) {
+      b[d] = c ? a.CSS.supports("touch-action", d) : !0;
+    }), b;
+  }function Y(a) {
+    this.options = la({}, this.defaults, a || {}), this.id = v(), this.manager = null, this.options.enable = l(this.options.enable, !0), this.state = nb, this.simultaneous = {}, this.requireFail = [];
+  }function Z(a) {
+    return a & sb ? "cancel" : a & qb ? "end" : a & pb ? "move" : a & ob ? "start" : "";
+  }function $(a) {
+    return a == Ma ? "down" : a == La ? "up" : a == Ja ? "left" : a == Ka ? "right" : "";
+  }function _(a, b) {
+    var c = b.manager;return c ? c.get(a) : a;
+  }function aa() {
+    Y.apply(this, arguments);
+  }function ba() {
+    aa.apply(this, arguments), this.pX = null, this.pY = null;
+  }function ca() {
+    aa.apply(this, arguments);
+  }function da() {
+    Y.apply(this, arguments), this._timer = null, this._input = null;
+  }function ea() {
+    aa.apply(this, arguments);
+  }function fa() {
+    aa.apply(this, arguments);
+  }function ga() {
+    Y.apply(this, arguments), this.pTime = !1, this.pCenter = !1, this._timer = null, this._input = null, this.count = 0;
+  }function ha(a, b) {
+    return b = b || {}, b.recognizers = l(b.recognizers, ha.defaults.preset), new ia(a, b);
+  }function ia(a, b) {
+    this.options = la({}, ha.defaults, b || {}), this.options.inputTarget = this.options.inputTarget || a, this.handlers = {}, this.session = {}, this.recognizers = [], this.oldCssProps = {}, this.element = a, this.input = y(this), this.touchAction = new V(this, this.options.touchAction), ja(this, !0), g(this.options.recognizers, function (a) {
+      var b = this.add(new a[0](a[1]));a[2] && b.recognizeWith(a[2]), a[3] && b.requireFailure(a[3]);
+    }, this);
+  }function ja(a, b) {
+    var c = a.element;if (c.style) {
+      var d;g(a.options.cssProps, function (e, f) {
+        d = u(c.style, f), b ? (a.oldCssProps[d] = c.style[d], c.style[d] = e) : c.style[d] = a.oldCssProps[d] || "";
+      }), b || (a.oldCssProps = {});
+    }
+  }function ka(a, c) {
+    var d = b.createEvent("Event");d.initEvent(a, !0, !0), d.gesture = c, c.target.dispatchEvent(d);
+  }var la,
+      ma = ["", "webkit", "Moz", "MS", "ms", "o"],
+      na = b.createElement("div"),
+      oa = "function",
+      pa = Math.round,
+      qa = Math.abs,
+      ra = Date.now;la = "function" != typeof Object.assign ? function (a) {
+    if (a === d || null === a) throw new TypeError("Cannot convert undefined or null to object");for (var b = Object(a), c = 1; c < arguments.length; c++) {
+      var e = arguments[c];if (e !== d && null !== e) for (var f in e) {
+        e.hasOwnProperty(f) && (b[f] = e[f]);
+      }
+    }return b;
+  } : Object.assign;var sa = h(function (a, b, c) {
+    for (var e = Object.keys(b), f = 0; f < e.length;) {
+      (!c || c && a[e[f]] === d) && (a[e[f]] = b[e[f]]), f++;
+    }return a;
+  }, "extend", "Use `assign`."),
+      ta = h(function (a, b) {
+    return sa(a, b, !0);
+  }, "merge", "Use `assign`."),
+      ua = 1,
+      va = /mobile|tablet|ip(ad|hone|od)|android/i,
+      wa = "ontouchstart" in a,
+      xa = u(a, "PointerEvent") !== d,
+      ya = wa && va.test(navigator.userAgent),
+      za = "touch",
+      Aa = "pen",
+      Ba = "mouse",
+      Ca = "kinect",
+      Da = 25,
+      Ea = 1,
+      Fa = 2,
+      Ga = 4,
+      Ha = 8,
+      Ia = 1,
+      Ja = 2,
+      Ka = 4,
+      La = 8,
+      Ma = 16,
+      Na = Ja | Ka,
+      Oa = La | Ma,
+      Pa = Na | Oa,
+      Qa = ["x", "y"],
+      Ra = ["clientX", "clientY"];x.prototype = { handler: function handler() {}, init: function init() {
+      this.evEl && m(this.element, this.evEl, this.domHandler), this.evTarget && m(this.target, this.evTarget, this.domHandler), this.evWin && m(w(this.element), this.evWin, this.domHandler);
+    }, destroy: function destroy() {
+      this.evEl && n(this.element, this.evEl, this.domHandler), this.evTarget && n(this.target, this.evTarget, this.domHandler), this.evWin && n(w(this.element), this.evWin, this.domHandler);
+    } };var Sa = { mousedown: Ea, mousemove: Fa, mouseup: Ga },
+      Ta = "mousedown",
+      Ua = "mousemove mouseup";i(L, x, { handler: function handler(a) {
+      var b = Sa[a.type];b & Ea && 0 === a.button && (this.pressed = !0), b & Fa && 1 !== a.which && (b = Ga), this.pressed && (b & Ga && (this.pressed = !1), this.callback(this.manager, b, { pointers: [a], changedPointers: [a], pointerType: Ba, srcEvent: a }));
+    } });var Va = { pointerdown: Ea, pointermove: Fa, pointerup: Ga, pointercancel: Ha, pointerout: Ha },
+      Wa = { 2: za, 3: Aa, 4: Ba, 5: Ca },
+      Xa = "pointerdown",
+      Ya = "pointermove pointerup pointercancel";a.MSPointerEvent && !a.PointerEvent && (Xa = "MSPointerDown", Ya = "MSPointerMove MSPointerUp MSPointerCancel"), i(M, x, { handler: function handler(a) {
+      var b = this.store,
+          c = !1,
+          d = a.type.toLowerCase().replace("ms", ""),
+          e = Va[d],
+          f = Wa[a.pointerType] || a.pointerType,
+          g = f == za,
+          h = r(b, a.pointerId, "pointerId");e & Ea && (0 === a.button || g) ? 0 > h && (b.push(a), h = b.length - 1) : e & (Ga | Ha) && (c = !0), 0 > h || (b[h] = a, this.callback(this.manager, e, { pointers: b, changedPointers: [a], pointerType: f, srcEvent: a }), c && b.splice(h, 1));
+    } });var Za = { touchstart: Ea, touchmove: Fa, touchend: Ga, touchcancel: Ha },
+      $a = "touchstart",
+      _a = "touchstart touchmove touchend touchcancel";i(N, x, { handler: function handler(a) {
+      var b = Za[a.type];if (b === Ea && (this.started = !0), this.started) {
+        var c = O.call(this, a, b);b & (Ga | Ha) && c[0].length - c[1].length === 0 && (this.started = !1), this.callback(this.manager, b, { pointers: c[0], changedPointers: c[1], pointerType: za, srcEvent: a });
+      }
+    } });var ab = { touchstart: Ea, touchmove: Fa, touchend: Ga, touchcancel: Ha },
+      bb = "touchstart touchmove touchend touchcancel";i(P, x, { handler: function handler(a) {
+      var b = ab[a.type],
+          c = Q.call(this, a, b);c && this.callback(this.manager, b, { pointers: c[0], changedPointers: c[1], pointerType: za, srcEvent: a });
+    } });var cb = 2500,
+      db = 25;i(R, x, { handler: function handler(a, b, c) {
+      var d = c.pointerType == za,
+          e = c.pointerType == Ba;if (!(e && c.sourceCapabilities && c.sourceCapabilities.firesTouchEvents)) {
+        if (d) S.call(this, b, c);else if (e && U.call(this, c)) return;this.callback(a, b, c);
+      }
+    }, destroy: function destroy() {
+      this.touch.destroy(), this.mouse.destroy();
+    } });var eb = u(na.style, "touchAction"),
+      fb = eb !== d,
+      gb = "compute",
+      hb = "auto",
+      ib = "manipulation",
+      jb = "none",
+      kb = "pan-x",
+      lb = "pan-y",
+      mb = X();V.prototype = { set: function set(a) {
+      a == gb && (a = this.compute()), fb && this.manager.element.style && mb[a] && (this.manager.element.style[eb] = a), this.actions = a.toLowerCase().trim();
+    }, update: function update() {
+      this.set(this.manager.options.touchAction);
+    }, compute: function compute() {
+      var a = [];return g(this.manager.recognizers, function (b) {
+        k(b.options.enable, [b]) && (a = a.concat(b.getTouchAction()));
+      }), W(a.join(" "));
+    }, preventDefaults: function preventDefaults(a) {
+      var b = a.srcEvent,
+          c = a.offsetDirection;if (this.manager.session.prevented) return void b.preventDefault();var d = this.actions,
+          e = p(d, jb) && !mb[jb],
+          f = p(d, lb) && !mb[lb],
+          g = p(d, kb) && !mb[kb];if (e) {
+        var h = 1 === a.pointers.length,
+            i = a.distance < 2,
+            j = a.deltaTime < 250;if (h && i && j) return;
+      }return g && f ? void 0 : e || f && c & Na || g && c & Oa ? this.preventSrc(b) : void 0;
+    }, preventSrc: function preventSrc(a) {
+      this.manager.session.prevented = !0, a.preventDefault();
+    } };var nb = 1,
+      ob = 2,
+      pb = 4,
+      qb = 8,
+      rb = qb,
+      sb = 16,
+      tb = 32;Y.prototype = { defaults: {}, set: function set(a) {
+      return la(this.options, a), this.manager && this.manager.touchAction.update(), this;
+    }, recognizeWith: function recognizeWith(a) {
+      if (f(a, "recognizeWith", this)) return this;var b = this.simultaneous;return a = _(a, this), b[a.id] || (b[a.id] = a, a.recognizeWith(this)), this;
+    }, dropRecognizeWith: function dropRecognizeWith(a) {
+      return f(a, "dropRecognizeWith", this) ? this : (a = _(a, this), delete this.simultaneous[a.id], this);
+    }, requireFailure: function requireFailure(a) {
+      if (f(a, "requireFailure", this)) return this;var b = this.requireFail;return a = _(a, this), -1 === r(b, a) && (b.push(a), a.requireFailure(this)), this;
+    }, dropRequireFailure: function dropRequireFailure(a) {
+      if (f(a, "dropRequireFailure", this)) return this;a = _(a, this);var b = r(this.requireFail, a);return b > -1 && this.requireFail.splice(b, 1), this;
+    }, hasRequireFailures: function hasRequireFailures() {
+      return this.requireFail.length > 0;
+    }, canRecognizeWith: function canRecognizeWith(a) {
+      return !!this.simultaneous[a.id];
+    }, emit: function emit(a) {
+      function b(b) {
+        c.manager.emit(b, a);
+      }var c = this,
+          d = this.state;qb > d && b(c.options.event + Z(d)), b(c.options.event), a.additionalEvent && b(a.additionalEvent), d >= qb && b(c.options.event + Z(d));
+    }, tryEmit: function tryEmit(a) {
+      return this.canEmit() ? this.emit(a) : void (this.state = tb);
+    }, canEmit: function canEmit() {
+      for (var a = 0; a < this.requireFail.length;) {
+        if (!(this.requireFail[a].state & (tb | nb))) return !1;a++;
+      }return !0;
+    }, recognize: function recognize(a) {
+      var b = la({}, a);return k(this.options.enable, [this, b]) ? (this.state & (rb | sb | tb) && (this.state = nb), this.state = this.process(b), void (this.state & (ob | pb | qb | sb) && this.tryEmit(b))) : (this.reset(), void (this.state = tb));
+    }, process: function process(a) {}, getTouchAction: function getTouchAction() {}, reset: function reset() {} }, i(aa, Y, { defaults: { pointers: 1 }, attrTest: function attrTest(a) {
+      var b = this.options.pointers;return 0 === b || a.pointers.length === b;
+    }, process: function process(a) {
+      var b = this.state,
+          c = a.eventType,
+          d = b & (ob | pb),
+          e = this.attrTest(a);return d && (c & Ha || !e) ? b | sb : d || e ? c & Ga ? b | qb : b & ob ? b | pb : ob : tb;
+    } }), i(ba, aa, { defaults: { event: "pan", threshold: 10, pointers: 1, direction: Pa }, getTouchAction: function getTouchAction() {
+      var a = this.options.direction,
+          b = [];return a & Na && b.push(lb), a & Oa && b.push(kb), b;
+    }, directionTest: function directionTest(a) {
+      var b = this.options,
+          c = !0,
+          d = a.distance,
+          e = a.direction,
+          f = a.deltaX,
+          g = a.deltaY;return e & b.direction || (b.direction & Na ? (e = 0 === f ? Ia : 0 > f ? Ja : Ka, c = f != this.pX, d = Math.abs(a.deltaX)) : (e = 0 === g ? Ia : 0 > g ? La : Ma, c = g != this.pY, d = Math.abs(a.deltaY))), a.direction = e, c && d > b.threshold && e & b.direction;
+    }, attrTest: function attrTest(a) {
+      return aa.prototype.attrTest.call(this, a) && (this.state & ob || !(this.state & ob) && this.directionTest(a));
+    }, emit: function emit(a) {
+      this.pX = a.deltaX, this.pY = a.deltaY;var b = $(a.direction);b && (a.additionalEvent = this.options.event + b), this._super.emit.call(this, a);
+    } }), i(ca, aa, { defaults: { event: "pinch", threshold: 0, pointers: 2 }, getTouchAction: function getTouchAction() {
+      return [jb];
+    }, attrTest: function attrTest(a) {
+      return this._super.attrTest.call(this, a) && (Math.abs(a.scale - 1) > this.options.threshold || this.state & ob);
+    }, emit: function emit(a) {
+      if (1 !== a.scale) {
+        var b = a.scale < 1 ? "in" : "out";a.additionalEvent = this.options.event + b;
+      }this._super.emit.call(this, a);
+    } }), i(da, Y, { defaults: { event: "press", pointers: 1, time: 251, threshold: 9 }, getTouchAction: function getTouchAction() {
+      return [hb];
+    }, process: function process(a) {
+      var b = this.options,
+          c = a.pointers.length === b.pointers,
+          d = a.distance < b.threshold,
+          f = a.deltaTime > b.time;if (this._input = a, !d || !c || a.eventType & (Ga | Ha) && !f) this.reset();else if (a.eventType & Ea) this.reset(), this._timer = e(function () {
+        this.state = rb, this.tryEmit();
+      }, b.time, this);else if (a.eventType & Ga) return rb;return tb;
+    }, reset: function reset() {
+      clearTimeout(this._timer);
+    }, emit: function emit(a) {
+      this.state === rb && (a && a.eventType & Ga ? this.manager.emit(this.options.event + "up", a) : (this._input.timeStamp = ra(), this.manager.emit(this.options.event, this._input)));
+    } }), i(ea, aa, { defaults: { event: "rotate", threshold: 0, pointers: 2 }, getTouchAction: function getTouchAction() {
+      return [jb];
+    }, attrTest: function attrTest(a) {
+      return this._super.attrTest.call(this, a) && (Math.abs(a.rotation) > this.options.threshold || this.state & ob);
+    } }), i(fa, aa, { defaults: { event: "swipe", threshold: 10, velocity: .3, direction: Na | Oa, pointers: 1 }, getTouchAction: function getTouchAction() {
+      return ba.prototype.getTouchAction.call(this);
+    }, attrTest: function attrTest(a) {
+      var b,
+          c = this.options.direction;return c & (Na | Oa) ? b = a.overallVelocity : c & Na ? b = a.overallVelocityX : c & Oa && (b = a.overallVelocityY), this._super.attrTest.call(this, a) && c & a.offsetDirection && a.distance > this.options.threshold && a.maxPointers == this.options.pointers && qa(b) > this.options.velocity && a.eventType & Ga;
+    }, emit: function emit(a) {
+      var b = $(a.offsetDirection);b && this.manager.emit(this.options.event + b, a), this.manager.emit(this.options.event, a);
+    } }), i(ga, Y, { defaults: { event: "tap", pointers: 1, taps: 1, interval: 300, time: 250, threshold: 9, posThreshold: 10 }, getTouchAction: function getTouchAction() {
+      return [ib];
+    }, process: function process(a) {
+      var b = this.options,
+          c = a.pointers.length === b.pointers,
+          d = a.distance < b.threshold,
+          f = a.deltaTime < b.time;if (this.reset(), a.eventType & Ea && 0 === this.count) return this.failTimeout();if (d && f && c) {
+        if (a.eventType != Ga) return this.failTimeout();var g = this.pTime ? a.timeStamp - this.pTime < b.interval : !0,
+            h = !this.pCenter || H(this.pCenter, a.center) < b.posThreshold;this.pTime = a.timeStamp, this.pCenter = a.center, h && g ? this.count += 1 : this.count = 1, this._input = a;var i = this.count % b.taps;if (0 === i) return this.hasRequireFailures() ? (this._timer = e(function () {
+          this.state = rb, this.tryEmit();
+        }, b.interval, this), ob) : rb;
+      }return tb;
+    }, failTimeout: function failTimeout() {
+      return this._timer = e(function () {
+        this.state = tb;
+      }, this.options.interval, this), tb;
+    }, reset: function reset() {
+      clearTimeout(this._timer);
+    }, emit: function emit() {
+      this.state == rb && (this._input.tapCount = this.count, this.manager.emit(this.options.event, this._input));
+    } }), ha.VERSION = "2.0.8", ha.defaults = { domEvents: !1, touchAction: gb, enable: !0, inputTarget: null, inputClass: null, preset: [[ea, { enable: !1 }], [ca, { enable: !1 }, ["rotate"]], [fa, { direction: Na }], [ba, { direction: Na }, ["swipe"]], [ga], [ga, { event: "doubletap", taps: 2 }, ["tap"]], [da]], cssProps: { userSelect: "none", touchSelect: "none", touchCallout: "none", contentZooming: "none", userDrag: "none", tapHighlightColor: "rgba(0,0,0,0)" } };var ub = 1,
+      vb = 2;ia.prototype = { set: function set(a) {
+      return la(this.options, a), a.touchAction && this.touchAction.update(), a.inputTarget && (this.input.destroy(), this.input.target = a.inputTarget, this.input.init()), this;
+    }, stop: function stop(a) {
+      this.session.stopped = a ? vb : ub;
+    }, recognize: function recognize(a) {
+      var b = this.session;if (!b.stopped) {
+        this.touchAction.preventDefaults(a);var c,
+            d = this.recognizers,
+            e = b.curRecognizer;(!e || e && e.state & rb) && (e = b.curRecognizer = null);for (var f = 0; f < d.length;) {
+          c = d[f], b.stopped === vb || e && c != e && !c.canRecognizeWith(e) ? c.reset() : c.recognize(a), !e && c.state & (ob | pb | qb) && (e = b.curRecognizer = c), f++;
+        }
+      }
+    }, get: function get(a) {
+      if (a instanceof Y) return a;for (var b = this.recognizers, c = 0; c < b.length; c++) {
+        if (b[c].options.event == a) return b[c];
+      }return null;
+    }, add: function add(a) {
+      if (f(a, "add", this)) return this;var b = this.get(a.options.event);return b && this.remove(b), this.recognizers.push(a), a.manager = this, this.touchAction.update(), a;
+    }, remove: function remove(a) {
+      if (f(a, "remove", this)) return this;if (a = this.get(a)) {
+        var b = this.recognizers,
+            c = r(b, a);-1 !== c && (b.splice(c, 1), this.touchAction.update());
+      }return this;
+    }, on: function on(a, b) {
+      if (a !== d && b !== d) {
+        var c = this.handlers;return g(q(a), function (a) {
+          c[a] = c[a] || [], c[a].push(b);
+        }), this;
+      }
+    }, off: function off(a, b) {
+      if (a !== d) {
+        var c = this.handlers;return g(q(a), function (a) {
+          b ? c[a] && c[a].splice(r(c[a], b), 1) : delete c[a];
+        }), this;
+      }
+    }, emit: function emit(a, b) {
+      this.options.domEvents && ka(a, b);var c = this.handlers[a] && this.handlers[a].slice();if (c && c.length) {
+        b.type = a, b.preventDefault = function () {
+          b.srcEvent.preventDefault();
+        };for (var d = 0; d < c.length;) {
+          c[d](b), d++;
+        }
+      }
+    }, destroy: function destroy() {
+      this.element && ja(this, !1), this.handlers = {}, this.session = {}, this.input.destroy(), this.element = null;
+    } }, la(ha, { INPUT_START: Ea, INPUT_MOVE: Fa, INPUT_END: Ga, INPUT_CANCEL: Ha, STATE_POSSIBLE: nb, STATE_BEGAN: ob, STATE_CHANGED: pb, STATE_ENDED: qb, STATE_RECOGNIZED: rb, STATE_CANCELLED: sb, STATE_FAILED: tb, DIRECTION_NONE: Ia, DIRECTION_LEFT: Ja, DIRECTION_RIGHT: Ka, DIRECTION_UP: La, DIRECTION_DOWN: Ma, DIRECTION_HORIZONTAL: Na, DIRECTION_VERTICAL: Oa, DIRECTION_ALL: Pa, Manager: ia, Input: x, TouchAction: V, TouchInput: P, MouseInput: L, PointerEventInput: M, TouchMouseInput: R, SingleTouchInput: N, Recognizer: Y, AttrRecognizer: aa, Tap: ga, Pan: ba, Swipe: fa, Pinch: ca, Rotate: ea, Press: da, on: m, off: n, each: g, merge: ta, extend: sa, assign: la, inherit: i, bindFn: j, prefixed: u });var wb = "undefined" != typeof a ? a : "undefined" != typeof self ? self : {};wb.Hammer = ha, "function" == typeof define && define.amd ? define(function () {
+    return ha;
+  }) : "undefined" != typeof module && module.exports ? module.exports = ha : a[c] = ha;
+}(window, document, "Hammer");
+//# sourceMappingURL=hammer.min.js.map
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var isRTL = $('html').attr('dir') == "rtl" ? true : false,
     winWidth = viewport().width,
     winHeight = viewport().height,
@@ -15871,6 +16357,26 @@ var isRTL = $('html').attr('dir') == "rtl" ? true : false,
     isMobile,
     movieListAnimating = false,
     heightMediaJumps = [1800, 1600, 1200, 820, 800, 780, 760, 750, 740, 720, 700, 675, 670, 660, 650, 610, 600, 590, 585, 580, 575, 570, 550, 520, 500, 400];
+
+if (isIE) {
+	$('html').addClass('is--ie');
+	$('html').addClass('is--ie-' + isIE);
+
+	if ($('.c-booking-pages').get(0)) {
+		$('[src*=reel-logo]').attr('src', 'assets/img/brand/logo.png');
+	} else {
+		$('[src*=reel-logo]').attr('src', '/en/assets/img/brand/logo.png');
+	}
+
+	if ($('.c-main-banner').get(0)) {
+		var itemHeight = $('.c-main-banner .item-inner').height();
+		$('.c-main-banner .item-inner .txt').each(function () {
+			$(this).wrapAll('<div class="item-inner-wrap"></div>');
+		});
+
+		$('.c-main-banner .item-inner .item-inner-wrap').height(itemHeight);
+	}
+}
 
 changeToListViewInMob();
 hideTabsId();
@@ -15919,6 +16425,8 @@ $(function () {
 	adjustContentList2();
 	navDropDownHeight();
 	filterCustomScroll();
+	adjsutSeatsSecHeight();
+	offerSecAdjustments();
 
 	$('.c-loader').fadeOut('slow', function () {
 		if (winWidth > 1024) {
@@ -15927,12 +16435,14 @@ $(function () {
 				offset: 0
 			});
 		}
+		offerSecAdjustments();
 	});
 });
 
 //On Window Load
 $(window).on('load', function () {
 	// calcBodyarea();
+	adjsutSeatsSecHeight();
 	footerLogosCarousel(true);
 	setTimeout(function () {
 		AOS.refresh();
@@ -15965,6 +16475,7 @@ $(window).on('resize orientationchange', function () {
 		animWrapHeight();
 		adjustContentList2();
 		removeLoaderInMob();
+		adjsutSeatsSecHeight();
 
 		clearTimeout(resizeTimer);
 		resizeTimer = setTimeout(function () {
@@ -15980,6 +16491,7 @@ $(window).on('resize orientationchange', function () {
 		}, 250);
 		// movieListCarousel();
 		// calcScrollHeightDOM();
+		seatHammerFresh();
 	} else {
 		winDimensions();
 	}
@@ -15987,6 +16499,7 @@ $(window).on('resize orientationchange', function () {
 	changeToListViewInMob();
 	navDropDownHeight();
 	adjustForm();
+	offerSecAdjustments();
 });
 
 /*function calcScrollHeightDOM() {
@@ -16017,6 +16530,8 @@ $(document).keyup(function (e) {
 		$('.js-custom-select input[type="text"]').blur();
 
 		closePopup();
+
+		closeUserDropDown();
 
 		movieListSty1Close();
 	}
@@ -16944,7 +17459,6 @@ function tabs() {
 		} else {
 			location.hash = target;
 		}
-
 		$('[data-id="' + target + '"]').addClass('is--active');
 
 		if ($('[data-id="' + target + '"]').find('.js-movie-list').get(0)) {}
@@ -17493,26 +18007,6 @@ if (ua.indexOf('safari') != -1) {
 	} else {
 		isSafari = true;
 		$('html').addClass('is--safari');
-	}
-}
-
-if (isIE) {
-	$('html').addClass('is--ie');
-	$('html').addClass('is--ie-' + isIE);
-
-	if ($('.c-booking-pages').get(0)) {
-		$('[src*=reel-logo]').attr('src', 'assets/img/brand/logo.png');
-	} else {
-		$('[src*=reel-logo]').attr('src', '/en/assets/img/brand/logo.png');
-	}
-
-	if ($('.c-main-banner').get(0)) {
-		var itemHeight = $('.c-main-banner .item-inner').height();
-		$('.c-main-banner .item-inner .txt').each(function () {
-			$(this).wrapAll('<div class="item-inner-wrap"></div>');
-		});
-
-		$('.c-main-banner .item-inner .item-inner-wrap').height(itemHeight);
 	}
 }
 
@@ -18802,7 +19296,7 @@ function customPhoneInput() {
 	}
 }
 function adjustForm() {
-	$('.js-form input, .js-form-sty-1 input').each(function () {
+	$('.js-form:not(.js-form--keep-placeholder) input, .js-form-sty-1:not(.js-form--keep-placeholder) input').each(function () {
 		var attr = $(this).attr('placeholder');
 		var dataAttr = $(this).attr('placeholder');
 		if ((typeof attr === 'undefined' ? 'undefined' : _typeof(attr)) !== (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined)) && attr !== false) {
@@ -18816,7 +19310,7 @@ function adjustForm() {
 	});
 }
 if ($('input[name="phone"]').get(0)) {
-	$('input[name="phone"]').live('keyup', function (key) {
+	$('input[name="phone"]').on('keyup', function (key) {
 		if (key.charCode < 48 || key.charCode > 57) return false;
 	});
 }
@@ -18924,34 +19418,35 @@ var seatingAreaDineIn = [
 [['a', 1], ['a', 2], ['a', 3], ['b', 5], ['b', 6], ['c', 4]],
 // Seating Area Layout Type.
 'type-b'];
+if ($('.c-seats-selection').get(0)) {
+	buildSeatArea(seating);
+}
 
-buildSeatArea(seatingAreaStandard);
+// $('.seats-area').css({
+// 	width: $('.seats-area').width(),
+// 	height: $('.seats-area').height(),
+// });
 
-$('.seats-area').css({
-	width: $('.seats-area').width(),
-	height: $('.seats-area').height()
-});
-
-$(".js-draggable").each(function () {
-	setSeatsAreaDim(this);
-});
+// $(".js-draggable").each(function () {
+// 	setSeatsAreaDim(this);
+// });
 
 var seatsZoomLevel = 1;
-$('.js-seats-zoom-in').click(function (e) {
-	e.preventDefault();
-	if (seatsZoomLevel < 3) {
-		seatsZoomLevel += 0.1;
-		setZoomLevel(this);
-	}
-});
+// $('.js-seats-zoom-in').click(function (e) {
+// 	e.preventDefault();
+// 	if(seatsZoomLevel < 3){
+// 		seatsZoomLevel += 0.1;
+// 		setZoomLevel(this);
+// 	}
+// });
 
-$('.js-seats-zoom-out').click(function (e) {
-	e.preventDefault();
-	if (seatsZoomLevel > 1) {
-		seatsZoomLevel -= 0.1;
-		setZoomLevel(this);
-	}
-});
+// $('.js-seats-zoom-out').click(function (e) {
+// 	e.preventDefault();
+// 	if(seatsZoomLevel > 1){
+// 		seatsZoomLevel -= 0.1;
+// 		setZoomLevel(this);
+// 	}
+// });
 
 function setSeatsAreaDim(target, leftPerc, topPerc) {
 	var thisWidth = $(target).width();
@@ -19124,6 +19619,8 @@ function buildSeatArea(hyperpara) {
 	for (var bookedSeat = 0; bookedSeat < bookedSeats.length; bookedSeat++) {
 		$('#seat-' + bookedSeats[bookedSeat][0] + '-' + bookedSeats[bookedSeat][1]).parent().addClass('seat--booked');
 	}
+
+	seatsFunctionality();
 }
 
 function seatHtml(seatRow, seatCol) {
@@ -19143,6 +19640,543 @@ function seatHtml(seatRow, seatCol) {
 	</div>';
 }
 
+// var hammertime = new Hammer($('.seats-area .js-draggable')[0], {});
+
+if ($('.c-seats-selection').get(0)) {
+	var element = $('.seats-area .js-draggable')[0];
+	var hammertime = new Hammer(element, {});
+
+	hammertime.get('pinch').set({ enable: true });
+	hammertime.get('pan').set({ threshold: 0 });
+
+	var fixHammerjsDeltaIssue, pinchStart, lastEvent, originalSize, elementWinCenterX, elementWinCenterY, current, last;
+
+	seatHammerFresh(); // also triggered on resize;
+}
+
+function seatHammerFresh() {
+	if ($('.c-seats-selection').get(0)) {
+		fixHammerjsDeltaIssue = undefined;
+		pinchStart = { x: undefined, y: undefined };
+		lastEvent = undefined;
+
+		originalSize = {
+			width: $(element).outerWidth(),
+			height: $(element).outerHeight()
+		};
+
+		elementWinCenterX = element.getBoundingClientRect().left + originalSize.width / 2;
+		elementWinCenterY = element.getBoundingClientRect().top + originalSize.height / 2;
+
+		current = {
+			x: 0,
+			y: 0,
+			z: 1,
+			zooming: false,
+			width: originalSize.width * 1,
+			height: originalSize.height * 1
+		};
+
+		last = {
+			x: current.x,
+			y: current.y,
+			z: current.z
+		};
+
+		update();
+	}
+}
+
+function getRelativePosition(element, point, originalSize, scale) {
+	var domCoords = getCoords(element);
+
+	var elementX = point.x - domCoords.x;
+	var elementY = point.y - domCoords.y;
+
+	var relativeX = elementX / (originalSize.width * scale / 2) - 1;
+	var relativeY = elementY / (originalSize.height * scale / 2) - 1;
+	return { x: relativeX, y: relativeY };
+}
+
+function getCoords(elem) {
+	// crossbrowser version
+	var box = elem.getBoundingClientRect();
+
+	var body = document.body;
+	var docEl = document.documentElement;
+
+	var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+	var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
+	var clientTop = docEl.clientTop || body.clientTop || 0;
+	var clientLeft = docEl.clientLeft || body.clientLeft || 0;
+
+	var top = box.top + scrollTop - clientTop;
+	var left = box.left + scrollLeft - clientLeft;
+
+	return { x: Math.round(left), y: Math.round(top) };
+}
+
+function scaleFrom(zoomOrigin, currentScale, newScale) {
+	var currentShift = getCoordinateShiftDueToScale(originalSize, currentScale);
+	var newShift = getCoordinateShiftDueToScale(originalSize, newScale);
+
+	var zoomDistance = newScale - currentScale;
+
+	var shift = {
+		x: currentShift.x - newShift.x,
+		y: currentShift.y - newShift.y
+	};
+
+	var output = {
+		x: zoomOrigin.x * shift.x,
+		y: zoomOrigin.y * shift.y,
+		z: zoomDistance
+	};
+	return output;
+}
+
+function getCoordinateShiftDueToScale(size, scale) {
+	var newWidth = scale * size.width;
+	var newHeight = scale * size.height;
+	var dx = (newWidth - size.width) / 2;
+	var dy = (newHeight - size.height) / 2;
+	return {
+		x: dx,
+		y: dy
+	};
+}
+if ($('.c-seats-selection').get(0)) {
+	hammertime.on('doubletap', function (e) {
+		var scaleFactor = 1;
+		if (current.zooming === false) {
+			current.zooming = true;
+		} else {
+			current.zooming = false;
+			scaleFactor = -scaleFactor;
+		}
+
+		element.style.transition = "0.3s";
+		setTimeout(function () {
+			element.style.transition = "none";
+		}, 300);
+
+		var zoomOrigin = getRelativePosition(element, { x: e.center.x, y: e.center.y }, originalSize, current.z);
+		var d = scaleFrom(zoomOrigin, current.z, current.z + scaleFactor);
+		current.x += d.x;
+		current.y += d.y;
+		current.z += d.z;
+
+		last.x = current.x;
+		last.y = current.y;
+		last.z = current.z;
+
+		update();
+	});
+
+	hammertime.on('pan', function (e) {
+		if (lastEvent !== 'pan') {
+			fixHammerjsDeltaIssue = {
+				x: e.deltaX,
+				y: e.deltaY
+			};
+		}
+
+		current.x = last.x + e.deltaX - fixHammerjsDeltaIssue.x;
+		current.y = last.y + e.deltaY - fixHammerjsDeltaIssue.y;
+		lastEvent = 'pan';
+		update();
+	});
+
+	hammertime.on('pinch', function (e) {
+		var d = scaleFrom(pinchZoomOrigin, last.z, last.z * e.scale);
+		current.x = d.x + last.x + e.deltaX;
+		current.y = d.y + last.y + e.deltaY;
+		current.z = d.z + last.z;
+		lastEvent = 'pinch';
+		update();
+	});
+
+	var pinchZoomOrigin = undefined;
+	hammertime.on('pinchstart', function (e) {
+		pinchStart.x = e.center.x;
+		pinchStart.y = e.center.y;
+		pinchZoomOrigin = getRelativePosition(element, { x: pinchStart.x, y: pinchStart.y }, originalSize, current.z);
+		lastEvent = 'pinchstart';
+	});
+
+	hammertime.on('panend', function (e) {
+		last.x = current.x;
+		last.y = current.y;
+		lastEvent = 'panend';
+	});
+
+	hammertime.on('pinchend', function (e) {
+		last.x = current.x;
+		last.y = current.y;
+		last.z = current.z;
+		lastEvent = 'pinchend';
+	});
+}
+
+$('.js-close-screen-way-msg').click(function (e) {
+	e.preventDefault();
+	$(this).parent().addClass('is--close');
+});
+
+$('.js-mobile-summary-toggle').click(function (e) {
+	e.preventDefault();
+	var thisPanel = $(this).closest('.details-panel');
+	if (winWidth < 768) {
+		if (thisPanel.hasClass('mobile-detail-open')) {
+			thisPanel.removeClass('mobile-detail-open');
+			$('.c-panel-2 .panel-body .mobile-body-wrap').stop().slideUp();
+		} else {
+			thisPanel.addClass('mobile-detail-open');
+			$('.c-panel-2 .panel-body .mobile-body-wrap').stop().slideDown();
+		}
+	} else {}
+});
+
+var summaryCloseHeight = 0;
+
+adjsutSeatsSecHeight();
+function adjsutSeatsSecHeight() {
+	if (winWidth < 768) {
+
+		// seat area Initial Height
+		var headerHeight = $('.c-header-1').outerHeight();
+		var innerSecHeader = $('.c-seats-selection .heading-wrap').outerHeight();
+		var legendsHeight = $('.c-seats-selection .legends').outerHeight(true);
+
+		if ($('.js-seat-area input:checked').get(0)) {
+			$('.c-seats-selection .seats-area').css('height', winHeight - (headerHeight + innerSecHeader + legendsHeight) - summaryCloseHeight);
+		} else {
+			$('.c-seats-selection .seats-area').css('height', winHeight - (headerHeight + innerSecHeader + legendsHeight));
+		}
+		$('.c-seats-selection .scale-area-wrap').css('max-height', winHeight - (headerHeight + innerSecHeader + legendsHeight));
+
+		// summar area
+		if (!$('.c-seats-selection .details-panel').hasClass('mobile-detail-open')) {
+			summaryCloseHeight = $('.c-seats-selection .details-panel .c-panel-2').outerHeight();
+		}
+		$('.c-panel-2 .panel-body .mobile-body-wrap').css('max-height', winHeight - summaryCloseHeight);
+	} else {
+		$('.c-seats-selection .seats-area').css('height', '');
+		$('.c-seats-selection .scale-area-wrap').css('max-height', '');
+
+		$('.c-panel-2 .panel-body .mobile-body-wrap').css('display', '');
+		$('.c-panel-2 .panel-body .mobile-body-wrap').css('max-height', '');
+	}
+}
+
+function seatsFunctionality() {
+	$('.js-seat-area input').change(function () {
+		if ($(this).is(':checked')) {
+			seatSelected(this);
+		} else {
+			seatDeSelected(this);
+		}
+	});
+}
+function seatSelected(thisSeat) {
+	// Mobile Summary Seat Toggle
+	$('.c-seats-selection').addClass('seat--selected');
+	if (winWidth < 768) {
+		var headerHeight = $('.c-header-1').outerHeight();
+		var innerSecHeader = $('.c-seat-selection .heading-wrap').outerHeight();
+		var legendsHeight = $('.c-seat-selection .legends').outerHeight(true);
+		$('.c-seats-selection .seats-area').stop().animate({ 'height': winHeight - (headerHeight + innerSecHeader + legendsHeight) - summaryCloseHeight }, 250, 'linear');
+	}
+}
+function seatDeSelected(thisSeat) {
+	// Mobile Summary Seat Toggle
+	if (!$('.js-seat-area input:checked').get(0)) {
+		$('.c-seats-selection').removeClass('seat--selected');
+		if (winWidth < 768) {
+			var headerHeight = $('.c-header-1').outerHeight();
+			var innerSecHeader = $('.c-seat-selection .heading-wrap').outerHeight();
+			var legendsHeight = $('.c-seat-selection .legends').outerHeight(true);
+			$('.c-seats-selection .seats-area').stop().animate({ 'height': winHeight - (headerHeight + innerSecHeader + legendsHeight) }, 250, 'linear');
+		}
+	}
+}
+
+$('.js-seats-zoom-in').click(function (e) {
+	e.preventDefault();
+
+	var scaleFactor = 0.2;
+
+	if (current.z < 3) {
+		element.style.transition = "0.0s";
+		setTimeout(function () {
+			element.style.transition = "none";
+		}, 300);
+		var zoomOrigin = getRelativePosition(element, { x: elementWinCenterX, y: elementWinCenterY }, originalSize, current.z);
+		var d = scaleFrom(zoomOrigin, current.z, current.z + scaleFactor);
+		current.x += d.x;
+		current.y += d.y;
+		current.z += d.z;
+
+		last.x = current.x;
+		last.y = current.y;
+		last.z = current.z;
+
+		update();
+	}
+});
+
+$('.js-seats-zoom-out').click(function (e) {
+	e.preventDefault();
+
+	if (current.z > 1) {
+		var scaleFactor = -0.2;
+
+		element.style.transition = "0.0s";
+		setTimeout(function () {
+			element.style.transition = "none";
+		}, 300);
+
+		var zoomOrigin = getRelativePosition(element, { x: elementWinCenterX, y: elementWinCenterY }, originalSize, current.z);
+		var d = scaleFrom(zoomOrigin, current.z, current.z + scaleFactor);
+		current.x += d.x;
+		current.y += d.y;
+		current.z += d.z;
+
+		last.x = current.x;
+		last.y = current.y;
+		last.z = current.z;
+
+		update();
+	}
+});
+
+function panBounds() {
+	var extraWidth = (originalSize.width - $(element).parent().parent().width()) / 2;
+	var extraHeight = (originalSize.height - $(element).parent().parent().height()) / 2;
+
+	var offsetWidth = (current.width - originalSize.width) / 2;
+	var offsetHeight = (current.height - originalSize.height) / 2;
+
+	var limitWidth = offsetWidth + extraWidth;
+	var limitHeight = offsetHeight + extraHeight;
+
+	var yTop = offsetHeight;
+	var yBot = -(offsetHeight + extraHeight * 2);
+
+	if (yBot > 0) {
+		// yBot = (($(element).parent().parent().height() - originalSize.height)/2);
+		yBot = 0;
+	}
+
+	if (current.x > limitWidth) {
+		current.x = limitWidth;
+	}
+	if (current.y > yTop) {
+		current.y = yTop;
+	}
+	if (current.x < -limitWidth) {
+		current.x = -limitWidth;
+	}
+	if (current.y < yBot) {
+		current.y = yBot;
+	}
+}
+update();
+function update() {
+	//Limit zoom in and out between 3x and 1x
+	if ($('.c-seats-selection').get(0)) {
+		if (current.z > 3) {
+			current.z = 3;
+		} else if (current.z < 1) {
+			current.z = 1;
+		}
+
+		current.height = originalSize.height * current.z;
+		current.width = originalSize.width * current.z;
+		panBounds();
+		element.style.transform = "translate3d(" + current.x + "px, " + current.y + "px, 0) scale(" + current.z + ")";
+	}
+}
+
 // ==============================================
 // END - Seat Area JS
 // ==============================================
+
+
+function offerSecAdjustments() {
+	if ($('.c-offers-selection').get(0)) {
+		var headerHeight = $('.c-header-1').outerHeight();
+		var botMsg = $('.c-offers-selection .bot-action').outerHeight();
+		var aboveSpace = winHeight - headerHeight - botMsg;
+
+		if (winWidth > 767) {
+			$('.js-offer-sec-height').css('min-height', aboveSpace);
+
+			$('.js-offer-sec-height .offers-list-wrapper').css('max-height', 0);
+			var innerSpace = $('.js-offer-sec-height').height() - $('.c-offers-selection .offers-sec .sec-header').outerHeight(true) - parseInt($('.c-offers-selection .inner-wrap').css('padding-top'));
+			$('.js-offer-sec-height .offers-list-wrapper').css('max-height', innerSpace);
+			$('.c-offers-selection .section-wrap').css('height', '');
+		} else {
+			$('.js-offer-sec-height').css('min-height', '');
+			$('.js-offer-sec-height .offers-list-wrapper').css('max-height', '');
+
+			var mobileArea = winHeight - $('.c-offers-selection .bot-action').outerHeight() - $('.c-offers-selection .section-wrap').offset().top;
+			$('.c-offers-selection .section-wrap').css('height', mobileArea);
+		}
+	}
+}
+
+$('.offers-poups .offer-popup').each(function () {
+	var thisId = $(this).attr('id');
+	$(this).attr('data-id', thisId);
+	$(this).attr('id', '');
+});
+
+$('[data-offer]').click(function (e) {
+	e.preventDefault();
+	var target = $(this).attr('data-offer');
+	$('html').addClass('offer-popup--open');
+	console.log($('[data-id="' + target + '"]'));
+	$('[data-id="' + target + '"]').addClass('is--active');
+	$('[data-id="' + target + '"]').stop().fadeIn('fast');
+});
+$('.js-close-offer-popup').click(function (e) {
+	e.preventDefault();
+	closeOffers();
+});
+$('.js-show-field').click(function (e) {
+	e.preventDefault();
+	if ($(this).parent().find('input[type="password"]').get(0)) {
+		$(this).parent().find('input').attr('type', 'text');
+		$(this).html('Hide');
+	} else {
+		$(this).parent().find('input').attr('type', 'password');
+		$(this).html('Show');
+	}
+});
+$('.js-toggle-capsule').click(function (e) {
+	e.preventDefault();
+	$(this).closest('li').toggleClass('is--active');
+	console.log(this);
+	updateCapsuleCount(this);
+});
+function updateCapsuleCount(target) {
+	var totalSelected = $(target).closest('.sec-group').find('.c-capsule-list li.is--active').length;
+	console.log(updateCapsuleCount);
+	$(target).closest('.sec-group').find('.group-head .js-selected-item').html(totalSelected);
+}
+$('.js-capsule-edit').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.capsule-edit-wrap').toggleClass('is--editing');
+});
+
+function closeOffers() {
+	$('html').removeClass('offer-popup--open');
+	$('.offers-poups .offer-popup').removeClass('is--active');
+	$('.offers-poups .offer-popup').stop().fadeOut('fast', function () {
+		$(this).removeClass('is--active');
+	});
+}
+
+// ACCORDIONS
+// $('.js-is-accor:not(.is--active) .body').slideUp('fast');
+
+$('.js-accor-link').click(function (e) {
+	e.preventDefault();
+	// var accorName = $(this).attr('data-accorname');
+	// $('.js-is-accor[data-accorname="'+accorName+'"]').removeClass('is--active');
+	if ($(this).closest('.js-is-accor').hasClass('is--active')) {
+		$(this).closest('.js-is-accor').removeClass('is--active');
+		$(this).closest('.js-is-accor').find('.body').stop().slideUp();
+	} else {
+		$(this).closest('.js-is-accor').addClass('is--active');
+		$(this).closest('.js-is-accor').find('.body').stop().slideDown();
+	}
+});
+
+// END - ACCORDIONS
+
+
+// Card
+
+$('.js-card-remove').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.card').parent().remove();
+});
+$('.js-card-edit').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.c-my-cards').addClass('has--form-enable');
+	$(this).closest('.card').addClass('is--editing');
+});
+$('.js-card-cancel, .js-card-save').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.c-my-cards').removeClass('has--form-enable');
+	$(this).closest('.card').removeClass('is--editing');
+
+	if ($(this).closest('.add-card')) {
+		// $(this).closest('.c-my-cards').removeClass('has--form-enable');
+		$(this).closest('.add-card').removeClass('is--editing');
+	}
+});
+
+$('.js-add-card').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.c-my-cards').addClass('has--form-enable');
+	$(this).closest('.c-my-cards').find('li.add-card').addClass('is--editing');
+});
+
+// User Account 
+
+$('.js-user-dropdown').click(function (e) {
+	e.preventDefault();
+	var parent = $(this).closest('.c-user-summary');
+	if (parent.hasClass('dropdown--active')) {
+		closeUserDropDown();
+	} else {
+		parent.addClass('dropdown--active');
+		parent.find('.user-actions-dropdown').slideDown();
+	}
+});
+$(document).on('click', function (e) {
+	if ($(e.target).closest(".c-user-summary").length === 0) {
+		closeUserDropDown();
+	}
+});
+
+function closeUserDropDown() {
+	$('.c-user-summary').removeClass('dropdown--active');
+	$('.c-user-summary').find('.user-actions-dropdown').slideUp();
+}
+
+var promoCodeCount = 1;
+$('.js-offer-code-add').click(function (e) {
+	e.preventDefault();
+	promoCodeCount++;
+	$(this).before('<div class="form-item">\
+												<div class="form-item-wrap">\
+													<label for="code-' + promoCodeCount + '" class="field-title only-mobile">Enter code</label>\
+													<input type="text" placeholder="Enter code" name="name" id="code-' + promoCodeCount + '" required>\
+												</div>\
+												<div class="form-item-error-msg"></div>\
+											</div>');
+	offerSecAdjustments();
+});
+
+$('.js-whats-this').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.panel-body').find('.c-whats-this').stop().fadeIn('fast', function () {
+		$(this).addClass('is--visible');
+	});
+});
+$('.js-close-whats-this').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.c-whats-this').stop().fadeOut('fast', function () {
+		$(this).removeClass('is--visible');
+	});
+});
+
+if ($('.c-tabs-heading-sec .links-list .scroll').get(0)) {
+	var leftVal = $('.c-tabs-heading-sec .links-list .scroll a.is--active')[0].offsetLeft;
+	$('.c-tabs-heading-sec .links-list .scroll').scrollLeft(leftVal - 20);
+}

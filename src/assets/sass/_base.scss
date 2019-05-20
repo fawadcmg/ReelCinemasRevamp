@@ -32,6 +32,10 @@ body{
 	overflow: hidden;
 	font-size: 16px;
 	background-size: 100% auto;
+
+	@media (max-width: 767px){
+		min-height: 0;
+	}
 }
 
 img{

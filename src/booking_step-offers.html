@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="x-ua-compatible" content="ie=edge">
+	  <title>Reel Cinemas</title>
+	  <meta name="description" content="">
+	  <link rel="manifest" href="manifest.json">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	  <link rel="stylesheet" href="assets/css/style.min.css">
+	  <link rel="stylesheet" href="assets/css/booking_style.min.css">
+	</head>
+	
+	<body>
+	    <!--[if lte IE 9]>
+	        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	    <![endif]-->
+		<div class="c-landscape-msg"><div class="msg-inner">For best experince view the site in portrait mode.</div></div>
+		<div class="c-loader"></div><div class="c-overlay js-close-side-nav"></div>
+	    <div class="c-overlay-white js-close-filter-m"></div>
+		
+		<div class="c-booking-pages no--bg">
+			<div class="o-container">
+				<header class="c-header-1">
+					<div class="logo-wrap">
+						<a href="index.html" class="main-logo">
+							<picture>
+								<!-- <source srcset="assets/img/brand/logo-colored.png" media="(max-width: 767px)"> -->
+								<img src="assets/img/brand/reel-logo.svg" alt="Reel Cinemas" class="svg js-inline-svg">
+							</picture>
+						</a>
+					</div>
+					<nav class="c-steps">
+						<ul>
+							<li class="is--current">
+								<a href="booking_step-offers.html" class="step-offers">
+									<i class="icon"><img src="assets/img/icons/step-offers.svg" class="js-inline-svg"></i>
+									<span class="txt">Offers</span>
+								</a>
+							</li>
+							<li class="">
+								<a href="booking_step-seats.html" class="step-seat">
+									<i class="icon"><img src="assets/img/icons/step-seat.svg" class="js-inline-svg"></i>
+									<span class="txt">Seats</span>
+								</a>
+							</li>
+							<li>
+								<a href="booking_step-seats.html" class="step-food">
+									<i class="icon"><img src="assets/img/icons/step-food.svg" class="js-inline-svg"></i>
+									<span class="txt">Food</span>
+								</a>
+							</li>
+							<li>
+								<a href="booking_step-seats.html" class="step-payment">
+									<i class="icon"><img src="assets/img/icons/step-payment.svg" class="js-inline-svg"></i>
+									<span class="txt">Payment</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="c-user-summary">
+						<a href="#" class="js-user-dropdown action-elem">
+							<div class="user-img"><!-- <img src="assets/img/booking/user-img-thumb.jpg" alt="John Doe"> --></div>
+							<span class="arrow-icon"></span>
+						</a>
+						<nav class="user-actions-dropdown">
+							<a href="booking_user-profile.html">My Account <i class="icon icon--user"></i></a>
+							<a href="booking_signin.html">Sign out <i class="icon icon--signout"></i></a>
+						</nav>
+					</div>
+				</header>
+				<main class="b-page-content">
+					<div class="c-mob-flow-header only-mobile">
+						<h1><i class="icon"><img src="assets/img/icons/step-offers.svg" class="js-inline-svg"></i> Offers</h1>
+						<nav class="c-steps">
+							<ul>
+								<li class="is--current">
+									<a href="booking_step-offers.html" class="step-offers">
+										<i class="icon"><img src="assets/img/icons/step-offers.svg" class="js-inline-svg"></i>
+										<span class="txt">Offers</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="booking_step-seats.html" class="step-seat">
+										<i class="icon"><img src="assets/img/icons/step-seat.svg" class="js-inline-svg"></i>
+										<span class="txt">Seats</span>
+									</a>
+								</li>
+								<li>
+									<a href="booking_step-seats.html" class="step-food">
+										<i class="icon"><img src="assets/img/icons/step-food.svg" class="js-inline-svg"></i>
+										<span class="txt">Food</span>
+									</a>
+								</li>
+								<li>
+									<a href="booking_step-seats.html" class="step-payment">
+										<i class="icon"><img src="assets/img/icons/step-payment.svg" class="js-inline-svg"></i>
+										<span class="txt">Payment</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="c-offers-selection">
+						<div class="tabs-links only-mobile">
+							<a href="#offers-list" class="is--active js-tab-link" data-tab-name="offers">Choose <span class="only-desktop">an</span> offer</a>
+							<a href="#promo" class="js-tab-link" data-tab-name="offers">Use a code</a>
+						</div>
+						<div class="offer-top-area js-offer-sec-height">
+							<div class="section-wrap">
+								<section class="is--active offers-sec is-tab" id="offers-list" data-tab-name="offers">
+									<div class="sec-or">OR</div>
+									<div class="inner-wrap">
+										<div class="sec-header">
+											<div class="header-txt">
+												<h1>Choose an offer</h1>
+												<p>Select from any of the below offers to apply the discount.</p>
+											</div>
+											<div class="filter-action">
+									 			<select name="offers" id="offers" class="js-select2">
+									 				<option value="all">All offers</option>
+									 				<option value="bank-offers">Bank offers</option>
+									 				<option value="other-offers">Other offers</option>
+									 			</select>
+									 		</div>
+							 			</div>
+							 			<div class="offers-list-wrapper js-custom-scroll">
+								 			<div class="offers-list">
+								 				<a href="#" class="item" data-offer="offer-1">
+								 					<div class="item-inner-wrap">
+									 					<div class="offer-logo"><img src="assets/img/booking/offer-logo-1.png" alt="SCB"></div>
+									 					<div class="txt"> Buy One Ticket<br>Get One Free Movie Ticket</div>
+								 					</div>
+								 				</a>
+								 				<a href="#" class="item" data-offer="offer-2">
+								 					<div class="item-inner-wrap">
+									 					<div class="offer-logo"><img src="assets/img/booking/offer-logo-2.png" alt="SCB"></div>
+									 					<div class="txt"> Earn 1 UPoint <br>for every AED2 spent</div>
+								 					</div>
+								 				</a>
+								 				<a href="#" class="item" data-offer="offer-3">
+								 					<div class="item-inner-wrap">
+									 					<div class="offer-logo"><img src="assets/img/booking/offer-logo-3.png" alt="SCB"></div>
+									 					<div class="txt">FAB Presents Movies <br>From Just AED10!</div>
+								 					</div>
+								 				</a>
+								 				<a href="#" class="item" data-offer="offer-4">
+								 					<div class="item-inner-wrap">
+									 					<div class="offer-logo"><img src="assets/img/booking/offer-logo-4.png" alt="SCB"></div>
+									 					<div class="txt"> Buy 1 Get 1 Free <br>on Tickets</div>
+								 					</div>
+								 				</a>
+								 				<a href="#" class="item" data-offer="offer-5">
+								 					<div class="item-inner-wrap">
+									 					<div class="offer-logo"><img src="assets/img/booking/offer-logo-5.png" alt="SCB"></div>
+									 					<div class="txt">Free Delected Beverage <br>With Dine-In</div>
+								 					</div>
+								 				</a>
+								 				<a href="#" class="item" data-offer="offer-6">
+								 					<div class="item-inner-wrap">
+									 					<div class="offer-logo"><img src="assets/img/booking/offer-logo-6.png" alt="SCB"></div>
+									 					<div class="txt">Buy One Get 50% Off <br>on 2nd Ticket</div>
+								 					</div>
+								 				</a>
+								 				<a href="#" class="item" data-offer="offer-7">
+								 					<div class="item-inner-wrap">
+									 					<div class="offer-logo"><img src="assets/img/booking/offer-logo-7.png" alt="SCB"></div>
+									 					<div class="txt">Buy One Get One Free and <br>20% off on F&B</div>
+								 					</div>
+								 				</a>
+								 				<a href="#" class="item" data-offer="offer-8">
+								 					<div class="item-inner-wrap">
+									 					<div class="offer-logo"><img src="assets/img/booking/offer-logo-8.png" alt="SCB"></div>
+									 					<div class="txt">Buy 1 Get 1 Free <br>on Tickets</div>
+								 					</div>
+								 				</a>
+								 				<a href="#" class="item" data-offer="offer-9">
+								 					<div class="item-inner-wrap">
+									 					<div class="offer-logo"><img src="assets/img/booking/offer-logo-9.png" alt="SCB"></div>
+									 					<div class="txt">Buy One Get 50% Off <br>on 2nd Ticket</div>
+								 					</div>
+								 				</a>
+								 			</div>
+							 			</div>
+									</div>
+								</section>
+								<section class="promo-sec is-tab" id="promo" data-tab-name="offers">
+									<div class="inner-wrap">
+										<h1>Use a code</h1>
+										<p>Enter a promo code or voucher code below to apply the discount.</p>
+										<form class="c-form-sty-1 form--promo js-form--promo js-form js-form--keep-placeholder">
+											<div class="form-item">
+												<div class="form-item-wrap">
+													<label for="code-1" class="field-title only-mobile">Enter code</label>
+													<input type="text" placeholder="Enter code" name="name" id="code-1" required>
+												</div>
+												<div class="form-item-error-msg"></div>
+											</div>
+											<a href="#" class="add-another js-offer-code-add">Add another</a>
+											<div class="form-action">
+												<a href="#" class="c-btn-glow">APPLY OFFER</a>
+											</div>
+										</form>
+										<div class="tac">
+											<h2>Terms and Conditions:</h2>
+											<ul>
+												<li>Check Reel Cinemas website <a href="#">offers page</a> or voucher for terms & conditions.</li>
+												<li>Standard cinema terms and conditions apply.</li>
+											</ul>
+										</div>
+									</div>
+								</section>
+								<div class="offers-poups">
+									<section id="offer-1" class="offer-popup js-custom-scroll">
+										<div class="popup-inner-wrap">
+											<div class="head">
+												<div class="heading">
+													<h1>Emirates NBD</h1>
+												</div>
+												<div class="action">
+													<a href="#" class="close js-close-offer-popup"><span class="txt">Close</span><i class="icon"></i></a>
+												</div>
+											</div>
+											<p>Buy one, and get one free Reel Cinemas tickets, and receive complimentary popcorn and drinks!</p>
+											<p>Please enter first 6 and last 4 digits, found on the back of your ENBD credit card</p>
+											<form class="c-form-sty-1 form--offers-popup js-form--promo js-form js-form--keep-placeholder">
+												<div class="combo-field">
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">First 6 digits of Card</label>
+															<input type="number" placeholder="First 6 digits of Card" name="card" id="cardfirst" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+													<div class="mid-txt">XXXXXX</div>
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">Last 7 digits of Card</label>
+															<input type="number" placeholder="Last 7 digits of Card" name="card" id="cardlast" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+												</div>
+												<div class="form-action">
+													<a href="#" class="c-btn-glow">APPLY OFFER</a>
+													<a href="#" class="link">Terms & Conditions</a>
+												</div>
+											</form>
+											<div class="tac">
+												<h2>Terms and Conditions:</h2>
+												<ul>
+													<li>Offer valid on a maximum of 3 free tickets in a given month across Standard 2D & 3D, Platinum 2D & 3D, MX4D & Dolby Plus</li>
+													<li>Complimentary popcorn and drinks can only be received by U by Emaar ‘Visa Signature’ and ‘Visa Infinite’ card holders</li>
+													<li>Complimentary popcorn and drink not available for family cards</li>
+													<li>Emirates NBD and U By Emaar terms and conditions apply</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+									<section id="offer-2" class="offer-popup js-custom-scroll">
+										<div class="popup-inner-wrap">
+											<div class="head">
+												<div class="heading">
+													<h1>Emirates NBD</h1>
+												</div>
+												<div class="action">
+													<a href="#" class="close js-close-offer-popup"><span class="txt">Close</span><i class="icon"></i></a>
+												</div>
+											</div>
+											<p>Buy one, and get one free Reel Cinemas tickets, and receive complimentary popcorn and drinks!</p>
+											<p>Please enter first 6 and last 4 digits, found on the back of your ENBD credit card</p>
+											<form class="c-form-sty-1 form--offers-popup js-form--promo js-form js-form--keep-placeholder">
+												<div class="combo-field">
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">First 6 digits of Card</label>
+															<input type="number" placeholder="First 6 digits of Card" name="card" id="cardfirst" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+													<div class="mid-txt">XXXXXX</div>
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">Last 7 digits of Card</label>
+															<input type="number" placeholder="Last 7 digits of Card" name="card" id="cardlast" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+												</div>
+												<div class="form-action">
+													<a href="#" class="c-btn-glow">APPLY OFFER</a>
+													<a href="#" class="link">Terms & Conditions</a>
+												</div>
+											</form>
+											<div class="tac">
+												<h2>Terms and Conditions:</h2>
+												<ul>
+													<li>Offer valid on a maximum of 3 free tickets in a given month across Standard 2D & 3D, Platinum 2D & 3D, MX4D & Dolby Plus</li>
+													<li>Complimentary popcorn and drinks can only be received by U by Emaar ‘Visa Signature’ and ‘Visa Infinite’ card holders</li>
+													<li>Complimentary popcorn and drink not available for family cards</li>
+													<li>Emirates NBD and U By Emaar terms and conditions apply</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+									<section id="offer-3" class="offer-popup js-custom-scroll">
+										<div class="popup-inner-wrap">
+											<div class="head">
+												<div class="heading">
+													<h1>Emirates NBD</h1>
+												</div>
+												<div class="action">
+													<a href="#" class="close js-close-offer-popup"><span class="txt">Close</span><i class="icon"></i></a>
+												</div>
+											</div>
+											<p>Buy one, and get one free Reel Cinemas tickets, and receive complimentary popcorn and drinks!</p>
+											<p>Please enter first 6 and last 4 digits, found on the back of your ENBD credit card</p>
+											<form class="c-form-sty-1 form--offers-popup js-form--promo js-form js-form--keep-placeholder">
+												<div class="combo-field">
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">First 6 digits of Card</label>
+															<input type="number" placeholder="First 6 digits of Card" name="card" id="cardfirst" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+													<div class="mid-txt">XXXXXX</div>
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">Last 7 digits of Card</label>
+															<input type="number" placeholder="Last 7 digits of Card" name="card" id="cardlast" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+												</div>
+												<div class="form-action">
+													<a href="#" class="c-btn-glow">APPLY OFFER</a>
+													<a href="#" class="link">Terms & Conditions</a>
+												</div>
+											</form>
+											<div class="tac">
+												<h2>Terms and Conditions:</h2>
+												<ul>
+													<li>Offer valid on a maximum of 3 free tickets in a given month across Standard 2D & 3D, Platinum 2D & 3D, MX4D & Dolby Plus</li>
+													<li>Complimentary popcorn and drinks can only be received by U by Emaar ‘Visa Signature’ and ‘Visa Infinite’ card holders</li>
+													<li>Complimentary popcorn and drink not available for family cards</li>
+													<li>Emirates NBD and U By Emaar terms and conditions apply</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+									<section id="offer-4" class="offer-popup js-custom-scroll">
+										<div class="popup-inner-wrap">
+											<div class="head">
+												<div class="heading">
+													<h1>Emirates NBD</h1>
+												</div>
+												<div class="action">
+													<a href="#" class="close js-close-offer-popup"><span class="txt">Close</span><i class="icon"></i></a>
+												</div>
+											</div>
+											<p>Buy one, and get one free Reel Cinemas tickets, and receive complimentary popcorn and drinks!</p>
+											<p>Please enter first 6 and last 4 digits, found on the back of your ENBD credit card</p>
+											<form class="c-form-sty-1 form--offers-popup js-form--promo js-form js-form--keep-placeholder">
+												<div class="combo-field">
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">First 6 digits of Card</label>
+															<input type="number" placeholder="First 6 digits of Card" name="card" id="cardfirst" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+													<div class="mid-txt">XXXXXX</div>
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">Last 7 digits of Card</label>
+															<input type="number" placeholder="Last 7 digits of Card" name="card" id="cardlast" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+												</div>
+												<div class="form-action">
+													<a href="#" class="c-btn-glow">APPLY OFFER</a>
+													<a href="#" class="link">Terms & Conditions</a>
+												</div>
+											</form>
+											<div class="tac">
+												<h2>Terms and Conditions:</h2>
+												<ul>
+													<li>Offer valid on a maximum of 3 free tickets in a given month across Standard 2D & 3D, Platinum 2D & 3D, MX4D & Dolby Plus</li>
+													<li>Complimentary popcorn and drinks can only be received by U by Emaar ‘Visa Signature’ and ‘Visa Infinite’ card holders</li>
+													<li>Complimentary popcorn and drink not available for family cards</li>
+													<li>Emirates NBD and U By Emaar terms and conditions apply</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+									<section id="offer-5" class="offer-popup js-custom-scroll">
+										<div class="popup-inner-wrap">
+											<div class="head">
+												<div class="heading">
+													<h1>Emirates NBD</h1>
+												</div>
+												<div class="action">
+													<a href="#" class="close js-close-offer-popup"><span class="txt">Close</span><i class="icon"></i></a>
+												</div>
+											</div>
+											<p>Buy one, and get one free Reel Cinemas tickets, and receive complimentary popcorn and drinks!</p>
+											<p>Please enter first 6 and last 4 digits, found on the back of your ENBD credit card</p>
+											<form class="c-form-sty-1 form--offers-popup js-form--promo js-form js-form--keep-placeholder">
+												<div class="combo-field">
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">First 6 digits of Card</label>
+															<input type="number" placeholder="First 6 digits of Card" name="card" id="cardfirst" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+													<div class="mid-txt">XXXXXX</div>
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">Last 7 digits of Card</label>
+															<input type="number" placeholder="Last 7 digits of Card" name="card" id="cardlast" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+												</div>
+												<div class="form-action">
+													<a href="#" class="c-btn-glow">APPLY OFFER</a>
+													<a href="#" class="link">Terms & Conditions</a>
+												</div>
+											</form>
+											<div class="tac">
+												<h2>Terms and Conditions:</h2>
+												<ul>
+													<li>Offer valid on a maximum of 3 free tickets in a given month across Standard 2D & 3D, Platinum 2D & 3D, MX4D & Dolby Plus</li>
+													<li>Complimentary popcorn and drinks can only be received by U by Emaar ‘Visa Signature’ and ‘Visa Infinite’ card holders</li>
+													<li>Complimentary popcorn and drink not available for family cards</li>
+													<li>Emirates NBD and U By Emaar terms and conditions apply</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+									<section id="offer-6" class="offer-popup js-custom-scroll">
+										<div class="popup-inner-wrap">
+											<div class="head">
+												<div class="heading">
+													<h1>Emirates NBD</h1>
+												</div>
+												<div class="action">
+													<a href="#" class="close js-close-offer-popup"><span class="txt">Close</span><i class="icon"></i></a>
+												</div>
+											</div>
+											<p>Buy one, and get one free Reel Cinemas tickets, and receive complimentary popcorn and drinks!</p>
+											<p>Please enter first 6 and last 4 digits, found on the back of your ENBD credit card</p>
+											<form class="c-form-sty-1 form--offers-popup js-form--promo js-form js-form--keep-placeholder">
+												<div class="combo-field">
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">First 6 digits of Card</label>
+															<input type="number" placeholder="First 6 digits of Card" name="card" id="cardfirst" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+													<div class="mid-txt">XXXXXX</div>
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">Last 7 digits of Card</label>
+															<input type="number" placeholder="Last 7 digits of Card" name="card" id="cardlast" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+												</div>
+												<div class="form-action">
+													<a href="#" class="c-btn-glow">APPLY OFFER</a>
+													<a href="#" class="link">Terms & Conditions</a>
+												</div>
+											</form>
+											<div class="tac">
+												<h2>Terms and Conditions:</h2>
+												<ul>
+													<li>Offer valid on a maximum of 3 free tickets in a given month across Standard 2D & 3D, Platinum 2D & 3D, MX4D & Dolby Plus</li>
+													<li>Complimentary popcorn and drinks can only be received by U by Emaar ‘Visa Signature’ and ‘Visa Infinite’ card holders</li>
+													<li>Complimentary popcorn and drink not available for family cards</li>
+													<li>Emirates NBD and U By Emaar terms and conditions apply</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+									<section id="offer-7" class="offer-popup js-custom-scroll">
+										<div class="popup-inner-wrap">
+											<div class="head">
+												<div class="heading">
+													<h1>Emirates NBD</h1>
+												</div>
+												<div class="action">
+													<a href="#" class="close js-close-offer-popup"><span class="txt">Close</span><i class="icon"></i></a>
+												</div>
+											</div>
+											<p>Buy one, and get one free Reel Cinemas tickets, and receive complimentary popcorn and drinks!</p>
+											<p>Please enter first 6 and last 4 digits, found on the back of your ENBD credit card</p>
+											<form class="c-form-sty-1 form--offers-popup js-form--promo js-form js-form--keep-placeholder">
+												<div class="combo-field">
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">First 6 digits of Card</label>
+															<input type="number" placeholder="First 6 digits of Card" name="card" id="cardfirst" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+													<div class="mid-txt">XXXXXX</div>
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">Last 7 digits of Card</label>
+															<input type="number" placeholder="Last 7 digits of Card" name="card" id="cardlast" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+												</div>
+												<div class="form-action">
+													<a href="#" class="c-btn-glow">APPLY OFFER</a>
+													<a href="#" class="link">Terms & Conditions</a>
+												</div>
+											</form>
+											<div class="tac">
+												<h2>Terms and Conditions:</h2>
+												<ul>
+													<li>Offer valid on a maximum of 3 free tickets in a given month across Standard 2D & 3D, Platinum 2D & 3D, MX4D & Dolby Plus</li>
+													<li>Complimentary popcorn and drinks can only be received by U by Emaar ‘Visa Signature’ and ‘Visa Infinite’ card holders</li>
+													<li>Complimentary popcorn and drink not available for family cards</li>
+													<li>Emirates NBD and U By Emaar terms and conditions apply</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+									<section id="offer-8" class="offer-popup js-custom-scroll">
+										<div class="popup-inner-wrap">
+											<div class="head">
+												<div class="heading">
+													<h1>Emirates NBD</h1>
+												</div>
+												<div class="action">
+													<a href="#" class="close js-close-offer-popup"><span class="txt">Close</span><i class="icon"></i></a>
+												</div>
+											</div>
+											<p>Buy one, and get one free Reel Cinemas tickets, and receive complimentary popcorn and drinks!</p>
+											<p>Please enter first 6 and last 4 digits, found on the back of your ENBD credit card</p>
+											<form class="c-form-sty-1 form--offers-popup js-form--promo js-form js-form--keep-placeholder">
+												<div class="combo-field">
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">First 6 digits of Card</label>
+															<input type="number" placeholder="First 6 digits of Card" name="card" id="cardfirst" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+													<div class="mid-txt">XXXXXX</div>
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">Last 7 digits of Card</label>
+															<input type="number" placeholder="Last 7 digits of Card" name="card" id="cardlast" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+												</div>
+												<div class="form-action">
+													<a href="#" class="c-btn-glow">APPLY OFFER</a>
+													<a href="#" class="link">Terms & Conditions</a>
+												</div>
+											</form>
+											<div class="tac">
+												<h2>Terms and Conditions:</h2>
+												<ul>
+													<li>Offer valid on a maximum of 3 free tickets in a given month across Standard 2D & 3D, Platinum 2D & 3D, MX4D & Dolby Plus</li>
+													<li>Complimentary popcorn and drinks can only be received by U by Emaar ‘Visa Signature’ and ‘Visa Infinite’ card holders</li>
+													<li>Complimentary popcorn and drink not available for family cards</li>
+													<li>Emirates NBD and U By Emaar terms and conditions apply</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+									<section id="offer-9" class="offer-popup js-custom-scroll">
+										<div class="popup-inner-wrap">
+											<div class="head">
+												<div class="heading">
+													<h1>Emirates NBD</h1>
+												</div>
+												<div class="action">
+													<a href="#" class="close js-close-offer-popup"><span class="txt">Close</span><i class="icon"></i></a>
+												</div>
+											</div>
+											<p>Buy one, and get one free Reel Cinemas tickets, and receive complimentary popcorn and drinks!</p>
+											<p>Please enter first 6 and last 4 digits, found on the back of your ENBD credit card</p>
+											<form class="c-form-sty-1 form--offers-popup js-form--promo js-form js-form--keep-placeholder">
+												<div class="combo-field">
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">First 6 digits of Card</label>
+															<input type="number" placeholder="First 6 digits of Card" name="card" id="cardfirst" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+													<div class="mid-txt">XXXXXX</div>
+													<div class="form-item">
+														<div class="form-item-wrap">
+															<label for="name" class="field-title only-mobile">Last 7 digits of Card</label>
+															<input type="number" placeholder="Last 7 digits of Card" name="card" id="cardlast" required>
+														</div>
+														<div class="form-item-error-msg"></div>
+													</div>
+												</div>
+												<div class="form-action">
+													<a href="#" class="c-btn-glow">APPLY OFFER</a>
+													<a href="#" class="link">Terms & Conditions</a>
+												</div>
+											</form>
+											<div class="tac">
+												<h2>Terms and Conditions:</h2>
+												<ul>
+													<li>Offer valid on a maximum of 3 free tickets in a given month across Standard 2D & 3D, Platinum 2D & 3D, MX4D & Dolby Plus</li>
+													<li>Complimentary popcorn and drinks can only be received by U by Emaar ‘Visa Signature’ and ‘Visa Infinite’ card holders</li>
+													<li>Complimentary popcorn and drink not available for family cards</li>
+													<li>Emirates NBD and U By Emaar terms and conditions apply</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+						<div class="bot-action">
+							<a href="booking_step-seats.html" class="c-btn-2 btn--black">Skip & Continue</a>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+
+		<!-- <div class="c-min-footer only-mobile">
+			<p>Copyright © Reel Entertainment LLC. All rights reserved.</p>
+		</div> -->
+
+		<div class="footer-outer-wrap only-desktop">
+		    <footer class="c-main-footer">
+		    	<div class="o-container">
+		    		<div class="row">
+		    			<section class="col col-4">
+		    				<h4>Technology Partners</h4>
+		    				<ul class="links-1 js-footer-logos-carousel">
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-dolby.png" alt="Dolby">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-mx4d.png" alt="MX4D">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-laser.png" alt="Laser">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-dolby.png" alt="Dolby">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-mx4d.png" alt="MX4D">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-laser.png" alt="Laser">
+									</picture>
+								</li>
+		    				</ul>
+		    			</section>
+		    			<section class="col col-5">
+		    				<h4>Partners</h4>
+		    				<ul class="links-1 js-footer-logos-carousel">
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-fab.png" alt="FAB">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-omega.png" alt="Omega">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-pepsi.png" alt="Pepesi">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-fab.png" alt="FAB">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-omega.png" alt="Omega">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-pepsi.png" alt="Pepesi">
+									</picture>
+								</li>
+		    				</ul>
+		    			</section>
+		    			<section class="col col-6">
+							
+		    				<ul class="links-1">
+		    					<li><a href="#" target="_blank"><img class="store-icons" src="assets/img/misc/applestore.svg" alt="Store Apple"></a></li>
+		    					<li><a href="#" target="_blank"><img class="store-icons" src="assets/img/misc/googlestore.svg" alt="Store Android"></a></li>
+		    				</ul>
+		    				<div class="copyright">
+		    					<img src="assets/img/misc/logo-emaar.png" alt="EMAAR">
+		    					<span>Copyright © Reel Entertainment LLC. All rights reserved.</span>
+								<span><a href="#">Terms &amp; Conditions</a>   &nbsp; | &nbsp;   <a href="#">Privacy Policy</a></span>
+		    				</div>
+		    			</section>
+		    		</div>
+		    	</div>
+		    </footer>
+		</div>
+
+		<div class="c-popup">
+	        <div class="overlay js-close-popup"></div>
+			
+			<!-- Example of normal popup -->
+	        <!-- <section id="dummy-popup" class="popup">
+	            <div class="popup-wrap">
+	                <hr class="deco">
+	                <div class="c-banner" style="background-image: url(img/img-4.jpg);">
+	                    <h1>Lorem Ipsum</h1>
+	                </div>
+	                <div class="txt-wrap">
+	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in.</p>
+	                </div>
+	                <div class="popup-action">
+	                    <a href="#" class="c-close js-close-popup"><span>Close</span></a>
+	                </div>
+	            </div>
+	        </section> -->
+
+	        <!-- Example of video popup -->
+	        <section id="video-1" class="popup popup--full-screen">
+	            <div class="popup-wrap">
+	                
+	                <div class="js-video"></div>
+
+	                <div class="popup-action">
+	                    <a href="#" class="c-close js-close-popup"><span>Close</span></a>
+	                </div>
+	            </div>
+	        </section>
+
+	        <!-- Popup Sty 1 -->
+	        <section id="popup-1" class="popup popup--sty-1">
+	            <div class="popup-wrap">
+	            	<div class="heading-wrap">
+		            	<div class="heading">
+		            		<h1>Lorem Ipsum Dolor</h1>
+		            	</div>
+		            	<div class="popup-action">
+		            		<a href="#" class="c-close js-close-popup"><span>Close</span></a>
+		            	</div>
+	            	</div>
+	                <div class="txt-wrap">
+	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	                </div>
+	                <div class="action">
+	                	<a href="#" class="c-btn-glow sty--a js-close-popup"><span>Cancel</span></a>
+	                	<a href="#" class="c-btn-glow">Proceed</a>
+	                </div>
+	            </div>
+	        </section>
+	    </div>
+	    <script>
+	    	var seating = [
+							// Target Selector
+							'.js-seat-area',
+							[
+								// Sections and rows in that section.
+								{
+									name: 'Dolby Plus',
+									rows: 12
+								},
+								{
+									name: 'Dolby Standard',
+									rows: 2
+								},
+							],
+							// Number of columns
+							22,
+							// Wheel Chair Seats
+							[
+								['n', 21],
+								['n', 22],
+							],
+							// Booked Seats
+							[
+								['n', 22],
+								['g', 12],
+								['g', 13],
+								['g', 14],
+								['g', 16],
+								['h', 11],
+								['h', 12],
+							],
+							// Seating Area Layout Type.
+							'type-a'
+						];
+	    </script>
+
+	    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	    <script>window.jQuery || document.write('<script src="assets/js/script/jquery-3.3.1.min.js"><\/script>')</script>
+
+	    <script src="assets/js/script.min.js"></script>
+	    <script src="assets/js/booking_validation.js"></script>
+
+	    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+	    <script>
+	        window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+	        ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+	    </script>
+	    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+	</body>
+</html>

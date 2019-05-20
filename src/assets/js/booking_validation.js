@@ -14,6 +14,11 @@ $(function () {
 				number: true
 			}
 		},
+		messages: {
+			password:{
+				minlength: jQuery.validator.format("Please enter at least {0} characters")
+			},
+		},
 		errorPlacement: function(error, element) {
 			if(element.closest('.form-item').find('.form-item-error-msg').get(0)){
         		element.closest('.form-item').find('.form-item-error-msg').append(error);
@@ -28,6 +33,10 @@ $(function () {
 		submitHandler: function() {
 			console.log("submitted!");
 		},
+	});
+	jQuery.extend(jQuery.validator.messages, {
+    	required: "You must complete this field",
+    	email: "Please enter a valid email address",
 	});
 
 });

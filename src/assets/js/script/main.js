@@ -36,6 +36,26 @@ var isRTL = ($('html').attr('dir') == "rtl") ? true : false,
 		500,
 		400];
 
+if(isIE){
+    $('html').addClass('is--ie');
+    $('html').addClass('is--ie-'+isIE);
+
+	if($('.c-booking-pages').get(0)){
+		$('[src*=reel-logo]').attr('src', 'assets/img/brand/logo.png');
+	}else{
+		$('[src*=reel-logo]').attr('src', '/en/assets/img/brand/logo.png');
+	}
+
+    if($('.c-main-banner').get(0)){
+    	var itemHeight = $('.c-main-banner .item-inner').height();
+    	$('.c-main-banner .item-inner .txt').each(function(){
+			$(this).wrapAll('<div class="item-inner-wrap"></div>');
+    	});
+
+		$('.c-main-banner .item-inner .item-inner-wrap').height(itemHeight);
+    }
+}
+
 changeToListViewInMob();
 hideTabsId();
 mobilecheck();
@@ -83,6 +103,8 @@ $(function () {
 	adjustContentList2();
 	navDropDownHeight();
 	filterCustomScroll();
+	adjsutSeatsSecHeight();
+	offerSecAdjustments();
 
 	$('.c-loader').fadeOut('slow', function () {
 	    if(winWidth > 1024){
@@ -91,12 +113,14 @@ $(function () {
 			offset: 0,
 		   });
 	    }
+		offerSecAdjustments();
 	});
 });
 
 //On Window Load
 $(window).on('load', function () {
 	 // calcBodyarea();
+	adjsutSeatsSecHeight();
     footerLogosCarousel(true);
 	setTimeout(function () {
 		AOS.refresh();
@@ -129,6 +153,7 @@ $(window).on('resize orientationchange', function () {
 		animWrapHeight();
 		adjustContentList2();
 		removeLoaderInMob();
+		adjsutSeatsSecHeight();
 
 		clearTimeout(resizeTimer);
 		resizeTimer = setTimeout(function() {
@@ -144,6 +169,7 @@ $(window).on('resize orientationchange', function () {
 		}, 250);
 		// movieListCarousel();
 		// calcScrollHeightDOM();
+		seatHammerFresh();
 	}else{
 		winDimensions();
 	}
@@ -151,6 +177,7 @@ $(window).on('resize orientationchange', function () {
 	changeToListViewInMob();
 	navDropDownHeight();
 	adjustForm();
+	offerSecAdjustments();
 });
 
 /*function calcScrollHeightDOM() {
@@ -182,6 +209,8 @@ $(document).keyup(function(e) {
 		$('.js-custom-select input[type="text"]').blur();
 
         closePopup();
+
+        closeUserDropDown();
 
         movieListSty1Close();
     }
@@ -1139,7 +1168,6 @@ function tabs() {
 		}else{
 			location.hash = target;
 		}
-
 		$('[data-id="'+target+'"]').addClass('is--active');
 
 		if($('[data-id="'+target+'"]').find('.js-movie-list').get(0)){
@@ -1699,25 +1727,6 @@ if (ua.indexOf('safari') != -1) {
   }
 }
 
-if(isIE){
-    $('html').addClass('is--ie');
-    $('html').addClass('is--ie-'+isIE);
-
-	if($('.c-booking-pages').get(0)){
-		$('[src*=reel-logo]').attr('src', 'assets/img/brand/logo.png');
-	}else{
-		$('[src*=reel-logo]').attr('src', '/en/assets/img/brand/logo.png');
-	}
-
-    if($('.c-main-banner').get(0)){
-    	var itemHeight = $('.c-main-banner .item-inner').height();
-    	$('.c-main-banner .item-inner .txt').each(function(){
-			$(this).wrapAll('<div class="item-inner-wrap"></div>');
-    	});
-
-		$('.c-main-banner .item-inner .item-inner-wrap').height(itemHeight);
-    }
-}
 
 function addingAOSData() {
 	// if(winWidth > 1024 && isIE == false){
@@ -3101,7 +3110,7 @@ function customPhoneInput() {
 	}
 }
 function adjustForm() {
-	$('.js-form input, .js-form-sty-1 input').each(function () {
+	$('.js-form:not(.js-form--keep-placeholder) input, .js-form-sty-1:not(.js-form--keep-placeholder) input').each(function () {
 		var attr = $(this).attr('placeholder');
 		var dataAttr = $(this).attr('placeholder');
 		if(typeof attr !== typeof undefined && attr !== false){
@@ -3115,7 +3124,7 @@ function adjustForm() {
 	});	
 }
 if($('input[name="phone"]').get(0)){
-	$('input[name="phone"]').live('keyup', function(key) {
+	$('input[name="phone"]').on('keyup', function(key) {
 	    if(key.charCode < 48 || key.charCode > 57) return false;
 	});
 }
@@ -3279,34 +3288,35 @@ var seatingAreaDineIn = [
 							// Seating Area Layout Type.
 							'type-b'
 						];
+if($('.c-seats-selection').get(0)){
+	buildSeatArea(seating);
+}
 
-buildSeatArea(seatingAreaStandard);
+// $('.seats-area').css({
+// 	width: $('.seats-area').width(),
+// 	height: $('.seats-area').height(),
+// });
 
-$('.seats-area').css({
-	width: $('.seats-area').width(),
-	height: $('.seats-area').height(),
-});
-
-$(".js-draggable").each(function () {
-	setSeatsAreaDim(this);
-});
+// $(".js-draggable").each(function () {
+// 	setSeatsAreaDim(this);
+// });
 
 var seatsZoomLevel = 1;
-$('.js-seats-zoom-in').click(function (e) {
-	e.preventDefault();
-	if(seatsZoomLevel < 3){
-		seatsZoomLevel += 0.1;
-		setZoomLevel(this);
-	}
-});
+// $('.js-seats-zoom-in').click(function (e) {
+// 	e.preventDefault();
+// 	if(seatsZoomLevel < 3){
+// 		seatsZoomLevel += 0.1;
+// 		setZoomLevel(this);
+// 	}
+// });
 
-$('.js-seats-zoom-out').click(function (e) {
-	e.preventDefault();
-	if(seatsZoomLevel > 1){
-		seatsZoomLevel -= 0.1;
-		setZoomLevel(this);
-	}
-});
+// $('.js-seats-zoom-out').click(function (e) {
+// 	e.preventDefault();
+// 	if(seatsZoomLevel > 1){
+// 		seatsZoomLevel -= 0.1;
+// 		setZoomLevel(this);
+// 	}
+// });
 
 function setSeatsAreaDim(target, leftPerc, topPerc) {
 	var thisWidth = $(target).width();
@@ -3494,6 +3504,8 @@ function buildSeatArea(hyperpara) {
 	for (var bookedSeat = 0; bookedSeat < bookedSeats.length; bookedSeat++) {
 		 $('#seat-'+bookedSeats[bookedSeat][0]+'-'+bookedSeats[bookedSeat][1]).parent().addClass('seat--booked');
 	}
+
+	seatsFunctionality();
 }
 
 function seatHtml(seatRow, seatCol) {
@@ -3513,6 +3525,551 @@ function seatHtml(seatRow, seatCol) {
 	</div>'
 }
 
+// var hammertime = new Hammer($('.seats-area .js-draggable')[0], {});
+
+if($('.c-seats-selection').get(0)){
+	var element = $('.seats-area .js-draggable')[0];
+	var hammertime = new Hammer(element, {});
+
+	hammertime.get('pinch').set({ enable: true });
+	hammertime.get('pan').set({ threshold: 0 });
+
+	var fixHammerjsDeltaIssue,
+	 	pinchStart,
+		lastEvent,
+		originalSize,
+		elementWinCenterX,
+		elementWinCenterY,
+		current,
+		last;
+
+	seatHammerFresh(); // also triggered on resize;
+}
+
+function seatHammerFresh() {
+	if($('.c-seats-selection').get(0)){
+		fixHammerjsDeltaIssue = undefined;
+		pinchStart = { x: undefined, y: undefined }
+		lastEvent = undefined;
+
+		originalSize = {
+		    width: $(element).outerWidth(),
+		    height: $(element).outerHeight()
+		}
+		
+		elementWinCenterX = element.getBoundingClientRect().left + (originalSize.width/2);
+		elementWinCenterY = element.getBoundingClientRect().top + (originalSize.height/2);
+
+		current = {
+		    x: 0,
+		    y: 0,
+		    z: 1,
+		    zooming: false,
+		    width: originalSize.width * 1,
+		    height: originalSize.height * 1,
+		}
+
+		last = {
+		    x: current.x,
+		    y: current.y,
+		    z: current.z
+		}
+
+		update();
+	}
+}
+
+function getRelativePosition(element, point, originalSize, scale) {
+    var domCoords = getCoords(element);
+
+    var elementX = point.x - domCoords.x;
+    var elementY = point.y - domCoords.y;
+
+    var relativeX = elementX / (originalSize.width * scale / 2) - 1;
+    var relativeY = elementY / (originalSize.height * scale / 2) - 1;
+    return { x: relativeX, y: relativeY }
+}
+
+function getCoords(elem) { // crossbrowser version
+    var box = elem.getBoundingClientRect();
+
+    var body = document.body;
+    var docEl = document.documentElement;
+
+    var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
+    var clientTop = docEl.clientTop || body.clientTop || 0;
+    var clientLeft = docEl.clientLeft || body.clientLeft || 0;
+
+    var top  = box.top +  scrollTop - clientTop;
+    var left = box.left + scrollLeft - clientLeft;
+
+    return { x: Math.round(left), y: Math.round(top) };
+}
+
+function scaleFrom(zoomOrigin, currentScale, newScale) {
+    var currentShift = getCoordinateShiftDueToScale(originalSize, currentScale);
+    var newShift = getCoordinateShiftDueToScale(originalSize, newScale)
+
+    var zoomDistance = newScale - currentScale
+    
+    var shift = {
+    	x: currentShift.x - newShift.x,
+    	y: currentShift.y - newShift.y,
+    }
+
+    var output = {
+        x: zoomOrigin.x * shift.x,
+        y: zoomOrigin.y * shift.y,
+        z: zoomDistance
+    }
+    return output
+}
+
+function getCoordinateShiftDueToScale(size, scale){
+	var newWidth = scale * size.width;
+    var newHeight = scale * size.height;
+	var dx = (newWidth - size.width) / 2
+	var dy = (newHeight - size.height) / 2
+	return {
+		x: dx,
+		y: dy
+	}
+}
+if($('.c-seats-selection').get(0)){
+	hammertime.on('doubletap', function(e) {
+	    var scaleFactor = 1;
+	    if (current.zooming === false) {
+	        current.zooming = true;
+	    } else {
+	        current.zooming = false;
+	        scaleFactor = -scaleFactor;
+	    }
+
+	    element.style.transition = "0.3s";
+	    setTimeout(function() {
+	        element.style.transition = "none";
+	    }, 300);
+
+	    var zoomOrigin = getRelativePosition(element, { x: e.center.x, y: e.center.y }, originalSize, current.z);
+	    var d = scaleFrom(zoomOrigin, current.z, current.z + scaleFactor)
+	    current.x += d.x;
+	    current.y += d.y;
+	    current.z += d.z;
+
+	    last.x = current.x;
+	    last.y = current.y;
+	    last.z = current.z;
+
+	    update();
+	});
+
+	hammertime.on('pan', function(e) {
+	    if (lastEvent !== 'pan') {
+	        fixHammerjsDeltaIssue = {
+	            x: e.deltaX,
+	            y: e.deltaY
+	        }
+	    }
+
+	    current.x = last.x + e.deltaX - fixHammerjsDeltaIssue.x;
+	    current.y = last.y + e.deltaY - fixHammerjsDeltaIssue.y;
+	    lastEvent = 'pan';
+	    update();
+	});
+
+	hammertime.on('pinch', function(e) {
+	    var d = scaleFrom(pinchZoomOrigin, last.z, last.z * e.scale)
+	    current.x = d.x + last.x + e.deltaX;
+	    current.y = d.y + last.y + e.deltaY;
+	    current.z = d.z + last.z;
+	    lastEvent = 'pinch';
+	    update();
+	})
+
+	var pinchZoomOrigin = undefined;
+	hammertime.on('pinchstart', function(e) {
+	    pinchStart.x = e.center.x;
+	    pinchStart.y = e.center.y;
+	    pinchZoomOrigin = getRelativePosition(element, { x: pinchStart.x, y: pinchStart.y }, originalSize, current.z);
+	    lastEvent = 'pinchstart';
+	})
+
+	hammertime.on('panend', function(e) {
+	    last.x = current.x;
+	    last.y = current.y;
+	    lastEvent = 'panend';
+	})
+
+	hammertime.on('pinchend', function(e) {
+	    last.x = current.x;
+	    last.y = current.y;
+	    last.z = current.z;
+	    lastEvent = 'pinchend';
+	});
+}
+
+$('.js-close-screen-way-msg').click(function (e) {
+	e.preventDefault();
+	$(this).parent().addClass('is--close');
+});
+
+$('.js-mobile-summary-toggle').click(function (e) {
+	e.preventDefault();
+	var thisPanel = $(this).closest('.details-panel');
+	if(winWidth < 768){
+		if(thisPanel.hasClass('mobile-detail-open')){
+			thisPanel.removeClass('mobile-detail-open');
+			$('.c-panel-2 .panel-body .mobile-body-wrap').stop().slideUp();
+		}else{
+			thisPanel.addClass('mobile-detail-open');
+			$('.c-panel-2 .panel-body .mobile-body-wrap').stop().slideDown();
+		}
+	}else{
+	}
+});
+
+var summaryCloseHeight = 0;
+
+adjsutSeatsSecHeight();
+function adjsutSeatsSecHeight() {
+	if(winWidth<768){
+
+		// seat area Initial Height
+		var headerHeight = $('.c-header-1').outerHeight();
+		var innerSecHeader = $('.c-seats-selection .heading-wrap').outerHeight();
+		var legendsHeight = $('.c-seats-selection .legends').outerHeight(true);
+		
+		if($('.js-seat-area input:checked').get(0)){
+			$('.c-seats-selection .seats-area').css('height', winHeight - (headerHeight + innerSecHeader + legendsHeight) - summaryCloseHeight);
+		}else{
+			$('.c-seats-selection .seats-area').css('height', winHeight - (headerHeight + innerSecHeader + legendsHeight));
+		}
+		$('.c-seats-selection .scale-area-wrap').css('max-height', winHeight - (headerHeight + innerSecHeader + legendsHeight));
+
+		// summar area
+		if(!$('.c-seats-selection .details-panel').hasClass('mobile-detail-open')){
+			summaryCloseHeight = $('.c-seats-selection .details-panel .c-panel-2').outerHeight();
+		}
+		$('.c-panel-2 .panel-body .mobile-body-wrap').css('max-height', (winHeight - summaryCloseHeight))
+	}else{
+		$('.c-seats-selection .seats-area').css('height', '');
+		$('.c-seats-selection .scale-area-wrap').css('max-height', '');
+
+		$('.c-panel-2 .panel-body .mobile-body-wrap').css('display', '');
+		$('.c-panel-2 .panel-body .mobile-body-wrap').css('max-height', '')
+	}
+}
+
+function seatsFunctionality() {
+	$('.js-seat-area input').change(function() {
+		if($(this).is(':checked')){
+			seatSelected(this);
+		}else{
+			seatDeSelected(this);
+		}
+	});
+}
+function seatSelected(thisSeat) {
+	// Mobile Summary Seat Toggle
+	$('.c-seats-selection').addClass('seat--selected');
+	if(winWidth < 768){
+		var headerHeight = $('.c-header-1').outerHeight();
+		var innerSecHeader = $('.c-seat-selection .heading-wrap').outerHeight();
+		var legendsHeight = $('.c-seat-selection .legends').outerHeight(true);
+		$('.c-seats-selection .seats-area').stop().animate({'height': (winHeight - (headerHeight + innerSecHeader + legendsHeight) - summaryCloseHeight)}, 250, 'linear');
+	}
+}
+function seatDeSelected(thisSeat) {
+	// Mobile Summary Seat Toggle
+	if(!$('.js-seat-area input:checked').get(0)){
+		$('.c-seats-selection').removeClass('seat--selected');
+		if(winWidth < 768){
+			var headerHeight = $('.c-header-1').outerHeight();
+			var innerSecHeader = $('.c-seat-selection .heading-wrap').outerHeight();
+			var legendsHeight = $('.c-seat-selection .legends').outerHeight(true);
+			$('.c-seats-selection .seats-area').stop().animate({'height': (winHeight - (headerHeight + innerSecHeader + legendsHeight))}, 250, 'linear');
+		}
+	}
+}
+
+$('.js-seats-zoom-in').click(function (e) {
+	e.preventDefault();
+
+    var scaleFactor = 0.2;
+
+    if(current.z < 3){
+	    element.style.transition = "0.0s";
+	    setTimeout(function() {
+	        element.style.transition = "none";
+	    }, 300);
+	    var zoomOrigin = getRelativePosition(element, { x: elementWinCenterX, y: elementWinCenterY }, originalSize, current.z);
+	    var d = scaleFrom(zoomOrigin, current.z, current.z + scaleFactor)
+	    current.x += d.x;
+	    current.y += d.y;
+	    current.z += d.z;
+
+	    last.x = current.x;
+	    last.y = current.y;
+	    last.z = current.z;
+		
+		update();
+	}
+});
+
+$('.js-seats-zoom-out').click(function (e) {
+	e.preventDefault();
+
+	if(current.z > 1){
+	    var scaleFactor = -0.2;
+
+	    element.style.transition = "0.0s";
+	    setTimeout(function() {
+	        element.style.transition = "none";
+	    }, 300)
+
+	    var zoomOrigin = getRelativePosition(element, { x: elementWinCenterX, y: elementWinCenterY }, originalSize, current.z);
+	    var d = scaleFrom(zoomOrigin, current.z, current.z + scaleFactor)
+	    current.x += d.x;
+	    current.y += d.y;
+	    current.z += d.z;
+
+	    last.x = current.x;
+	    last.y = current.y;
+	    last.z = current.z;
+
+	   	update();
+	}
+});
+
+function panBounds() {
+	var extraWidth = (originalSize.width - $(element).parent().parent().width())/2;
+	var extraHeight = (originalSize.height - $(element).parent().parent().height())/2;
+
+	var offsetWidth = (current.width - originalSize.width)/2;
+	var offsetHeight = (current.height - originalSize.height)/2;
+
+	var limitWidth = offsetWidth+extraWidth;
+	var limitHeight = offsetHeight+extraHeight;
+
+	var yTop = offsetHeight;
+	var yBot = -(offsetHeight+(extraHeight*2));
+
+	if(yBot > 0){
+		// yBot = (($(element).parent().parent().height() - originalSize.height)/2);
+		yBot = 0;
+	}
+
+	if(current.x > limitWidth){
+		current.x = limitWidth;
+	}
+	if(current.y > yTop){
+		current.y = yTop;
+	}
+	if(current.x < -limitWidth){
+		current.x = -limitWidth;
+	}
+	if(current.y < yBot){
+		current.y = yBot;
+	}
+}
+update();
+function update() {
+	//Limit zoom in and out between 3x and 1x
+	if($('.c-seats-selection').get(0)){
+		if(current.z > 3){
+			current.z = 3
+		}else if(current.z < 1){
+			current.z = 1
+		}
+
+	    current.height = originalSize.height * current.z;
+	    current.width = originalSize.width * current.z;
+		panBounds();
+	    element.style.transform = "translate3d(" + current.x + "px, " + current.y + "px, 0) scale(" + current.z + ")";
+	}
+}
+
 // ==============================================
 // END - Seat Area JS
 // ==============================================
+
+
+function offerSecAdjustments() {
+	if($('.c-offers-selection').get(0)){
+		var headerHeight = $('.c-header-1').outerHeight();
+		var botMsg = $('.c-offers-selection .bot-action').outerHeight();
+		var aboveSpace = winHeight - headerHeight - botMsg;
+
+		if(winWidth > 767){
+			$('.js-offer-sec-height').css('min-height', aboveSpace);
+
+			$('.js-offer-sec-height .offers-list-wrapper').css('max-height', 0);
+			var innerSpace = $('.js-offer-sec-height').height() - $('.c-offers-selection .offers-sec .sec-header').outerHeight(true) - parseInt($('.c-offers-selection .inner-wrap').css('padding-top'));
+			$('.js-offer-sec-height .offers-list-wrapper').css('max-height', innerSpace);
+			$('.c-offers-selection .section-wrap').css('height', '');
+		}else{
+			$('.js-offer-sec-height').css('min-height', '');
+			$('.js-offer-sec-height .offers-list-wrapper').css('max-height', '');
+
+			var mobileArea = winHeight - $('.c-offers-selection .bot-action').outerHeight() - $('.c-offers-selection .section-wrap').offset().top
+			$('.c-offers-selection .section-wrap').css('height', mobileArea);
+		}
+	}
+}
+
+$('.offers-poups .offer-popup').each(function () {
+	var thisId = $(this).attr('id');
+	$(this).attr('data-id', thisId);
+	$(this).attr('id', '');
+});
+
+$('[data-offer]').click(function(e) {
+	e.preventDefault();
+	var target = $(this).attr('data-offer');
+	$('html').addClass('offer-popup--open');
+	console.log($('[data-id="'+target+'"]'));
+	$('[data-id="'+target+'"]').addClass('is--active');
+	$('[data-id="'+target+'"]').stop().fadeIn('fast');
+});
+$('.js-close-offer-popup').click(function (e) {
+	e.preventDefault();
+	closeOffers();
+});
+$('.js-show-field').click(function (e) {
+	e.preventDefault();
+	if($(this).parent().find('input[type="password"]').get(0)){
+		$(this).parent().find('input').attr('type', 'text');
+		$(this).html('Hide');
+	}else{
+		$(this).parent().find('input').attr('type', 'password');
+		$(this).html('Show');
+	}
+});
+$('.js-toggle-capsule').click(function (e) {
+	e.preventDefault();
+	$(this).closest('li').toggleClass('is--active');
+	console.log(this);
+	updateCapsuleCount(this);
+});
+function updateCapsuleCount(target) {
+	var totalSelected = $(target).closest('.sec-group').find('.c-capsule-list li.is--active').length;
+	console.log(updateCapsuleCount);
+	$(target).closest('.sec-group').find('.group-head .js-selected-item').html(totalSelected);
+}
+$('.js-capsule-edit').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.capsule-edit-wrap').toggleClass('is--editing');
+});
+
+function closeOffers(){
+	$('html').removeClass('offer-popup--open');
+	$('.offers-poups .offer-popup').removeClass('is--active');
+	$('.offers-poups .offer-popup').stop().fadeOut('fast', function () {
+		$(this).removeClass('is--active');
+	});
+}
+
+
+// ACCORDIONS
+// $('.js-is-accor:not(.is--active) .body').slideUp('fast');
+
+$('.js-accor-link').click(function (e) {
+	e.preventDefault();
+	// var accorName = $(this).attr('data-accorname');
+	// $('.js-is-accor[data-accorname="'+accorName+'"]').removeClass('is--active');
+	if($(this).closest('.js-is-accor').hasClass('is--active')){
+		$(this).closest('.js-is-accor').removeClass('is--active');
+		$(this).closest('.js-is-accor').find('.body').stop().slideUp();
+	}else{
+		$(this).closest('.js-is-accor').addClass('is--active');
+		$(this).closest('.js-is-accor').find('.body').stop().slideDown();
+	}
+});
+
+// END - ACCORDIONS
+
+
+// Card
+
+$('.js-card-remove').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.card').parent().remove();
+});
+$('.js-card-edit').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.c-my-cards').addClass('has--form-enable');
+	$(this).closest('.card').addClass('is--editing');
+});
+$('.js-card-cancel, .js-card-save').click(function(e) {
+	e.preventDefault();
+	$(this).closest('.c-my-cards').removeClass('has--form-enable');
+	$(this).closest('.card').removeClass('is--editing');
+
+	if($(this).closest('.add-card')){
+		// $(this).closest('.c-my-cards').removeClass('has--form-enable');
+		$(this).closest('.add-card').removeClass('is--editing');
+	}
+});
+
+$('.js-add-card').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.c-my-cards').addClass('has--form-enable');
+	$(this).closest('.c-my-cards').find('li.add-card').addClass('is--editing');
+});
+
+// User Account 
+
+$('.js-user-dropdown').click(function (e) {
+	e.preventDefault();
+	var parent = $(this).closest('.c-user-summary');
+	if(parent.hasClass('dropdown--active')){
+		closeUserDropDown();
+	}else{
+		parent.addClass('dropdown--active');
+		parent.find('.user-actions-dropdown').slideDown();
+	}
+});
+$(document).on('click', function (e) {
+    if ($(e.target).closest(".c-user-summary").length === 0) {
+        closeUserDropDown();
+    }
+});
+
+function closeUserDropDown() {
+	$('.c-user-summary').removeClass('dropdown--active');
+	$('.c-user-summary').find('.user-actions-dropdown').slideUp();
+}
+
+var promoCodeCount = 1;
+$('.js-offer-code-add').click(function (e) {
+	e.preventDefault();
+	promoCodeCount++;
+	$(this).before('<div class="form-item">\
+												<div class="form-item-wrap">\
+													<label for="code-'+promoCodeCount+'" class="field-title only-mobile">Enter code</label>\
+													<input type="text" placeholder="Enter code" name="name" id="code-'+promoCodeCount+'" required>\
+												</div>\
+												<div class="form-item-error-msg"></div>\
+											</div>');
+	offerSecAdjustments();
+});
+
+$('.js-whats-this').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.panel-body').find('.c-whats-this').stop().fadeIn('fast', function () {
+		$(this).addClass('is--visible');
+	});
+});
+$('.js-close-whats-this').click(function (e) {
+	e.preventDefault();
+	$(this).closest('.c-whats-this').stop().fadeOut('fast', function () {
+		$(this).removeClass('is--visible');
+	});
+});
+
+if($('.c-tabs-heading-sec .links-list .scroll').get(0)){
+	var leftVal = $('.c-tabs-heading-sec .links-list .scroll a.is--active')[0].offsetLeft;
+	$('.c-tabs-heading-sec .links-list .scroll').scrollLeft(leftVal - 20);
+}

@@ -21,6 +21,14 @@
 		border-bottom: 1px solid #e5e5e5;
 	}
 
+	.user-links{
+		display: block;
+
+		ul{
+			display: none;
+		}
+	}
+
 	.header-links{
 		margin: 0 0 0 auto;
 		@media (max-width: 1023px){
@@ -28,23 +36,14 @@
 		}
 		a{
 			display: block;
-			font-size: 20px;
-			line-height: 1em;
-			font-weight: 100;
-			text-transform: uppercase;
-			color: #222222;
+			@extend .header-links;
 			transition: all .20s ease-in-out;
+			&.c-menu-btn.btn--acount{
+				display: flex;
+			}
 			&:hover {
 				//color: #6e3996;
 				//border-bottom: 3px solid #6e3996;
-			}
-
-			font-size: 20px;
-			@media (max-width: 1800px){
-				font-size: 18px;
-			}
-			@media (max-width: 1600px){
-				font-size: 16px;
 			}
 		}
 		> ul{
@@ -130,11 +129,15 @@
 	}
 
 	.c-menu-btn{
+		display: flex;
 		border-left: 1px solid #efefef;
 		padding: 33px 40px;
 
 		@media (max-width: 1023px){
 		    margin: 0 0 0 auto;
+		}
+		@media (max-width: 767px){
+			border-left: none;
 		}
 	}
 
@@ -776,6 +779,7 @@
 .c-header-1 .main-logo,
 .logo{
     width: 145px;
+    height: 54px;
     display: block;
     position: fixed;
     top: 15px;
@@ -784,15 +788,20 @@
 
 	@media (max-width: 767px){
 		width: 110px;
+		height: 42px;
 		top: 9px;
 		left: 10px;
 
-		.hg-651 &{
+		.hg-650 &{
 			top: 14px;
 
 			.not-at-top &{
 				top: 9px;
 			}
+		}
+
+		.not-at-top &{
+			top: 9px;
 		}
 	}
 }

@@ -25,7 +25,7 @@
 				<img src="assets/img/brand/reel-logo.svg" alt="Reel Cinemas" class="svg js-inline-svg">
 			</picture>
 		</a>
-		<header class="c-main-header">
+				<header class="c-main-header">
 			<nav class="header-links js-header-links">
 				<ul>
 					<li><a href="showtime.html">Showtimes</a></li>
@@ -62,11 +62,18 @@
 							<li><a href="loc_al-ghurair-centre.html">Al Ghurair Centre</a></li>
 						</ul>
 					</li>
+					<li class="user-links">
+						<a href="#" class="c-menu-btn btn--acount">
+							<span class="icon-wrap"><i></i><i></i></span>
+							<span class="txt">Hi Fawad</span>
+						</a>
+						<ul>
+							<li><a href="booking_user-profile.html">My Account</a></li>
+							<li><a href="booking_signin.html">Sign out</a></li>
+						</ul>
+					</li>
 				</ul>
 			</nav>
-			<a href="#" class="c-menu-btn js-open-side-nav">
-				<span class="icon-wrap"><i></i><i></i><i></i><span class="txt">Menu</span></span>
-			</a>
 			<a href="#" class="c-menu-btn js-open-side-nav">
 				<span class="icon-wrap"><i></i><i></i><i></i><span class="txt">Menu</span></span>
 			</a>
@@ -167,73 +174,72 @@
 						<div class="o-row">
 							<div class="o-col col--100">
 								<div class="c-link-list-1">
-									<a href="booking_signin.html" class="link"><span>Login</span></a>
-									<a href="booking_signup.html" class="link is--active"><span>Signup</span></a>
+									<a href="booking_signin.html" class="link"><span>Log in</span></a>
+									<a href="booking_signup.html" class="link is--active"><span>Sign up</span></a>
 								</div>
 								<div class="wrap-1">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies tristique tortor, quis viverra odio tristique vitae.</p>
-								</div>
-								<form class="c-form-sty-1 js-form--signup js-form">
-									<div class="o-row">
-										<div class="o-col col--50 col--sm--100">
+									<p>Create a Reel Cinemas account to make booking movies quicker and easier, and to access any member-only offers that are available.</p>
+									<form class="c-form-sty-1 form--signup js-form--signup js-form  js-form--keep-placeholder">
+										<div class="o-row">
 											<div class="form-item has--icon">
 												<div class="form-item-wrap">
-													<label for="first-name" class="field-title only-mobile">First Name</label>
-													<input type="text" placeholder="First Name" name="first-name" id="first-name" required>
+													<label for="first-name" class="field-title only-mobile">First name</label>
+													<input type="text" placeholder="First name" name="first-name" id="first-name" required>
 													<i class="icon icon--name"></i>
 												</div>
 												<div class="form-item-error-msg"></div>
 											</div>
 											<div class="form-item has--icon">
 												<div class="form-item-wrap">
-													<label for="email" class="field-title only-mobile">Email</label>
-													<input id="email" type="email" placeholder="Email" name="email" id="email" required>
+													<label for="last-name" class="field-title only-mobile">Last name</label>
+													<input type="text" placeholder="Last name" name="last-name" id="last-name" required>
+													<i class="icon icon--name"></i>
+												</div>
+												<div class="form-item-error-msg"></div>
+											</div>
+
+											<div class="form-item has--icon">
+												<div class="form-item-wrap">
+													<label for="email" class="field-title only-mobile">Email address</label>
+													<input id="email" type="email" placeholder="Email address" name="email" id="email" required>
 													<i class="icon icon--mail"></i>
 												</div>
 												<div class="form-item-error-msg"></div>
 											</div>
+
 											<div class="form-item has--icon">
 												<div class="form-item-wrap">
-													<label for="password" class="field-title only-mobile">Password</label>
-													<input type="password" placeholder="Password" name="password" id="password" minLength="6" required>
-													<i class="icon icon--password"></i>
-												</div>
-												<div class="form-item-error-msg"></div>
-											</div>
-										</div>
-										<div class="o-col col--50 col--sm--100">
-											<div class="form-item has--icon">
-												<div class="form-item-wrap">
-													<label for="last-name" class="field-title only-mobile">Last Name</label>
-													<input type="text" placeholder="Last Name" name="last-name" id="last-name" required>
-													<i class="icon icon--name"></i>
-												</div>
-												<div class="form-item-error-msg"></div>
-											</div>
-											<div class="form-item has--icon">
-												<div class="form-item-wrap">
-													<label for="phone" class="field-title only-mobile">Phone Number</label>
-													<input id="phone" type="number" placeholder="Phone Number" class="js-phone-field" name="phone" id="phone" maxlength="15" required>
+													<label for="phone" class="field-title only-mobile">Phone number</label>
+													<input id="phone" type="number" placeholder="Phone number" class="js-phone-field" name="phone" id="phone" maxlength="15" required>
 													<i class="icon icon--phone"></i>
 												</div>
 												<div class="form-item-error-msg"></div>
 											</div>
+											
 											<div class="form-item has--icon">
 												<div class="form-item-wrap">
-													<label for="confirm-password" class="field-title only-mobile">Confirm Password</label>
-													<input type="password" placeholder="Confirm Password" name="confirm-password" id="confirm-password" minLength="6" required>
+													<label for="password" class="field-title only-mobile">Password</label>
+													<input type="password" placeholder="Password" name="password" id="password" minlength="6"required>
+													<i class="icon icon--password"></i>
+												</div>
+												<div class="form-item-error-msg"></div>
+											</div>
+											<div class="form-item has--icon">
+												<div class="form-item-wrap">
+													<label for="confirm-password" class="field-title only-mobile">Confirm password</label>
+													<input type="password" placeholder="Confirm Password" name="confirm-password" id="confirm-password" minlength="6" required>
 													<i class="icon icon--password"></i>
 												</div>
 												<div class="form-item-error-msg"></div>
 											</div>
 										</div>
-									</div>
-									<div class="action-items-inline">
-										<div class="action">
-											<a href="#" class="c-btn-glow js-submit-form"><span>Sign Up</span></a>
+										<div class="action-items-inline">
+											<div class="action">
+												<a href="#" class="c-btn-glow js-submit-form"><span>Sign Up</span></a>
+											</div>
 										</div>
-									</div>
-								</form>
+									</form>
+								</div>
 							</div>
 						</div>
 						<div class="o-row">
@@ -274,11 +280,11 @@
 			</div>
 		</div>
 
-		<div class="c-min-footer only-mobile">
+		<!--<div class="c-min-footer only-mobile">
 			<p>Copyright © Reel Entertainment LLC. All rights reserved.</p>
-		</div>
+		</div>-->
 
-		<div class="footer-outer-wrap only-desktop">
+		<div class="footer-outer-wrap">
 		    <footer class="c-main-footer">
 		    	<div class="o-container">
 		    		<div class="row">
