@@ -2050,7 +2050,9 @@ function jsVideoDirect() {
 function bindPopupEve() {
 	// Popup Open
 	$('.js-popup-link:not(.popup--event-binded)').click(function (e) {
-		e.preventDefault();
+		if(!$(this).hasClass('add-box')){
+			e.preventDefault();
+		}
 		var target = $(this).attr('href');
 		var videoLink = $(this).attr('data-video');
 		openPopup(target, videoLink);

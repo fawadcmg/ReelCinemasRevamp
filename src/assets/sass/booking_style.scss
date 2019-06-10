@@ -3363,7 +3363,17 @@
 		@extend .c-panel-scrollbar;
 		margin-left: -20px;
 		min-height: 200px;
-		max-height: 320px;
+
+		&.mCustomScrollbar{
+			max-height: 320px;
+			.main-list{
+				> li{
+					&:last-child{
+						margin-bottom: 40px;
+					}
+				}
+			}
+		}
 
 		&, div, li, a{
 			font-size: 14px;
@@ -3494,7 +3504,7 @@
 
 				&:last-child{
 					border-bottom: none;
-					margin-bottom: 40px;
+					margin-bottom: 0px;
 				}
 			}
 		}
@@ -3519,6 +3529,12 @@
 				text-overflow: eclipse;
 				position: relative;
 				overflow: hidden;
+				margin-right: 5px;
+
+				.is--mobile &{
+					margin-right: 0;
+				}
+
 				@media (max-width: 767px) {
 					padding-right: 28px;
 				}
@@ -3733,7 +3749,7 @@
 		}
 		.icon{
 			display: block;
-			width: 24px;
+			width: 26px;
 			height: 24px;
 			background: url('../img/icons/order-movie-icon.svg') no-repeat center center;
 			background-size: 21px auto;
@@ -3754,6 +3770,12 @@
 	.body-highlight{
 		background: linear-gradient(90deg, #9d36d5 0%,#673190 100%);
 		color: #fff;
+
+		&:not(.bh--sty-a){
+			@media (min-width: 768px){
+				padding-top: 0 !important;
+			}
+		}
 
 		&.bh--sty-a{
 			@media (max-width: 767px){
@@ -7250,14 +7272,14 @@ select.has--icon-time{
 
 
 .c-payment-methods{
-	min-height: 802px;
+	min-height: 772px;
 	display: flex;
 	flex-direction: column;
 	display: flex;
 	height: 100%;
 
 	@media (max-width: 1800px){
-		min-height: 797px;
+		min-height: 767px;
 	}
 	@media (max-width: 1200px){
 		min-height: 0px;
@@ -7956,4 +7978,8 @@ select.has--icon-time{
 	@media (max-width: 767px){
 		padding-bottom: 0 !important;
 	}
+}
+
+.u-no-min-h{
+	min-height: 0 !important;
 }

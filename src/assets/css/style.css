@@ -7736,7 +7736,9 @@ label {
           width: 32px;
           height: 32px;
           border-radius: 0;
-          background: transparent; }
+          background: transparent;
+          -webkit-transform: translateZ(0);
+                  transform: translateZ(0); }
           .c-popup .popup.popup--sty-1 .heading-wrap .popup-action .c-close span {
             width: 18px;
             height: 18px;

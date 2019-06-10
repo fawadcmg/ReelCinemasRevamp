@@ -4228,8 +4228,11 @@
   .c-panel-2 .list-meal {
     margin-top: 20px;
     margin-left: -20px;
-    min-height: 200px;
-    max-height: 320px; }
+    min-height: 200px; }
+    .c-panel-2 .list-meal.mCustomScrollbar {
+      max-height: 320px; }
+      .c-panel-2 .list-meal.mCustomScrollbar .main-list > li:last-child {
+        margin-bottom: 40px; }
     .c-panel-2 .list-meal, .c-panel-2 .list-meal div, .c-panel-2 .list-meal li, .c-panel-2 .list-meal a {
       font-size: 14px;
       line-height: 1em; }
@@ -4337,7 +4340,7 @@
         margin-bottom: 20px; }
         .c-panel-2 .list-meal .main-list > li:last-child {
           border-bottom: none;
-          margin-bottom: 40px; }
+          margin-bottom: 0px; }
     .c-panel-2 .list-meal .li-head {
       display: -webkit-box;
       display: -webkit-flex;
@@ -4363,7 +4366,10 @@
       -o-text-overflow: eclipse;
          text-overflow: eclipse;
       position: relative;
-      overflow: hidden; }
+      overflow: hidden;
+      margin-right: 5px; }
+      .is--mobile .c-panel-2 .list-meal .li-inner-list li {
+        margin-right: 0; }
       @media (max-width: 767px) {
         .c-panel-2 .list-meal .li-inner-list li {
           padding-right: 28px; } }
@@ -4589,6 +4595,9 @@
     background: -o-linear-gradient(left, #9d36d5 0%, #673190 100%);
     background: linear-gradient(90deg, #9d36d5 0%, #673190 100%);
     color: #fff; }
+    @media (min-width: 768px) {
+      .c-panel-2 .body-highlight:not(.bh--sty-a) {
+        padding-top: 0 !important; } }
     .c-panel-2 .body-highlight.bh--sty-a .total-calculation {
       margin-bottom: 0; }
     .c-panel-2 .body-highlight.bh--sty-a .calc-row:last-child {
@@ -7665,7 +7674,7 @@ select.has--icon-time + .select2-container .select2-selection__rendered {
     font-weight: normal; }
 
 .c-payment-methods {
-  min-height: 802px;
+  min-height: 772px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7679,7 +7688,7 @@ select.has--icon-time + .select2-container .select2-selection__rendered {
   height: 100%; }
   @media (max-width: 1800px) {
     .c-payment-methods {
-      min-height: 797px; } }
+      min-height: 767px; } }
   @media (max-width: 1200px) {
     .c-payment-methods {
       min-height: 0px; } }
@@ -8340,3 +8349,6 @@ select.has--icon-time + .select2-container .select2-selection__rendered {
   @media (max-width: 767px) {
     .pad-bot-0 {
       padding-bottom: 0 !important; } }
+
+.u-no-min-h {
+  min-height: 0 !important; }
