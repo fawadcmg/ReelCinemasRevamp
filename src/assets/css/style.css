@@ -53,13 +53,12 @@ table {
   font-weight: normal;
   font-style: normal; }
 
-/* @font-face {
-    font-family: 'effralight';
-    src: url('../fonts/Effra_light-webfont.woff2') format('woff2'),
-         url('../fonts/Effra_light-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-} */
+@font-face {
+  font-family: 'Effra';
+  src: url("../fonts/Effra_light-webfont.woff2") format("woff2"), url("../fonts/Effra_light-webfont.woff") format("woff");
+  font-weight: 100;
+  font-style: 100; }
+
 @font-face {
   font-family: 'Effra';
   src: url("../fonts/Effra-Bold.eot");
@@ -7718,10 +7717,18 @@ label {
               justify-content: space-between;
       margin-bottom: 20px; }
       .c-popup .popup.popup--sty-1 .heading-wrap .heading {
-        padding-right: 20px; }
+        padding-right: 20px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center; }
         .c-popup .popup.popup--sty-1 .heading-wrap .heading > * {
           font-size: 20px;
-          line-height: 1.6em;
+          line-height: 1.2em;
           font-weight: bold; }
       .c-popup .popup.popup--sty-1 .heading-wrap .popup-action {
         margin-top: 0; }
@@ -7731,10 +7738,10 @@ label {
           border-radius: 0;
           background: transparent; }
           .c-popup .popup.popup--sty-1 .heading-wrap .popup-action .c-close span {
-            width: 16px;
-            height: 16px;
-            top: 8px;
-            left: 8px; }
+            width: 18px;
+            height: 18px;
+            top: 7px;
+            left: 7px; }
             .c-popup .popup.popup--sty-1 .heading-wrap .popup-action .c-close span:before, .c-popup .popup.popup--sty-1 .heading-wrap .popup-action .c-close span:after {
               background: #000; }
             .c-popup .popup.popup--sty-1 .heading-wrap .popup-action .c-close span:before {
@@ -8528,7 +8535,7 @@ html:not(.has--smartbanner) {
 .header-links, .c-main-header .header-links a {
   font-size: 20px;
   line-height: 1em;
-  font-weight: 100;
+  font-weight: normal;
   text-transform: uppercase;
   color: #222222; }
   @media (max-width: 1800px) {

@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="x-ua-compatible" content="ie=edge">
+	  <title>Reel Cinemas</title>
+	  <meta name="description" content="">
+	  <link rel="manifest" href="manifest.json">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	  <link rel="stylesheet" href="assets/css/style.min.css">
+	  <link rel="stylesheet" href="assets/css/booking_style.min.css">
+	</head>
+	
+	<body>
+	    <!--[if lte IE 9]>
+	        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	    <![endif]-->
+		<div class="c-landscape-msg"><div class="msg-inner">For best experince view the site in portrait mode.</div></div>
+		<div class="c-loader"></div><div class="c-overlay js-close-side-nav"></div>
+	    <div class="c-overlay-white js-close-filter-m"></div>
+		
+		<div class="c-booking-pages no--bg">
+			<div class="o-container">
+				<header class="c-header-1">
+					<div class="logo-wrap">
+						<a href="index.html" class="main-logo">
+							<picture>
+								<!-- <source srcset="assets/img/brand/logo-colored.png" media="(max-width: 767px)"> -->
+								<img src="assets/img/brand/reel-logo.svg" alt="Reel Cinemas" class="svg js-inline-svg">
+							</picture>
+						</a>
+					</div>
+					<nav class="c-steps">
+						<ul>
+							<li class="is--active">
+								<a href="booking_step-offers.html" class="step-offers">
+									<i class="icon"><img src="assets/img/icons/step-offers.svg" class="js-inline-svg"></i>
+									<span class="txt">Offers</span>
+								</a>
+							</li>
+							<li class="is--active">
+								<a href="booking_step-seats.html" class="step-seat">
+									<i class="icon"><img src="assets/img/icons/step-seat.svg" class="js-inline-svg"></i>
+									<span class="txt">Seats</span>
+								</a>
+							</li>
+							<li class="is--active">
+								<a href="booking_step-meal-selection.html" class="step-food">
+									<i class="icon"><img src="assets/img/icons/step-food.svg" class="js-inline-svg"></i>
+									<span class="txt">Food</span>
+								</a>
+							</li>
+							<li class="is--current">
+								<a href="booking_step-payment--card--guest.html" class="step-payment">
+									<i class="icon"><img src="assets/img/icons/step-payment.svg" class="js-inline-svg"></i>
+									<span class="txt">Payment</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="c-user-summary">
+						<a href="#" class="js-user-dropdown action-elem">
+							<div class="user-img"><!-- <img src="assets/img/booking/user-img-thumb.jpg" alt="John Doe"> --></div>
+							<span class="arrow-icon"></span>
+						</a>
+						<nav class="user-actions-dropdown">
+							<a href="booking_user-profile.html">My Account <i class="icon icon--user"></i></a>
+							<a href="booking_step-offers.html">Booking <i class="icon icon--user"></i></a>
+							<a href="booking_signin.html">Sign out <i class="icon icon--signout"></i></a>
+						</nav>
+					</div>
+				</header>
+				<main class="b-page-content">
+					<div class="c-seats-selection c-payment-selection">
+						<div class="seats-panel">
+							<div class="c-payment-methods">
+
+								<div class="sec-head">
+									<div class="mobile-header">
+										<h1><i class="icon"><img src="assets/img/icons/step-payment.svg" class="js-inline-svg"></i> How would you like to pay?</h1>
+										<nav class="c-steps">
+											<ul>
+												<li class="is--active">
+													<a href="booking_step-offers.html" class="step-offers">
+														<i class="icon"><img src="assets/img/icons/step-offers.svg" class="js-inline-svg"></i>
+														<span class="txt">Offers</span>
+													</a>
+												</li>
+												<li class="is--active">
+													<a href="booking_step-seats.html" class="step-seat">
+														<i class="icon"><img src="assets/img/icons/step-seat.svg" class="js-inline-svg"></i>
+														<span class="txt">Seats</span>
+													</a>
+												</li>
+												<li class="is--active">
+													<a href="booking_step-seats.html" class="step-food">
+														<i class="icon"><img src="assets/img/icons/step-food.svg" class="js-inline-svg"></i>
+														<span class="txt">Food</span>
+													</a>
+												</li>
+												<li class="is--current">
+													<a href="booking_step-payment--card--guest.html" class="step-payment">
+														<i class="icon"><img src="assets/img/icons/step-payment.svg" class="js-inline-svg"></i>
+														<span class="txt">Payment</span>
+													</a>
+												</li>
+											</ul>
+										</nav>
+									</div>
+									<p>Choose from the many payment methods below.</p>
+								</div>
+								<div class="payment-tabs-wrap">
+									<div class="payment-tabs">
+										<a href="booking_step-payment--card--guest.html">
+											<i class="icon icon-card"></i>
+											<span class="link-txt">Card</span>
+										</a>
+										<a href="booking_step-payment--ubyemaar.html" class="is--active">
+											<i class="icon icon-ubyemaar"></i>
+											<span class="link-txt">U By Emaar</span>
+										</a>
+										<a href="#">
+											<i class="icon icon-apple"></i>
+											<span class="link-txt">Apple</span>
+										</a>
+										<a href="#">
+											<i class="icon icon-google"></i>
+											<span class="link-txt">Google</span>
+										</a>
+										<a href="#">
+											<i class="icon icon-reel"></i>
+											<span class="link-txt">Reel</span>
+										</a>
+										<a href="#">
+											<i class="icon icon-noon"></i>
+											<span class="link-txt">Noon</span>
+										</a>
+										<a href="#">
+											<i class="icon icon-visa-checkout"></i>
+											<span class="link-txt">Visa Checkout</span>
+										</a>
+									</div>
+								</div>
+								<div class="sub-head">
+									<h2>U By Emaar</h2>
+								</div>
+								<div class="c-u-points">
+									<p>Pay for the experience with your UPoints</p>
+									<div class="up-item-wrap">
+										<div class="up-item icon--coins">
+											<div class="up-label">UPoints Required</div>
+											<div class="up-count">285</div>
+										</div>
+										<div class="up-item icon--wallet">
+											<div class="up-label">UPoints Available</div>
+											<div class="up-count">150 <!-- <span class="unit">AED</span> --></div>
+										</div>
+									</div>
+									<div class="up-message msg--alert">You dont have enough balance for this transaction. <br>Please use another payment method.</div>
+								</div>
+							</div>
+						</div>
+						<div class="details-panel">
+							<div class="c-panel-2-wrap js-stick-in-view pad-bot-0">
+								<section class="c-panel-2 panel--sty-1 panel--order-summary panel--height-fit">
+									<div class="panel-header">
+										<div class="header-row">
+											<h1 class="js-mobile-summary-toggle">Your order <i class="icon"></i></h1>
+											<!-- <div class="c-info">
+												<div class="info-cta">
+												 	<div class="info-txt">What’s this</div>
+												 	<i class="icon"></i>
+												</div>
+											</div> -->
+										</div>
+										<!-- <div class="header-row">
+											<p>Lorem ipsum dolor sit amet adipiscing elit.</p>
+										</div> -->
+									 </div>
+									 <div class="panel-body">
+									 	<div class="mobile-body-wrap">
+										 	<div class="body-casual">
+											 	<div class="calculation-list">
+												 	<h2>Your seats</h2>
+												 	<ul cavlass="list">
+													 	<li class="item">
+													 		<div class="upper">
+														 		<div class="type">Dolby Standard</div>
+														 		<div class="cost">AED <span class="type-total">140</span></div>
+													 		</div>
+													 		<div class="lower">
+													 			<div class="number">N9,N10</div>
+													 			<div class="breakdown"><span class="amount">2</span> x AED <span class="amount">70</span></div>
+													 		</div>
+													 	</li>
+													 	<li class="item">
+													 		<div class="upper">
+														 		<div class="type">Dolby Plus</div>
+														 		<div class="cost">AED <span class="type-total">120</span></div>
+													 		</div>
+													 		<div class="lower">
+													 			<div class="number">A10,D11</div>
+													 			<div class="breakdown"><span class="numbers">2</span> x AED <span class="amount">60</span></div>
+													 		</div>
+													 	</li>
+												 	</ul>
+											 	</div>
+											 	<div class="highlight-bar-sec">
+											 		<h2>Savings <a href="#" class="remove-icon js-saving-remove"><i class="icon"></i><span class="txt">Remove</span></a></h2>
+											 		<div class="highlight-bar">
+											 			<div class="txt">
+											 				Standard Chartered <br>Credit Card Offer
+											 			</div>
+											 			<div class="calc">
+											 				SAVED <strong>AED <span class="amount">73</span></strong>
+											 			</div>
+											 			<a href="#" class="remove-icon js-saving-remove"><i class="icon"></i><span class="txt">Remove</span></a>
+											 		</div>
+											 	</div>
+										 	</div>
+										 	<div class="body-normal">
+										 		<div class="info-list">
+											 		<ul class="list">
+											 			<li><i class="icon icon--movie"></i> <span class="txt">Alita Batatle Angel</span><div class="rating">PG<br>13</div></li>
+											 			<li><i class="icon icon--venue"></i> <span class="txt">Jebel Ali Recreation Club</span></li>
+											 			<li><i class="icon icon--type"></i> <span class="txt">Reel Dine-In Cinema</span></li>
+											 			<li><i class="icon icon--calendar"></i> <span class="txt">26-Mar-2019</span></li>
+											 			<li><i class="icon icon--time"></i> <span class="txt">19:00</span></li>
+											 		</ul>
+										 		</div>
+										 	</div>
+										 	<div class="body-highlight bh--sty-a">
+										 		<div class="total-calculation">
+											 		<div class="calc-row">
+												 		<div class="title">Sub-total</div>
+												 		<div class="cost">AED <span class="amount">340.00</span></div>
+											 		</div>
+											 		<div class="calc-row">
+												 		<div class="title">VAT</div>
+												 		<div class="cost">AED <span class="amount">50.00</span></div>
+											 		</div>
+											 		<div class="calc-row is--highlighted">
+												 		<div class="title">Grand Total</div>
+												 		<div class="cost">AED <span class="amount">390.00</span></div>
+											 		</div>
+										 		</div>
+										 	</div>
+									 	</div>
+									 	<div class="body-highlight">
+									 		<div class="panel-action">
+									 			<div class="btn-holder">
+									 				<a href="booking_step-offers.html" class="c-btn-2 btn--outline">Back</a>
+									 			</div>
+									 			<div class="btn-holder btn--main">
+									 				<a href="#" class="c-btn-2 btn--white">Continue</a>
+									 			</div>
+									 		</div>
+									 	</div>
+									 </div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+
+		<!-- <div class="c-min-footer only-mobile">
+			<p>Copyright © Reel Entertainment LLC. All rights reserved.</p>
+		</div> -->
+
+		<div class="footer-outer-wrap only-desktop">
+		    <footer class="c-main-footer">
+		    	<div class="o-container">
+		    		<div class="row">
+		    			<section class="col col-4">
+		    				<h4>Technology Partners</h4>
+		    				<ul class="links-1 js-footer-logos-carousel">
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-dolby.png" alt="Dolby">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-mx4d.png" alt="MX4D">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-laser.png" alt="Laser">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-dolby.png" alt="Dolby">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-mx4d.png" alt="MX4D">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-laser.png" alt="Laser">
+									</picture>
+								</li>
+		    				</ul>
+		    			</section>
+		    			<section class="col col-5">
+		    				<h4>Partners</h4>
+		    				<ul class="links-1 js-footer-logos-carousel">
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-fab.png" alt="FAB">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-omega.png" alt="Omega">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-pepsi.png" alt="Pepesi">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-fab.png" alt="FAB">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-omega.png" alt="Omega">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-pepsi.png" alt="Pepesi">
+									</picture>
+								</li>
+		    				</ul>
+		    			</section>
+		    			<section class="col col-6">
+							
+		    				<ul class="links-1">
+		    					<li><a href="#" target="_blank"><img class="store-icons" src="assets/img/misc/applestore.svg" alt="Store Apple"></a></li>
+		    					<li><a href="#" target="_blank"><img class="store-icons" src="assets/img/misc/googlestore.svg" alt="Store Android"></a></li>
+		    				</ul>
+		    				<div class="copyright">
+		    					<img src="assets/img/misc/logo-emaar.png" alt="EMAAR">
+		    					<span>Copyright © Reel Entertainment LLC. All rights reserved.</span>
+								<span><a href="#">Terms &amp; Conditions</a>   &nbsp; | &nbsp;   <a href="#">Privacy Policy</a></span>
+		    				</div>
+		    			</section>
+		    		</div>
+		    	</div>
+		    </footer>
+		</div>
+
+		<div class="c-popup">
+	        <div class="overlay js-close-popup"></div>
+			
+			<!-- Example of normal popup -->
+	        <!-- <section id="dummy-popup" class="popup">
+	            <div class="popup-wrap">
+	                <hr class="deco">
+	                <div class="c-banner" style="background-image: url(img/img-4.jpg);">
+	                    <h1>Lorem Ipsum</h1>
+	                </div>
+	                <div class="txt-wrap">
+	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in.</p>
+	                </div>
+	                <div class="popup-action">
+	                    <a href="#" class="c-close js-close-popup"><span>Close</span></a>
+	                </div>
+	            </div>
+	        </section> -->
+
+	        <!-- Example of video popup -->
+	        <section id="video-1" class="popup popup--full-screen">
+	            <div class="popup-wrap">
+	                
+	                <div class="js-video"></div>
+
+	                <div class="popup-action">
+	                    <a href="#" class="c-close js-close-popup"><span>Close</span></a>
+	                </div>
+	            </div>
+	        </section>
+
+	        <!-- Popup Sty 1 -->
+	        <section id="popup-1" class="popup popup--sty-1">
+	            <div class="popup-wrap">
+	            	<div class="heading-wrap">
+		            	<div class="heading">
+		            		<h1>Lorem Ipsum Dolor</h1>
+		            	</div>
+		            	<div class="popup-action">
+		            		<a href="#" class="c-close js-close-popup"><span>Close</span></a>
+		            	</div>
+	            	</div>
+	                <div class="txt-wrap">
+	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	                </div>
+	                <div class="action">
+	                	<a href="#" class="c-btn-glow sty--a js-close-popup"><span>Cancel</span></a>
+	                	<a href="#" class="c-btn-glow">Proceed</a>
+	                </div>
+	            </div>
+	        </section>
+	    </div>
+	    <script>
+	    	var seating = [
+							// Target Selector
+							'.js-seat-area',
+							[
+								// Sections and rows in that section.
+								{
+									name: 'Standard Plus',
+									rows: 5
+								},
+								{
+									name: 'Standard',
+									rows: 5
+								},
+							],
+							// Number of columns
+							18,
+							// Wheel Chair Seats
+							[
+								['n', 21],
+								['n', 22],
+							],
+							// Booked Seats
+							[
+								['n', 22],
+								['g', 12],
+								['g', 13],
+								['g', 14],
+								['g', 16],
+								['h', 11],
+								['h', 12],
+							],
+							// Seating Area Layout Type.
+							'type-e'
+						];
+	    </script>
+
+	    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	    <script>window.jQuery || document.write('<script src="assets/js/script/jquery-3.3.1.min.js"><\/script>')</script>
+
+	    <script src="assets/js/script.min.js"></script>
+	    <script src="assets/js/booking_validation.js"></script>
+
+	    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+	    <script>
+	        window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+	        ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+	    </script>
+	    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+	</body>
+</html>

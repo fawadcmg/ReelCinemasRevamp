@@ -1,0 +1,1794 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="x-ua-compatible" content="ie=edge">
+	  <title>Reel Cinemas</title>
+	  <meta name="description" content="">
+	  <link rel="manifest" href="manifest.json">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	  <link rel="stylesheet" href="assets/css/style.min.css">
+	  <link rel="stylesheet" href="assets/css/booking_style.min.css">
+	</head>
+	
+	<body>
+	    <!--[if lte IE 9]>
+	        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	    <![endif]-->
+		<div class="c-landscape-msg"><div class="msg-inner">For best experince view the site in portrait mode.</div></div>
+		<div class="c-loader"></div><div class="c-overlay js-close-side-nav"></div>
+	    <div class="c-overlay-white js-close-filter-m"></div>
+		
+		<div class="c-booking-pages no--bg">
+			<div class="o-container">
+				<header class="c-header-1">
+					<div class="logo-wrap">
+						<a href="index.html" class="main-logo">
+							<picture>
+								<!-- <source srcset="assets/img/brand/logo-colored.png" media="(max-width: 767px)"> -->
+								<img src="assets/img/brand/reel-logo.svg" alt="Reel Cinemas" class="svg js-inline-svg">
+							</picture>
+						</a>
+					</div>
+					<nav class="c-steps">
+						<ul>
+							<li class="is--active">
+								<a href="booking_step-offers.html" class="step-offers">
+									<i class="icon"><img src="assets/img/icons/step-offers.svg" class="js-inline-svg"></i>
+									<span class="txt">Offers</span>
+								</a>
+							</li>
+							<li class="is--active">
+								<a href="booking_step-seats.html" class="step-seat">
+									<i class="icon"><img src="assets/img/icons/step-seat.svg" class="js-inline-svg"></i>
+									<span class="txt">Seats</span>
+								</a>
+							</li>
+							<li class="is--current">
+								<a href="booking_step-meal-selection.html" class="step-food">
+									<i class="icon"><img src="assets/img/icons/step-food.svg" class="js-inline-svg"></i>
+									<span class="txt">Food</span>
+								</a>
+							</li>
+							<li>
+								<a href="booking_step-payment--card--guest.html" class="step-payment">
+									<i class="icon"><img src="assets/img/icons/step-payment.svg" class="js-inline-svg"></i>
+									<span class="txt">Payment</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="c-user-summary">
+						<a href="#" class="js-user-dropdown action-elem">
+							<div class="user-img"><!-- <img src="assets/img/booking/user-img-thumb.jpg" alt="John Doe"> --></div>
+							<span class="arrow-icon"></span>
+						</a>
+						<nav class="user-actions-dropdown">
+							<a href="booking_user-profile.html">My Account <i class="icon icon--user"></i></a>
+							<a href="booking_step-offers.html">Booking <i class="icon icon--user"></i></a>
+							<a href="booking_signin.html">Sign out <i class="icon icon--signout"></i></a>
+						</nav>
+					</div>
+				</header>
+				<main class="b-page-content">
+					<div class="c-meal-selection c-order-layout-main">
+						<div class="food-selection order-layout_left">
+							<div class="fs-head">
+								<div class="fs-head-txt">
+									<div class="mobile-header">
+										<h1><i class="icon"><img src="assets/img/icons/step-food.svg" class="js-inline-svg"></i> Choose your food</h1>
+										<nav class="c-steps">
+											<ul>
+												<li class="is--active">
+													<a href="booking_step-offers.html" class="step-offers">
+														<i class="icon"><img src="assets/img/icons/step-offers.svg" class="js-inline-svg"></i>
+														<span class="txt">Offers</span>
+													</a>
+												</li>
+												<li class="is--active">
+													<a href="booking_step-seats.html" class="step-seat">
+														<i class="icon"><img src="assets/img/icons/step-seat.svg" class="js-inline-svg"></i>
+														<span class="txt">Seats</span>
+													</a>
+												</li>
+												<li class="is--current">
+													<a href="booking_step-meal-selection.html" class="step-food">
+														<i class="icon"><img src="assets/img/icons/step-food.svg" class="js-inline-svg"></i>
+														<span class="txt">Food</span>
+													</a>
+												</li>
+												<li>
+													<a href="booking_step-payment--card--guest.html" class="step-payment">
+														<i class="icon"><img src="assets/img/icons/step-payment.svg" class="js-inline-svg"></i>
+														<span class="txt">Payment</span>
+													</a>
+												</li>
+											</ul>
+										</nav>
+									</div>
+									<p>Select food and drinks to enjoy with the movie and we'll bring them to your seat.</p>
+								</div>
+								<div class="fs-head-time">
+									<div class="c-timmer js-count-down">
+										<div class="timmer-txt">
+											<div class="time">06:00</div>
+											<div class="label"><span>Mins</span> <span>Left</span></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="seat-list-wrap sty--1">
+								<div class="c-meal-type-list">
+									<a href="#tab-1" data-tab-name="meal" class="js-tab-link is--active">Combo</a>
+									<a href="#tab-2" data-tab-name="meal" class="js-tab-link">Popcorn</a>
+									<a href="#tab-3" data-tab-name="meal" class="js-tab-link">Healthy</a>
+									<a href="#tab-4" data-tab-name="meal" class="js-tab-link">Hot Food</a>
+									<a href="#tab-5" data-tab-name="meal" class="js-tab-link">DRINKS</a>
+									<a href="#tab-6" data-tab-name="meal" class="js-tab-link">Snacks</a>
+									<a href="#tab-7" data-tab-name="meal" class="js-tab-link">Red Bull</a>
+								</div>
+							</div>
+							<div id="tab-1" class="is-tab is--active" data-tab-name="meal">
+								<p class="current-seat-details csd--sty-2 only-desktop">Choose from 9 delicious options</p>
+								<div class="c-dine-list">
+									<section class="dine-section">
+										<ul class="dine-list">
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-1">
+																<label for="meal-starter-1"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-2">
+																<label for="meal-starter-2"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-3">
+																<label for="meal-starter-3"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-4">
+																<label for="meal-starter-4"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-5">
+																<label for="meal-starter-5"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-6">
+																<label for="meal-starter-6"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-7">
+																<label for="meal-starter-7"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-8">
+																<label for="meal-starter-8"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-9">
+																<label for="meal-starter-9"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</section>
+								</div>
+							</div>
+							<div id="tab-2" class="is-tab" data-tab-name="meal">
+								<p class="current-seat-details csd--sty-2 only-desktop">The traditional cinema treat</p>
+								<div class="c-dine-list">
+									<section class="dine-section">
+										<ul class="dine-list">
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-1">
+																<label for="meal-starter-1"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-2">
+																<label for="meal-starter-2"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-3">
+																<label for="meal-starter-3"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-4">
+																<label for="meal-starter-4"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-5">
+																<label for="meal-starter-5"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-6">
+																<label for="meal-starter-6"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-7">
+																<label for="meal-starter-7"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-8">
+																<label for="meal-starter-8"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-9">
+																<label for="meal-starter-9"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</section>
+								</div>
+							</div>
+							<div id="tab-3" class="is-tab" data-tab-name="meal">
+								<p class="current-seat-details csd--sty-2 only-desktop">Eat clean by the big screen</p>
+								<div class="c-dine-list">
+									<section class="dine-section">
+										<ul class="dine-list">
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-1">
+																<label for="meal-starter-1"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-2">
+																<label for="meal-starter-2"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-3">
+																<label for="meal-starter-3"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-4">
+																<label for="meal-starter-4"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-5">
+																<label for="meal-starter-5"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-6">
+																<label for="meal-starter-6"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-7">
+																<label for="meal-starter-7"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-8">
+																<label for="meal-starter-8"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-9">
+																<label for="meal-starter-9"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</section>
+								</div>
+							</div>
+							<div id="tab-4" class="is-tab" data-tab-name="meal">
+								<p class="current-seat-details csd--sty-2 only-desktop">Restaurant quality meals with your movie</p>
+								<div class="c-dine-list">
+									<section class="dine-section">
+										<ul class="dine-list">
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-1">
+																<label for="meal-starter-1"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-2">
+																<label for="meal-starter-2"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-3">
+																<label for="meal-starter-3"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-4">
+																<label for="meal-starter-4"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-5">
+																<label for="meal-starter-5"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-6">
+																<label for="meal-starter-6"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-7">
+																<label for="meal-starter-7"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-8">
+																<label for="meal-starter-8"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-9">
+																<label for="meal-starter-9"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</section>
+								</div>
+							</div>
+							<div id="tab-5" class="is-tab" data-tab-name="meal">
+								<p class="current-seat-details csd--sty-2 only-desktop">Hot and cold movie beverages</p>
+								<div class="c-dine-list">
+									<section class="dine-section">
+										<ul class="dine-list">
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-1">
+																<label for="meal-starter-1"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-2">
+																<label for="meal-starter-2"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-3">
+																<label for="meal-starter-3"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-4">
+																<label for="meal-starter-4"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-5">
+																<label for="meal-starter-5"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-6">
+																<label for="meal-starter-6"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-7">
+																<label for="meal-starter-7"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-8">
+																<label for="meal-starter-8"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-9">
+																<label for="meal-starter-9"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</section>
+								</div>
+							</div>
+							<div id="tab-6" class="is-tab" data-tab-name="meal">
+								<p class="current-seat-details csd--sty-2 only-desktop">Classic cinema munchies</p>
+								<div class="c-dine-list">
+									<section class="dine-section">
+										<ul class="dine-list">
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-1">
+																<label for="meal-starter-1"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-2">
+																<label for="meal-starter-2"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-3">
+																<label for="meal-starter-3"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-4">
+																<label for="meal-starter-4"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-5">
+																<label for="meal-starter-5"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-6">
+																<label for="meal-starter-6"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-7">
+																<label for="meal-starter-7"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-8">
+																<label for="meal-starter-8"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-9">
+																<label for="meal-starter-9"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</section>
+								</div>
+							</div>
+							<div id="tab-7" class="is-tab" data-tab-name="meal">
+								<p class="current-seat-details csd--sty-2 only-desktop">Perfect for big screen epics</p>
+								<div class="c-dine-list">
+									<section class="dine-section">
+										<ul class="dine-list">
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-1">
+																<label for="meal-starter-1"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-2">
+																<label for="meal-starter-2"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-3">
+																<label for="meal-starter-3"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-4">
+																<label for="meal-starter-4"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-5">
+																<label for="meal-starter-5"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-6">
+																<label for="meal-starter-6"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-7">
+																<label for="meal-starter-7"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-8">
+																<label for="meal-starter-8"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="wrap-item">
+													<div class="img">
+														<img src="assets/img/booking/dine-starter--1.jpg" alt="Starter 1">
+													</div>
+													<div class="details">
+														<div class="item-name">GFC Hummus N House Pickles</div>
+														<a href="#food-detail-1" class="item-link js-popup-link">Details</a>
+														<div class="item-action">
+															<div class="add-box">
+																<input type="checkbox" name="starter-meal" id="meal-starter-9">
+																<label for="meal-starter-9"><span class="box-txt">Add/Remove</span></label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</section>
+								</div>
+							</div>
+						</div>
+						<div class="details-panel order-layout_right">
+							<div class="js-stick-anchor"></div>
+							<div class="c-panel-2-wrap js-stick-in-view">
+								<section class="c-panel-2 panel--order-summary panel--sty-1">
+									<div class="panel-header">
+										<div class="header-row">
+											<h1 class="js-mobile-summary-toggle">Your order <i class="icon"></i></h1>
+										</div>
+									 </div>
+									 <div class="panel-body">
+									 	<div class="mobile-body-wrap">
+										 	<div class="body-casual">
+											 	<div class="calculation-list p-b-0">
+												 	<h2>Food orders for each seat</h2>
+												 	<div class="list-meal js-custom-scroll">
+													 	<ul class="main-list ml--sty-1">
+													 		<li>
+													 			<div class="li-head">
+													 				<div class="head-label">Pepsi + GFC wings Buffalo</div>
+													 				<div class="head-value">AED 84</div>
+													 			</div>
+													 			<ul class="li-inner-list">
+													 				<li>
+													 					<div class="il-txt type-starter">add-on (Jalapeno + Cheese)</div>
+													 					<div class="il-value">AED 84</div>
+													 				</li>
+													 				<li class="counter">
+													 					<a href="#select-meal" class="counter-btn btn--sub js-popup-link"><span>Subtract</span></a>
+													 					<div class="counter-value">1</div>
+													 					<a href="#select-meal" class="counter-btn btn--add js-popup-link"><span>Add</span></a>
+													 				</li>
+													 			</ul>
+													 			<div class="li-head">
+													 				<div class="head-label">Pepsi + GFC wings Buffalo</div>
+													 				<div class="head-value"><span class="sub-txt">AED 90 x 2</span> <span class="main-value">AED 180</span></div>
+													 			</div>
+													 			<ul class="li-inner-list">
+													 				<li>
+													 					<div class="il-txt type-starter">add-on (Ketchup + Salsa Sauce + Jalapeno + Cheese)</div>
+													 					<div class="il-value"><span class="sub-txt">AED 40 x 2</span> <span class="main-value">AED 80</span></div>
+													 				</li>
+													 				<li class="counter">
+													 					<a href="#select-meal" class="counter-btn btn--sub js-popup-link"><span>Subtract</span></a>
+													 					<div class="counter-value">2</div>
+													 					<a href="#select-meal" class="counter-btn btn--add js-popup-link"><span>Add</span></a>
+													 				</li>
+													 			</ul>
+													 		</li>
+													 	</ul>
+												 	</div>
+											 	</div>
+											 	<div class="highlight-bar-sec">
+											 		<h2>Savings <a href="#" class="remove-icon js-saving-remove"><i class="icon"></i><span class="txt">Remove</span></a></h2>
+											 		<div class="highlight-bar">
+											 			<div class="txt">
+											 				Standard Chartered <br>Credit Card Offer
+											 			</div>
+											 			<div class="calc">
+											 				SAVED <strong>AED <span class="amount">73</span></strong>
+											 			</div>
+											 			<a href="#" class="remove-icon js-saving-remove"><i class="icon"></i><span class="txt">Remove</span></a>
+											 		</div>
+											 	</div>
+										 	</div>
+										 	<div class="body-normal">
+										 		<div class="info-list">
+											 		<ul class="list">
+											 			<li><i class="icon icon--movie"></i> <span class="txt">Alita Batatle Angel</span><div class="rating">PG<br>13</div></li>
+											 			<li><i class="icon icon--venue"></i> <span class="txt">Jebel Ali Recreation Club</span></li>
+											 			<li><i class="icon icon--type"></i> <span class="txt">Reel Dine-In Cinema</span></li>
+											 			<li><i class="icon icon--calendar"></i> <span class="txt">26-Mar-2019</span></li>
+											 			<li><i class="icon icon--time"></i> <span class="txt">19:00</span></li>
+											 		</ul>
+										 		</div>
+										 	</div>
+										 	<div class="body-highlight bh--sty-a">
+										 		<div class="total-calculation">
+											 		<div class="calc-row">
+												 		<div class="title">Sub-total</div>
+												 		<div class="cost">AED <span class="amount">340.00</span></div>
+											 		</div>
+											 		<div class="calc-row">
+												 		<div class="title">VAT</div>
+												 		<div class="cost">AED <span class="amount">50.00</span></div>
+											 		</div>
+											 		<div class="calc-row is--highlighted">
+												 		<div class="title">Grand Total</div>
+												 		<div class="cost">AED <span class="amount">390.00</span></div>
+											 		</div>
+										 		</div>
+										 	</div>
+									 	</div>
+									 	<div class="body-highlight">
+									 		<div class="panel-action">
+									 			<div class="btn-holder">
+									 				<a href="booking_step-offers.html" class="c-btn-2 btn--outline">Back</a>
+									 			</div>
+									 			<div class="btn-holder btn--main">
+									 				<a href="#" class="c-btn-2 btn--white">Continue</a>
+									 			</div>
+									 		</div>
+									 	</div>
+									 </div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+
+		<!-- <div class="c-min-footer only-mobile">
+			<p>Copyright © Reel Entertainment LLC. All rights reserved.</p>
+		</div> -->
+
+		<div class="footer-outer-wrap only-desktop">
+		    <footer class="c-main-footer">
+		    	<div class="o-container">
+		    		<div class="row">
+		    			<section class="col col-4">
+		    				<h4>Technology Partners</h4>
+		    				<ul class="links-1 js-footer-logos-carousel">
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-dolby.png" alt="Dolby">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-mx4d.png" alt="MX4D">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-laser.png" alt="Laser">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-dolby.png" alt="Dolby">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-mx4d.png" alt="MX4D">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/tech-partner-laser.png" alt="Laser">
+									</picture>
+								</li>
+		    				</ul>
+		    			</section>
+		    			<section class="col col-5">
+		    				<h4>Partners</h4>
+		    				<ul class="links-1 js-footer-logos-carousel">
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-fab.png" alt="FAB">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-omega.png" alt="Omega">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-pepsi.png" alt="Pepesi">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-fab.png" alt="FAB">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-omega.png" alt="Omega">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<img src="assets/img/misc/partner-pepsi.png" alt="Pepesi">
+									</picture>
+								</li>
+		    				</ul>
+		    			</section>
+		    			<section class="col col-6">
+							
+		    				<ul class="links-1">
+		    					<li><a href="#" target="_blank"><img class="store-icons" src="assets/img/misc/applestore.svg" alt="Store Apple"></a></li>
+		    					<li><a href="#" target="_blank"><img class="store-icons" src="assets/img/misc/googlestore.svg" alt="Store Android"></a></li>
+		    				</ul>
+		    				<div class="copyright">
+		    					<img src="assets/img/misc/logo-emaar.png" alt="EMAAR">
+		    					<span>Copyright © Reel Entertainment LLC. All rights reserved.</span>
+								<span><a href="#">Terms &amp; Conditions</a>   &nbsp; | &nbsp;   <a href="#">Privacy Policy</a></span>
+		    				</div>
+		    			</section>
+		    		</div>
+		    	</div>
+		    </footer>
+		</div>
+
+		<div class="c-popup">
+	        <div class="overlay js-close-popup"></div>
+			
+			<!-- Example of normal popup -->
+	        <!-- <section id="dummy-popup" class="popup">
+	            <div class="popup-wrap">
+	                <hr class="deco">
+	                <div class="c-banner" style="background-image: url(img/img-4.jpg);">
+	                    <h1>Lorem Ipsum</h1>
+	                </div>
+	                <div class="txt-wrap">
+	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in.</p>
+	                </div>
+	                <div class="popup-action">
+	                    <a href="#" class="c-close js-close-popup"><span>Close</span></a>
+	                </div>
+	            </div>
+	        </section> -->
+
+	        <!-- Example of video popup -->
+	        <section id="video-1" class="popup popup--full-screen">
+	            <div class="popup-wrap">
+	                
+	                <div class="js-video"></div>
+
+	                <div class="popup-action">
+	                    <a href="#" class="c-close js-close-popup"><span>Close</span></a>
+	                </div>
+	            </div>
+	        </section>
+
+	        <!-- Popup Sty 1 -->
+	        <section id="popup-1" class="popup popup--sty-1">
+	            <div class="popup-wrap">
+	            	<div class="heading-wrap">
+		            	<div class="heading">
+		            		<h1>Lorem Ipsum Dolor</h1>
+		            	</div>
+		            	<div class="popup-action">
+		            		<a href="#" class="c-close js-close-popup"><span>Close</span></a>
+		            	</div>
+	            	</div>
+	                <div class="txt-wrap">
+	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	                </div>
+	                <div class="action">
+	                	<a href="#" class="c-btn-glow sty--a js-close-popup"><span>Cancel</span></a>
+	                	<a href="#" class="c-btn-glow">Proceed</a>
+	                </div>
+	            </div>
+	        </section>
+
+	        <section id="timmer-renew-popup" class="popup popup--sty-1 popup--timmer">
+	            <div class="popup-wrap">
+	            	<div class="heading-wrap">
+		            	<div class="heading">
+		            		<h1>NEED MORE TIME?</h1>
+		            	</div>
+		            	<div class="popup-action">
+		            		<a href="#" class="c-close js-close-popup"><span>Close</span></a>
+		            	</div>
+	            	</div>
+	                <div class="txt-wrap">
+	                	<div class="time-left"><span class="js-time-popup-count count">50</span> Sec left</div>
+	                </div>
+	                <div class="action">
+	                	<a href="#" class="c-btn-glow sty--a js-close-popup"><span>I'M OKAY</span></a>
+	                	<a href="javascript:location.reload()" class="c-btn-glow">ADD MORE TIME</a>
+	                </div>
+	            </div>
+	        </section>
+
+	        <section id="food-detail-1" class="popup popup--sty-1 popup--sty-a">
+	            <div class="popup-wrap">
+		        	<div class="img">
+						<img src="assets/img/booking/dine-starter--1--md.jpg" alt="Starter 1">
+					</div>
+					<div class="text">
+		            	<div class="heading-wrap">
+			            	<div class="heading">
+			            		<h1>GFC Bacon Mac-N-Cheese Burger</h1>
+			            	</div>
+			            	<div class="popup-action">
+			            		<a href="#" class="c-close js-close-popup"><span>Close</span></a>
+			            	</div>
+		            	</div>
+		                <div class="txt-wrap">
+		                    <p>Guy's award-winning burger.... Crispy beef bacon, six-cheese mac 'n' cheese, LTOP(Lettuce, tomato, onion+pickle), SMC(supper melted cheese), crispy onion straws + donkey sauce, all stacked on a garlic-buttered brioche bun & served with fries</p>
+							<p>*You can select & purchase your drinks once you arrive at the Dine-in Cinema.</p>
+							<div class="c-ban-list">
+								<div class="ban-item">
+									<img src="assets/img/icons/icon-ban-gluten.svg" alt="Gluten Free">
+									<div class="label">Gluten free</div>
+								</div>
+								<div class="ban-item">
+									<img src="assets/img/icons/icon-ban-fats.svg" alt="Trans Fats Free">
+									<div class="label">Trans Fats Free</div>
+								</div>
+								<div class="ban-item">
+									<img src="assets/img/icons/icon-ban-dairy.svg" alt="Dairy Free">
+									<div class="label">Dairy Free</div>
+								</div>
+								<div class="ban-item">
+									<img src="assets/img/icons/icon-ban-sugar.svg" alt="Sugar Free">
+									<div class="label">Sugar Free</div>
+								</div>
+							</div>
+		                </div>
+	                </div>
+	            </div>
+	        </section>
+
+	        <section id="select-meal" class="popup popup--sty-1 popup--meal-select">
+	            <div class="popup-wrap">
+	            	<div class="heading-wrap">
+		            	<div class="heading">
+		            		<h1>Pepsi + Hotdog Combo</h1>
+		            		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br> Nam officiis eos dignissimos iusto tenetur</p>
+		            	</div>
+		            	<div class="popup-action">
+		            		<a href="#" class="c-close js-close-popup"><span>Close</span></a>
+		            	</div>
+	            	</div>
+	            	<div class="body-wrap">
+						<form action="#" class="c-form-sty-1 form--meal-select js-form--meal-select js-form js-form--keep-placeholder">
+							<div class="ds-wrap js-custom-scroll">
+			            		<div class="details-section checkbox--round">
+			            			<div class="ds-head">
+			            				<h2>Combo drinks option <span class="sub-txt">(Select any one)</span></h2>
+			            			</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="radio" name="drinks" id="drink-pepsi">
+											<label for="drink-pepsi"><span class="txt">Pepsi</span></label>
+										</div>
+										<div class="cost">AED 0</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="radio" name="drinks" id="drink-7up">
+											<label for="drink-7up"><span class="txt">7UP</span></label>
+										</div>
+										<div class="cost">AED 0</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="radio" name="drinks" id="drink-diet_pepsi">
+											<label for="drink-diet_pepsi"><span class="txt">Diet Pepsi</span></label>
+										</div>
+										<div class="cost">AED 0</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="radio" name="drinks" id="drink-mirinda_orange">
+											<label for="drink-mirinda_orange"><span class="txt">Mirinda Orange</span></label>
+										</div>
+										<div class="cost">AED 0</div>
+									</div>
+			            		</div>
+			            		<div class="details-section checkbox--round">
+									<div class="form-item form-item--checkbox inline-option">
+										<div class="checkbox">
+											<input type="radio" name="drinks-ice" id="with_ice">
+											<label for="with_ice"><span class="txt">With Ice</span></label>
+										</div>
+										<div class="checkbox">
+											<input type="radio" name="drinks-ice" id="without_ice">
+											<label for="without_ice"><span class="txt">Without Ice</span></label>
+										</div>
+									</div>
+			            		</div>
+			            		<div class="details-section">
+			            			<div class="ds-head">
+			            				<h2>Add on tips <span class="sub-txt">(you can choose upto 15 options)</span></h2>
+			            			</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-cheese">
+											<label for="add_on-cheese"><span class="txt">Add-on Cheese</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-jalapeno">
+											<label for="add_on-jalapeno"><span class="txt">Add-on Jalapeno</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-salsa">
+											<label for="add_on-salsa"><span class="txt">Add-on Salsa</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-guacamole">
+											<label for="add_on-guacamole"><span class="txt">Guacamole</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-lorem_1">
+											<label for="add_on-lorem_1"><span class="txt">lroem 1</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-lorem_2">
+											<label for="add_on-lorem_2"><span class="txt">lroem 2</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-lorem_3">
+											<label for="add_on-lorem_3"><span class="txt">lroem 3</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-lorem_4">
+											<label for="add_on-lorem_4"><span class="txt">lroem 4</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-lorem_5">
+											<label for="add_on-lorem_5"><span class="txt">lroem 5</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+									<div class="form-item form-item--checkbox">
+										<div class="checkbox">
+											<input type="checkbox" name="add_on" id="add_on-lorem_6">
+											<label for="add_on-lorem_6"><span class="txt">lroem 6</span></label>
+										</div>
+										<div class="cost">AED 5</div>
+									</div>
+			            		</div>
+		            		</div>
+	            			<div class="total-wrap">
+	            				<div class="cost-item-wrap">
+		            				<div class="cost-item">
+		            					<div class="label">Add on</div>
+		            					<div class="value">AED 10</div>
+		            				</div>
+		            				<hr class="seprator">
+		            				<div class="cost-item">
+		            					<div class="label">Pepsi + Hotdog Combo</div>
+		            					<div class="value">AED 42</div>
+		            				</div>
+		            				<div class="cost-item item--highlight">
+		            					<div class="label">Grad Total</div>
+		            					<div class="value"><span class="sub-txt">(Exclusive of VAT)</span> AED 94</div>
+		            				</div>
+	            				</div>
+	            				<div class="form-action">
+									<a href="#" class="c-btn-glow js-close-popup">ADD</a>
+								</div>
+	            			</div>
+						</form>
+	            	</div>
+	            </div>
+	        </section>
+	    </div>
+	    <script>
+	    	var seating = [
+							// Target Selector
+							'.js-seat-area',
+							[
+								// Sections and rows in that section.
+								{
+									name: 'Standard Plus',
+									rows: 5
+								},
+								{
+									name: 'Standard',
+									rows: 5
+								},
+							],
+							// Number of columns
+							18,
+							// Wheel Chair Seats
+							[
+								['n', 21],
+								['n', 22],
+							],
+							// Booked Seats
+							[
+								['n', 22],
+								['g', 12],
+								['g', 13],
+								['g', 14],
+								['g', 16],
+								['h', 11],
+								['h', 12],
+							],
+							// Seating Area Layout Type.
+							'type-e'
+						];
+	    </script>
+
+	    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	    <script>window.jQuery || document.write('<script src="assets/js/script/jquery-3.3.1.min.js"><\/script>')</script>
+
+	    <script src="assets/js/script.min.js"></script>
+	    <script src="assets/js/booking_validation.js"></script>
+
+	    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+	    <script>
+	        window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+	        ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+	    </script>
+	    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+	</body>
+</html>
