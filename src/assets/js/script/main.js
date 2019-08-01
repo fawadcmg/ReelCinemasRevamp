@@ -106,6 +106,7 @@ $(function () {
 	adjsutSeatsSecHeight();
 	offerSecAdjustments();
 	listSameHeight();
+	addFoodPopup();
 
 	$('.c-loader').fadeOut('slow', function () {
 	    if(winWidth > 1024){
@@ -139,6 +140,8 @@ $(window).on('resize orientationchange', function () {
 	// winDimensions();
 	animWrapHeight();
 	// onlyPortrait();
+
+   	summaryAreaHeight();
 	clearTimeout(resizeTimer1);
 	var resizeTimer1 = setTimeout(function() {
 		mobilecheck();
@@ -200,6 +203,7 @@ $(window).on('resize orientationchange', function () {
 //On Scroll
 $(window).on('scroll', function () {
    setOnTopClass();
+   summaryAreaHeight();
 });
 
 
@@ -782,9 +786,16 @@ function headerAdjust() {
 }
 
 function initSelect2() {
-	$('.js-select2').select2({
-		// minimumResultsForSearch: Infinity
-	});
+	$('.js-select2').each(function () {
+		if($(this).find('option[value=""]').get(0)){
+			$(this).select2({
+				placeholder: $(this).find('option[value=""]').html(),
+			});
+		}else{
+			$(this).select2({
+			});
+		}
+	})
 }
 
 var movieList_cip = false;
@@ -1919,7 +1930,9 @@ function openPopup(target, videoLink) {
 					}, 750);
 				}, 1500);
 			}else{
-				$(popupTarget).find('.js-video')[0].play();
+				if($(popupTarget).find('.js-video').get(0)){
+					$(popupTarget).find('.js-video')[0].play();
+				}
 				// setTimeout(function () {
 				// 	$(popupTarget).find('.popup-wrap').css('opacity', 1);
 				// }, 750);
@@ -1976,6 +1989,8 @@ function closePopup() {
 			$('html').removeClass('popup-is-active');
 		}, 310);
 	}
+
+	addFoodPopupReff = undefined;
 }
 
 function addVideoPlugin() {
@@ -2050,9 +2065,7 @@ function jsVideoDirect() {
 function bindPopupEve() {
 	// Popup Open
 	$('.js-popup-link:not(.popup--event-binded)').click(function (e) {
-		if(!$(this).hasClass('add-box')){
-			e.preventDefault();
-		}
+		e.preventDefault();
 		var target = $(this).attr('href');
 		var videoLink = $(this).attr('data-video');
 		openPopup(target, videoLink);
@@ -3105,11 +3118,24 @@ if('objectFit' in document.documentElement.style === false) {
 }
 
 function customPhoneInput() {
-	if($('.js-phone-field').get(0)){
+	/*if($('.js-phone-field').get(0)){
 		$('.js-phone-field').each(function () {
 			window.intlTelInput(this, {
 				separateDialCode: true
 			});
+		});
+	}*/
+
+	if($('.js-phone-field').get(0)){
+		$('.js-phone-field').each(function () {
+			var thisWidth = $(this).parent().width();
+			var thisParent = $(this).parent();
+			window.intlTelInput(this, {
+				separateDialCode: true
+			});
+			if(thisParent.get(0)){
+				thisParent.find('.country-list').css('width', thisWidth);
+			}
 		});
 	}
 }
@@ -3724,9 +3750,11 @@ $('.js-mobile-summary-toggle').click(function (e) {
 	var thisPanel = $(this).closest('.details-panel');
 	if(winWidth < 768){
 		if(thisPanel.hasClass('mobile-detail-open')){
+			$('html').removeClass('no--scroll');
 			thisPanel.removeClass('mobile-detail-open');
 			$('.c-panel-2 .panel-body .mobile-body-wrap').stop().slideUp();
 		}else{
+			$('html').addClass('no--scroll');
 			thisPanel.addClass('mobile-detail-open');
 			$('.c-panel-2 .panel-body .mobile-body-wrap').stop().slideDown();
 		}
@@ -3738,32 +3766,35 @@ var summaryCloseHeight = 0;
 
 adjsutSeatsSecHeight();
 function adjsutSeatsSecHeight() {
+	// summar area
+	summaryAreaHeight();
+
 	if(winWidth<768){
 		// seat area Initial Height
 		var headerHeight = $('.c-header-1').outerHeight();
 		var innerSecHeader = $('.c-seats-selection .heading-wrap').outerHeight();
 		var legendsHeight = $('.c-seats-selection .legends').outerHeight(true);
-		
 		if($('.js-seat-area input:checked').get(0)){
 			$('.c-seats-selection .seats-area').css('height', winHeight - (headerHeight + innerSecHeader + legendsHeight) - summaryCloseHeight);
 		}else{
 			$('.c-seats-selection .seats-area').css('height', winHeight - (headerHeight + innerSecHeader + legendsHeight));
 		}
-
-		console.log('here');
 		$('.c-seats-selection .scale-area-wrap').css('max-height', winHeight - (headerHeight + innerSecHeader + legendsHeight));
-
-		// summar area
-		if(!$('.c-seats-selection .details-panel, .c-order-layout-main .details-panel').hasClass('mobile-detail-open')){
-			summaryCloseHeight = $('.c-seats-selection .details-panel .c-panel-2, .c-order-layout-main .details-panel .c-panel-2').outerHeight();
-		}
-		$('.c-panel-2 .panel-body .mobile-body-wrap').css('max-height', (winHeight - summaryCloseHeight));
 	}else{
 		$('.c-seats-selection .seats-area').css('height', '');
 		$('.c-seats-selection .scale-area-wrap').css('max-height', '');
 
 		$('.c-panel-2 .panel-body .mobile-body-wrap').css('display', '');
-		$('.c-panel-2 .panel-body .mobile-body-wrap').css('max-height', '')
+		$('.c-panel-2 .panel-body .mobile-body-wrap').css('max-height', '');
+	}
+}
+
+function summaryAreaHeight() {
+	if(winWidth<768){
+		if(!$('.c-seats-selection .details-panel, .c-order-layout-main .details-panel').hasClass('mobile-detail-open')){
+			summaryCloseHeight = $('.c-seats-selection .details-panel .c-panel-2, .c-order-layout-main .details-panel .c-panel-2').outerHeight();
+		}
+		$('.c-panel-2 .panel-body .mobile-body-wrap').css('max-height', (window.innerHeight - summaryCloseHeight));
 	}
 }
 
@@ -4164,6 +4195,41 @@ function listSameHeight() {
 	});	
 }
 
+var addFoodPopupReff = undefined;
+function addFoodPopup() {
+	$('.js-add-food-popup:not(.js-afp--evnt-binded)').click(function (e) {
+		e.preventDefault();
+		addFoodPopupReff = this;
+		if($(this).find('input[type="checkbox"]:checked').get(0)){
+			$(this).find('input[type="checkbox"]:checked')[0].checked = false;
+		}else{
+			openPopup('#select-meal');
+		}
+	}).addClass('js-afp--evnt-binded');
+	
+	// $('.js-meal-popup-validation:not(.js-mpv--evnt-binded)').each(function () {
+	// 	var parent = $(this).closest('.popup');
+	// 	parent.find('input[name="add_on"]').on('change', function () {
+	// 		if($(this).closest('.popup').find('input[name="add_on"]:checked').get(0)){
+	// 			$(this).closest('.popup').find('.js-meal-popup-validation').removeClass('btn--disabled');
+	// 		}else{
+	// 			$(this).closest('.popup').find('.js-meal-popup-validation').addClass('btn--disabled');
+	// 		}
+	// 	})
+	// });
+
+	$('.js-meal-popup-validation:not(.js-mpv--evnt-binded)').click(function (e) {
+		e.preventDefault();
+		var parent = $(this).closest('.popup');
+		// if(parent.find('input[name="add_on"]:checked').get(0)){
+			if(addFoodPopupReff != undefined){
+				$(addFoodPopupReff).find('input[type="checkbox"]')[0].checked = true;
+			}
+			closePopup();
+		// }
+	}).addClass('js-mpv--evnt-binded');
+}
+
 // function sticky_relocate() {
 //   var window_top = $(window).scrollTop();
 //   $('.js-stick-in-view').each(function () {
@@ -4194,4 +4260,16 @@ function listSameHeight() {
 // sticky_relocate();
 // $(window).on('scroll resize', sticky_relocate);
 // $(window).on('resize', stickySize);
+
+
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+// We listen to the resize event
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
 

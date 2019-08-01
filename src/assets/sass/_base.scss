@@ -338,6 +338,7 @@ label{
 	transition: none;
 	overflow: hidden;
 	position: relative;
+	z-index: 1;
 	/*transform: translateZ(0);*/
 
 	&:after{
@@ -352,9 +353,10 @@ label{
 		top: 0;
 		left: 0;
 		mix-blend-mode: color-dodge;
-		z-index: 1;
+		z-index: -1;
         border-radius: 999px;
         overflow: hidden;
+		transform: translateZ(0);
 	}
 
 	span{
@@ -436,6 +438,11 @@ label{
 				}
 			}
 		}
+	}
+
+	&.btn--disabled{
+		pointer-events: none;
+		opacity: 0.5;
 	}
 }
 
@@ -986,11 +993,8 @@ label{
     display: none;
     position: absolute;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
     max-width: 740px;
     padding: 20px;
     max-height: 100%;
@@ -999,6 +1003,11 @@ label{
     top: 40%;
     transition: all .3s 0s;
     overflow-y: auto;
+    -webkit-font-smoothing: antialiased;
+	perspective: -1px;
+	backface-visibility: hidden;
+	will-change: transform;
+	filter: blur(0px);
 
     &.popup--sty-1{
     	max-width: 540px;
@@ -1030,6 +1039,21 @@ label{
     				border-radius: 0;
     				background: transparent;
     				transform: translateZ(0);
+
+    				@media (max-width: 767px){
+						position: absolute;
+						top:   30px;
+						right: 30px;
+						border-radius: 999px;
+						width:  35px;
+						height: 35px;
+						background: rgba(255,255,255,0.6);
+					}
+    				@media (max-width: 339px){
+    					width: 27px;
+    					height: 27px;
+    				}
+
     				span{
     					width:  18px;
     					height: 18px;
@@ -1045,6 +1069,13 @@ label{
     					}
     					&:after{
     						width: 2px;
+    					}
+
+    					@media (max-width: 767px){
+							top: 50%;
+							left: 50%;
+							margin-top: -9px;
+							margin-left: -9px;
     					}
     				}
     			}
@@ -1339,6 +1370,7 @@ label{
 	background: #6e3996;
 }
 
+.no--scroll,
 .landscape-msg--on,
 .popup-is-active{
 	overflow: hidden;

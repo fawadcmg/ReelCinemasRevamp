@@ -35,6 +35,7 @@ gulp.task('scriptJs', function(){
         'src/assets/js/script/intlTelInput.js',
         'src/assets/js/script/jquery-ui.js',
         'src/assets/js/script/jquery.validate.js',
+        'src/assets/js/script/additional-methods.min.js',
         'src/assets/js/script/hammer.min.js',
         'src/assets/js/script/jquery.sticky-kit.js',
         'src/assets/js/script/main.js',
